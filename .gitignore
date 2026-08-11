@@ -62,5 +62,6 @@ logs/
 *.temp
 .cache/
 
-# Local archives
+# Generated media and local archives
+*.webm
 *.zip
