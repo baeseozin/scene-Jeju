@@ -15,6 +15,9 @@ KST = ZoneInfo("Asia/Seoul")
 KMA_ULTRA_SHORT_FORECAST_URL = (
     "https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst"
 )
+KMA_SHORT_FORECAST_URL = (
+    "https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst"
+)
 
 
 class WeatherProviderError(RuntimeError):
@@ -67,6 +70,19 @@ def latest_ultra_short_base(now: datetime) -> datetime:
     return base
 
 
+def latest_short_base(now: datetime) -> datetime:
+    """단기예보 발표 시각 중 API 반영 여유 15분을 확보한 최신 기준 시각."""
+    local_now = now.astimezone(KST) - timedelta(minutes=15)
+    issue_hours = (2, 5, 8, 11, 14, 17, 20, 23)
+    available = [hour for hour in issue_hours if hour <= local_now.hour]
+    if available:
+        return local_now.replace(
+            hour=max(available), minute=0, second=0, microsecond=0
+        )
+    previous_day = local_now - timedelta(days=1)
+    return previous_day.replace(hour=23, minute=0, second=0, microsecond=0)
+
+
 def _parse_precipitation(value: Any) -> float:
     text = str(value).strip()
     if not text or "없음" in text:
@@ -81,7 +97,9 @@ def _sky_state(value: Any) -> SkyState:
 
 
 def _select_forecast(
-    items: list[dict[str, Any]], arrival_time: datetime
+    items: list[dict[str, Any]],
+    arrival_time: datetime,
+    precipitation_category: str = "RN1",
 ) -> WeatherResult:
     grouped: dict[datetime, dict[str, Any]] = {}
     for item in items:
@@ -98,10 +116,12 @@ def _select_forecast(
     complete = [
         (forecast_time, values)
         for forecast_time, values in grouped.items()
-        if {"RN1", "WSD", "SKY"}.issubset(values)
+        if {precipitation_category, "WSD", "SKY"}.issubset(values)
     ]
     if not complete:
-        raise WeatherProviderError("기상청 응답에 RN1·WSD·SKY 예보가 없습니다.")
+        raise WeatherProviderError(
+            f"기상청 응답에 {precipitation_category}·WSD·SKY 예보가 없습니다."
+        )
 
     arrival = arrival_time.astimezone(KST)
     future = [entry for entry in complete if entry[0] >= arrival]
@@ -110,7 +130,9 @@ def _select_forecast(
         key=lambda entry: abs((entry[0] - arrival).total_seconds()),
     )
     return WeatherResult(
-        precipitation_mm=round(_parse_precipitation(values["RN1"]), 1),
+        precipitation_mm=round(
+            _parse_precipitation(values[precipitation_category]), 1
+        ),
         wind_speed_mps=round(float(values["WSD"]), 1),
         sky=_sky_state(values["SKY"]),
         forecast_time=target_time,
@@ -123,11 +145,23 @@ async def fetch_kma_weather(
     arrival_time: datetime,
     settings: Settings,
 ) -> WeatherResult:
+    results = await fetch_kma_weather_series(
+        latitude, longitude, [arrival_time], settings
+    )
+    return results[0][0]
+
+
+async def _fetch_kma_items(
+    url: str,
+    latitude: float,
+    longitude: float,
+    base: datetime,
+    settings: Settings,
+) -> list[dict[str, Any]]:
     if not settings.kma_service_key:
         raise WeatherProviderError("KMA_SERVICE_KEY가 설정되지 않았습니다.")
 
     nx, ny = latitude_longitude_to_grid(latitude, longitude)
-    base = latest_ultra_short_base(datetime.now(KST))
     params = {
         "serviceKey": unquote(settings.kma_service_key),
         "pageNo": 1,
@@ -141,7 +175,7 @@ async def fetch_kma_weather(
 
     try:
         async with httpx.AsyncClient(timeout=8.0) as client:
-            response = await client.get(KMA_ULTRA_SHORT_FORECAST_URL, params=params)
+            response = await client.get(url, params=params)
             response.raise_for_status()
             payload = response.json()
         header = payload["response"]["header"]
@@ -149,12 +183,71 @@ async def fetch_kma_weather(
             raise WeatherProviderError(
                 f"기상청 API 오류: {header.get('resultMsg', '알 수 없는 오류')}"
             )
-        items = payload["response"]["body"]["items"]["item"]
-        return _select_forecast(items, arrival_time)
+        return payload["response"]["body"]["items"]["item"]
     except WeatherProviderError:
         raise
     except (httpx.HTTPError, KeyError, TypeError, ValueError) as exc:
         raise WeatherProviderError(f"기상청 예보를 읽지 못했습니다: {exc}") from exc
+
+
+def _forecast_bounds(
+    items: list[dict[str, Any]], precipitation_category: str
+) -> tuple[datetime, datetime] | None:
+    times: list[datetime] = []
+    grouped: dict[str, set[str]] = {}
+    for item in items:
+        key = f"{item.get('fcstDate', '')}{str(item.get('fcstTime', '')).zfill(4)}"
+        grouped.setdefault(key, set()).add(str(item.get("category")))
+    for key, categories in grouped.items():
+        if {precipitation_category, "WSD", "SKY"}.issubset(categories):
+            try:
+                times.append(datetime.strptime(key, "%Y%m%d%H%M").replace(tzinfo=KST))
+            except ValueError:
+                continue
+    return (min(times), max(times)) if times else None
+
+
+async def fetch_kma_weather_series(
+    latitude: float,
+    longitude: float,
+    target_times: list[datetime],
+    settings: Settings,
+) -> list[tuple[WeatherResult, str]]:
+    now = datetime.now(KST)
+    ultra_items = await _fetch_kma_items(
+        KMA_ULTRA_SHORT_FORECAST_URL,
+        latitude,
+        longitude,
+        latest_ultra_short_base(now),
+        settings,
+    )
+    ultra_bounds = _forecast_bounds(ultra_items, "RN1")
+    needs_short = ultra_bounds is None or any(
+        not (ultra_bounds[0] <= target.astimezone(KST) <= ultra_bounds[1])
+        for target in target_times
+    )
+    short_items: list[dict[str, Any]] = []
+    if needs_short:
+        short_items = await _fetch_kma_items(
+            KMA_SHORT_FORECAST_URL,
+            latitude,
+            longitude,
+            latest_short_base(now),
+            settings,
+        )
+
+    results: list[tuple[WeatherResult, str]] = []
+    for target in target_times:
+        local_target = target.astimezone(KST)
+        if ultra_bounds and ultra_bounds[0] <= local_target <= ultra_bounds[1]:
+            results.append(
+                (_select_forecast(ultra_items, target, "RN1"), "kma-ultra-short")
+            )
+        else:
+            results.append(
+                (_select_forecast(short_items, target, "PCP"), "kma-short")
+            )
+    return results
 
 
 def mock_weather(
@@ -193,17 +286,35 @@ async def get_weather(
     arrival_time: datetime,
     settings: Settings,
 ) -> tuple[WeatherResult, str, str | None]:
+    results, warning = await get_weather_series(
+        latitude, longitude, [arrival_time], settings
+    )
+    weather, source = results[0]
+    return weather, source, warning
+
+
+async def get_weather_series(
+    latitude: float,
+    longitude: float,
+    target_times: list[datetime],
+    settings: Settings,
+) -> tuple[list[tuple[WeatherResult, str]], str | None]:
     if not settings.use_real_weather:
-        return mock_weather(latitude, longitude, arrival_time), "mock", None
+        return [
+            (mock_weather(latitude, longitude, target_time), "mock")
+            for target_time in target_times
+        ], None
 
     try:
-        weather = await fetch_kma_weather(
-            latitude, longitude, arrival_time, settings
+        forecasts = await fetch_kma_weather_series(
+            latitude, longitude, target_times, settings
         )
-        return weather, "kma-ultra-short", None
+        return forecasts, None
     except WeatherProviderError as exc:
         if settings.app_mode == "real":
             raise
         warning = f"실제 예보 조회에 실패해 mock 데이터로 전환했습니다. ({exc})"
-        return mock_weather(latitude, longitude, arrival_time), "mock-fallback", warning
-
+        return [
+            (mock_weather(latitude, longitude, target_time), "mock-fallback")
+            for target_time in target_times
+        ], warning

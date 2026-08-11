@@ -1,4 +1,6 @@
 export type Status = "가능" | "보통" | "비추천";
+export type CaptureMode = "photo" | "video";
+export type TransportMode = "car" | "transit" | "walk";
 
 export interface Place {
   id: string;
@@ -25,6 +27,16 @@ export interface Catalog {
   mode: string;
 }
 
+export interface PlaceSearchResult {
+  id: string;
+  name: string;
+  address: string;
+  latitude: number;
+  longitude: number;
+  category: string;
+  place_type: "beach" | "forest" | "urban" | "indoor";
+}
+
 export interface Analysis {
   status: Status;
   summary: string;
@@ -35,6 +47,8 @@ export interface Analysis {
   concept: Concept;
   distance_km: number;
   travel_minutes: number;
+  travel_source: string;
+  transport_mode: TransportMode;
   departure_time: string;
   arrival_time: string;
   weather: {
@@ -47,6 +61,19 @@ export interface Analysis {
     elevation: number;
     azimuth: number;
   };
+  shooting_direction_guide: string;
+  capture_mode: CaptureMode;
+  time_slots: Array<{
+    time: string;
+    status: Status;
+    score: number;
+    weather: Analysis["weather"];
+    solar: Analysis["solar"];
+    data_source: string;
+    is_best: boolean;
+  }>;
+  best_time: string;
+  best_offset_minutes: number;
   scores: {
     rain: number;
     wind: number;
@@ -62,3 +89,8 @@ export interface Analysis {
   guide: string[];
 }
 
+export interface SavedAnalysis {
+  id: string;
+  savedAt: string;
+  analysis: Analysis;
+}

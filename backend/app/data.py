@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from .models import ConceptPublic, PlacePublic
+from .models import CaptureMode, ConceptPublic, PlacePublic
 
 
 @dataclass(frozen=True)
@@ -178,3 +178,84 @@ GUIDES: dict[tuple[str, str], list[str]] = {
         "마지막 2초는 카메라를 천천히 뒤로 빼며 방호벽 색과 실루엣을 함께 담습니다.",
     ],
 }
+
+
+DIRECTION_NAMES = {
+    0: "북쪽",
+    45: "북동쪽",
+    90: "동쪽",
+    135: "남동쪽",
+    180: "남쪽",
+    225: "남서쪽",
+    270: "서쪽",
+    315: "북서쪽",
+}
+
+
+def direction_label(azimuth: float) -> str:
+    nearest = round(azimuth / 45) * 45 % 360
+    return DIRECTION_NAMES[nearest]
+
+
+def custom_place_guide(place: Place, concept: Concept) -> list[str]:
+    """사용자 입력 장소를 유형·콘셉트 기반 템플릿으로 안내합니다."""
+    type_opening = {
+        "beach": "수평선이 기울지 않도록 맞추고 인물을 화면의 1/3 지점에 배치합니다.",
+        "forest": "길이나 나무가 만드는 소실점을 찾고 인물이 그 선을 가리지 않게 배치합니다.",
+        "urban": "건물이나 도로의 반복 선을 활용해 인물 쪽으로 시선이 모이게 구도를 잡습니다.",
+        "indoor": "창문이나 주 조명에서 45° 옆으로 인물을 세우고 배경과 거리를 확보합니다.",
+    }[place.place_type]
+    concept_action = {
+        "refreshing": "인물이 카메라 쪽으로 자연스럽게 두 걸음 움직이는 장면을 3초간 촬영합니다.",
+        "film": "가까운 사물에서 인물로 초점을 천천히 옮기며 3초간 촬영합니다.",
+        "sunset": "노출을 조금 낮추고 인물의 옆모습 윤곽이 드러나는 장면을 3초간 촬영합니다.",
+    }[concept.id]
+    return [
+        type_opening,
+        shooting_direction_guide(place, concept),
+        concept_action,
+        "마지막 2초는 카메라를 천천히 뒤로 이동해 장소의 분위기가 넓게 보이도록 마무리합니다.",
+    ]
+
+
+def photo_guide(place: Place, concept: Concept) -> list[str]:
+    background = {
+        "beach": "수평선을 반듯하게 맞추고 바다가 화면의 절반 이상 보이는 세로 구도를 잡습니다.",
+        "forest": "숲길의 소실점이 인물 쪽으로 모이게 하고 발끝이 잘리지 않도록 전신을 담습니다.",
+        "urban": "건물이나 도로의 반복 선이 인물을 향하도록 화면의 1/3 지점에 배치합니다.",
+        "indoor": "창문에서 한 걸음 떨어져 얼굴에 빛이 고르게 닿는 자리에 인물을 세웁니다.",
+    }[place.place_type]
+    pose = {
+        "refreshing": "인물이 카메라를 보지 않고 걷다가 뒤돌아보는 순간을 연속 촬영합니다.",
+        "film": "손이나 가까운 소품을 전경에 두고 인물의 시선이 프레임 밖을 향하게 촬영합니다.",
+        "sunset": "화면 밝기를 낮춘 뒤 옆모습과 하늘의 색이 함께 살아나는 노출로 촬영합니다.",
+    }[concept.id]
+    return [
+        background,
+        shooting_direction_guide(place, concept),
+        pose,
+        "같은 자리에서 전신, 허리 위, 배경 중심 구도를 한 장씩 남겨 가장 자연스러운 컷을 고릅니다.",
+    ]
+
+
+def guide_for(
+    place: Place, concept: Concept, capture_mode: CaptureMode = "video"
+) -> list[str]:
+    if capture_mode == "photo":
+        return photo_guide(place, concept)
+    return GUIDES.get((place.id, concept.id)) or custom_place_guide(place, concept)
+
+
+def shooting_direction_guide(place: Place, concept: Concept) -> str:
+    background = {
+        "beach": "바다가 인물 뒤에 넓게 보이도록 자리를 잡고",
+        "forest": "숲길이 인물 뒤로 길게 이어지도록 자리를 잡고",
+        "urban": "거리와 건물의 선이 인물 뒤로 이어지도록 자리를 잡고",
+        "indoor": "창문이나 가장 밝은 조명이 인물 가까이에 오도록 자리를 잡고",
+    }[place.place_type]
+    light_action = {
+        "refreshing": "촬영자는 태양을 등진 채 인물을 바라보세요.",
+        "film": "햇빛이 인물의 옆얼굴을 스치도록 촬영자가 옆으로 이동하세요.",
+        "sunset": "카메라가 노을을 바라보게 하고 인물을 노을 앞에 세우세요.",
+    }[concept.id]
+    return f"{background}, {light_action}"
