@@ -60,6 +60,14 @@ export interface Analysis {
   solar: {
     elevation: number;
     azimuth: number;
+    ghi_wm2: number;
+    dni_wm2: number;
+    dhi_wm2: number;
+    lighting_risk: "낮음" | "보통" | "높음";
+    lighting_risk_score: number;
+    lighting_issue: string;
+    reflection_risk?: "낮음" | "보통" | "높음";
+    reflection_risk_score?: number;
   };
   shooting_direction_guide: string;
   capture_mode: CaptureMode;

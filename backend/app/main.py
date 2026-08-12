@@ -28,7 +28,7 @@ from .services.place_search import (
     search_jeju_places,
 )
 from .services.scoring import evaluate, recommend_shooting_azimuth, select_best_index
-from .services.solar import calculate_solar_position
+from .services.solar import add_lighting_risk, calculate_solar_position
 from .services.travel import get_travel
 from .services.weather import WeatherProviderError, get_weather_series
 
@@ -118,7 +118,7 @@ async def analyze(payload: AnalyzeRequest) -> AnalyzeResponse:
         payload.transport_mode,
     )
     arrival_time = departure_time + timedelta(minutes=travel.travel_minutes)
-    search_hours = 12 if concept.id == "sunset" else 6
+    search_hours = 12
     target_times = [
         arrival_time + timedelta(hours=offset)
         for offset in range(search_hours + 1)
@@ -131,10 +131,25 @@ async def analyze(payload: AnalyzeRequest) -> AnalyzeResponse:
     except WeatherProviderError as exc:
         raise HTTPException(status_code=502, detail=str(exc)) from exc
 
-    solar_results = [
-        calculate_solar_position(place.latitude, place.longitude, target_time)
-        for target_time in target_times
-    ]
+    solar_results = []
+    for target_time, (weather, _) in zip(target_times, forecasts, strict=True):
+        solar = calculate_solar_position(
+            place.latitude, place.longitude, target_time, weather.sky
+        )
+        shooting_azimuth = (
+            recommend_shooting_azimuth(concept, solar)
+            if place.id == "custom"
+            else place.shooting_azimuth
+        )
+        solar_results.append(
+            add_lighting_risk(
+                solar,
+                place.place_type,
+                shooting_azimuth,
+                weather.wind_speed_mps,
+                weather.precipitation_mm,
+            )
+        )
     evaluations = [
         evaluate(place, concept, weather, solar)
         for (weather, _), solar in zip(forecasts, solar_results, strict=True)
@@ -188,12 +203,12 @@ async def analyze(payload: AnalyzeRequest) -> AnalyzeResponse:
         arrival_time=arrival_time,
         weather=weather,
         solar=solar,
-        shooting_direction_guide=shooting_direction_guide(place, concept),
+        shooting_direction_guide=shooting_direction_guide(place, concept, solar),
         capture_mode=payload.capture_mode,
         time_slots=time_slots,
         best_time=target_times[best_index],
         best_offset_minutes=best_index * 60,
         scores=evaluation.scores,
         reasons=evaluation.reasons,
-        guide=guide_for(place, concept, payload.capture_mode),
+        guide=guide_for(place, concept, payload.capture_mode, weather, solar),
     )

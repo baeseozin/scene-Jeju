@@ -17,6 +17,10 @@ function formatDate(value: string): string {
   }).format(new Date(value));
 }
 
+function lightingRisk(analysis: Analysis): string {
+  return analysis.solar.lighting_risk ?? analysis.solar.reflection_risk ?? "낮음";
+}
+
 function drawWrappedText(
   context: CanvasRenderingContext2D,
   text: string,
@@ -106,7 +110,7 @@ export async function createAnalysisCard(analysis: Analysis): Promise<File> {
     ["강수", `${analysis.weather.precipitation_mm} mm`],
     ["바람", `${analysis.weather.wind_speed_mps} m/s`],
     ["하늘", analysis.weather.sky],
-    ["태양", `${analysis.solar.elevation}° / ${analysis.solar.azimuth}°`],
+    ["예상 일사량", `${analysis.solar.ghi_wm2} W/m² · 빛 위험 ${lightingRisk(analysis)}`],
   ];
   cards.forEach(([label, value], index) => {
     const x = 72 + (index % 2) * 474;

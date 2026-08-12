@@ -40,11 +40,12 @@ def test_mock_analysis_returns_complete_result() -> None:
     body = response.json()
     assert body["data_source"] == "mock"
     assert body["travel_minutes"] > 0
+    assert body["departure_time"].startswith("2026-08-05T14:00:00")
     assert body["arrival_time"] > body["departure_time"]
     assert body["status"] in {"가능", "보통", "비추천"}
     assert len(body["guide"]) == 4
     assert 0 <= body["scores"]["total"] <= 100
-    assert len(body["time_slots"]) == 7
+    assert len(body["time_slots"]) == 13
     assert sum(slot["is_best"] for slot in body["time_slots"]) == 1
     assert body["best_time"] in {slot["time"] for slot in body["time_slots"]}
     best_slot = next(slot for slot in body["time_slots"] if slot["is_best"])
@@ -55,6 +56,13 @@ def test_mock_analysis_returns_complete_result() -> None:
     assert body["travel_source"] == "estimated"
     assert body["capture_mode"] == "video"
     assert any("비양도" in step for step in body["guide"])
+    assert any("태양 고도" in step for step in body["guide"])
+    assert any("풍속" in step for step in body["guide"])
+    assert "방위각" in body["shooting_direction_guide"]
+    assert body["solar"]["ghi_wm2"] >= 0
+    assert body["solar"]["lighting_risk"] in {"낮음", "보통", "높음"}
+    assert body["solar"]["lighting_issue"]
+    assert any("예상 일사량" in step for step in body["guide"])
 
 
 def test_custom_place_is_used_for_analysis() -> None:
