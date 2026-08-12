@@ -1,6 +1,12 @@
 from dataclasses import dataclass
 
-from .models import CaptureMode, ConceptPublic, PlacePublic
+from .models import (
+    CaptureMode,
+    ConceptPublic,
+    PlacePublic,
+    SolarResult,
+    WeatherResult,
+)
 
 
 @dataclass(frozen=True)
@@ -239,23 +245,187 @@ def photo_guide(place: Place, concept: Concept) -> list[str]:
 
 
 def guide_for(
-    place: Place, concept: Concept, capture_mode: CaptureMode = "video"
+    place: Place,
+    concept: Concept,
+    capture_mode: CaptureMode = "video",
+    weather: WeatherResult | None = None,
+    solar: SolarResult | None = None,
 ) -> list[str]:
     if capture_mode == "photo":
-        return photo_guide(place, concept)
-    return GUIDES.get((place.id, concept.id)) or custom_place_guide(place, concept)
+        base_guide = photo_guide(place, concept)
+    else:
+        base_guide = GUIDES.get((place.id, concept.id)) or custom_place_guide(
+            place, concept
+        )
+
+    if weather is None or solar is None:
+        return base_guide
+
+    old_direction = shooting_direction_guide(place, concept)
+    second_action = "" if base_guide[1] == old_direction else f" {base_guide[1]}"
+    return [
+        f"{solar_height_explanation(solar)} {base_guide[0]}",
+        f"{shooting_direction_guide(place, concept, solar)}{second_action}",
+        f"{sky_and_wind_explanation(weather)} {base_guide[2]}",
+        f"{rain_explanation(weather)} {base_guide[3]}",
+    ]
 
 
-def shooting_direction_guide(place: Place, concept: Concept) -> str:
+def solar_height_explanation(solar: SolarResult) -> str:
+    elevation = solar.elevation
+    if elevation < -6:
+        explanation = "태양이 지평선 아래에 있어 자연광이 거의 없는 시간이에요."
+    elif elevation < 12:
+        explanation = (
+            "태양이 낮아 빛이 대기를 길게 지나오므로 색은 따뜻해지고 "
+            "그림자는 길어져요."
+        )
+    elif elevation <= 55:
+        explanation = (
+            "태양이 중간 높이에 있어 빛은 충분하고, 그림자가 얼굴과 풍경의 "
+            "입체감을 만들어줘요."
+        )
+    else:
+        explanation = (
+            "태양이 높아 빛이 강하고 그림자가 짧아지므로 얼굴 아래 명암이 "
+            "진해질 수 있어요."
+        )
+    if solar.ghi_wm2 >= 700:
+        irradiance = "빛의 양이 매우 많아 밝은 배경이나 하늘이 하얗게 날아가기 쉬워요."
+    elif solar.ghi_wm2 >= 400:
+        irradiance = "빛의 양이 충분해 손으로 들고 찍기 좋지만 밝은 부분의 노출은 확인해야 해요."
+    elif solar.ghi_wm2 >= 120:
+        irradiance = "빛의 양이 많지 않아 그림자는 부드럽지만 화면이 어두워질 수 있어요."
+    else:
+        irradiance = "자연광이 약해 휴대폰을 고정하거나 야간 모드를 쓰는 편이 좋아요."
+    return (
+        f"태양 고도는 {elevation:.1f}°, 예상 일사량은 {solar.ghi_wm2}W/m²예요. "
+        f"{explanation} {irradiance}"
+    )
+
+
+def sky_and_wind_explanation(weather: WeatherResult) -> str:
+    sky_explanation = {
+        "맑음": "구름이 적어 직사광선이 강하고 밝은 곳과 그늘의 차이가 커요.",
+        "구름 많음": "구름이 햇빛을 여러 방향으로 퍼뜨려 얼굴의 그림자가 부드러워져요.",
+        "흐림": "구름이 햇빛을 넓게 퍼뜨려 그림자는 약하지만 색은 차분하게 보여요.",
+    }[weather.sky]
+    if weather.wind_speed_mps < 2:
+        wind_explanation = "바람이 약해 카메라와 머리카락의 흔들림이 적어요."
+    elif weather.wind_speed_mps < 5:
+        wind_explanation = (
+            "산들바람이 머리카락과 옷에 자연스러운 움직임을 만들어줘요."
+        )
+    else:
+        wind_explanation = (
+            "바람이 강해 화면이 흔들릴 수 있으니 두 손으로 고정하고 짧게 찍으세요."
+        )
+    return (
+        f"하늘은 {weather.sky}, 풍속은 {weather.wind_speed_mps:.1f}m/s예요. "
+        f"{sky_explanation} {wind_explanation}"
+    )
+
+
+def rain_explanation(weather: WeatherResult) -> str:
+    rain = weather.precipitation_mm
+    if rain <= 0:
+        return "예상 강수량은 0mm라 렌즈에 빗방울이 맺힐 가능성이 낮아요."
+    if rain < 1:
+        return (
+            f"예상 강수량은 {rain:.1f}mm예요. 약한 비가 지면을 적시면 빛이 "
+            "반사되므로 반짝이는 바닥을 구도에 활용해 보세요."
+        )
+    return (
+        f"예상 강수량은 {rain:.1f}mm예요. 빗방울이 빛을 흩뜨리고 렌즈에도 "
+        "맺힐 수 있으니 처마 아래에서 렌즈를 자주 닦아주세요."
+    )
+
+
+def shooting_direction_guide(
+    place: Place, concept: Concept, solar: SolarResult | None = None
+) -> str:
     background = {
-        "beach": "바다가 인물 뒤에 넓게 보이도록 자리를 잡고",
-        "forest": "숲길이 인물 뒤로 길게 이어지도록 자리를 잡고",
-        "urban": "거리와 건물의 선이 인물 뒤로 이어지도록 자리를 잡고",
-        "indoor": "창문이나 가장 밝은 조명이 인물 가까이에 오도록 자리를 잡고",
+        "beach": "바다가 인물 뒤에 넓게 보이도록 자리를 잡으세요",
+        "forest": "숲길이 인물 뒤로 길게 이어지도록 자리를 잡으세요",
+        "urban": "거리와 건물의 선이 인물 뒤로 이어지도록 자리를 잡으세요",
+        "indoor": "창문이나 가장 밝은 조명 가까이에 인물을 세우세요",
     }[place.place_type]
     light_action = {
         "refreshing": "촬영자는 태양을 등진 채 인물을 바라보세요.",
         "film": "햇빛이 인물의 옆얼굴을 스치도록 촬영자가 옆으로 이동하세요.",
-        "sunset": "카메라가 노을을 바라보게 하고 인물을 노을 앞에 세우세요.",
+        "sunset": "인물을 노을 앞에 세워 윤곽이 보이게 찍으세요.",
     }[concept.id]
-    return f"{background}, {light_action}"
+    if solar is None:
+        if place.place_type == "indoor":
+            return (
+                f"{background}. 창문을 정면으로 마주 보기보다 45° 옆에 서면 "
+                "얼굴 한쪽에 부드러운 명암이 생겨요."
+            )
+        return f"{background}. {light_action}"
+    if place.place_type == "indoor":
+        direction_guide = (
+            f"{background}. 바깥 예상 일사량은 {solar.ghi_wm2}W/m²예요. "
+            "창문을 인물 뒤에 두지 말고 얼굴의 45° 옆에 두세요."
+        )
+        if solar.lighting_issue == "창문 역광과 실내외 명암차":
+            return (
+                f"{direction_guide} 창밖이 실내보다 훨씬 밝을 수 있으니 얼굴을 눌러 "
+                "밝기를 맞추고, 창밖이 하얗게 날아가면 커튼으로 빛을 부드럽게 만드세요."
+            )
+        if solar.lighting_issue == "자연광 부족":
+            return (
+                f"{direction_guide} 자연광이 약하니 실내 조명을 켜고 휴대폰을 벽이나 "
+                "삼각대에 고정하세요."
+            )
+        return f"{direction_guide} 지금은 창가와 실내의 밝기 차가 크지 않은 편이에요."
+    if solar.elevation < -6:
+        return (
+            f"{background}. 태양이 이미 지평선 아래에 있으니 카메라는 "
+            f"{place.direction_label}을 바라보고 야간 모드나 고정 지지대를 사용하세요."
+        )
+    sun_direction = direction_label(solar.azimuth)
+    direction_guide = (
+        f"{background}. 현재 태양은 {sun_direction} 하늘, 방위각 {solar.azimuth:.1f}°에 "
+        f"있어요. 카메라는 {place.direction_label}을 바라보고 {light_action}"
+    )
+    if solar.lighting_issue == "수면 반사와 역광" and solar.lighting_risk == "높음":
+        if concept.id == "sunset":
+            return (
+                f"{direction_guide} 바다 반사가 강한 방향이라 실루엣은 선명해져요. "
+                "얼굴도 보이게 하려면 화면에서 얼굴을 누르고 밝기를 조금 올리세요."
+            )
+        return (
+            f"{direction_guide} 바다 반사가 강하면 카메라가 밝은 배경에 맞춰 얼굴을 "
+            "어둡게 만들 수 있어요. 촬영 위치를 태양에서 20~30° 옆으로 옮기세요."
+        )
+    if solar.lighting_issue == "수면 반사와 역광":
+        return (
+            f"{direction_guide} 수면의 반짝임이 일부 들어올 수 있으니 얼굴이 어두우면 "
+            "카메라 방향을 조금 옆으로 틀어주세요."
+        )
+    if solar.lighting_issue == "나뭇잎 사이 얼룩 그림자":
+        return (
+            f"{direction_guide} 나뭇잎 틈의 직사광이 얼굴에 밝은 점과 어두운 점을 "
+            "함께 만들 수 있어요. 한두 걸음 옆의 빛이 고른 그늘로 이동하세요."
+        )
+    if solar.lighting_issue in {"유리·노면 반사", "유리·젖은 노면 반사"}:
+        return (
+            f"{direction_guide} 유리나 노면의 반사가 렌즈를 향할 수 있어요. "
+            "촬영 위치를 20° 정도 옆으로 옮기고 화면에서 얼굴을 눌러 밝기를 맞추세요."
+        )
+    if solar.lighting_issue == "강한 직사광과 건물 그림자":
+        return (
+            f"{direction_guide} 햇빛과 건물 그늘의 밝기 차가 커요. 그림자 경계는 피하고 "
+            "건물 그늘 안쪽의 빛이 고른 자리를 고르세요."
+        )
+    if solar.lighting_issue == "강한 직사광":
+        return (
+            f"{direction_guide} 직사광이 강해 눈 밑과 턱 아래 그림자가 진해질 수 있어요. "
+            "얼굴을 태양에서 살짝 돌리거나 옅은 그늘로 이동하세요."
+        )
+    if solar.lighting_issue == "자연광 부족":
+        return (
+            f"{direction_guide} 자연광이 약하니 야간 모드를 켜고 휴대폰을 두 손이나 "
+            "고정 지지대로 흔들리지 않게 잡으세요."
+        )
+    return f"{direction_guide} 지금은 얼굴과 배경의 밝기 차가 비교적 안정적이에요."

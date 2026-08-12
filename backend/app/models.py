@@ -99,6 +99,12 @@ class WeatherResult(BaseModel):
 class SolarResult(BaseModel):
     elevation: float
     azimuth: float
+    ghi_wm2: int = 0
+    dni_wm2: int = 0
+    dhi_wm2: int = 0
+    lighting_risk: Literal["낮음", "보통", "높음"] = "낮음"
+    lighting_risk_score: int = 0
+    lighting_issue: str = "빛 조건 안정"
 
 
 class ScoreBreakdown(BaseModel):

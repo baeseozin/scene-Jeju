@@ -43,6 +43,16 @@ def _angle_difference(first: float, second: float) -> float:
     return abs((first - second + 180) % 360 - 180)
 
 
+def _place_type_score(place_type: str, concept_id: str) -> int:
+    """콘셉트와 장소의 조합을 이분법 대신 단계적으로 평가합니다."""
+    scores = {
+        "refreshing": {"beach": 100, "forest": 90, "urban": 95, "indoor": 75},
+        "film": {"beach": 85, "forest": 100, "urban": 95, "indoor": 90},
+        "sunset": {"beach": 100, "forest": 75, "urban": 95, "indoor": 55},
+    }
+    return scores.get(concept_id, {}).get(place_type, 70)
+
+
 def recommend_shooting_azimuth(concept: Concept, solar: SolarResult) -> float:
     """콘셉트별 광원 관계가 맞도록 카메라가 바라볼 방향을 계산합니다."""
     return round((solar.azimuth - concept.target_sun_offset) % 360, 1)
@@ -90,9 +100,9 @@ def evaluate(
         direction_score = 100
         light_score = _clamp(elevation_score * 0.65 + 35)
     elif place.id == "custom":
-        # 검색 장소는 서비스가 최적 방향을 안내하므로 방향을 적합도에 중복 가산하지 않습니다.
-        direction_score = 100
-        light_score = elevation_score
+        # 현장 구조를 모르는 검색 장소에 방향 만점을 주지 않고 중립값을 사용합니다.
+        direction_score = 75
+        light_score = _clamp(elevation_score * 0.80 + direction_score * 0.20)
     else:
         target_sun_azimuth = (
             place.shooting_azimuth + concept.target_sun_offset
@@ -101,18 +111,78 @@ def evaluate(
         direction_score = _clamp(100 - max(0, direction_difference - 18) * 0.95)
         light_score = _clamp(elevation_score * 0.62 + direction_score * 0.38)
 
-    place_score = (
-        85
-        if is_indoor
-        else 100 if place.place_type in concept.suitable_place_types else 55
-    )
-    total = _clamp(weather_score * 0.50 + light_score * 0.35 + place_score * 0.15)
+    # 노을 실루엣은 강한 명암과 역광을 의도한 콘셉트이므로 별도 감점하지 않습니다.
+    if concept.id != "sunset":
+        if solar.lighting_risk == "높음":
+            light_score = _clamp(light_score * (0.90 if is_indoor else 0.82))
+        elif solar.lighting_risk == "보통":
+            light_score = _clamp(light_score * 0.94)
 
-    # 해가 완전히 진 뒤의 야외 촬영이나 강한 비는 가중 평균만으로 통과시키지 않습니다.
-    # 실내는 자연광이 약하거나 비가 와도 촬영 자체가 불가능한 조건은 아닙니다.
-    forced_rejection = (not is_indoor and solar.elevation < -6) or (
-        not is_indoor and weather.precipitation_mm >= 5.0
+    place_score = _place_type_score(place.place_type, concept.id)
+    total = _clamp(weather_score * 0.40 + light_score * 0.45 + place_score * 0.15)
+
+    # 치명적인 한 조건이 다른 만점에 가려지지 않도록 판정 상한을 적용합니다.
+    score_cap = 100
+    rejection_score_cap = 49
+    forced_rejection = False
+    intentional_sunset_backlight = False
+    severe_rain_threshold = max(2.0, concept.max_precipitation_mm + 1.5)
+    elevation_gap = (
+        concept.min_solar_elevation - solar.elevation
+        if solar.elevation < concept.min_solar_elevation
+        else solar.elevation - concept.max_solar_elevation
+        if solar.elevation > concept.max_solar_elevation
+        else 0.0
     )
+    if not is_indoor:
+        if solar.elevation < -6:
+            forced_rejection = True
+            night_depth = -6 - solar.elevation
+            rejection_score_cap = min(
+                rejection_score_cap, max(10, round(47 - night_depth * 1.8))
+            )
+        if weather.precipitation_mm >= severe_rain_threshold:
+            forced_rejection = True
+            severe_rain_excess = weather.precipitation_mm - severe_rain_threshold
+            rejection_score_cap = min(
+                rejection_score_cap,
+                max(10, round(46 - severe_rain_excess * 8.0)),
+            )
+        if weather.wind_speed_mps >= concept.max_wind_mps + 3.0:
+            forced_rejection = True
+            severe_wind_excess = weather.wind_speed_mps - (
+                concept.max_wind_mps + 3.0
+            )
+            rejection_score_cap = min(
+                rejection_score_cap,
+                max(15, round(46 - severe_wind_excess * 5.0)),
+            )
+        if elevation_gap > 20.0:
+            forced_rejection = True
+            rejection_score_cap = min(
+                rejection_score_cap,
+                max(15, round(46 - (elevation_gap - 20.0) * 0.9)),
+            )
+        if weather.precipitation_mm > concept.max_precipitation_mm:
+            rain_excess = weather.precipitation_mm - concept.max_precipitation_mm
+            score_cap = min(score_cap, max(55, round(74 - rain_excess * 7.0)))
+        if weather.wind_speed_mps > concept.max_wind_mps:
+            wind_excess = weather.wind_speed_mps - concept.max_wind_mps
+            score_cap = min(score_cap, max(55, round(74 - wind_excess * 3.0)))
+        if elevation_gap > 8.0:
+            score_cap = min(
+                score_cap, max(50, round(74 - (elevation_gap - 8.0) * 0.8))
+            )
+        intentional_sunset_backlight = (
+            concept.id == "sunset"
+            and solar.lighting_issue == "수면 반사와 역광"
+        )
+        if solar.lighting_risk == "높음" and not intentional_sunset_backlight:
+            risk_excess = max(0, solar.lighting_risk_score - 60)
+            score_cap = min(
+                score_cap, max(55, round(74 - risk_excess * 0.45))
+            )
+    total = min(total, score_cap, rejection_score_cap if forced_rejection else 100)
     status: Status
     if forced_rejection or total < 50:
         status = "비추천"
@@ -159,8 +229,57 @@ def evaluate(
     else:
         reasons.append("빛의 높이는 괜찮지만 촬영 방향을 조금 조정하는 편이 좋습니다.")
 
+    if solar.lighting_risk != "낮음":
+        if solar.lighting_issue == "수면 반사와 역광" and concept.id == "sunset":
+            reasons.append(
+                "수면 반사와 역광이 실루엣을 선명하게 만드는 조건입니다. 얼굴 노출은 따로 조정해야 합니다."
+            )
+        elif solar.lighting_issue == "수면 반사와 역광":
+            reasons.append(
+                "수면 반사로 배경이 매우 밝아지면 자동 노출에서 얼굴이 어두워질 수 있습니다."
+            )
+        elif solar.lighting_issue == "나뭇잎 사이 얼룩 그림자":
+            reasons.append(
+                "직사광이 나뭇잎 틈을 통과해 얼굴에 밝고 어두운 얼룩을 만들 수 있습니다."
+            )
+        elif solar.lighting_issue in {"유리·노면 반사", "유리·젖은 노면 반사"}:
+            reasons.append(
+                f"{solar.lighting_issue}가 렌즈로 들어오면 배경이 날아가거나 인물이 어두워질 수 있습니다."
+            )
+        elif solar.lighting_issue == "강한 직사광과 건물 그림자":
+            reasons.append(
+                "강한 햇빛과 건물 그늘의 밝기 차가 커 한 화면의 노출을 맞추기 어렵습니다."
+            )
+        elif solar.lighting_issue == "창문 역광과 실내외 명암차":
+            reasons.append(
+                "창밖과 실내의 밝기 차가 커 창문을 등지면 얼굴이 어두워질 수 있습니다."
+            )
+        elif solar.lighting_issue == "자연광 부족":
+            reasons.append("자연광이 약해 흔들림과 노이즈가 생길 가능성이 높습니다.")
+        else:
+            reasons.append("직사광이 강해 얼굴의 명암과 밝은 배경 노출을 확인해야 합니다.")
+
     if place_score < 100:
-        reasons.append("선택한 장소 유형은 이 콘셉트의 대표 추천 장소는 아닙니다.")
+        reasons.append(
+            f"이 장소 유형의 콘셉트 적합도는 {place_score}점으로 반영했습니다."
+        )
+
+    if not is_indoor and elevation_gap > 20:
+        reasons.append("태양 높이가 콘셉트의 핵심 시간대와 크게 달라 비추천 처리했습니다.")
+    elif not is_indoor and elevation_gap > 8:
+        reasons.append("태양 높이가 권장 범위를 벗어나 결과를 최대 ‘보통’으로 제한했습니다.")
+    if not is_indoor and weather.precipitation_mm >= severe_rain_threshold:
+        reasons.append("강수량이 콘셉트 허용 범위를 크게 넘어 비추천 처리했습니다.")
+    if not is_indoor and weather.wind_speed_mps >= concept.max_wind_mps + 3:
+        reasons.append("바람이 콘셉트 허용 범위를 크게 넘어 비추천 처리했습니다.")
+    elif not is_indoor and weather.wind_speed_mps > concept.max_wind_mps:
+        reasons.append("바람이 권장 범위를 넘어 결과를 최대 ‘보통’으로 제한했습니다.")
+    if (
+        not is_indoor
+        and solar.lighting_risk == "높음"
+        and not intentional_sunset_backlight
+    ):
+        reasons.append("빛 위험이 높아 다른 점수가 좋아도 결과를 최대 ‘보통’으로 제한했습니다.")
 
     summary = {
         "가능": "도착 예상 시각에 바로 촬영해도 좋은 조건입니다.",

@@ -48,6 +48,7 @@ export function analyze(params: {
   conceptId: string;
   captureMode: CaptureMode;
   transportMode: TransportMode;
+  departureTime: string;
 }): Promise<Analysis> {
   const placePayload = params.placeId
     ? { place_id: params.placeId }
@@ -72,7 +73,7 @@ export function analyze(params: {
       concept_id: params.conceptId,
       capture_mode: params.captureMode,
       transport_mode: params.transportMode,
-      departure_time: new Date().toISOString(),
+      departure_time: params.departureTime,
     }),
   });
 }

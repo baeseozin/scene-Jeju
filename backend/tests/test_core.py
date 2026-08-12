@@ -4,6 +4,7 @@ from zoneinfo import ZoneInfo
 from app.data import CONCEPTS, PLACES
 from app.models import SolarResult, WeatherResult
 from app.services.scoring import evaluate, recommend_shooting_azimuth, select_best_index
+from app.services.solar import add_lighting_risk, calculate_solar_position
 from app.services.place_search import infer_place_type
 from app.services.travel import estimate_travel, estimate_travel_by_mode
 from app.services.weather import latitude_longitude_to_grid, latest_short_base
@@ -53,6 +54,68 @@ def test_night_conditions_are_rejected() -> None:
     assert any("해가 완전히" in reason for reason in result.reasons)
 
 
+def test_sunset_concept_is_rejected_at_high_noon() -> None:
+    weather = WeatherResult(
+        precipitation_mm=0.0,
+        wind_speed_mps=2.0,
+        sky="맑음",
+        forecast_time=datetime(2026, 8, 5, 13, tzinfo=KST),
+    )
+    solar = SolarResult(elevation=65.0, azimuth=220.0, ghi_wm2=950, dni_wm2=850)
+    result = evaluate(PLACES["hyeopjae"], CONCEPTS["sunset"], weather, solar)
+    assert result.status == "비추천"
+    assert result.scores.total < 40
+
+
+def test_high_lighting_risk_cannot_be_hidden_by_good_weather() -> None:
+    weather = WeatherResult(
+        precipitation_mm=0.0,
+        wind_speed_mps=2.0,
+        sky="맑음",
+        forecast_time=datetime(2026, 8, 5, 15, tzinfo=KST),
+    )
+    solar = SolarResult(
+        elevation=42.0,
+        azimuth=205.0,
+        ghi_wm2=850,
+        dni_wm2=800,
+        lighting_risk="높음",
+        lighting_risk_score=78,
+        lighting_issue="나뭇잎 사이 얼룩 그림자",
+    )
+    result = evaluate(PLACES["saryeoni"], CONCEPTS["refreshing"], weather, solar)
+    assert result.status == "보통"
+    assert 50 <= result.scores.total < 74
+
+
+def test_severe_rain_is_rejected_even_when_other_scores_are_good() -> None:
+    weather = WeatherResult(
+        precipitation_mm=3.0,
+        wind_speed_mps=3.0,
+        sky="구름 많음",
+        forecast_time=datetime(2026, 8, 5, 16, tzinfo=KST),
+    )
+    solar = SolarResult(elevation=25.0, azimuth=115.0, ghi_wm2=400, dni_wm2=250)
+    result = evaluate(PLACES["saryeoni"], CONCEPTS["film"], weather, solar)
+    assert result.status == "비추천"
+    assert 30 <= result.scores.total < 49
+
+
+def test_custom_place_does_not_receive_perfect_direction_score() -> None:
+    from dataclasses import replace
+
+    custom = replace(PLACES["hyeopjae"], id="custom")
+    weather = WeatherResult(
+        precipitation_mm=0.0,
+        wind_speed_mps=2.0,
+        sky="맑음",
+        forecast_time=datetime(2026, 8, 5, 15, tzinfo=KST),
+    )
+    solar = SolarResult(elevation=42.0, azimuth=95.0)
+    result = evaluate(custom, CONCEPTS["refreshing"], weather, solar)
+    assert result.scores.light_direction == 75
+
+
 def test_place_type_is_inferred_from_kakao_category() -> None:
     assert infer_place_type("함덕해수욕장", "여행 > 관광,명소 > 해수욕장") == "beach"
     assert infer_place_type("사려니숲길", "여행 > 관광,명소 > 숲") == "forest"
@@ -64,6 +127,52 @@ def test_shooting_direction_follows_concept_light_relationship() -> None:
     assert recommend_shooting_azimuth(CONCEPTS["refreshing"], solar) == 70.0
     assert recommend_shooting_azimuth(CONCEPTS["film"], solar) == 160.0
     assert recommend_shooting_azimuth(CONCEPTS["sunset"], solar) == 250.0
+
+
+def test_daylight_irradiance_and_sea_reflection_are_estimated() -> None:
+    solar = calculate_solar_position(
+        33.3941,
+        126.2397,
+        datetime(2026, 8, 5, 18, 0, tzinfo=KST),
+        "맑음",
+    )
+    assert solar.ghi_wm2 > 0
+    assert solar.dni_wm2 > 0
+    toward_sun = add_lighting_risk(
+        solar, "beach", solar.azimuth, wind_speed_mps=3.0
+    )
+    away_from_sun = add_lighting_risk(
+        solar, "beach", (solar.azimuth + 180) % 360, wind_speed_mps=3.0
+    )
+    assert toward_sun.lighting_risk_score > away_from_sun.lighting_risk_score
+    assert toward_sun.lighting_issue == "수면 반사와 역광"
+
+
+def test_place_types_get_different_lighting_issues() -> None:
+    strong_sun = SolarResult(
+        elevation=42.0,
+        azimuth=180.0,
+        ghi_wm2=820,
+        dni_wm2=780,
+        dhi_wm2=100,
+    )
+    forest = add_lighting_risk(
+        strong_sun, "forest", 180.0, wind_speed_mps=4.0
+    )
+    urban = add_lighting_risk(
+        strong_sun,
+        "urban",
+        180.0,
+        wind_speed_mps=2.0,
+        precipitation_mm=0.5,
+    )
+    indoor = add_lighting_risk(
+        strong_sun, "indoor", 180.0, wind_speed_mps=0.0
+    )
+    assert forest.lighting_issue == "나뭇잎 사이 얼룩 그림자"
+    assert urban.lighting_issue == "유리·젖은 노면 반사"
+    assert indoor.lighting_issue == "창문 역광과 실내외 명암차"
+    assert {forest.lighting_risk, urban.lighting_risk, indoor.lighting_risk} == {"높음"}
 
 
 def test_transport_modes_have_different_estimates() -> None:

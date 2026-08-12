@@ -51,6 +51,33 @@ function formatTime(value: string): string {
   }).format(new Date(value));
 }
 
+function formatKstDatetimeLocal(date: Date): string {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Seoul",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
+  }).formatToParts(date);
+  const value = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return `${value.year}-${value.month}-${value.day}T${value.hour}:${value.minute}`;
+}
+
+function kstLocalToIso(value: string): string {
+  return `${value}:00+09:00`;
+}
+
+function getLightingRisk(solar: Analysis["solar"]): "낮음" | "보통" | "높음" {
+  return solar.lighting_risk ?? solar.reflection_risk ?? "낮음";
+}
+
+function getLightingIssue(solar: Analysis["solar"]): string {
+  if (solar.lighting_issue) return solar.lighting_issue;
+  return solar.reflection_risk && solar.reflection_risk !== "낮음" ? "수면 반사와 역광" : "빛 조건 안정";
+}
+
 function readHistory(): SavedAnalysis[] {
   try {
     const raw = localStorage.getItem(HISTORY_KEY);
@@ -85,6 +112,8 @@ export default function App() {
   const [showMap, setShowMap] = useState(false);
   const [latitude, setLatitude] = useState("33.5104");
   const [longitude, setLongitude] = useState("126.4914");
+  const [departureTime, setDepartureTime] = useState(() => formatKstDatetimeLocal(new Date()));
+  const [departNow, setDepartNow] = useState(true);
   const [analysis, setAnalysis] = useState<Analysis | null>(null);
   const [history, setHistory] = useState<SavedAnalysis[]>(readHistory);
   const [loading, setLoading] = useState(false);
@@ -237,6 +266,24 @@ export default function App() {
       setError("촬영 장소명을 입력해 주세요.");
       return;
     }
+    let selectedDepartureTime = new Date().toISOString();
+    if (!departNow) {
+      const parsedDepartureTime = new Date(kstLocalToIso(departureTime));
+      if (!departureTime || Number.isNaN(parsedDepartureTime.getTime())) {
+        setError("출발 날짜와 시간을 선택해 주세요.");
+        return;
+      }
+      const now = Date.now();
+      if (parsedDepartureTime.getTime() < now - 5 * 60 * 1000) {
+        setError("출발 시각은 현재보다 이르게 설정할 수 없습니다.");
+        return;
+      }
+      if (parsedDepartureTime.getTime() > now + 48 * 60 * 60 * 1000) {
+        setError("예보를 확인할 수 있도록 출발 시각은 48시간 안으로 선택해 주세요.");
+        return;
+      }
+      selectedDepartureTime = parsedDepartureTime.toISOString();
+    }
     setLoading(true);
     setError(null);
     setActionMessage(null);
@@ -254,6 +301,7 @@ export default function App() {
         conceptId: selectedConcept,
         captureMode,
         transportMode,
+        departureTime: selectedDepartureTime,
       });
       setAnalysis(result);
       window.setTimeout(() => document.getElementById("result")?.scrollIntoView({ behavior: "smooth", block: "start" }), 80);
@@ -376,7 +424,7 @@ export default function App() {
         </div>
 
         <div className="location-panel apple-scene">
-          <div className="location-title"><span className="field-number">C</span><div><h3>현재 위치와 이동 방법</h3><p>제주공항 좌표가 기본으로 들어가 있어요.</p></div></div>
+          <div className="location-title"><span className="field-number">C</span><div><h3>현재 위치, 출발 시각과 이동 방법</h3><p>제주공항 좌표와 지금 출발이 기본으로 들어가 있어요.</p></div></div>
           <div className="location-controls">
             <div className="coordinate-inputs">
               <label><span>LAT</span><input value={latitude} onChange={(event) => { setLatitude(event.target.value); setLocationMessage(null); }} inputMode="decimal" aria-label="현재 위치 위도" /></label>
@@ -386,6 +434,11 @@ export default function App() {
             <div className="transport-control" aria-label="이동 방법 선택">
               {(["car", "transit", "walk"] as TransportMode[]).map((mode) => <button type="button" key={mode} className={transportMode === mode ? "selected" : ""} onClick={() => setTransportMode(mode)}>{mode === "car" ? "🚗" : mode === "transit" ? "🚌" : "🚶"} {TRANSPORT_LABELS[mode]}</button>)}
             </div>
+            <div className="departure-control">
+              <label className="departure-field"><span>출발 날짜·시간</span><input type="datetime-local" value={departureTime} min={formatKstDatetimeLocal(new Date())} max={formatKstDatetimeLocal(new Date(Date.now() + 48 * 60 * 60 * 1000))} step="300" onChange={(event) => { setDepartureTime(event.target.value); setDepartNow(false); }} aria-label="출발 날짜와 시간" /></label>
+              <button type="button" className={`depart-now-button ${departNow ? "selected" : ""}`} onClick={() => { setDepartureTime(formatKstDatetimeLocal(new Date())); setDepartNow(true); }}>지금 출발</button>
+            </div>
+            <p className="departure-hint">선택한 출발 시각에 이동시간을 더한 뒤, 실제 도착 시각의 날씨와 빛을 분석해요.</p>
           </div>
           <div className="route-preview"><span className="route-pin current">YOU</span><span className="route-line"><i /><i /><i /><i /><i /></span><span className="route-pin destination">{destinationName || "PLACE"}</span></div>
           {locationMessage && <p className="location-message" role="status">{locationMessage}</p>}
@@ -421,7 +474,7 @@ export default function App() {
             <article className="condition-card"><span className="condition-icon">☂</span><small>RAIN</small><strong>{analysis.weather.precipitation_mm}<em> mm</em></strong><p>{analysis.scores.rain >= 75 ? "강수 걱정이 적어요" : "비 대비가 필요해요"}</p></article>
             <article className="condition-card"><span className="condition-icon">≋</span><small>WIND</small><strong>{analysis.weather.wind_speed_mps}<em> m/s</em></strong><p>{analysis.scores.wind >= 75 ? "움직임이 안정적이에요" : "흔들림에 주의하세요"}</p></article>
             <article className="condition-card"><span className="condition-icon">◒</span><small>SKY</small><strong className="text-value">{analysis.weather.sky}</strong><p>{analysis.scores.sky >= 75 ? "분위기와 잘 맞아요" : "색감 보정이 필요해요"}</p></article>
-            <article className="condition-card"><span className="condition-icon">☼</span><small>SUN</small><strong>{analysis.solar.elevation}°<em> / {analysis.solar.azimuth}°</em></strong><p>고도 · 방위각</p></article>
+            <article className="condition-card"><span className="condition-icon">☼</span><small>EST. LIGHT BALANCE</small><strong>{analysis.solar.ghi_wm2}<em> W/m²</em></strong><p>빛 위험 {getLightingRisk(analysis.solar)} · {getLightingIssue(analysis.solar)}<br />고도 {analysis.solar.elevation}° · 방위각 {analysis.solar.azimuth}°</p></article>
           </div>
 
           <div className="detail-grid apple-scene">
@@ -430,12 +483,12 @@ export default function App() {
           </div>
 
           <article className="guide-panel apple-scene">
-            <div className="guide-heading"><div><span>{analysis.capture_mode === "video" ? "15-SECOND RECIPE" : "PHOTO RECIPE"}</span><h3>이 순서대로 촬영해 보세요</h3></div><p className="direction-guide"><small>어디서 찍나요?</small>{analysis.shooting_direction_guide}</p></div>
+            <div className="guide-heading"><div><span>{analysis.capture_mode === "video" ? "15-SECOND EARTH SCIENCE RECIPE" : "EARTH SCIENCE PHOTO RECIPE"}</span><h3>빛과 날씨의 원리를 따라 찍어보세요</h3></div><p className="direction-guide"><small>어디서, 왜 이렇게 찍나요?</small>{analysis.shooting_direction_guide}</p></div>
             <ol>{analysis.guide.map((step, index) => <li key={step}><span>{String(index + 1).padStart(2, "0")}</span><p>{step}</p></li>)}</ol>
           </article>
 
           <MediaStudio analysis={analysis} captureMode={analysis.capture_mode} />
-          <div className="result-actions apple-scene"><button type="button" onClick={saveAnalysis}>결과 저장</button><button type="button" onClick={shareAnalysis}>공유하기</button>{actionMessage && <span>{actionMessage}</span>}</div>
+          <div className="result-actions apple-scene"><button type="button" onClick={saveAnalysis}>결과 저장</button><button type="button" onClick={shareAnalysis}>분석결과 저장하기</button>{actionMessage && <span>{actionMessage}</span>}</div>
         </section>
       )}
 
