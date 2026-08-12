@@ -20,6 +20,8 @@ from .models import (
     CatalogResponse,
     PlaceSearchResult,
     PlaceSearchResponse,
+    PoseRecommendationRequest,
+    PoseRecommendationResponse,
     TimeSlotResult,
 )
 from .services.place_search import (
@@ -27,9 +29,11 @@ from .services.place_search import (
     reverse_jeju_place,
     search_jeju_places,
 )
+from .services.pose_recommendation import recommend_poses
 from .services.scoring import evaluate, recommend_shooting_azimuth, select_best_index
 from .services.solar import add_lighting_risk, calculate_solar_position
 from .services.travel import get_travel
+from .services.tourism import get_tourism_trend
 from .services.weather import WeatherProviderError, get_weather_series
 
 
@@ -85,6 +89,22 @@ async def reverse_place(
         raise HTTPException(status_code=503, detail=str(exc)) from exc
 
 
+@app.post("/api/pose-recommendations", response_model=PoseRecommendationResponse)
+async def pose_recommendations(
+    payload: PoseRecommendationRequest,
+) -> PoseRecommendationResponse:
+    concept = CONCEPTS.get(payload.concept_id)
+    if concept is None:
+        raise HTTPException(status_code=404, detail="지원하지 않는 촬영 콘셉트입니다.")
+    return await recommend_poses(
+        concept,
+        payload.place_type,
+        payload.capture_mode,
+        payload.framing,
+        settings,
+    )
+
+
 @app.post("/api/analyze", response_model=AnalyzeResponse)
 async def analyze(payload: AnalyzeRequest) -> AnalyzeResponse:
     if payload.place is not None:
@@ -117,6 +137,7 @@ async def analyze(payload: AnalyzeRequest) -> AnalyzeResponse:
         settings,
         payload.transport_mode,
     )
+    tourism_trend = await get_tourism_trend(place.name, settings)
     arrival_time = departure_time + timedelta(minutes=travel.travel_minutes)
     search_hours = 12
     target_times = [
@@ -184,8 +205,12 @@ async def analyze(payload: AnalyzeRequest) -> AnalyzeResponse:
     summary = evaluation.summary
     if best_index > 0:
         summary = (
-            f"도착 후 {best_index}시간 뒤가 선택한 분위기에 가장 좋은 조건입니다."
+            f"도착 후 {best_index}시간 뒤에 선택한 분위기가 가장 잘 살아나요."
         )
+
+    guide = guide_for(place, concept, payload.capture_mode, weather, solar)
+    if tourism_trend.available:
+        guide[0] = f"{guide[0]} {tourism_trend.shooting_tip}"
 
     return AnalyzeResponse(
         status=evaluation.status,
@@ -203,6 +228,7 @@ async def analyze(payload: AnalyzeRequest) -> AnalyzeResponse:
         arrival_time=arrival_time,
         weather=weather,
         solar=solar,
+        tourism_trend=tourism_trend,
         shooting_direction_guide=shooting_direction_guide(place, concept, solar),
         capture_mode=payload.capture_mode,
         time_slots=time_slots,
@@ -210,5 +236,5 @@ async def analyze(payload: AnalyzeRequest) -> AnalyzeResponse:
         best_offset_minutes=best_index * 60,
         scores=evaluation.scores,
         reasons=evaluation.reasons,
-        guide=guide_for(place, concept, payload.capture_mode, weather, solar),
+        guide=guide,
     )

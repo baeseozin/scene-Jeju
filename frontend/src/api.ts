@@ -1,4 +1,12 @@
-import type { Analysis, CaptureMode, Catalog, PlaceSearchResult, TransportMode } from "./types";
+import type {
+  Analysis,
+  CaptureMode,
+  Catalog,
+  FramingMode,
+  PlaceSearchResult,
+  PoseRecommendationResponse,
+  TransportMode,
+} from "./types";
 
 const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? "").replace(/\/$/, "");
 
@@ -74,6 +82,23 @@ export function analyze(params: {
       capture_mode: params.captureMode,
       transport_mode: params.transportMode,
       departure_time: params.departureTime,
+    }),
+  });
+}
+
+export function getPoseRecommendations(params: {
+  conceptId: string;
+  placeType: "beach" | "forest" | "urban" | "indoor";
+  captureMode: CaptureMode;
+  framing: FramingMode;
+}): Promise<PoseRecommendationResponse> {
+  return request<PoseRecommendationResponse>("/api/pose-recommendations", {
+    method: "POST",
+    body: JSON.stringify({
+      concept_id: params.conceptId,
+      place_type: params.placeType,
+      capture_mode: params.captureMode,
+      framing: params.framing,
     }),
   });
 }

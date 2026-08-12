@@ -1,6 +1,8 @@
 export type Status = "가능" | "보통" | "비추천";
 export type CaptureMode = "photo" | "video";
 export type TransportMode = "car" | "transit" | "walk";
+export type PoseGuideType = "open" | "walk" | "side" | "soft";
+export type FramingMode = "full_body" | "upper_body";
 
 export interface Place {
   id: string;
@@ -69,6 +71,22 @@ export interface Analysis {
     reflection_risk?: "낮음" | "보통" | "높음";
     reflection_risk_score?: number;
   };
+  tourism_trend?: {
+    available: boolean;
+    level: "낮음" | "보통" | "높음" | "자료 없음";
+    label: string;
+    matched_place_name: string | null;
+    arrivals: number | null;
+    rank: number | null;
+    ranked_places: number;
+    reference_month: string | null;
+    source: string;
+    source_url: string;
+    source_kind: "live" | "snapshot";
+    is_realtime: boolean;
+    explanation: string;
+    shooting_tip: string;
+  };
   shooting_direction_guide: string;
   capture_mode: CaptureMode;
   time_slots: Array<{
@@ -101,4 +119,24 @@ export interface SavedAnalysis {
   id: string;
   savedAt: string;
   analysis: Analysis;
+}
+
+export interface PoseRecommendationItem {
+  id: string;
+  guide_type: PoseGuideType;
+  name: string;
+  one_line: string;
+  body: string;
+  hands: string;
+  gaze: string;
+  camera: string;
+  why: string;
+}
+
+export interface PoseRecommendationResponse {
+  source: "openai" | "fallback";
+  model: string | null;
+  framing: FramingMode;
+  basis: string;
+  poses: [PoseRecommendationItem, PoseRecommendationItem, PoseRecommendationItem];
 }

@@ -1,6 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 
-import type { Analysis, CaptureMode } from "./types";
+import { getPoseRecommendations } from "./api";
+import type {
+  Analysis,
+  CaptureMode,
+  FramingMode,
+  PoseGuideType,
+  PoseRecommendationResponse,
+} from "./types";
 
 interface MediaStudioProps {
   analysis: Analysis;
@@ -31,6 +38,12 @@ interface RenderedMedia {
 type FilterPreset = "none" | "warm" | "cool" | "film" | "mono";
 type TransitionPreset = "cut" | "fade";
 type CaptionPosition = "top" | "center" | "bottom";
+type CameraFacing = "environment" | "user";
+interface PoseGuide {
+  id: PoseGuideType;
+  label: string;
+  description: string;
+}
 
 const FILTER_OPTIONS: Array<{ id: FilterPreset; label: string }> = [
   { id: "none", label: "원본" },
@@ -40,12 +53,97 @@ const FILTER_OPTIONS: Array<{ id: FilterPreset; label: string }> = [
   { id: "mono", label: "흑백" },
 ];
 const SPEED_OPTIONS: LocalMedia["speed"][] = [0.5, 1, 1.5, 2];
+const POSE_GUIDES: PoseGuide[] = [
+  { id: "open", label: "시원하게", description: "양팔을 몸에서 살짝 떼고 한쪽 무릎을 편하게 굽혀요." },
+  { id: "walk", label: "걷는 순간", description: "한 발을 앞으로 내딛고 시선은 진행 방향보다 조금 옆에 둬요." },
+  { id: "side", label: "옆모습", description: "몸을 카메라 정면에서 45도 돌리고 턱만 카메라 쪽으로 살짝 당겨요." },
+  { id: "soft", label: "차분하게", description: "어깨 힘을 빼고 두 손을 배 앞에서 가볍게 모아요." },
+];
 
 const MAX_FILES = 4;
 const MAX_FILE_BYTES = 150 * 1024 * 1024;
 const MAX_TOTAL_BYTES = 300 * 1024 * 1024;
 const MAX_EXPORT_SECONDS = 15;
 const MIN_CLIP_SECONDS = 0.5;
+function PoseOverlay({ pose, opacity, framing }: { pose: PoseGuideType; opacity: number; framing: FramingMode }) {
+  const common = {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+  };
+  const upperBody = framing === "upper_body";
+  return (
+    <svg
+      className={`pose-overlay ${upperBody ? "upper-body" : "full-body"}`}
+      viewBox="0 0 360 640"
+      aria-hidden="true"
+      style={{ opacity }}
+    >
+      <rect
+        x="20"
+        y="22"
+        width="320"
+        height="596"
+        rx="28"
+        fill="none"
+        stroke="currentColor"
+        strokeDasharray="8 12"
+        strokeWidth="2"
+      />
+      <g transform={upperBody ? "translate(-144 -90) scale(1.8)" : undefined}>
+      {pose === "open" && <g {...common}>
+        <circle cx="180" cy="142" r="42" strokeWidth="13" />
+        <path d="M180 191 C174 250 175 305 180 370" strokeWidth="34" />
+        <path d="M163 222 C138 244 116 271 92 306 M197 222 C222 244 244 271 268 306" strokeWidth="22" />
+        {!upperBody && <path d="M171 374 C153 425 137 478 125 548 M190 374 C211 425 226 478 239 548" strokeWidth="25" />}
+      </g>}
+      {pose === "walk" && <g {...common}>
+        <circle cx="163" cy="140" r="41" strokeWidth="13" />
+        <path d="M169 190 C169 247 180 306 190 365" strokeWidth="34" />
+        <path d="M158 222 C137 247 121 280 105 315 M188 223 C207 250 230 267 260 278" strokeWidth="22" />
+        {!upperBody && <path d="M185 369 C166 419 145 475 112 536 M196 369 C218 414 242 458 272 507" strokeWidth="25" />}
+      </g>}
+      {pose === "side" && <g {...common}>
+        <circle cx="207" cy="146" r="40" strokeWidth="13" />
+        <path d="M199 194 C196 250 181 309 174 369" strokeWidth="33" />
+        <path d="M193 225 C215 257 225 286 230 320 M184 228 C162 251 150 277 143 306" strokeWidth="21" />
+        {!upperBody && <path d="M171 372 C151 426 137 481 132 542 M182 372 C204 420 220 474 230 538" strokeWidth="25" />}
+      </g>}
+      {pose === "soft" && <g {...common}>
+        <circle cx="180" cy="145" r="42" strokeWidth="13" />
+        <path d="M180 195 C178 249 179 310 180 371" strokeWidth="35" />
+        <path d="M163 225 C145 258 151 295 181 326 M197 225 C215 258 209 295 181 326" strokeWidth="22" />
+        {!upperBody && <path d="M171 374 C160 428 153 486 151 545 M190 374 C202 428 208 486 211 545" strokeWidth="25" />}
+      </g>}
+      {pose === "open" && <g className="pose-face" {...common}>
+        <circle cx="166" cy="137" r="4" fill="currentColor" stroke="none" />
+        <circle cx="194" cy="137" r="4" fill="currentColor" stroke="none" />
+        <path d="M180 140 L176 151 L183 151" strokeWidth="3" />
+        <path d="M169 160 Q180 168 191 160" strokeWidth="3" />
+      </g>}
+      {pose === "walk" && <g className="pose-face" {...common}>
+        <circle cx="151" cy="136" r="4" fill="currentColor" stroke="none" />
+        <circle cx="174" cy="134" r="3.5" fill="currentColor" stroke="none" />
+        <path d="M164 138 L160 150 L167 151" strokeWidth="3" />
+        <path d="M153 159 Q163 165 173 158" strokeWidth="3" />
+      </g>}
+      {pose === "side" && <g className="pose-face" {...common}>
+        <circle cx="205" cy="138" r="3" fill="currentColor" stroke="none" />
+        <circle cx="221" cy="139" r="4" fill="currentColor" stroke="none" />
+        <path d="M222 142 Q230 148 224 152 L218 152" strokeWidth="3" />
+        <path d="M213 160 Q221 164 227 158" strokeWidth="3" />
+      </g>}
+      {pose === "soft" && <g className="pose-face" {...common}>
+        <path d="M164 140 Q169 136 174 140 M186 140 Q191 136 196 140" strokeWidth="3.5" />
+        <path d="M180 143 L176 154 L183 154" strokeWidth="3" />
+        <path d="M171 163 Q180 168 189 163" strokeWidth="3" />
+      </g>}
+      </g>
+      <path d="M180 30 V70 M160 50 H200" {...common} strokeWidth="2" />
+    </svg>
+  );
+}
 
 function createMediaId(): string {
   return typeof crypto !== "undefined" && typeof crypto.randomUUID === "function"
@@ -360,25 +458,117 @@ export default function MediaStudio({ analysis, captureMode }: MediaStudioProps)
   const [caption, setCaption] = useState(`${analysis.place.name} · ${analysis.concept.name}`);
   const [captionPosition, setCaptionPosition] = useState<CaptionPosition>("top");
   const [transition, setTransition] = useState<TransitionPreset>("cut");
+  const [cameraOpen, setCameraOpen] = useState(false);
+  const [cameraFacing, setCameraFacing] = useState<CameraFacing>("environment");
+  const [poseRecommendations, setPoseRecommendations] = useState<PoseRecommendationResponse | null>(null);
+  const [poseRecommendationMessage, setPoseRecommendationMessage] = useState("컨셉에 맞는 포즈를 고르는 중이에요.");
+  const [selectedPoseId, setSelectedPoseId] = useState<string | null>(null);
+  const [framing, setFraming] = useState<FramingMode>("full_body");
+  const [overlayOpacity, setOverlayOpacity] = useState(0.42);
+  const [recording, setRecording] = useState(false);
+  const [recordingSeconds, setRecordingSeconds] = useState(0);
   const mediaRef = useRef<LocalMedia[]>([]);
   const exportUrlRef = useRef<string | null>(null);
+  const cameraVideoRef = useRef<HTMLVideoElement | null>(null);
+  const cameraStreamRef = useRef<MediaStream | null>(null);
+  const cameraRecorderRef = useRef<MediaRecorder | null>(null);
+  const cameraChunksRef = useRef<BlobPart[]>([]);
+  const cameraExtensionRef = useRef<"mp4" | "webm">("webm");
+  const recordingShouldSaveRef = useRef(true);
+  const recordingStartedRef = useRef(0);
+  const recordingIntervalRef = useRef<number | null>(null);
+  const recordingTimeoutRef = useRef<number | null>(null);
   const accept = captureMode === "video" ? "video/*" : "image/*";
   const selectedSeconds = captureMode === "video"
     ? media.reduce((sum, item) => sum + editedDuration(item), 0)
     : 0;
   const exportSeconds = Math.min(MAX_EXPORT_SECONDS, selectedSeconds);
+  const selectedPose = poseRecommendations?.poses.find((pose) => pose.id === selectedPoseId)
+    ?? poseRecommendations?.poses[0]
+    ?? null;
+  const poseId = selectedPose?.guide_type ?? "open";
+  const activePose = POSE_GUIDES.find((pose) => pose.id === poseId) ?? POSE_GUIDES[0];
+
+  function clearRecordingTimers() {
+    if (recordingIntervalRef.current !== null) window.clearInterval(recordingIntervalRef.current);
+    if (recordingTimeoutRef.current !== null) window.clearTimeout(recordingTimeoutRef.current);
+    recordingIntervalRef.current = null;
+    recordingTimeoutRef.current = null;
+  }
+
+  function stopCameraStream(discardRecording = true) {
+    const recorder = cameraRecorderRef.current;
+    if (recorder && recorder.state !== "inactive") {
+      recordingShouldSaveRef.current = !discardRecording;
+      recorder.stop();
+    }
+    cameraStreamRef.current?.getTracks().forEach((track) => track.stop());
+    cameraStreamRef.current = null;
+    if (cameraVideoRef.current) cameraVideoRef.current.srcObject = null;
+    clearRecordingTimers();
+    setRecording(false);
+    setRecordingSeconds(0);
+  }
 
   useEffect(() => { mediaRef.current = media; }, [media]);
   useEffect(() => { exportUrlRef.current = exportUrl; }, [exportUrl]);
   useEffect(() => {
     setCaption(`${analysis.place.name} · ${analysis.concept.name}`);
   }, [analysis.place.name, analysis.concept.name]);
+  useEffect(() => {
+    let cancelled = false;
+    setPoseRecommendations(null);
+    setSelectedPoseId(null);
+    setPoseRecommendationMessage("컨셉에 맞는 포즈를 고르는 중이에요.");
+    const placeType = (["beach", "forest", "urban", "indoor"] as const)
+      .find((value) => value === analysis.place.place_type) ?? "urban";
+    const cacheKey = `scene-jeju-pose-v2:${analysis.concept.id}:${placeType}:${captureMode}:${framing}`;
+    try {
+      const cached = sessionStorage.getItem(cacheKey);
+      if (cached) {
+        const recommendations = JSON.parse(cached) as PoseRecommendationResponse;
+        setPoseRecommendations(recommendations);
+        setSelectedPoseId(recommendations.poses[0].id);
+        setPoseRecommendationMessage(
+          recommendations.source === "openai"
+            ? "이 세션에서 같은 조건으로 받은 AI 추천을 다시 사용했어요."
+            : "AI 키가 없어 컨셉별 기본 추천을 보여드려요.",
+        );
+        return () => { cancelled = true; };
+      }
+    } catch {
+      sessionStorage.removeItem(cacheKey);
+    }
+    getPoseRecommendations({
+      conceptId: analysis.concept.id,
+      placeType,
+      captureMode,
+      framing,
+    }).then((recommendations) => {
+      if (cancelled) return;
+      setPoseRecommendations(recommendations);
+      setSelectedPoseId(recommendations.poses[0].id);
+      try { sessionStorage.setItem(cacheKey, JSON.stringify(recommendations)); } catch { /* private mode */ }
+      setPoseRecommendationMessage(
+        recommendations.source === "openai"
+          ? "AI가 컨셉을 중심으로 장소와 촬영 방식까지 함께 보고 추천했어요."
+          : "AI 키가 없어 컨셉별 기본 추천을 보여드려요.",
+      );
+    }).catch((reason: unknown) => {
+      if (cancelled) return;
+      setPoseRecommendationMessage(reason instanceof Error ? reason.message : "포즈 추천을 불러오지 못했어요.");
+    });
+    return () => { cancelled = true; };
+  }, [analysis.concept.id, analysis.place.place_type, captureMode, framing]);
   useEffect(() => () => {
+    stopCameraStream(true);
     mediaRef.current.forEach((item) => URL.revokeObjectURL(item.url));
     if (exportUrlRef.current) URL.revokeObjectURL(exportUrlRef.current);
   }, []);
 
   useEffect(() => {
+    setCameraOpen(false);
+    stopCameraStream(true);
     mediaRef.current.forEach((item) => URL.revokeObjectURL(item.url));
     setMedia([]);
     setMessage(null);
@@ -389,6 +579,56 @@ export default function MediaStudio({ analysis, captureMode }: MediaStudioProps)
     setExportExtension(null);
   }, [captureMode]);
 
+  useEffect(() => {
+    if (!cameraOpen) return;
+    let cancelled = false;
+
+    const connectCamera = async () => {
+      try {
+        if (!window.isSecureContext) {
+          throw new Error("폰에서 포즈 카메라를 쓰려면 HTTPS 주소로 접속해야 해요. 현재 HTTP 주소에서는 폰 기본 카메라를 사용해 주세요.");
+        }
+        if (!navigator.mediaDevices?.getUserMedia) {
+          throw new Error("이 브라우저는 화면 안 카메라를 지원하지 않아요. 최신 Safari 또는 Chrome을 사용해 주세요.");
+        }
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: {
+            facingMode: { ideal: cameraFacing },
+            width: { ideal: 720, max: 1280 },
+            height: { ideal: 1280, max: 1920 },
+            aspectRatio: { ideal: 9 / 16 },
+          },
+          audio: captureMode === "video",
+        });
+        if (cancelled) {
+          stream.getTracks().forEach((track) => track.stop());
+          return;
+        }
+        cameraStreamRef.current = stream;
+        if (cameraVideoRef.current) {
+          cameraVideoRef.current.srcObject = stream;
+          await cameraVideoRef.current.play();
+        }
+        setMessage("선택한 추천 포즈를 반투명 가이드에 맞춰 촬영해 주세요. 가이드선은 결과물에 저장되지 않아요.");
+      } catch (reason) {
+        if (cancelled) return;
+        const denied = reason instanceof DOMException && (reason.name === "NotAllowedError" || reason.name === "SecurityError");
+        setMessage(
+          denied
+            ? "카메라와 마이크 권한이 필요해요. 브라우저 주소창의 권한 설정에서 허용해 주세요."
+            : reason instanceof Error ? reason.message : "카메라를 열지 못했습니다.",
+        );
+        setCameraOpen(false);
+      }
+    };
+
+    void connectCamera();
+    return () => {
+      cancelled = true;
+      stopCameraStream(true);
+    };
+  }, [cameraOpen, cameraFacing, captureMode]);
+
   const clearRenderedResult = (nextMessage: string | null) => {
     if (exportUrl) URL.revokeObjectURL(exportUrl);
     setExportUrl(null);
@@ -397,6 +637,161 @@ export default function MediaStudio({ analysis, captureMode }: MediaStudioProps)
     setProgress(0);
     setMessage(nextMessage);
   };
+
+  async function appendCapturedFile(file: File, durationHint?: number) {
+    if (mediaRef.current.length >= MAX_FILES) {
+      setMessage("촬영 결과는 최대 4개까지 담을 수 있어요. 하나를 뺀 뒤 다시 촬영해 주세요.");
+      return;
+    }
+    const url = URL.createObjectURL(file);
+    const item: LocalMedia = {
+      id: createMediaId(),
+      file,
+      url,
+      duration: 0,
+      trimStart: 0,
+      trimEnd: 0,
+      muted: false,
+      speed: 1,
+      filter: "none",
+      brightness: 100,
+      zoom: 1,
+      positionX: 0,
+      positionY: 0,
+    };
+    try {
+      if (captureMode === "video") {
+        try {
+          item.duration = await readVideoDuration(url);
+        } catch (reason) {
+          if (!durationHint || durationHint <= 0) throw reason;
+          item.duration = durationHint;
+        }
+        item.trimEnd = Math.min(item.duration, MAX_EXPORT_SECONDS);
+      }
+      const next = [...mediaRef.current, item];
+      mediaRef.current = next;
+      setMedia(next);
+      clearRenderedResult(
+        captureMode === "video"
+          ? `포즈 가이드로 촬영한 ${item.duration.toFixed(1)}초 영상을 편집 목록에 넣었습니다.`
+          : "포즈 가이드로 촬영한 사진을 목록에 넣었습니다.",
+      );
+    } catch (reason) {
+      URL.revokeObjectURL(url);
+      setMessage(reason instanceof Error ? reason.message : "촬영한 파일을 읽지 못했습니다.");
+    }
+  }
+
+  async function capturePhoto() {
+    const video = cameraVideoRef.current;
+    if (!video || video.readyState < 2 || !video.videoWidth || !video.videoHeight) {
+      setMessage("카메라 화면이 준비될 때까지 잠깐 기다려 주세요.");
+      return;
+    }
+    const canvas = document.createElement("canvas");
+    canvas.width = 1080;
+    canvas.height = 1920;
+    const context = canvas.getContext("2d");
+    if (!context) {
+      setMessage("사진 촬영 화면을 만들지 못했습니다.");
+      return;
+    }
+    context.save();
+    if (cameraFacing === "user") {
+      context.translate(canvas.width, 0);
+      context.scale(-1, 1);
+    }
+    drawCover(
+      context,
+      video,
+      video.videoWidth,
+      video.videoHeight,
+      0,
+      0,
+      canvas.width,
+      canvas.height,
+    );
+    context.restore();
+    const blob = await new Promise<Blob>((resolve, reject) => {
+      canvas.toBlob(
+        (value) => value ? resolve(value) : reject(new Error("사진 파일을 만들지 못했습니다.")),
+        "image/jpeg",
+        0.92,
+      );
+    });
+    await appendCapturedFile(
+      new File([blob], `scene-jeju-camera-${Date.now()}.jpg`, { type: "image/jpeg" }),
+    );
+  }
+
+  function stopCameraRecording(save = true) {
+    const recorder = cameraRecorderRef.current;
+    if (!recorder || recorder.state === "inactive") return;
+    recordingShouldSaveRef.current = save;
+    recorder.stop();
+    clearRecordingTimers();
+  }
+
+  function startCameraRecording() {
+    const stream = cameraStreamRef.current;
+    if (!stream || !window.MediaRecorder) {
+      setMessage("이 브라우저는 웹 화면 안 영상 촬영을 지원하지 않아요. 폰 기본 카메라를 사용해 주세요.");
+      return;
+    }
+    if (mediaRef.current.length >= MAX_FILES) {
+      setMessage("영상은 최대 4개까지 담을 수 있어요. 기존 클립을 하나 빼 주세요.");
+      return;
+    }
+    const format = recordingFormat();
+    if (!format) {
+      setMessage("이 브라우저에서 촬영 영상을 저장할 형식을 찾지 못했습니다.");
+      return;
+    }
+    cameraChunksRef.current = [];
+    cameraExtensionRef.current = format.extension;
+    recordingShouldSaveRef.current = true;
+    const recorder = new MediaRecorder(stream, {
+      mimeType: format.mimeType,
+      videoBitsPerSecond: 4_000_000,
+      audioBitsPerSecond: 128_000,
+    });
+    cameraRecorderRef.current = recorder;
+    recorder.ondataavailable = (event) => {
+      if (event.data.size) cameraChunksRef.current.push(event.data);
+    };
+    recorder.onerror = () => {
+      clearRecordingTimers();
+      setRecording(false);
+      setMessage("카메라 영상 녹화 중 오류가 발생했습니다.");
+    };
+    recorder.onstop = () => {
+      const chunks = cameraChunksRef.current;
+      const shouldSave = recordingShouldSaveRef.current;
+      const extension = cameraExtensionRef.current;
+      const recordedDuration = Math.min(15, Math.max(0.1, (performance.now() - recordingStartedRef.current) / 1000));
+      cameraChunksRef.current = [];
+      cameraRecorderRef.current = null;
+      clearRecordingTimers();
+      setRecording(false);
+      setRecordingSeconds(0);
+      if (!shouldSave || !chunks.length) return;
+      const blob = new Blob(chunks, { type: format.mimeType });
+      void appendCapturedFile(
+        new File([blob], `scene-jeju-camera-${Date.now()}.${extension}`, { type: format.mimeType }),
+        recordedDuration,
+      );
+    };
+    recorder.start(250);
+    recordingStartedRef.current = performance.now();
+    setRecording(true);
+    setRecordingSeconds(0);
+    setMessage("촬영 중이에요. 최대 15초가 되면 자동으로 멈춥니다.");
+    recordingIntervalRef.current = window.setInterval(() => {
+      setRecordingSeconds(Math.min(15, (performance.now() - recordingStartedRef.current) / 1000));
+    }, 100);
+    recordingTimeoutRef.current = window.setTimeout(() => stopCameraRecording(true), 15_000);
+  }
 
   const chooseFiles = async (files: FileList | null) => {
     if (!files) return;
@@ -572,6 +967,97 @@ export default function MediaStudio({ analysis, captureMode }: MediaStudioProps)
       <div className="panel-title"><span>{captureMode === "video" ? "REELS EDITOR" : "PHOTO COLLAGE"}</span><small>기기 안에서만 처리</small></div>
       <h3>{captureMode === "video" ? "서비스 안에서 직접 릴스 편집하기" : "촬영한 사진을 한 장으로 만들기"}</h3>
       <p>{captureMode === "video" ? "최대 4개 클립을 나누고 순서를 바꾼 뒤, 배속·색감·밝기·화면 위치·문구·전환 효과를 직접 편집해 최대 15초로 저장할 수 있어요." : "가이드 순서대로 찍은 사진을 최대 4개 골라 주세요. 순서를 바꾸거나 빼고 결과물을 저장할 수 있어요."}</p>
+      <section className="concept-pose-recommendations" aria-label="컨셉 맞춤 포즈 추천">
+        <div className="concept-pose-heading">
+          <div>
+            <span>{poseRecommendations?.source === "openai" ? "AI POSE DIRECTOR" : "POSE GUIDE"}</span>
+            <h4>{analysis.concept.name} 컨셉에 어울리는 포즈</h4>
+          </div>
+          <p>{poseRecommendationMessage}</p>
+        </div>
+        <div className="framing-selector" aria-label="촬영 구도 선택">
+          <div>
+            <small>촬영 범위</small>
+            <strong>어디까지 나오게 찍을까요?</strong>
+          </div>
+          <div className="framing-choice" role="group" aria-label="전신 또는 상반신">
+            {(["full_body", "upper_body"] as FramingMode[]).map((value) => (
+              <button
+                type="button"
+                key={value}
+                className={framing === value ? "selected" : ""}
+                aria-pressed={framing === value}
+                onClick={() => {
+                  if (framing === value) return;
+                  setCameraOpen(false);
+                  setFraming(value);
+                }}
+              >
+                <span>{value === "full_body" ? "전신" : "상반신"}</span>
+                <small>{value === "full_body" ? "머리부터 발끝" : "머리부터 허리"}</small>
+              </button>
+            ))}
+          </div>
+        </div>
+        {poseRecommendations && (
+          <>
+            <p className="concept-pose-basis">추천 기준 · {poseRecommendations.basis}</p>
+            <div className="concept-pose-grid">
+              {poseRecommendations.poses.map((pose, index) => (
+                <button
+                  type="button"
+                  key={pose.id}
+                  className={selectedPose?.id === pose.id ? "selected" : ""}
+                  onClick={() => setSelectedPoseId(pose.id)}
+                >
+                  <small>추천 {index + 1}</small>
+                  <strong>{pose.name}</strong>
+                  <span>{pose.one_line}</span>
+                  <dl>
+                    <div><dt>몸</dt><dd>{pose.body}</dd></div>
+                    <div><dt>손</dt><dd>{pose.hands}</dd></div>
+                    <div><dt>시선</dt><dd>{pose.gaze}</dd></div>
+                    <div><dt>촬영</dt><dd>{pose.camera}</dd></div>
+                  </dl>
+                  <em>{pose.why}</em>
+                </button>
+              ))}
+            </div>
+          </>
+        )}
+      </section>
+      <div className="camera-entry-actions">
+        <button type="button" className="pose-camera-button" disabled={!selectedPose} onClick={() => setCameraOpen((open) => !open)}>{cameraOpen ? "포즈 카메라 닫기" : selectedPose ? `‘${selectedPose.name}’ 가이드로 찍기` : "추천 포즈 준비 중"}</button>
+        <label className="native-camera-button"><input type="file" accept={accept} capture="environment" onChange={(event) => { const file = event.target.files?.[0]; if (file) void appendCapturedFile(file); event.currentTarget.value = ""; }} /><span>폰 기본 카메라</span></label>
+      </div>
+      {cameraOpen && (
+        <section className="pose-camera" aria-label="반투명 포즈 가이드 카메라">
+          <div className="pose-camera-heading">
+            <div><small>선택한 컨셉 맞춤 포즈</small><strong>{selectedPose?.name ?? activePose.label}</strong></div>
+            <p>{selectedPose?.one_line ?? activePose.description}</p>
+          </div>
+          <div className="pose-recommendation-reason">
+            <span>왜 어울리나요?</span>
+            <p>{selectedPose?.why}</p>
+          </div>
+          <div className="pose-camera-stage">
+            <video ref={cameraVideoRef} className={cameraFacing === "user" ? "mirrored" : ""} autoPlay muted playsInline />
+            <PoseOverlay pose={poseId} opacity={overlayOpacity} framing={framing} />
+            <span className="ai-pose-score">{framing === "upper_body" ? "상반신" : "전신"} 포즈 가이드</span>
+            <span className="pose-safe-line">{selectedPose?.camera}</span>
+            {recording && <b className="camera-recording-time"><i /> REC {recordingSeconds.toFixed(1)}s</b>}
+          </div>
+          <label className="overlay-opacity-control"><span>포즈 가이드 진하기</span><input type="range" min="15" max="80" step="5" value={Math.round(overlayOpacity * 100)} onInput={(event) => setOverlayOpacity(Number(event.currentTarget.value) / 100)} /><strong>{Math.round(overlayOpacity * 100)}%</strong></label>
+          <div className="camera-control-row">
+            <button type="button" disabled={recording} onClick={() => setCameraFacing((facing) => facing === "environment" ? "user" : "environment")}>↻ 카메라 전환</button>
+            {captureMode === "photo"
+              ? <button type="button" className="camera-shutter" onClick={() => void capturePhoto()}>● 사진 촬영</button>
+              : <button type="button" className={`camera-shutter ${recording ? "recording" : ""}`} onClick={() => recording ? stopCameraRecording(true) : startCameraRecording()}>{recording ? "■ 촬영 끝내기" : "● 영상 촬영"}</button>}
+            <button type="button" disabled={recording} onClick={() => setCameraOpen(false)}>닫기</button>
+          </div>
+          <p className="pose-camera-note">AI 추천에는 컨셉·장소 유형·사진/영상·전신/상반신 정보만 사용합니다. 카메라 영상은 서버나 AI로 전송되지 않고, 반투명 가이드도 촬영 파일에 합성되지 않아요.</p>
+        </section>
+      )}
       <label className="media-upload"><input type="file" accept={accept} multiple onChange={(event) => { void chooseFiles(event.target.files); event.currentTarget.value = ""; }} /><span>＋ {captureMode === "video" ? "편집할 영상 선택" : "사진 선택"}</span></label>
       {captureMode === "video" && media.length > 0 && (
         <div className="editor-timeline" aria-label="릴스 편집 타임라인">

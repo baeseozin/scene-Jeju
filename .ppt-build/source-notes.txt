@@ -1,0 +1,26 @@
+Primary project sources
+- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/main.py
+- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/models.py
+- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/config.py
+- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/data.py
+- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/place_search.py
+- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/travel.py
+- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/weather.py
+- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/solar.py
+- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/scoring.py
+- /Users/baeseojin/Desktop/JBNU/scene-Jeju/frontend/src/App.tsx
+- /Users/baeseojin/Desktop/JBNU/scene-Jeju/frontend/src/api.ts
+- /Users/baeseojin/Desktop/JBNU/scene-Jeju/frontend/src/MediaStudio.tsx
+- /Users/baeseojin/Desktop/JBNU/scene-Jeju/frontend/src/share.ts
+- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/tests/test_api.py
+- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/tests/test_core.py
+
+Official external sources
+- KMA short-term forecast OpenAPI: https://www.data.go.kr/data/15084084/openapi.do?recommendDataYn=Y
+- KMA archived short forecast description / SKY code: https://www.data.go.kr/dataset/15000099/openapi.do?mypageFlag=Y
+- Kakao Local REST API: https://developers.kakao.com/docs/ko/local/dev-guide
+- Kakao Mobility driving directions: https://developers.kakaomobility.com/affiliate-en/navi-api/directions.html
+- pvlib get_solarposition: https://pvlib-python.readthedocs.io/en/stable/reference/generated/pvlib.solarposition.get_solarposition.html
+- pvlib simplified_solis: https://pvlib-python.readthedocs.io/en/stable/reference/generated/pvlib.clearsky.simplified_solis.html
+- MDN HTMLCanvasElement.captureStream: https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/captureStream
+- MDN MediaRecorder: https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder

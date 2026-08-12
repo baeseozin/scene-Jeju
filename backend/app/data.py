@@ -36,6 +36,8 @@ class Concept:
     preferred_skies: tuple[str, ...]
     min_solar_elevation: float
     max_solar_elevation: float
+    min_ghi_wm2: float
+    max_ghi_wm2: float
     target_sun_offset: float
     suitable_place_types: tuple[str, ...]
 
@@ -88,29 +90,33 @@ PLACES: dict[str, Place] = {
 CONCEPTS: dict[str, Concept] = {
     "refreshing": Concept(
         id="refreshing",
-        name="청량한 여행",
-        description="밝고 선명한 색감, 자연스러운 움직임",
-        accent="#32b5cc",
+        name="청량한",
+        description="파란 하늘과 선명한 제주",
+        accent="#62b9ef",
         max_precipitation_mm=0.2,
         max_wind_mps=6.0,
-        preferred_skies=("맑음", "구름 많음"),
-        min_solar_elevation=15.0,
-        max_solar_elevation=65.0,
+        preferred_skies=("맑음",),
+        min_solar_elevation=25.0,
+        max_solar_elevation=75.0,
+        min_ghi_wm2=500.0,
+        max_ghi_wm2=1100.0,
         target_sun_offset=180.0,
         suitable_place_types=("beach", "urban"),
     ),
-    "film": Concept(
-        id="film",
-        name="감성 필름",
-        description="부드러운 명암과 천천히 흐르는 장면",
-        accent="#b89b73",
-        max_precipitation_mm=0.8,
-        max_wind_mps=8.0,
-        preferred_skies=("구름 많음", "흐림"),
-        min_solar_elevation=5.0,
-        max_solar_elevation=40.0,
-        target_sun_offset=90.0,
-        suitable_place_types=("forest", "urban"),
+    "natural": Concept(
+        id="natural",
+        name="자연스러운",
+        description="편안하고 부드러운 자연광",
+        accent="#79b88a",
+        max_precipitation_mm=0.4,
+        max_wind_mps=6.5,
+        preferred_skies=("맑음", "구름 많음"),
+        min_solar_elevation=12.0,
+        max_solar_elevation=58.0,
+        min_ghi_wm2=220.0,
+        max_ghi_wm2=720.0,
+        target_sun_offset=135.0,
+        suitable_place_types=("beach", "forest", "urban"),
     ),
     "sunset": Concept(
         id="sunset",
@@ -122,7 +128,54 @@ CONCEPTS: dict[str, Concept] = {
         preferred_skies=("맑음", "구름 많음"),
         min_solar_elevation=-3.0,
         max_solar_elevation=15.0,
+        min_ghi_wm2=20.0,
+        max_ghi_wm2=420.0,
         target_sun_offset=0.0,
+        suitable_place_types=("beach", "urban"),
+    ),
+    "cozy": Concept(
+        id="cozy",
+        name="포근한",
+        description="부드럽고 따뜻한 사진",
+        accent="#dfcfb4",
+        max_precipitation_mm=0.6,
+        max_wind_mps=6.0,
+        preferred_skies=("구름 많음", "흐림"),
+        min_solar_elevation=5.0,
+        max_solar_elevation=48.0,
+        min_ghi_wm2=100.0,
+        max_ghi_wm2=520.0,
+        target_sun_offset=135.0,
+        suitable_place_types=("forest", "urban", "indoor"),
+    ),
+    "film": Concept(
+        id="film",
+        name="무드있는",
+        description="흐린 제주, 차분하고 영화 같은 느낌",
+        accent="#77879d",
+        max_precipitation_mm=0.8,
+        max_wind_mps=8.0,
+        preferred_skies=("구름 많음", "흐림"),
+        min_solar_elevation=0.0,
+        max_solar_elevation=35.0,
+        min_ghi_wm2=40.0,
+        max_ghi_wm2=320.0,
+        target_sun_offset=90.0,
+        suitable_place_types=("forest", "urban"),
+    ),
+    "sparkling": Concept(
+        id="sparkling",
+        name="반짝이는",
+        description="바다·윤슬이 강조된 사진",
+        accent="#70dec7",
+        max_precipitation_mm=0.1,
+        max_wind_mps=6.5,
+        preferred_skies=("맑음",),
+        min_solar_elevation=8.0,
+        max_solar_elevation=55.0,
+        min_ghi_wm2=450.0,
+        max_ghi_wm2=1100.0,
+        target_sun_offset=20.0,
         suitable_place_types=("beach", "urban"),
     ),
 }
@@ -154,7 +207,7 @@ GUIDES: dict[tuple[str, str], list[str]] = {
         "마지막 2초는 위로 틸트해 삼나무 높이를 강조합니다.",
     ],
     ("saryeoni", "film"): [
-        "숲길 가장자리의 어두운 나무줄기를 전경으로 두고 인물을 중앙에 배치합니다.",
+        "카메라 바로 앞쪽에 어두운 나무줄기가 살짝 보이게 하고 인물을 중앙에 배치합니다.",
         "인물이 프레임 안으로 천천히 들어와 멈추는 장면을 4초간 촬영합니다.",
         "가까운 나뭇잎에서 인물의 얼굴로 초점을 천천히 전환합니다.",
         "마지막 2초는 고정 구도로 두고 바람에 흔들리는 잎을 함께 담습니다.",
@@ -172,7 +225,7 @@ GUIDES: dict[tuple[str, str], list[str]] = {
         "마지막 2초는 손을 흔들거나 뒤돌아보는 동작으로 마무리합니다.",
     ],
     ("dodu", "film"): [
-        "방호벽 하나를 전경에 크게 두고 인물을 화면 중앙보다 약간 뒤에 배치합니다.",
+        "카메라 바로 앞쪽에 방호벽 하나가 크게 보이게 하고 인물을 화면 중앙보다 약간 뒤에 배치합니다.",
         "인물이 바다를 바라보는 정지 장면을 3초간 촬영합니다.",
         "방호벽 색을 따라 카메라를 낮고 느리게 수평 이동합니다.",
         "마지막에는 초점을 인물에서 멀어지는 항공기나 수평선으로 옮깁니다.",
@@ -213,8 +266,11 @@ def custom_place_guide(place: Place, concept: Concept) -> list[str]:
     }[place.place_type]
     concept_action = {
         "refreshing": "인물이 카메라 쪽으로 자연스럽게 두 걸음 움직이는 장면을 3초간 촬영합니다.",
+        "natural": "인물이 편하게 걷다가 카메라 옆을 바라보는 순간을 3초간 촬영합니다.",
         "film": "가까운 사물에서 인물로 초점을 천천히 옮기며 3초간 촬영합니다.",
         "sunset": "노출을 조금 낮추고 인물의 옆모습 윤곽이 드러나는 장면을 3초간 촬영합니다.",
+        "cozy": "인물이 두 손을 모으거나 옷깃을 잡는 편안한 동작을 3초간 촬영합니다.",
+        "sparkling": "인물이 반짝이는 물이나 빛을 바라보다 천천히 돌아보는 장면을 3초간 촬영합니다.",
     }[concept.id]
     return [
         type_opening,
@@ -233,8 +289,11 @@ def photo_guide(place: Place, concept: Concept) -> list[str]:
     }[place.place_type]
     pose = {
         "refreshing": "인물이 카메라를 보지 않고 걷다가 뒤돌아보는 순간을 연속 촬영합니다.",
-        "film": "손이나 가까운 소품을 전경에 두고 인물의 시선이 프레임 밖을 향하게 촬영합니다.",
+        "natural": "인물이 어깨에 힘을 빼고 걷다가 자연스럽게 웃는 순간을 연속 촬영합니다.",
+        "film": "손이나 가까운 소품을 카메라 바로 앞에 두고 인물의 시선이 화면 밖을 향하게 촬영합니다.",
         "sunset": "화면 밝기를 낮춘 뒤 옆모습과 하늘의 색이 함께 살아나는 노출로 촬영합니다.",
+        "cozy": "인물이 손을 모으거나 머리카락을 정리하는 편안한 순간을 허리 위 구도로 촬영합니다.",
+        "sparkling": "반짝이는 빛이 인물의 어깨 옆에 오게 하고 웃거나 뒤돌아보는 순간을 연속 촬영합니다.",
     }[concept.id]
     return [
         background,
@@ -242,6 +301,89 @@ def photo_guide(place: Place, concept: Concept) -> list[str]:
         pose,
         "같은 자리에서 전신, 허리 위, 배경 중심 구도를 한 장씩 남겨 가장 자연스러운 컷을 고릅니다.",
     ]
+
+
+def distance_setup_guide(
+    place: Place, concept: Concept, capture_mode: CaptureMode
+) -> str:
+    """스마트폰 1× 카메라 기준으로 현장에서 시작할 거리값을 안내합니다."""
+    background_distance = {
+        "beach": "인물은 물이 닿는 선보다 육지 쪽으로 3m 떨어져 서세요",
+        "forest": "인물은 뒤쪽의 큰 나무나 짙은 숲에서 앞쪽으로 3m 떨어져 서세요",
+        "urban": "인물은 뒤쪽 방호벽이나 건물에서 앞쪽으로 1.5m 떨어져 서세요",
+        "indoor": "인물은 뒤쪽 벽에서 2m, 얼굴 옆 창문에서 1m 떨어져 서세요",
+    }[place.place_type]
+    base_distance = {
+        "refreshing": 3.0,
+        "natural": 2.8,
+        "film": 2.2,
+        "sunset": 3.5,
+        "cozy": 2.2,
+        "sparkling": 3.2,
+    }[concept.id]
+    if capture_mode == "video":
+        base_distance += 0.8
+    framing = {
+        "refreshing": "머리부터 발끝과 주변 풍경이 함께 들어오는 거리예요",
+        "natural": "인물의 편안한 동작과 주변 자연을 함께 담기 좋은 거리예요",
+        "film": "허리 위 인물과 주변 분위기를 함께 담기 좋은 거리예요",
+        "sunset": "인물 윤곽과 넓은 하늘을 함께 담기 좋은 거리예요",
+        "cozy": "허리 위 표정과 부드러운 배경을 함께 담기 좋은 거리예요",
+        "sparkling": "인물과 뒤쪽의 반짝이는 빛을 함께 담기 좋은 거리예요",
+    }[concept.id]
+    return (
+        f"거리 기준: {background_distance}. 촬영자는 스마트폰 1× 카메라로 "
+        f"인물 앞 약 {base_distance:.1f}m에 서세요. {framing}."
+    )
+
+
+def expected_result_guide(
+    place: Place,
+    concept: Concept,
+    capture_mode: CaptureMode,
+    weather: WeatherResult,
+    solar: SolarResult,
+) -> str:
+    media_name = "사진" if capture_mode == "photo" else "영상"
+    concept_result = {
+        "refreshing": f"{media_name}에서 인물은 밝고 배경색은 선명하게 보이는 결과를 목표로 해요.",
+        "natural": f"{media_name}에서 피부색은 자연스럽고 주변 초록과 하늘은 부드럽게 보이는 결과를 목표로 해요.",
+        "film": f"{media_name}에서 얼굴 한쪽은 밝고 반대쪽은 부드럽게 어두운 결과를 목표로 해요.",
+        "sunset": f"{media_name}에서 얼굴의 세부 묘사보다 인물 윤곽과 하늘색이 살아나는 결과를 목표로 해요.",
+        "cozy": f"{media_name}에서 얼굴 그림자는 연하고 전체 색은 크림빛으로 따뜻하게 보이는 결과를 목표로 해요.",
+        "sparkling": f"{media_name}에서 인물 뒤의 물결이나 빛망울이 반짝이고 윤곽이 또렷한 결과를 목표로 해요.",
+    }[concept.id]
+
+    if concept.id == "film" and solar.elevation < 0:
+        concept_result = (
+            f"{media_name}에서 어두운 바다색과 수평선, 인물 윤곽이 차분한 영화 장면처럼 보이는 결과를 목표로 해요."
+        )
+        risk = "야간 모드를 켜고 휴대폰을 고정하면 노이즈와 흔들림을 줄이면서 어두운 분위기를 살릴 수 있어요."
+    elif solar.elevation < -6 or solar.lighting_issue == "자연광 부족":
+        risk = "야간 모드와 고정 지지대를 이용하면 얼굴의 노이즈와 손떨림을 줄일 수 있어요."
+    elif solar.lighting_issue == "수면 반사와 역광":
+        risk = (
+            "하늘과 물결에 밝기를 맞추면 얼굴이 검게 보이고, 얼굴을 눌러 밝기를 올리면 "
+            "하늘과 반사 부분이 하얗게 날아갈 수 있어요."
+        )
+    elif solar.lighting_issue == "나뭇잎 사이 얼룩 그림자":
+        risk = "이마와 볼의 밝은 점은 하얗게 날아가고 나머지 얼굴은 어둡게 남을 수 있어요."
+    elif solar.lighting_issue in {"유리·노면 반사", "유리·젖은 노면 반사"}:
+        risk = "반사된 부분은 하얗게 날아가고, 휴대폰 자동 노출 때문에 얼굴은 어둡게 보일 수 있어요."
+    elif solar.lighting_issue == "강한 직사광과 건물 그림자":
+        risk = "얼굴이 햇빛과 건물 그늘에 걸치면 얼굴 절반의 밝기가 크게 달라질 수 있어요."
+    elif solar.lighting_issue == "창문 역광과 실내외 명암차":
+        risk = "얼굴에 밝기를 맞추면 창밖이 하얗게 날아가고, 창밖에 맞추면 얼굴이 어두워질 수 있어요."
+    elif solar.ghi_wm2 >= 700:
+        risk = "빛이 강해 이마·코·볼의 밝은 부분이 하얗게 날아가고 눈 밑 그림자가 진해질 수 있어요."
+    elif solar.ghi_wm2 < 120:
+        risk = "빛이 약해 얼굴의 색이 탁해지거나 움직이는 인물이 흐리게 찍힐 수 있어요."
+    else:
+        risk = "얼굴과 배경의 밝기 차가 크지 않아 노출을 안정적으로 맞추기 쉬운 조건이에요."
+
+    if weather.precipitation_mm > 0:
+        risk += " 렌즈에 빗방울이 묻으면 얼굴 주변이 뿌옇게 번질 수 있어요."
+    return f"예상 결과: {concept_result} {risk}"
 
 
 def guide_for(
@@ -264,30 +406,33 @@ def guide_for(
     old_direction = shooting_direction_guide(place, concept)
     second_action = "" if base_guide[1] == old_direction else f" {base_guide[1]}"
     return [
-        f"{solar_height_explanation(solar)} {base_guide[0]}",
+        f"{distance_setup_guide(place, concept, capture_mode)} {base_guide[0]}",
         f"{shooting_direction_guide(place, concept, solar)}{second_action}",
         f"{sky_and_wind_explanation(weather)} {base_guide[2]}",
-        f"{rain_explanation(weather)} {base_guide[3]}",
+        (
+            f"{solar_height_explanation(solar)} {rain_explanation(weather)} "
+            f"{base_guide[3]} {expected_result_guide(place, concept, capture_mode, weather, solar)}"
+        ),
     ]
 
 
 def solar_height_explanation(solar: SolarResult) -> str:
     elevation = solar.elevation
     if elevation < -6:
-        explanation = "태양이 지평선 아래에 있어 자연광이 거의 없는 시간이에요."
+        explanation = "해가 진 뒤라 자연광이 거의 없는 시간이에요."
     elif elevation < 12:
         explanation = (
-            "태양이 낮아 빛이 대기를 길게 지나오므로 색은 따뜻해지고 "
+            "해가 낮게 떠 있어 색은 따뜻해지고 "
             "그림자는 길어져요."
         )
     elif elevation <= 55:
         explanation = (
-            "태양이 중간 높이에 있어 빛은 충분하고, 그림자가 얼굴과 풍경의 "
+            "햇빛이 적당한 각도로 들어와 빛은 충분하고, 그림자가 얼굴과 풍경의 "
             "입체감을 만들어줘요."
         )
     else:
         explanation = (
-            "태양이 높아 빛이 강하고 그림자가 짧아지므로 얼굴 아래 명암이 "
+            "햇빛이 머리 위에서 강하게 내려와 얼굴 아래 그림자가 "
             "진해질 수 있어요."
         )
     if solar.ghi_wm2 >= 700:
@@ -298,10 +443,7 @@ def solar_height_explanation(solar: SolarResult) -> str:
         irradiance = "빛의 양이 많지 않아 그림자는 부드럽지만 화면이 어두워질 수 있어요."
     else:
         irradiance = "자연광이 약해 휴대폰을 고정하거나 야간 모드를 쓰는 편이 좋아요."
-    return (
-        f"태양 고도는 {elevation:.1f}°, 예상 일사량은 {solar.ghi_wm2}W/m²예요. "
-        f"{explanation} {irradiance}"
-    )
+    return f"{explanation} {irradiance}"
 
 
 def sky_and_wind_explanation(weather: WeatherResult) -> str:
@@ -320,23 +462,20 @@ def sky_and_wind_explanation(weather: WeatherResult) -> str:
         wind_explanation = (
             "바람이 강해 화면이 흔들릴 수 있으니 두 손으로 고정하고 짧게 찍으세요."
         )
-    return (
-        f"하늘은 {weather.sky}, 풍속은 {weather.wind_speed_mps:.1f}m/s예요. "
-        f"{sky_explanation} {wind_explanation}"
-    )
+    return f"하늘은 {weather.sky}이에요. {sky_explanation} {wind_explanation}"
 
 
 def rain_explanation(weather: WeatherResult) -> str:
     rain = weather.precipitation_mm
     if rain <= 0:
-        return "예상 강수량은 0mm라 렌즈에 빗방울이 맺힐 가능성이 낮아요."
+        return "비가 오지 않을 것으로 보여 렌즈에 빗방울이 맺힐 가능성이 낮아요."
     if rain < 1:
         return (
-            f"예상 강수량은 {rain:.1f}mm예요. 약한 비가 지면을 적시면 빛이 "
+            "약한 비가 예상돼요. 지면이 젖으면 빛이 "
             "반사되므로 반짝이는 바닥을 구도에 활용해 보세요."
         )
     return (
-        f"예상 강수량은 {rain:.1f}mm예요. 빗방울이 빛을 흩뜨리고 렌즈에도 "
+        "비가 제법 내릴 수 있어요. 빗방울이 빛을 흩뜨리고 렌즈에도 "
         "맺힐 수 있으니 처마 아래에서 렌즈를 자주 닦아주세요."
     )
 
@@ -352,20 +491,22 @@ def shooting_direction_guide(
     }[place.place_type]
     light_action = {
         "refreshing": "촬영자는 태양을 등진 채 인물을 바라보세요.",
+        "natural": "햇빛이 인물의 앞쪽 옆면에 부드럽게 닿도록 촬영자가 반걸음 옆으로 이동하세요.",
         "film": "햇빛이 인물의 옆얼굴을 스치도록 촬영자가 옆으로 이동하세요.",
         "sunset": "인물을 노을 앞에 세워 윤곽이 보이게 찍으세요.",
+        "cozy": "구름이나 그늘로 부드러워진 빛이 얼굴 앞쪽 옆면에 닿게 찍으세요.",
+        "sparkling": "반짝이는 물결이나 빛이 인물의 어깨 옆에 오도록 태양에서 약간 옆으로 이동하세요.",
     }[concept.id]
     if solar is None:
         if place.place_type == "indoor":
             return (
-                f"{background}. 창문을 정면으로 마주 보기보다 45° 옆에 서면 "
+                f"{background}. 창문을 정면으로 마주 보기보다 대각선 옆에 서면 "
                 "얼굴 한쪽에 부드러운 명암이 생겨요."
             )
         return f"{background}. {light_action}"
     if place.place_type == "indoor":
         direction_guide = (
-            f"{background}. 바깥 예상 일사량은 {solar.ghi_wm2}W/m²예요. "
-            "창문을 인물 뒤에 두지 말고 얼굴의 45° 옆에 두세요."
+            f"{background}. 창문을 인물 뒤에 두지 말고 얼굴의 대각선 옆에 두세요."
         )
         if solar.lighting_issue == "창문 역광과 실내외 명암차":
             return (
@@ -380,14 +521,10 @@ def shooting_direction_guide(
         return f"{direction_guide} 지금은 창가와 실내의 밝기 차가 크지 않은 편이에요."
     if solar.elevation < -6:
         return (
-            f"{background}. 태양이 이미 지평선 아래에 있으니 카메라는 "
-            f"{place.direction_label}을 바라보고 야간 모드나 고정 지지대를 사용하세요."
+            f"{background}. 해가 진 뒤이니 야간 모드를 켜고 휴대폰을 "
+            "벽이나 고정 지지대에 기대어 찍으세요."
         )
-    sun_direction = direction_label(solar.azimuth)
-    direction_guide = (
-        f"{background}. 현재 태양은 {sun_direction} 하늘, 방위각 {solar.azimuth:.1f}°에 "
-        f"있어요. 카메라는 {place.direction_label}을 바라보고 {light_action}"
-    )
+    direction_guide = f"{background}. {light_action}"
     if solar.lighting_issue == "수면 반사와 역광" and solar.lighting_risk == "높음":
         if concept.id == "sunset":
             return (
@@ -396,7 +533,7 @@ def shooting_direction_guide(
             )
         return (
             f"{direction_guide} 바다 반사가 강하면 카메라가 밝은 배경에 맞춰 얼굴을 "
-            "어둡게 만들 수 있어요. 촬영 위치를 태양에서 20~30° 옆으로 옮기세요."
+            "어둡게 만들 수 있어요. 촬영자가 두세 걸음 옆으로 옮겨보세요."
         )
     if solar.lighting_issue == "수면 반사와 역광":
         return (
@@ -411,7 +548,7 @@ def shooting_direction_guide(
     if solar.lighting_issue in {"유리·노면 반사", "유리·젖은 노면 반사"}:
         return (
             f"{direction_guide} 유리나 노면의 반사가 렌즈를 향할 수 있어요. "
-            "촬영 위치를 20° 정도 옆으로 옮기고 화면에서 얼굴을 눌러 밝기를 맞추세요."
+            "촬영자가 두세 걸음 옆으로 옮기고 화면에서 얼굴을 눌러 밝기를 맞추세요."
         )
     if solar.lighting_issue == "강한 직사광과 건물 그림자":
         return (

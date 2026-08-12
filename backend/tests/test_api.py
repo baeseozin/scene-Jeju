@@ -12,15 +12,75 @@ client = TestClient(app)
 def disable_external_route_calls(monkeypatch) -> None:
     """자동 테스트가 로컬 .env 값에 따라 외부 API를 호출하지 않게 합니다."""
     monkeypatch.setattr(settings, "kakao_rest_api_key", "")
+    monkeypatch.setattr(settings, "openai_api_key", "")
     monkeypatch.setattr(settings, "app_mode", "mock")
 
 
-def test_catalog_has_three_places_and_concepts() -> None:
+def test_catalog_has_three_places_and_six_concepts() -> None:
     response = client.get("/api/catalog")
     assert response.status_code == 200
     body = response.json()
     assert len(body["places"]) == 3
-    assert len(body["concepts"]) == 3
+    assert len(body["concepts"]) == 6
+    assert [concept["name"] for concept in body["concepts"]] == [
+        "청량한",
+        "자연스러운",
+        "노을 실루엣",
+        "포근한",
+        "무드있는",
+        "반짝이는",
+    ]
+
+
+def test_pose_recommendation_fallback_returns_three_concept_poses() -> None:
+    response = client.post(
+        "/api/pose-recommendations",
+        json={
+            "concept_id": "sunset",
+            "place_type": "beach",
+            "capture_mode": "photo",
+        },
+    )
+    assert response.status_code == 200
+    body = response.json()
+    assert body["source"] == "fallback"
+    assert body["model"] is None
+    assert body["framing"] == "full_body"
+    assert len(body["poses"]) == 3
+    assert body["poses"][0]["guide_type"] == "side"
+    assert all(pose["body"] and pose["hands"] and pose["gaze"] for pose in body["poses"])
+    assert all("camera" in pose and "why" in pose for pose in body["poses"])
+
+
+def test_upper_body_pose_recommendation_changes_distance_and_actions() -> None:
+    response = client.post(
+        "/api/pose-recommendations",
+        json={
+            "concept_id": "natural",
+            "place_type": "forest",
+            "capture_mode": "photo",
+            "framing": "upper_body",
+        },
+    )
+    assert response.status_code == 200
+    body = response.json()
+    assert body["framing"] == "upper_body"
+    assert "상반신" in body["basis"]
+    assert len(body["poses"]) == 3
+    assert all("머리부터 허리" in pose["camera"] for pose in body["poses"])
+    assert all("화면 밖으로 잘리지" in pose["camera"] for pose in body["poses"])
+
+
+def test_pose_recommendation_rejects_unknown_concept() -> None:
+    response = client.post(
+        "/api/pose-recommendations",
+        json={
+            "concept_id": "unknown",
+            "place_type": "urban",
+            "capture_mode": "video",
+        },
+    )
+    assert response.status_code == 404
 
 
 def test_mock_analysis_returns_complete_result() -> None:
@@ -56,13 +116,25 @@ def test_mock_analysis_returns_complete_result() -> None:
     assert body["travel_source"] == "estimated"
     assert body["capture_mode"] == "video"
     assert any("비양도" in step for step in body["guide"])
-    assert any("태양 고도" in step for step in body["guide"])
-    assert any("풍속" in step for step in body["guide"])
-    assert "방위각" in body["shooting_direction_guide"]
+    assert any("하늘은" in step for step in body["guide"])
+    assert any("바람" in step for step in body["guide"])
+    assert "방위각" not in body["shooting_direction_guide"]
     assert body["solar"]["ghi_wm2"] >= 0
     assert body["solar"]["lighting_risk"] in {"낮음", "보통", "높음"}
     assert body["solar"]["lighting_issue"]
-    assert any("예상 일사량" in step for step in body["guide"])
+    assert body["tourism_trend"]["available"] is True
+    assert body["tourism_trend"]["matched_place_name"] == "협재해수욕장"
+    assert body["tourism_trend"]["level"] == "보통"
+    assert body["tourism_trend"]["rank"] == 5
+    assert body["tourism_trend"]["is_realtime"] is False
+    assert "실시간 혼잡도가 아니라" in body["tourism_trend"]["explanation"]
+    assert any("사람 사이가 비는 순간" in step for step in body["guide"])
+    assert body["weather"]["sky"] in {"맑음", "구름 많음", "흐림"}
+    assert any("촬영자는 스마트폰 1× 카메라로" in step for step in body["guide"])
+    assert any("예상 결과:" in step for step in body["guide"])
+    assert "전경" not in " ".join(body["guide"])
+    user_copy = " ".join(body["guide"] + body["reasons"] + [body["shooting_direction_guide"]])
+    assert all(term not in user_copy for term in ("태양 고도", "방위각", "풍속", "일사량", "W/m²", "m/s"))
 
 
 def test_custom_place_is_used_for_analysis() -> None:
@@ -87,6 +159,8 @@ def test_custom_place_is_used_for_analysis() -> None:
     body = response.json()
     assert body["place"]["id"] == "custom"
     assert body["place"]["name"] == "함덕해수욕장"
+    assert body["tourism_trend"]["available"] is True
+    assert body["tourism_trend"]["rank"] == 4
     assert body["place"]["latitude"] == 33.5431
     expected_direction = round((body["solar"]["azimuth"] - 180) % 360, 1)
     assert body["place"]["shooting_azimuth"] == expected_direction
