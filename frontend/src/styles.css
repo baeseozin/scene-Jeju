@@ -812,24 +812,32 @@ button {
 
 .analyze-button {
   width: 100%;
-  height: 76px;
-  margin-top: 20px;
-  border: 0;
+  min-height: 90px;
+  margin-top: 28px;
+  border: 2px solid var(--analyze-accent, var(--mint));
   color: white;
-  background: var(--deep);
-  padding: 0 28px 0 32px;
+  background: linear-gradient(120deg, #122d27, color-mix(in srgb, var(--analyze-accent, var(--mint)) 32%, #122d27));
+  box-shadow:
+    0 15px 34px rgba(14, 39, 32, .25),
+    0 0 0 5px color-mix(in srgb, var(--analyze-accent, var(--mint)) 16%, transparent);
+  padding: 0 24px 0 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 19px;
   font-weight: 700;
   letter-spacing: -0.02em;
-  transition: 160ms ease;
+  transform: translateY(0);
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
 }
 
 .analyze-button:hover:not(:disabled) {
-  background: #245547;
+  background: linear-gradient(120deg, #173d33, color-mix(in srgb, var(--analyze-accent, var(--mint)) 45%, #173d33));
+  box-shadow:
+    0 19px 38px rgba(14, 39, 32, .32),
+    0 0 0 7px color-mix(in srgb, var(--analyze-accent, var(--mint)) 22%, transparent);
+  transform: translateY(-3px);
 }
 
 .analyze-button:disabled {
@@ -840,19 +848,35 @@ button {
 .analyze-button b {
   display: grid;
   place-items: center;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   color: var(--ink);
-  background: var(--mint);
-  font-size: 20px;
+  background: var(--analyze-accent, var(--mint));
+  box-shadow: 0 5px 16px rgba(0,0,0,.2);
+  font-size: 24px;
+}
+
+.analyze-button > span {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.analyze-button > span small {
+  color: color-mix(in srgb, var(--analyze-accent, var(--mint)) 72%, white);
+  font: 500 8px "DM Mono", monospace;
+  letter-spacing: .12em;
 }
 
 .result-section {
   color: #eef3ef;
   background:
-    radial-gradient(circle at 86% 13%, rgba(93, 175, 151, 0.2), transparent 22%),
-    var(--deep);
+    radial-gradient(circle at 86% 10%, var(--result-glow, rgba(93, 175, 151, .2)), transparent 28%),
+    radial-gradient(circle at 4% 55%, color-mix(in srgb, var(--mint) 13%, transparent), transparent 27%),
+    linear-gradient(150deg, color-mix(in srgb, var(--deep) 90%, black), var(--deep) 60%, color-mix(in srgb, var(--deep) 86%, white));
+  transition: background .45s ease;
 }
 
 .result-section > * {
@@ -866,7 +890,7 @@ button {
 }
 
 .light-heading p {
-  color: #8aa199;
+  color: var(--result-muted, #8aa199);
 }
 
 .warning-banner {
@@ -913,7 +937,7 @@ button {
 .score-ring span,
 .score-ring small {
   display: block;
-  color: #8aa199;
+  color: var(--result-muted, #8aa199);
   font: 500 9px "DM Mono", monospace;
   letter-spacing: 0.12em;
 }
@@ -965,7 +989,7 @@ button {
 }
 
 .arrival-strip small {
-  color: #8aa199;
+  color: var(--result-muted, #8aa199);
   font-family: "Noto Sans KR", sans-serif;
 }
 
@@ -1003,7 +1027,7 @@ button {
 
 .condition-card > small {
   display: block;
-  color: #7f958d;
+  color: var(--result-muted, #7f958d);
   font: 500 9px "DM Mono", monospace;
   letter-spacing: 0.14em;
 }
@@ -1027,7 +1051,7 @@ button {
 }
 
 .condition-card p {
-  color: #8aa199;
+  color: var(--result-muted, #8aa199);
   margin: 0;
   font-size: 11px;
 }
@@ -1038,6 +1062,93 @@ button {
   gap: 20px;
   margin-top: 20px;
 }
+
+.tourism-trend-panel {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr) 210px;
+  gap: 26px;
+  align-items: center;
+  margin-top: 20px;
+  padding: 24px 26px;
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.tourism-trend-badge {
+  min-height: 102px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.tourism-trend-badge span,
+.tourism-trend-copy > small,
+.tourism-trend-meta > small {
+  color: #7f958d;
+  font: 500 9px "DM Mono", monospace;
+  letter-spacing: 0.12em;
+}
+
+.tourism-trend-badge strong {
+  color: var(--mint);
+  font-size: 25px;
+}
+
+.tourism-trend-copy h3 {
+  margin: 5px 0 8px;
+  color: white;
+  font-size: 20px;
+}
+
+.tourism-trend-copy p,
+.tourism-trend-copy b {
+  color: #aebdb8;
+  font-size: 11px;
+  line-height: 1.65;
+}
+
+.tourism-trend-copy b {
+  display: block;
+  margin-top: 8px;
+  color: #e2ece8;
+  font-weight: 500;
+}
+
+.tourism-trend-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 7px;
+  text-align: right;
+}
+
+.tourism-trend-meta strong {
+  color: white;
+  font: 500 27px "DM Mono", monospace;
+}
+
+.tourism-trend-meta strong small {
+  margin-left: 5px;
+  color: #7f958d;
+  font: 400 10px "Noto Sans KR", sans-serif;
+}
+
+.tourism-trend-meta span,
+.tourism-trend-meta a {
+  color: #b7c5c0;
+  font-size: 10px;
+}
+
+.tourism-trend-meta a {
+  color: var(--mint);
+  text-decoration: none;
+}
+
+.tourism-trend-panel.trend-높음 .tourism-trend-badge strong { color: #ff927f; }
+.tourism-trend-panel.trend-보통 .tourism-trend-badge strong { color: #f2c66d; }
+.tourism-trend-panel.trend-낮음 .tourism-trend-badge strong { color: #8bd4b8; }
 
 .score-panel,
 .reason-panel,
@@ -1526,6 +1637,546 @@ footer p {
   line-height: 1.65;
 }
 
+.concept-pose-recommendations {
+  margin-top: 20px;
+  padding: 18px;
+  border: 1px solid rgba(185,241,221,.18);
+  background: rgba(185,241,221,.035);
+}
+
+.concept-pose-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, .9fr);
+  gap: 18px;
+  align-items: end;
+}
+
+.concept-pose-heading span {
+  color: var(--mint);
+  font: 600 9px "DM Mono", monospace;
+  letter-spacing: .1em;
+}
+
+.concept-pose-heading h4 {
+  margin: 5px 0 0;
+  color: #fff;
+  font-size: 18px;
+}
+
+.concept-pose-heading p,
+.concept-pose-basis {
+  margin: 0;
+  color: #aebdb8;
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+.concept-pose-basis {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,.1);
+}
+
+.framing-selector {
+  display: grid;
+  grid-template-columns: minmax(150px, .65fr) minmax(260px, 1fr);
+  align-items: center;
+  gap: 16px;
+  margin-top: 14px;
+  padding: 12px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.16);
+}
+
+.framing-selector > div:first-child small,
+.framing-selector > div:first-child strong {
+  display: block;
+}
+
+.framing-selector > div:first-child small {
+  color: var(--mint);
+  font: 600 8px "DM Mono", monospace;
+  letter-spacing: .1em;
+}
+
+.framing-selector > div:first-child strong {
+  margin-top: 5px;
+  color: #fff;
+  font-size: 12px;
+}
+
+.framing-choice {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.framing-choice button {
+  min-height: 48px;
+  padding: 8px 10px;
+  border: 1px solid rgba(255,255,255,.18);
+  color: #c8d5d0;
+  background: rgba(255,255,255,.04);
+  cursor: pointer;
+}
+
+.framing-choice button span,
+.framing-choice button small {
+  display: block;
+}
+
+.framing-choice button span {
+  color: inherit;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.framing-choice button small {
+  margin-top: 3px;
+  color: #81938d;
+  font-size: 8px;
+}
+
+.framing-choice button.selected {
+  border-color: var(--mint);
+  color: var(--ink);
+  background: var(--mint);
+  box-shadow: 0 8px 24px rgba(0,0,0,.16);
+}
+
+.framing-choice button.selected small {
+  color: #315248;
+}
+
+.concept-pose-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+  margin-top: 12px;
+}
+
+.concept-pose-grid > button {
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid rgba(255,255,255,.15);
+  color: #dce9e4;
+  background: rgba(255,255,255,.035);
+  text-align: left;
+  cursor: pointer;
+}
+
+.concept-pose-grid > button.selected {
+  border-color: var(--mint);
+  background: rgba(185,241,221,.1);
+  box-shadow: inset 0 0 0 1px rgba(185,241,221,.2);
+}
+
+.concept-pose-grid button > small {
+  display: block;
+  color: var(--mint);
+  font: 600 8px "DM Mono", monospace;
+  letter-spacing: .08em;
+}
+
+.concept-pose-grid button > strong {
+  display: block;
+  margin-top: 5px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.concept-pose-grid button > span,
+.concept-pose-grid dd,
+.concept-pose-grid em {
+  color: #b7c5c0;
+  font-size: 9px;
+  line-height: 1.55;
+}
+
+.concept-pose-grid button > span {
+  display: block;
+  min-height: 42px;
+  margin-top: 7px;
+}
+
+.concept-pose-grid dl {
+  margin: 10px 0 0;
+  padding-top: 9px;
+  border-top: 1px solid rgba(255,255,255,.09);
+}
+
+.concept-pose-grid dl div {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 7px;
+  margin-top: 5px;
+}
+
+.concept-pose-grid dt {
+  color: var(--mint);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.concept-pose-grid dd {
+  margin: 0;
+}
+
+.concept-pose-grid em {
+  display: block;
+  margin-top: 10px;
+  padding-top: 9px;
+  border-top: 1px dashed rgba(185,241,221,.16);
+  color: #d8e7e1;
+  font-style: normal;
+}
+
+.camera-entry-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.pose-camera-button,
+.native-camera-button {
+  display: grid;
+  place-items: center;
+  min-height: 48px;
+  border: 1px solid var(--mint);
+  color: var(--ink);
+  background: var(--mint);
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.pose-camera-button:disabled {
+  opacity: .5;
+  cursor: wait;
+}
+
+.native-camera-button {
+  color: #dce9e4;
+  border-color: rgba(255,255,255,.22);
+  background: rgba(255,255,255,.055);
+}
+
+.native-camera-button input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.pose-camera {
+  margin-top: 12px;
+  padding: 16px;
+  border: 1px solid rgba(255,255,255,.16);
+  background: rgba(0,0,0,.2);
+}
+
+.pose-camera-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 12px;
+}
+
+.pose-camera-heading small {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--mint);
+  font: 500 9px "DM Mono", monospace;
+}
+
+.pose-camera-heading strong {
+  color: white;
+  font-size: 19px;
+}
+
+.pose-camera-heading p {
+  max-width: 420px;
+  margin: 0;
+  color: #aebdb8;
+  font-size: 10px;
+  line-height: 1.55;
+  text-align: right;
+}
+
+.pose-recommendation-reason {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  width: min(100%, 520px);
+  margin: 0 auto 12px;
+  padding: 10px 12px;
+  border: 1px solid rgba(185,241,221,.18);
+  background: rgba(185,241,221,.055);
+}
+
+.pose-recommendation-reason span {
+  color: var(--mint);
+  font: 600 8px "DM Mono", monospace;
+  letter-spacing: .08em;
+}
+
+.pose-recommendation-reason p {
+  margin: 0;
+  color: #c4d0cc;
+  font-size: 9px;
+  line-height: 1.55;
+}
+
+.pose-camera-stage {
+  position: relative;
+  width: min(100%, 390px);
+  aspect-ratio: 9 / 16;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #07110e;
+  box-shadow: 0 20px 50px rgba(0,0,0,.28);
+}
+
+.pose-camera-stage video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pose-camera-stage video.mirrored {
+  transform: scaleX(-1);
+}
+
+.pose-overlay {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: #b9f1dd;
+  filter: drop-shadow(0 2px 7px rgba(0,0,0,.65));
+  pointer-events: none;
+}
+
+.ai-pose-score {
+  position: absolute;
+  z-index: 5;
+  top: 17px;
+  right: 17px;
+  padding: 7px 10px;
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 999px;
+  color: white;
+  background: rgba(0,0,0,.55);
+  font: 600 8px "DM Mono", monospace;
+  letter-spacing: .04em;
+}
+
+.pose-safe-line {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  bottom: 18px;
+  width: calc(100% - 36px);
+  padding: 8px 10px;
+  color: white;
+  background: rgba(0,0,0,.48);
+  border-radius: 999px;
+  font-size: 9px;
+  text-align: center;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.camera-recording-time {
+  position: absolute;
+  z-index: 3;
+  top: 17px;
+  left: 17px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  color: white;
+  background: rgba(0,0,0,.52);
+  border-radius: 999px;
+  font: 600 9px "DM Mono", monospace;
+}
+
+.camera-recording-time i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ff6158;
+  animation: recording-pulse 1s ease-in-out infinite;
+}
+
+@keyframes recording-pulse {
+  50% { opacity: .28; }
+}
+
+.pose-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+  width: min(100%, 520px);
+  margin: 14px auto 0;
+}
+
+.pose-choice-grid button,
+.camera-control-row button {
+  min-height: 38px;
+  padding: 0 6px;
+  color: #dce9e4;
+  border: 1px solid rgba(255,255,255,.17);
+  background: rgba(255,255,255,.04);
+  cursor: pointer;
+  font-size: 9px;
+}
+
+.pose-choice-grid button.selected {
+  color: var(--ink);
+  border-color: var(--mint);
+  background: var(--mint);
+}
+
+.pose-choice-grid button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pose-choice-grid button small {
+  color: #71877f;
+  font: 500 7px "DM Mono", monospace;
+}
+
+.pose-choice-grid button.selected small {
+  color: #315248;
+}
+
+.ai-coach-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  width: min(100%, 520px);
+  margin: 10px auto 0;
+}
+
+.ai-coach-options label {
+  min-width: 0;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid rgba(255,255,255,.14);
+  color: white;
+  background: rgba(255,255,255,.035);
+  cursor: pointer;
+}
+
+.ai-coach-options label.disabled {
+  cursor: default;
+  opacity: .4;
+}
+
+.ai-coach-options input {
+  flex: 0 0 auto;
+  width: 17px;
+  height: 17px;
+  margin: 0;
+  accent-color: var(--mint);
+}
+
+.ai-coach-options span {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ai-coach-options strong {
+  font-size: 9px;
+}
+
+.ai-coach-options small {
+  overflow: hidden;
+  color: #81938d;
+  font-size: 7px;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.overlay-opacity-control {
+  display: grid;
+  grid-template-columns: 110px 1fr 42px;
+  align-items: center;
+  gap: 9px;
+  width: min(100%, 520px);
+  margin: 12px auto 0;
+}
+
+.overlay-opacity-control span,
+.overlay-opacity-control strong {
+  color: #9fb0aa;
+  font-size: 9px;
+}
+
+.overlay-opacity-control strong {
+  color: var(--mint);
+  font: 500 9px "DM Mono", monospace;
+  text-align: right;
+}
+
+.overlay-opacity-control input {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  accent-color: var(--mint);
+}
+
+.camera-control-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  width: min(100%, 520px);
+  margin: 12px auto 0;
+}
+
+.camera-control-row .camera-shutter {
+  color: var(--ink);
+  border-color: var(--mint);
+  background: var(--mint);
+  font-weight: 700;
+}
+
+.camera-control-row .camera-shutter.recording {
+  color: white;
+  border-color: #f06058;
+  background: #c8413a;
+}
+
+.camera-control-row button:disabled {
+  cursor: default;
+  opacity: .34;
+}
+
+.pose-camera-note {
+  width: min(100%, 520px);
+  margin: 11px auto 0;
+  color: #71877f;
+  font-size: 9px;
+  line-height: 1.55;
+  text-align: center;
+}
+
 .media-upload {
   display: grid;
   place-items: center;
@@ -1922,6 +2573,314 @@ footer p {
   font-size: 10px;
 }
 
+/* 컨셉별 결과 장면: 밝은 분위기 배경 위에 정보 카드를 분리해 가독성을 확보합니다. */
+.result-section {
+  --result-text: #24312e;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: var(--result-text);
+  background:
+    radial-gradient(circle at 84% 8%, var(--result-orb) 0 6%, transparent 6.4%),
+    radial-gradient(ellipse at 12% 38%, var(--result-glow) 0%, transparent 34%),
+    linear-gradient(155deg, var(--result-start) 0%, var(--result-middle) 48%, var(--result-end) 100%);
+}
+
+.result-section::before,
+.result-section::after {
+  position: absolute;
+  z-index: 0;
+  content: "";
+  pointer-events: none;
+}
+
+.result-section::before {
+  top: 105px;
+  right: -110px;
+  width: 430px;
+  height: 430px;
+  border: 1px solid color-mix(in srgb, var(--result-accent) 16%, transparent);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 62px color-mix(in srgb, var(--result-orb) 25%, transparent),
+    0 0 0 124px color-mix(in srgb, var(--result-orb) 13%, transparent);
+  opacity: .72;
+}
+
+.result-section::after {
+  top: 520px;
+  left: -8%;
+  width: 116%;
+  height: 190px;
+  border-top: 1px solid color-mix(in srgb, var(--result-accent) 15%, transparent);
+  border-radius: 50% 50% 0 0;
+  background: linear-gradient(180deg, color-mix(in srgb, white 12%, transparent), transparent 65%);
+  opacity: .72;
+}
+
+.result-section.concept-refreshing {
+  background:
+    radial-gradient(ellipse at 82% 11%, rgba(255,255,255,.78) 0 7%, transparent 22%),
+    radial-gradient(ellipse at 17% 26%, rgba(255,255,255,.46) 0 8%, transparent 22%),
+    linear-gradient(158deg, var(--result-start) 0%, var(--result-middle) 48%, var(--result-end) 100%);
+}
+
+.result-section.concept-natural {
+  background:
+    radial-gradient(circle at 79% 8%, var(--result-orb) 0 7%, transparent 18%),
+    linear-gradient(118deg, rgba(255,255,255,.35) 0 8%, transparent 9% 19%, rgba(255,255,255,.18) 20% 27%, transparent 28%),
+    linear-gradient(158deg, var(--result-start) 0%, var(--result-middle) 48%, var(--result-end) 100%);
+}
+
+.result-section.concept-sunset {
+  background:
+    radial-gradient(circle at 79% 9%, #ffe3a2 0 72px, rgba(255,226,157,.42) 73px 118px, transparent 120px),
+    linear-gradient(176deg, var(--result-start) 0%, #f5bf8f 30%, var(--result-middle) 52%, var(--result-end) 100%);
+}
+
+.result-section.concept-sunset::after {
+  top: 470px;
+  height: 280px;
+  border-top-color: rgba(117,72,105,.17);
+  background:
+    linear-gradient(178deg, rgba(255,245,224,.22), rgba(116,75,116,.10) 55%, transparent 56%),
+    repeating-linear-gradient(175deg, transparent 0 30px, rgba(255,255,255,.12) 31px 32px);
+}
+
+.result-section.concept-cozy {
+  background:
+    radial-gradient(circle at 83% 8%, var(--result-orb) 0 8%, transparent 23%),
+    radial-gradient(circle at 8% 42%, rgba(255,255,255,.38), transparent 24%),
+    linear-gradient(150deg, var(--result-start), var(--result-middle) 48%, var(--result-end));
+}
+
+.result-section.concept-film {
+  background:
+    linear-gradient(120deg, rgba(255,255,255,.18) 0 1px, transparent 1px 38px),
+    radial-gradient(circle at 81% 9%, var(--result-orb) 0 7%, transparent 20%),
+    linear-gradient(155deg, var(--result-start), var(--result-middle) 48%, var(--result-end));
+}
+
+.result-section.concept-sparkling {
+  background:
+    radial-gradient(circle at 84% 9%, rgba(255,255,255,.92) 0 4%, transparent 4.5%),
+    radial-gradient(circle at 75% 16%, rgba(255,255,255,.52) 0 1.2%, transparent 1.6%),
+    radial-gradient(circle at 91% 22%, rgba(255,255,255,.46) 0 1%, transparent 1.5%),
+    radial-gradient(ellipse at 14% 40%, var(--result-glow), transparent 30%),
+    linear-gradient(155deg, var(--result-start), var(--result-middle) 48%, var(--result-end));
+}
+
+.result-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+.result-section .light-heading,
+.result-section .light-heading h2,
+.result-section .result-copy h2,
+.result-section .result-copy > strong,
+.result-section .condition-card strong,
+.result-section .time-slot-grid strong,
+.result-section .tourism-trend-copy h3,
+.result-section .tourism-trend-meta strong,
+.result-section .guide-heading h3,
+.result-section .guide-heading > p {
+  color: var(--result-text);
+}
+
+.result-section .light-heading p,
+.result-section .result-copy > p:not(:first-child),
+.result-section .source-note,
+.result-section .condition-card > small,
+.result-section .condition-card p,
+.result-section .time-slot-grid span,
+.result-section .time-slot-grid small,
+.result-section .tourism-trend-badge span,
+.result-section .tourism-trend-copy > small,
+.result-section .tourism-trend-copy p,
+.result-section .tourism-trend-meta > small,
+.result-section .tourism-trend-meta strong small,
+.result-section .tourism-trend-meta span,
+.result-section .reason-panel li,
+.result-section .guide-heading p small,
+.result-section .guide-panel li p {
+  color: var(--result-muted) !important;
+}
+
+.result-section .result-hero,
+.result-section .best-time-panel,
+.result-section .time-slot-grid,
+.result-section .condition-grid,
+.result-section .tourism-trend-panel,
+.result-section .score-panel,
+.result-section .reason-panel,
+.result-section .guide-panel {
+  border: 1px solid var(--result-line);
+  background: var(--result-card);
+  box-shadow: 0 18px 46px rgba(65, 67, 61, .10);
+  backdrop-filter: blur(16px);
+}
+
+.result-section .result-hero {
+  padding: 36px;
+  border-radius: 30px;
+}
+
+.result-section .score-ring {
+  background: conic-gradient(var(--status) calc(var(--score) * 1%), rgba(33,50,46,.12) 0);
+  box-shadow: 0 15px 34px rgba(48,55,52,.13);
+}
+
+.result-section .score-ring::before {
+  background: rgba(255,255,255,.90);
+}
+
+.result-section .score-ring strong {
+  color: var(--result-text);
+}
+
+.result-section .score-ring span,
+.result-section .score-ring small {
+  color: var(--result-muted);
+}
+
+.result-section .arrival-strip {
+  border-color: var(--result-line);
+  border-radius: 14px;
+  background: rgba(255,255,255,.48);
+}
+
+.result-section .arrival-strip small,
+.result-section .arrival-strip i {
+  color: var(--result-muted);
+}
+
+.result-section .arrival-strip b,
+.result-section .condition-icon,
+.result-section .score-label strong,
+.result-section .guide-heading span,
+.result-section .guide-panel li span,
+.result-section .tourism-trend-meta a {
+  color: var(--result-accent);
+}
+
+.result-section .best-time-panel {
+  color: var(--result-text);
+  border-radius: 20px;
+  background:
+    linear-gradient(120deg, color-mix(in srgb, var(--result-accent) 18%, white), rgba(255,255,255,.72));
+}
+
+.result-section .best-time-panel div > small,
+.result-section .best-time-panel p {
+  color: color-mix(in srgb, var(--result-text) 74%, var(--result-accent));
+}
+
+.result-section .time-slot-grid {
+  border-radius: 16px;
+  scrollbar-color: var(--result-accent) rgba(255,255,255,.45);
+}
+
+.result-section .time-slot-grid article {
+  border-right-color: var(--result-line);
+  background: rgba(255,255,255,.28);
+}
+
+.result-section .time-slot-grid article.best {
+  background: color-mix(in srgb, var(--result-accent) 13%, white);
+  box-shadow: inset 0 4px 0 var(--result-accent);
+}
+
+.result-section .condition-grid {
+  margin-top: 20px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.result-section .condition-card {
+  border-right-color: var(--result-line);
+}
+
+.result-section .tourism-trend-panel,
+.result-section .score-panel,
+.result-section .reason-panel,
+.result-section .guide-panel {
+  border-radius: 20px;
+}
+
+.result-section .tourism-trend-badge,
+.result-section .panel-title,
+.result-section .guide-heading,
+.result-section .guide-panel li {
+  border-color: var(--result-line);
+}
+
+.result-section .tourism-trend-copy b,
+.result-section .tourism-trend-meta a,
+.result-section .panel-title {
+  color: var(--result-text);
+}
+
+.result-section .panel-title small {
+  color: var(--result-muted);
+}
+
+.result-section .score-track {
+  background: rgba(35,57,51,.12);
+}
+
+.result-section .score-track span {
+  background: linear-gradient(90deg, color-mix(in srgb, var(--result-accent) 52%, white), var(--result-accent));
+}
+
+.result-section .reason-panel li::before {
+  color: var(--result-accent);
+}
+
+.result-section .warning-banner {
+  color: #714d19;
+  border-color: rgba(145,101,35,.22);
+  border-radius: 14px;
+  background: rgba(255,247,221,.78);
+}
+
+.result-section .media-studio {
+  --mint: color-mix(in srgb, var(--result-accent) 26%, white);
+  border-color: rgba(255,255,255,.18);
+  border-radius: 24px;
+  color: #eef5f2;
+  background:
+    radial-gradient(circle at 88% 6%, color-mix(in srgb, var(--mint) 13%, transparent), transparent 26%),
+    linear-gradient(145deg, color-mix(in srgb, var(--result-editor) 92%, black), var(--result-editor));
+  box-shadow: 0 24px 54px rgba(44,49,46,.18);
+}
+
+.result-section .media-studio .panel-title,
+.result-section .media-studio h3 {
+  color: white;
+  border-color: rgba(255,255,255,.13);
+}
+
+.result-section .media-studio .panel-title small,
+.result-section .media-studio > p {
+  color: #aebdb8;
+}
+
+.result-section .result-actions button:first-child {
+  color: white;
+  background: var(--result-accent);
+}
+
+.result-section .result-actions button:nth-child(2) {
+  color: var(--result-text);
+  border-color: var(--result-line);
+  background: rgba(255,255,255,.60);
+}
+
+.result-section .result-actions span {
+  color: var(--result-muted);
+}
+
 .history-section {
   max-width: 1440px;
   margin: 0 auto;
@@ -2275,11 +3234,12 @@ footer p {
   }
 
   .concept-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .concept-card {
-    min-height: 110px;
+    min-height: 124px;
+    padding: 13px 11px;
   }
 
   .concept-card > span {
@@ -2288,6 +3248,11 @@ footer p {
 
   .concept-card strong {
     margin: 8px 0 4px;
+    font-size: 13px;
+  }
+
+  .concept-card small {
+    font-size: 9px;
   }
 
   .coordinate-inputs {
@@ -2333,6 +3298,66 @@ footer p {
   .condition-grid,
   .detail-grid,
   .guide-panel ol {
+    grid-template-columns: 1fr;
+  }
+
+  .tourism-trend-panel {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 18px;
+  }
+
+  .tourism-trend-badge {
+    min-height: 74px;
+  }
+
+  .tourism-trend-meta {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .pose-camera {
+    padding: 12px;
+  }
+
+  .concept-pose-heading,
+  .concept-pose-grid,
+  .framing-selector {
+    grid-template-columns: 1fr;
+  }
+
+  .framing-selector {
+    gap: 10px;
+  }
+
+  .concept-pose-grid button > span {
+    min-height: 0;
+  }
+
+  .pose-camera-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .pose-camera-heading p {
+    text-align: left;
+  }
+
+  .pose-recommendation-reason,
+  .ai-coach-options {
+    grid-template-columns: 1fr;
+  }
+
+  .pose-recommendation-reason {
+    gap: 5px;
+  }
+
+  .ai-coach-options small {
+    white-space: normal;
+  }
+
+  .camera-entry-actions {
     grid-template-columns: 1fr;
   }
 
@@ -2417,5 +3442,23 @@ footer p {
 
   .analyze-button {
     margin-top: clamp(36px, 7vh, 60px);
+  }
+
+  .result-section::before {
+    top: 92px;
+    right: -104px;
+    width: 250px;
+    height: 250px;
+  }
+
+  .result-section::after {
+    top: 410px;
+    left: -16%;
+    width: 132%;
+  }
+
+  .result-section .result-hero {
+    padding: 24px 16px;
+    border-radius: 22px;
   }
 }

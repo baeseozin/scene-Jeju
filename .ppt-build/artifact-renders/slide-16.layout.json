@@ -1,0 +1,1754 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/e643ko",
+    "id": "e643ko",
+    "slide": 16,
+    "layoutId": "4e44454e-c1f8-4ef5-8c7c-3bee6d5ef6dd",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "d351d3e4-ef0c-4c32-bf0f-005b5ed86b33",
+    "masterLayoutName": "Master",
+    "backgroundColor": "#FFFFFF",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "Apple SD Gothic Neo",
+      "Helvetica Neue"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "4e44454e-c1f8-4ef5-8c7c-3bee6d5ef6dd",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "d351d3e4-ef0c-4c32-bf0f-005b5ed86b33",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "d351d3e4-ef0c-4c32-bf0f-005b5ed86b33",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/u90zup8v",
+      "id": "1",
+      "name": "Slide-Number-Placeholder-3-2",
+      "bbox": [
+        1184.18,
+        659.24,
+        54.48,
+        25.33
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.0"
+      },
+      "geometry": "rect",
+      "text": "16",
+      "textPreview": "16",
+      "resolvedFontSize": 13.33,
+      "resolvedTextStyle": {
+        "anchor": 3,
+        "fontSize": 13.33,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "right",
+        "verticalAlignment": "bottom",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "16"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "16",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "anchor": 3,
+            "fontSize": 13.33,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "right",
+            "verticalAlignment": "bottom",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "16",
+              "fontSize": 14,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#4E5E59",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/hcbi547m",
+      "id": "2",
+      "name": "Title-10-3",
+      "bbox": [
+        41.33,
+        36.12,
+        1197.33,
+        109.97
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1"
+      },
+      "geometry": "rect",
+      "text": "분석값은 네 단계의 현장 행동으로 다시 조립된다",
+      "textPreview": "분석값은 네 단계의 현장 행동으로 다시 조립된다",
+      "resolvedFontSize": 38.67,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 38.67,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "autoFit": "shrinkText",
+        "autoFitScale": 1,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "분석값은 네 단계의 현장 행동으로 다시 조립된다"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "분석값은 네 단계의 현장 행동으로 다시 조립된다",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "anchor": 1,
+            "fontSize": 38.67,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "verticalAlignment": "top",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "분석값은 네 단계의 현장 행동으로 다시 조립된다",
+              "fontSize": 39,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/gb2hwzq1",
+      "id": "3",
+      "name": "Content-Placeholder-15-4",
+      "bbox": [
+        41.33,
+        436.86,
+        272.54,
+        148.62
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.2"
+      },
+      "geometry": "rect",
+      "text": "사진 모드\n전신·허리 위·배경 중심\n연속 촬영 선택",
+      "textPreview": "사진 모드 | 전신·허리 위·배경 중심 | 연속 촬영 선택",
+      "resolvedFontSize": 21.33,
+      "resolvedTextStyle": {
+        "fontSize": 21.33,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 3,
+        "lines": [
+          {
+            "index": 1,
+            "text": "사진 모드"
+          },
+          {
+            "index": 2,
+            "text": "전신·허리 위·배경 중심"
+          },
+          {
+            "index": 3,
+            "text": "연속 촬영 선택"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "사진 모드",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 500,
+          "resolvedTextStyle": {
+            "fontSize": 21.33,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "사진 모드",
+              "fontSize": 23,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "전신·허리 위·배경 중심\n연속 촬영 선택",
+          "lineSpacingPercent": 116000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 21.33,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "전신·허리 위·배경 중심\n연속 촬영 선택",
+              "fontSize": 19,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#4E5E59"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/7m90zu9k",
+      "id": "4",
+      "name": "Text-Placeholder-16-5",
+      "bbox": [
+        350.13,
+        436.86,
+        272.54,
+        148.62
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.3"
+      },
+      "geometry": "rect",
+      "text": "영상 모드\n4개 짧은 장면\n시간·카메라 이동",
+      "textPreview": "영상 모드 | 4개 짧은 장면 | 시간·카메라 이동",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 3,
+        "lines": [
+          {
+            "index": 1,
+            "text": "영상 모드"
+          },
+          {
+            "index": 2,
+            "text": "4개 짧은 장면"
+          },
+          {
+            "index": 3,
+            "text": "시간·카메라 이동"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "영상 모드",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 500,
+          "resolvedTextStyle": {
+            "fontSize": 24,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "영상 모드",
+              "fontSize": 23,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "4개 짧은 장면\n시간·카메라 이동",
+          "lineSpacingPercent": 116000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 24,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "4개 짧은 장면\n시간·카메라 이동",
+              "fontSize": 19,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#4E5E59"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/6l0zqp8z",
+      "id": "5",
+      "name": "Content-Placeholder-17-6",
+      "bbox": [
+        657.68,
+        436.86,
+        272.54,
+        148.62
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.4"
+      },
+      "geometry": "rect",
+      "text": "예시 장소\n장소×컨셉 전용 템플릿\n없으면 유형 템플릿",
+      "textPreview": "예시 장소 | 장소×컨셉 전용 템플릿 | 없으면 유형 템플릿",
+      "resolvedFontSize": 21.33,
+      "resolvedTextStyle": {
+        "fontSize": 21.33,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 3,
+        "lines": [
+          {
+            "index": 1,
+            "text": "예시 장소"
+          },
+          {
+            "index": 2,
+            "text": "장소×컨셉 전용 템플릿"
+          },
+          {
+            "index": 3,
+            "text": "없으면 유형 템플릿"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "예시 장소",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 500,
+          "resolvedTextStyle": {
+            "fontSize": 21.33,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "예시 장소",
+              "fontSize": 23,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "장소×컨셉 전용 템플릿\n없으면 유형 템플릿",
+          "lineSpacingPercent": 116000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 21.33,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "장소×컨셉 전용 템플릿\n없으면 유형 템플릿",
+              "fontSize": 19,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#4E5E59"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/t8ri14ra",
+      "id": "6",
+      "name": "Text-Placeholder-18-7",
+      "bbox": [
+        966.48,
+        436.86,
+        272.54,
+        148.62
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.5"
+      },
+      "geometry": "rect",
+      "text": "쉬운 언어\n‘전경’ 대신 앞/뒤\n각도 대신 몇 걸음",
+      "textPreview": "쉬운 언어 | ‘전경’ 대신 앞/뒤 | 각도 대신 몇 걸음",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 3,
+        "lines": [
+          {
+            "index": 1,
+            "text": "쉬운 언어"
+          },
+          {
+            "index": 2,
+            "text": "‘전경’ 대신 앞/뒤"
+          },
+          {
+            "index": 3,
+            "text": "각도 대신 몇 걸음"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "쉬운 언어",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 500,
+          "resolvedTextStyle": {
+            "fontSize": 24,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "쉬운 언어",
+              "fontSize": 23,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "‘전경’ 대신 앞/뒤\n각도 대신 몇 걸음",
+          "lineSpacingPercent": 116000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 24,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "‘전경’ 대신 앞/뒤\n각도 대신 몇 걸음",
+              "fontSize": 19,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#4E5E59"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/snihszqp",
+      "id": "7",
+      "name": "Content-Placeholder-15-8",
+      "bbox": [
+        41.33,
+        231.82,
+        272.54,
+        148.62
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.6"
+      },
+      "geometry": "rect",
+      "text": "1. 거리\n인물↔주요 배경\n촬영자↔인물\n스마트폰 1× 기준",
+      "textPreview": "1. 거리 | 인물↔주요 배경 | 촬영자↔인물 | 스마트폰 1× 기준",
+      "resolvedFontSize": 21.33,
+      "resolvedTextStyle": {
+        "fontSize": 21.33,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 4,
+        "lines": [
+          {
+            "index": 1,
+            "text": "1. 거리"
+          },
+          {
+            "index": 2,
+            "text": "인물↔주요 배경"
+          },
+          {
+            "index": 3,
+            "text": "촬영자↔인물"
+          },
+          {
+            "index": 4,
+            "text": "스마트폰 1× 기준"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "1. 거리",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 500,
+          "resolvedTextStyle": {
+            "fontSize": 21.33,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "1. 거리",
+              "fontSize": 23,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "인물↔주요 배경\n촬영자↔인물\n스마트폰 1× 기준",
+          "lineSpacingPercent": 116000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 21.33,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "인물↔주요 배경\n촬영자↔인물\n스마트폰 1× 기준",
+              "fontSize": 19,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#4E5E59"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/rit0bepo",
+      "id": "8",
+      "name": "Text-Placeholder-16-9",
+      "bbox": [
+        350.13,
+        231.82,
+        272.54,
+        148.62
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.7"
+      },
+      "geometry": "rect",
+      "text": "2. 위치\n장소를 뒤에 두는 법\n빛을 받는 방향\n현장 이동 문장",
+      "textPreview": "2. 위치 | 장소를 뒤에 두는 법 | 빛을 받는 방향 | 현장 이동 문장",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 4,
+        "lines": [
+          {
+            "index": 1,
+            "text": "2. 위치"
+          },
+          {
+            "index": 2,
+            "text": "장소를 뒤에 두는 법"
+          },
+          {
+            "index": 3,
+            "text": "빛을 받는 방향"
+          },
+          {
+            "index": 4,
+            "text": "현장 이동 문장"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "2. 위치",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 500,
+          "resolvedTextStyle": {
+            "fontSize": 24,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "2. 위치",
+              "fontSize": 23,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "장소를 뒤에 두는 법\n빛을 받는 방향\n현장 이동 문장",
+          "lineSpacingPercent": 116000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 24,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "장소를 뒤에 두는 법\n빛을 받는 방향\n현장 이동 문장",
+              "fontSize": 19,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#4E5E59"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/qhkj2983",
+      "id": "9",
+      "name": "Content-Placeholder-17-10",
+      "bbox": [
+        657.68,
+        231.82,
+        272.54,
+        148.62
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.8"
+      },
+      "geometry": "rect",
+      "text": "3. 하늘·바람\n기상청 SKY 설명\n흔들림·머리카락\n컨셉 동작",
+      "textPreview": "3. 하늘·바람 | 기상청 SKY 설명 | 흔들림·머리카락 | 컨셉 동작",
+      "resolvedFontSize": 21.33,
+      "resolvedTextStyle": {
+        "fontSize": 21.33,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 4,
+        "lines": [
+          {
+            "index": 1,
+            "text": "3. 하늘·바람"
+          },
+          {
+            "index": 2,
+            "text": "기상청 SKY 설명"
+          },
+          {
+            "index": 3,
+            "text": "흔들림·머리카락"
+          },
+          {
+            "index": 4,
+            "text": "컨셉 동작"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "3. 하늘·바람",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 500,
+          "resolvedTextStyle": {
+            "fontSize": 21.33,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "3. 하늘·바람",
+              "fontSize": 23,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "기상청 SKY 설명\n흔들림·머리카락\n컨셉 동작",
+          "lineSpacingPercent": 116000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 21.33,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "기상청 SKY 설명\n흔들림·머리카락\n컨셉 동작",
+              "fontSize": 19,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#4E5E59"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/476hsby5",
+      "id": "10",
+      "name": "Text-Placeholder-18-11",
+      "bbox": [
+        966.48,
+        231.82,
+        272.54,
+        148.62
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.9"
+      },
+      "geometry": "rect",
+      "text": "4. 결과\n빛·비 설명\n마무리 동작\n예상 노출 실패",
+      "textPreview": "4. 결과 | 빛·비 설명 | 마무리 동작 | 예상 노출 실패",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 4,
+        "lines": [
+          {
+            "index": 1,
+            "text": "4. 결과"
+          },
+          {
+            "index": 2,
+            "text": "빛·비 설명"
+          },
+          {
+            "index": 3,
+            "text": "마무리 동작"
+          },
+          {
+            "index": 4,
+            "text": "예상 노출 실패"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "4. 결과",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 500,
+          "resolvedTextStyle": {
+            "fontSize": 24,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "4. 결과",
+              "fontSize": 23,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "빛·비 설명\n마무리 동작\n예상 노출 실패",
+          "lineSpacingPercent": 116000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 24,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "빛·비 설명\n마무리 동작\n예상 노출 실패",
+              "fontSize": 19,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#4E5E59"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/58fi1gfq",
+      "id": "11",
+      "name": "accent-line-16",
+      "bbox": [
+        0,
+        0,
+        1280,
+        7
+      ],
+      "geometry": "rect",
+      "fillColor": "#2D8C73",
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": [
+    {
+      "index": 1,
+      "frame": {
+        "left": 0,
+        "top": 0,
+        "width": 1280,
+        "height": 720
+      },
+      "baseUnit": 1,
+      "root": {
+        "path": "0",
+        "kind": "layers",
+        "name": "codex-grid-layout-library#slide-16",
+        "requestedSize": {
+          "width": {
+            "mode": "fill",
+            "value": 1
+          },
+          "height": {
+            "mode": "fill",
+            "value": 1
+          }
+        },
+        "intrinsicSize": {
+          "width": 1239.02,
+          "height": 684.57
+        },
+        "frame": {
+          "left": 0,
+          "top": 0,
+          "width": 1280,
+          "height": 720
+        },
+        "children": [
+          {
+            "path": "0.0",
+            "kind": "text",
+            "name": "Slide-Number-Placeholder-3-2",
+            "position": {
+              "left": 1184.18,
+              "top": 659.24
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 54.48
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 25.33
+              }
+            },
+            "intrinsicSize": {
+              "width": 54.48,
+              "height": 25.33
+            },
+            "frame": {
+              "left": 1184.18,
+              "top": 659.24,
+              "width": 54.48,
+              "height": 25.33
+            },
+            "snappedFrame": {
+              "left": 1184.18,
+              "top": 659.24,
+              "width": 54.48,
+              "height": 25.33
+            },
+            "children": [],
+            "text": "16",
+            "transform": "none",
+            "element": {
+              "aid": "sh/u90zup8v",
+              "id": "1",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.1",
+            "kind": "text",
+            "name": "Title-10-3",
+            "position": {
+              "left": 41.33,
+              "top": 36.12
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 1197.33
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 109.97
+              }
+            },
+            "intrinsicSize": {
+              "width": 1197.33,
+              "height": 109.97
+            },
+            "frame": {
+              "left": 41.33,
+              "top": 36.12,
+              "width": 1197.33,
+              "height": 109.97
+            },
+            "snappedFrame": {
+              "left": 41.33,
+              "top": 36.12,
+              "width": 1197.33,
+              "height": 109.97
+            },
+            "children": [],
+            "text": "분석값은 네 단계의 현장 행동으로 다시 조립된다",
+            "transform": "none",
+            "element": {
+              "aid": "sh/hcbi547m",
+              "id": "2",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.2",
+            "kind": "text",
+            "name": "Content-Placeholder-15-4",
+            "position": {
+              "left": 41.33,
+              "top": 436.86
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 272.54
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 148.62
+              }
+            },
+            "intrinsicSize": {
+              "width": 272.54,
+              "height": 148.62
+            },
+            "frame": {
+              "left": 41.33,
+              "top": 436.86,
+              "width": 272.54,
+              "height": 148.62
+            },
+            "snappedFrame": {
+              "left": 41.33,
+              "top": 436.86,
+              "width": 272.54,
+              "height": 148.62
+            },
+            "children": [],
+            "text": "사진 모드\n전신·허리 위·배경 중심\n연속 촬영 선택",
+            "transform": "none",
+            "element": {
+              "aid": "sh/gb2hwzq1",
+              "id": "3",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.3",
+            "kind": "text",
+            "name": "Text-Placeholder-16-5",
+            "position": {
+              "left": 350.13,
+              "top": 436.86
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 272.54
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 148.62
+              }
+            },
+            "intrinsicSize": {
+              "width": 272.54,
+              "height": 148.62
+            },
+            "frame": {
+              "left": 350.13,
+              "top": 436.86,
+              "width": 272.54,
+              "height": 148.62
+            },
+            "snappedFrame": {
+              "left": 350.13,
+              "top": 436.86,
+              "width": 272.54,
+              "height": 148.62
+            },
+            "children": [],
+            "text": "영상 모드\n4개 짧은 장면\n시간·카메라 이동",
+            "transform": "none",
+            "element": {
+              "aid": "sh/7m90zu9k",
+              "id": "4",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.4",
+            "kind": "text",
+            "name": "Content-Placeholder-17-6",
+            "position": {
+              "left": 657.68,
+              "top": 436.86
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 272.54
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 148.62
+              }
+            },
+            "intrinsicSize": {
+              "width": 272.54,
+              "height": 148.62
+            },
+            "frame": {
+              "left": 657.68,
+              "top": 436.86,
+              "width": 272.54,
+              "height": 148.62
+            },
+            "snappedFrame": {
+              "left": 657.68,
+              "top": 436.86,
+              "width": 272.54,
+              "height": 148.62
+            },
+            "children": [],
+            "text": "예시 장소\n장소×컨셉 전용 템플릿\n없으면 유형 템플릿",
+            "transform": "none",
+            "element": {
+              "aid": "sh/6l0zqp8z",
+              "id": "5",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.5",
+            "kind": "text",
+            "name": "Text-Placeholder-18-7",
+            "position": {
+              "left": 966.48,
+              "top": 436.86
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 272.54
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 148.62
+              }
+            },
+            "intrinsicSize": {
+              "width": 272.54,
+              "height": 148.62
+            },
+            "frame": {
+              "left": 966.48,
+              "top": 436.86,
+              "width": 272.54,
+              "height": 148.62
+            },
+            "snappedFrame": {
+              "left": 966.48,
+              "top": 436.86,
+              "width": 272.54,
+              "height": 148.62
+            },
+            "children": [],
+            "text": "쉬운 언어\n‘전경’ 대신 앞/뒤\n각도 대신 몇 걸음",
+            "transform": "none",
+            "element": {
+              "aid": "sh/t8ri14ra",
+              "id": "6",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.6",
+            "kind": "text",
+            "name": "Content-Placeholder-15-8",
+            "position": {
+              "left": 41.33,
+              "top": 231.82
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 272.54
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 148.62
+              }
+            },
+            "intrinsicSize": {
+              "width": 272.54,
+              "height": 148.62
+            },
+            "frame": {
+              "left": 41.33,
+              "top": 231.82,
+              "width": 272.54,
+              "height": 148.62
+            },
+            "snappedFrame": {
+              "left": 41.33,
+              "top": 231.82,
+              "width": 272.54,
+              "height": 148.62
+            },
+            "children": [],
+            "text": "1. 거리\n인물↔주요 배경\n촬영자↔인물\n스마트폰 1× 기준",
+            "transform": "none",
+            "element": {
+              "aid": "sh/snihszqp",
+              "id": "7",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.7",
+            "kind": "text",
+            "name": "Text-Placeholder-16-9",
+            "position": {
+              "left": 350.13,
+              "top": 231.82
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 272.54
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 148.62
+              }
+            },
+            "intrinsicSize": {
+              "width": 272.54,
+              "height": 148.62
+            },
+            "frame": {
+              "left": 350.13,
+              "top": 231.82,
+              "width": 272.54,
+              "height": 148.62
+            },
+            "snappedFrame": {
+              "left": 350.13,
+              "top": 231.82,
+              "width": 272.54,
+              "height": 148.62
+            },
+            "children": [],
+            "text": "2. 위치\n장소를 뒤에 두는 법\n빛을 받는 방향\n현장 이동 문장",
+            "transform": "none",
+            "element": {
+              "aid": "sh/rit0bepo",
+              "id": "8",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.8",
+            "kind": "text",
+            "name": "Content-Placeholder-17-10",
+            "position": {
+              "left": 657.68,
+              "top": 231.82
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 272.54
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 148.62
+              }
+            },
+            "intrinsicSize": {
+              "width": 272.54,
+              "height": 148.62
+            },
+            "frame": {
+              "left": 657.68,
+              "top": 231.82,
+              "width": 272.54,
+              "height": 148.62
+            },
+            "snappedFrame": {
+              "left": 657.68,
+              "top": 231.82,
+              "width": 272.54,
+              "height": 148.62
+            },
+            "children": [],
+            "text": "3. 하늘·바람\n기상청 SKY 설명\n흔들림·머리카락\n컨셉 동작",
+            "transform": "none",
+            "element": {
+              "aid": "sh/qhkj2983",
+              "id": "9",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.9",
+            "kind": "text",
+            "name": "Text-Placeholder-18-11",
+            "position": {
+              "left": 966.48,
+              "top": 231.82
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 272.54
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 148.62
+              }
+            },
+            "intrinsicSize": {
+              "width": 272.54,
+              "height": 148.62
+            },
+            "frame": {
+              "left": 966.48,
+              "top": 231.82,
+              "width": 272.54,
+              "height": 148.62
+            },
+            "snappedFrame": {
+              "left": 966.48,
+              "top": 231.82,
+              "width": 272.54,
+              "height": 148.62
+            },
+            "children": [],
+            "text": "4. 결과\n빛·비 설명\n마무리 동작\n예상 노출 실패",
+            "transform": "none",
+            "element": {
+              "aid": "sh/476hsby5",
+              "id": "10",
+              "kind": "shape"
+            }
+          }
+        ],
+        "padding": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "alignItems": "stretch",
+        "justifyItems": "stretch",
+        "contentFrame": {
+          "left": 0,
+          "top": 0,
+          "width": 1280,
+          "height": 720
+        },
+        "items": [
+          {
+            "path": "0.0",
+            "frame": {
+              "left": 1184.18,
+              "top": 659.24,
+              "width": 54.48,
+              "height": 25.33
+            }
+          },
+          {
+            "path": "0.1",
+            "frame": {
+              "left": 41.33,
+              "top": 36.12,
+              "width": 1197.33,
+              "height": 109.97
+            }
+          },
+          {
+            "path": "0.2",
+            "frame": {
+              "left": 41.33,
+              "top": 436.86,
+              "width": 272.54,
+              "height": 148.62
+            }
+          },
+          {
+            "path": "0.3",
+            "frame": {
+              "left": 350.13,
+              "top": 436.86,
+              "width": 272.54,
+              "height": 148.62
+            }
+          },
+          {
+            "path": "0.4",
+            "frame": {
+              "left": 657.68,
+              "top": 436.86,
+              "width": 272.54,
+              "height": 148.62
+            }
+          },
+          {
+            "path": "0.5",
+            "frame": {
+              "left": 966.48,
+              "top": 436.86,
+              "width": 272.54,
+              "height": 148.62
+            }
+          },
+          {
+            "path": "0.6",
+            "frame": {
+              "left": 41.33,
+              "top": 231.82,
+              "width": 272.54,
+              "height": 148.62
+            }
+          },
+          {
+            "path": "0.7",
+            "frame": {
+              "left": 350.13,
+              "top": 231.82,
+              "width": 272.54,
+              "height": 148.62
+            }
+          },
+          {
+            "path": "0.8",
+            "frame": {
+              "left": 657.68,
+              "top": 231.82,
+              "width": 272.54,
+              "height": 148.62
+            }
+          },
+          {
+            "path": "0.9",
+            "frame": {
+              "left": 966.48,
+              "top": 231.82,
+              "width": 272.54,
+              "height": 148.62
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+Communication job: By the end, hackathon judges and teammates should understand exactly how sceneJeju converts a travel plan into an explainable shooting recommendation, because every claim is tied to the current source code and official API behavior.
+
+Narrative: user problem -> end-to-end request flow -> data acquisition -> solar/light model -> concept and scoring rules -> best-time selection -> guide generation -> frontend/editor -> reliability, tests, limitations -> key takeaway.
+
+Visual route: Codex Grid exact layout modules, white canvas, black type, pale-gray evidence surfaces, one teal project accent. Adjacent slide silhouettes vary among cover, two-column, three-column, timeline, eight-topic, three-metric, and three-milestone layouts.
+
+Audience: hackathon judges, faculty, and software students.
+Tone: factual, implementation-led, approachable; code details in visible formulas and presenter notes.
+
+Slides: 22 total.
+1 cover
+2 problem and decision target
+3 request-to-result overview
+4 architecture
+5 place search and type inference
+6 travel and arrival time
+7 weather pipeline
+8 official three-state sky data
+9 solar and irradiance internals
+10 place-specific lighting risks
+11 six concept configurations
+12 weather score
+13 light and place score
+14 final score, status, hard caps
+15 13-slot recommendation
+16 shooting guide generator
+17 technical-to-human language layer
+18 frontend and mobile result UI
+19 in-browser media editor
+20 APIs, files, and storage
+21 reliability, tests, and limitations
+22 conclusion

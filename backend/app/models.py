@@ -8,6 +8,9 @@ Status = Literal["가능", "보통", "비추천"]
 SkyState = Literal["맑음", "구름 많음", "흐림"]
 CaptureMode = Literal["photo", "video"]
 TransportMode = Literal["car", "transit", "walk"]
+TourismTrendLevel = Literal["낮음", "보통", "높음", "자료 없음"]
+PoseGuideType = Literal["open", "walk", "side", "soft"]
+FramingMode = Literal["full_body", "upper_body"]
 
 
 class Coordinate(BaseModel):
@@ -107,6 +110,23 @@ class SolarResult(BaseModel):
     lighting_issue: str = "빛 조건 안정"
 
 
+class TourismTrendResult(BaseModel):
+    available: bool
+    level: TourismTrendLevel
+    label: str
+    matched_place_name: str | None = None
+    arrivals: int | None = None
+    rank: int | None = None
+    ranked_places: int = 10
+    reference_month: str | None = None
+    source: str
+    source_url: str
+    source_kind: Literal["live", "snapshot"]
+    is_realtime: bool = False
+    explanation: str
+    shooting_tip: str
+
+
 class ScoreBreakdown(BaseModel):
     rain: int
     wind: int
@@ -145,6 +165,7 @@ class AnalyzeResponse(BaseModel):
     arrival_time: datetime
     weather: WeatherResult
     solar: SolarResult
+    tourism_trend: TourismTrendResult
     shooting_direction_guide: str
     capture_mode: CaptureMode
     time_slots: list[TimeSlotResult]
@@ -153,3 +174,30 @@ class AnalyzeResponse(BaseModel):
     scores: ScoreBreakdown
     reasons: list[str]
     guide: list[str]
+
+
+class PoseRecommendationRequest(BaseModel):
+    concept_id: str
+    place_type: Literal["beach", "forest", "urban", "indoor"]
+    capture_mode: CaptureMode
+    framing: FramingMode = "full_body"
+
+
+class PoseRecommendationItem(BaseModel):
+    id: str = Field(min_length=1, max_length=40)
+    guide_type: PoseGuideType
+    name: str = Field(min_length=1, max_length=24)
+    one_line: str = Field(min_length=1, max_length=90)
+    body: str = Field(min_length=1, max_length=120)
+    hands: str = Field(min_length=1, max_length=100)
+    gaze: str = Field(min_length=1, max_length=100)
+    camera: str = Field(min_length=1, max_length=120)
+    why: str = Field(min_length=1, max_length=140)
+
+
+class PoseRecommendationResponse(BaseModel):
+    source: Literal["openai", "fallback"]
+    model: str | None = None
+    framing: FramingMode
+    basis: str
+    poses: list[PoseRecommendationItem] = Field(min_length=3, max_length=3)

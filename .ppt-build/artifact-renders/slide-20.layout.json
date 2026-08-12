@@ -1,0 +1,1673 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/00ds7f",
+    "id": "00ds7f",
+    "slide": 20,
+    "layoutId": "4e44454e-c1f8-4ef5-8c7c-3bee6d5ef6dd",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "d351d3e4-ef0c-4c32-bf0f-005b5ed86b33",
+    "masterLayoutName": "Master",
+    "backgroundColor": "#FFFFFF",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "Apple SD Gothic Neo",
+      "Helvetica Neue"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "4e44454e-c1f8-4ef5-8c7c-3bee6d5ef6dd",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "d351d3e4-ef0c-4c32-bf0f-005b5ed86b33",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "d351d3e4-ef0c-4c32-bf0f-005b5ed86b33",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/uxkv65gb",
+      "id": "1",
+      "name": "Google-Shape-532-p58-2",
+      "bbox": [
+        1184.18,
+        659.24,
+        54.48,
+        25.33
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.0"
+      },
+      "geometry": "rect",
+      "text": "20",
+      "textPreview": "20",
+      "resolvedFontSize": 13.33,
+      "resolvedTextStyle": {
+        "anchor": 3,
+        "fontSize": 13.33,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "right",
+        "verticalAlignment": "bottom",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "20"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "20",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "anchor": 3,
+            "fontSize": 13.33,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "right",
+            "verticalAlignment": "bottom",
+            "wrap": "square",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "20",
+              "fontSize": 14,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#4E5E59",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/h0be1kzm",
+      "id": "2",
+      "name": "Google-Shape-533-p58-3",
+      "bbox": [
+        41.33,
+        36.12,
+        1197.33,
+        109.97
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1"
+      },
+      "geometry": "rect",
+      "text": "API 네 개와 역할별 파일 분리로 MVP를 추적 가능하게 만들었다",
+      "textPreview": "API 네 개와 역할별 파일 분리로 MVP를 추적 가능하게 만들었다",
+      "resolvedFontSize": 38.67,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 38.67,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "API 네 개와 역할별 파일 분리로 MVP를 추적 가능하게 만들었다"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "API 네 개와 역할별 파일 분리로 MVP를 추적 가능하게 만들었다",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "anchor": 1,
+            "fontSize": 38.67,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "verticalAlignment": "top",
+            "wrap": "square",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "API 네 개와 역할별 파일 분리로 MVP를 추적 가능하게 만들었다",
+              "fontSize": 39,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/gz2d8fy1",
+      "id": "3",
+      "name": "Content-Placeholder-10-4",
+      "bbox": [
+        732,
+        249.33,
+        506.67,
+        68
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.2"
+      },
+      "geometry": "rect",
+      "text": "data.py · models.py",
+      "textPreview": "data.py · models.py",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "fontSize": 32,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "shrinkText",
+        "autoFitScale": 1,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "data.py · models.py"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "data.py · models.py",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "data.py · models.py",
+              "fontSize": 18,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/32tw3uhs",
+      "id": "4",
+      "name": "Content-Placeholder-10-5",
+      "bbox": [
+        509.33,
+        249.33,
+        196,
+        68
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.3"
+      },
+      "geometry": "rect",
+      "text": "데이터",
+      "textPreview": "데이터",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "fontSize": 32,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "shrinkText",
+        "autoFitScale": 1,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "데이터"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "데이터",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "데이터",
+              "fontSize": 18,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#2D8C73",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/21kvapg7",
+      "id": "5",
+      "name": "Content-Placeholder-10-6",
+      "bbox": [
+        732,
+        353.33,
+        506.67,
+        68
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.4"
+      },
+      "geometry": "rect",
+      "text": "weather · solar · travel · scoring",
+      "textPreview": "weather · solar · travel · scoring",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "fontSize": 32,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "shrinkText",
+        "autoFitScale": 1,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "weather · solar · travel · scoring"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "weather · solar · travel · scoring",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "weather · solar · travel · scoring",
+              "fontSize": 18,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/pove5kzy",
+      "id": "6",
+      "name": "Content-Placeholder-10-7",
+      "bbox": [
+        509.33,
+        353.33,
+        196,
+        68
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.5"
+      },
+      "geometry": "rect",
+      "text": "서비스",
+      "textPreview": "서비스",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "fontSize": 32,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "shrinkText",
+        "autoFitScale": 1,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "서비스"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "서비스",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "서비스",
+              "fontSize": 18,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#2D8C73",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/43mdcfyd",
+      "id": "7",
+      "name": "Content-Placeholder-10-8",
+      "bbox": [
+        732,
+        457.33,
+        506.67,
+        68
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.6"
+      },
+      "geometry": "rect",
+      "text": "App · api · types · styles",
+      "textPreview": "App · api · types · styles",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "fontSize": 32,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "shrinkText",
+        "autoFitScale": 1,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "App · api · types · styles"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "App · api · types · styles",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "App · api · types · styles",
+              "fontSize": 18,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/j69crqho",
+      "id": "8",
+      "name": "Content-Placeholder-10-9",
+      "bbox": [
+        509.33,
+        457.33,
+        196,
+        68
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.7"
+      },
+      "geometry": "rect",
+      "text": "프론트",
+      "textPreview": "프론트",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "fontSize": 32,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "shrinkText",
+        "autoFitScale": 1,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "프론트"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "프론트",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "프론트",
+              "fontSize": 18,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#2D8C73",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/y50vyl03",
+      "id": "9",
+      "name": "Content-Placeholder-10-10",
+      "bbox": [
+        732,
+        562.67,
+        506.67,
+        68
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.8"
+      },
+      "geometry": "rect",
+      "text": "MediaStudio · share",
+      "textPreview": "MediaStudio · share",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "fontSize": 32,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "shrinkText",
+        "autoFitScale": 1,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "MediaStudio · share"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "MediaStudio · share",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "MediaStudio · share",
+              "fontSize": 18,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/k7a1wji5",
+      "id": "10",
+      "name": "Content-Placeholder-10-11",
+      "bbox": [
+        509.33,
+        562.67,
+        196,
+        68
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.9"
+      },
+      "geometry": "rect",
+      "text": "미디어",
+      "textPreview": "미디어",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "fontSize": 32,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "shrinkText",
+        "autoFitScale": 1,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "미디어"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "미디어",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "미디어",
+              "fontSize": 18,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#2D8C73",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/l8ji5ojq",
+      "id": "11",
+      "name": "Google-Shape-534-p58-12",
+      "bbox": [
+        41.33,
+        249.33,
+        374.67,
+        380
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.10"
+      },
+      "geometry": "rect",
+      "text": "FastAPI 엔드포인트\nGET /api/health\nGET /api/catalog\nGET /api/places/search\nGET /api/places/reverse\nPOST /api/analyze\nPydantic이 좌표 범위, 장소 입력 방식, timezone 포함 출발 시각을 검증합니다.",
+      "textPreview": "FastAPI 엔드포인트 | GET /api/health | GET /api/catalog | GET /api/places/search | GET /api/places/reverse | POST /api/analyze | Pydantic이 좌표 ...",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 32,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 8,
+        "lines": [
+          {
+            "index": 1,
+            "text": "FastAPI 엔드포인트"
+          },
+          {
+            "index": 2,
+            "text": "GET /api/health"
+          },
+          {
+            "index": 3,
+            "text": "GET /api/catalog"
+          },
+          {
+            "index": 4,
+            "text": "GET /api/places/search"
+          },
+          {
+            "index": 5,
+            "text": "GET /api/places/reverse"
+          },
+          {
+            "index": 6,
+            "text": "POST /api/analyze"
+          },
+          {
+            "index": 7,
+            "text": "Pydantic이 좌표 범위, 장소 입력 방식, timezone"
+          },
+          {
+            "index": 8,
+            "text": "포함 출발 시각을 검증합니다."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "FastAPI 엔드포인트",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 550,
+          "resolvedTextStyle": {
+            "anchor": 1,
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "verticalAlignment": "top",
+            "wrap": "square",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "FastAPI 엔드포인트",
+              "fontSize": 24,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "GET /api/health\nGET /api/catalog\nGET /api/places/search\nGET /api/places/reverse\nPOST /api/analyze",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 650,
+          "resolvedTextStyle": {
+            "anchor": 1,
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "verticalAlignment": "top",
+            "wrap": "square",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "GET /api/health\nGET /api/catalog\nGET /api/places/search\nGET /api/places/reverse\nPOST /api/analyze",
+              "fontSize": 20,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 3,
+          "text": "Pydantic이 좌표 범위, 장소 입력 방식, timezone 포함 출발 시각을 검증합니다.",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "anchor": 1,
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "verticalAlignment": "top",
+            "wrap": "square",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Pydantic이 좌표 범위, 장소 입력 방식, timezone 포함 출발 시각을 검증합니다.",
+              "fontSize": 18,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#4E5E59"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 12,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/yl8ju90z",
+      "id": "12",
+      "name": "accent-line-20",
+      "bbox": [
+        0,
+        0,
+        1280,
+        7
+      ],
+      "geometry": "rect",
+      "fillColor": "#2D8C73",
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": [
+    {
+      "index": 1,
+      "frame": {
+        "left": 0,
+        "top": 0,
+        "width": 1280,
+        "height": 720
+      },
+      "baseUnit": 1,
+      "root": {
+        "path": "0",
+        "kind": "layers",
+        "name": "codex-grid-layout-library#slide-15",
+        "requestedSize": {
+          "width": {
+            "mode": "fill",
+            "value": 1
+          },
+          "height": {
+            "mode": "fill",
+            "value": 1
+          }
+        },
+        "intrinsicSize": {
+          "width": 1238.67,
+          "height": 684.57
+        },
+        "frame": {
+          "left": 0,
+          "top": 0,
+          "width": 1280,
+          "height": 720
+        },
+        "children": [
+          {
+            "path": "0.0",
+            "kind": "text",
+            "name": "Google-Shape-532-p58-2",
+            "position": {
+              "left": 1184.18,
+              "top": 659.24
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 54.48
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 25.33
+              }
+            },
+            "intrinsicSize": {
+              "width": 54.48,
+              "height": 25.33
+            },
+            "frame": {
+              "left": 1184.18,
+              "top": 659.24,
+              "width": 54.48,
+              "height": 25.33
+            },
+            "snappedFrame": {
+              "left": 1184.18,
+              "top": 659.24,
+              "width": 54.48,
+              "height": 25.33
+            },
+            "children": [],
+            "text": "20",
+            "transform": "none",
+            "element": {
+              "aid": "sh/uxkv65gb",
+              "id": "1",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.1",
+            "kind": "text",
+            "name": "Google-Shape-533-p58-3",
+            "position": {
+              "left": 41.33,
+              "top": 36.12
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 1197.33
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 109.97
+              }
+            },
+            "intrinsicSize": {
+              "width": 1197.33,
+              "height": 109.97
+            },
+            "frame": {
+              "left": 41.33,
+              "top": 36.12,
+              "width": 1197.33,
+              "height": 109.97
+            },
+            "snappedFrame": {
+              "left": 41.33,
+              "top": 36.12,
+              "width": 1197.33,
+              "height": 109.97
+            },
+            "children": [],
+            "text": "API 네 개와 역할별 파일 분리로 MVP를 추적 가능하게 만들었다",
+            "transform": "none",
+            "element": {
+              "aid": "sh/h0be1kzm",
+              "id": "2",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.2",
+            "kind": "text",
+            "name": "Content-Placeholder-10-4",
+            "position": {
+              "left": 732,
+              "top": 249.33
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 506.67
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 68
+              }
+            },
+            "intrinsicSize": {
+              "width": 506.67,
+              "height": 68
+            },
+            "frame": {
+              "left": 732,
+              "top": 249.33,
+              "width": 506.67,
+              "height": 68
+            },
+            "snappedFrame": {
+              "left": 732,
+              "top": 249.33,
+              "width": 506.67,
+              "height": 68
+            },
+            "children": [],
+            "text": "data.py · models.py",
+            "transform": "none",
+            "element": {
+              "aid": "sh/gz2d8fy1",
+              "id": "3",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.3",
+            "kind": "text",
+            "name": "Content-Placeholder-10-5",
+            "position": {
+              "left": 509.33,
+              "top": 249.33
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 196
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 68
+              }
+            },
+            "intrinsicSize": {
+              "width": 196,
+              "height": 68
+            },
+            "frame": {
+              "left": 509.33,
+              "top": 249.33,
+              "width": 196,
+              "height": 68
+            },
+            "snappedFrame": {
+              "left": 509.33,
+              "top": 249.33,
+              "width": 196,
+              "height": 68
+            },
+            "children": [],
+            "text": "데이터",
+            "transform": "none",
+            "element": {
+              "aid": "sh/32tw3uhs",
+              "id": "4",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.4",
+            "kind": "text",
+            "name": "Content-Placeholder-10-6",
+            "position": {
+              "left": 732,
+              "top": 353.33
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 506.67
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 68
+              }
+            },
+            "intrinsicSize": {
+              "width": 506.67,
+              "height": 68
+            },
+            "frame": {
+              "left": 732,
+              "top": 353.33,
+              "width": 506.67,
+              "height": 68
+            },
+            "snappedFrame": {
+              "left": 732,
+              "top": 353.33,
+              "width": 506.67,
+              "height": 68
+            },
+            "children": [],
+            "text": "weather · solar · travel · scoring",
+            "transform": "none",
+            "element": {
+              "aid": "sh/21kvapg7",
+              "id": "5",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.5",
+            "kind": "text",
+            "name": "Content-Placeholder-10-7",
+            "position": {
+              "left": 509.33,
+              "top": 353.33
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 196
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 68
+              }
+            },
+            "intrinsicSize": {
+              "width": 196,
+              "height": 68
+            },
+            "frame": {
+              "left": 509.33,
+              "top": 353.33,
+              "width": 196,
+              "height": 68
+            },
+            "snappedFrame": {
+              "left": 509.33,
+              "top": 353.33,
+              "width": 196,
+              "height": 68
+            },
+            "children": [],
+            "text": "서비스",
+            "transform": "none",
+            "element": {
+              "aid": "sh/pove5kzy",
+              "id": "6",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.6",
+            "kind": "text",
+            "name": "Content-Placeholder-10-8",
+            "position": {
+              "left": 732,
+              "top": 457.33
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 506.67
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 68
+              }
+            },
+            "intrinsicSize": {
+              "width": 506.67,
+              "height": 68
+            },
+            "frame": {
+              "left": 732,
+              "top": 457.33,
+              "width": 506.67,
+              "height": 68
+            },
+            "snappedFrame": {
+              "left": 732,
+              "top": 457.33,
+              "width": 506.67,
+              "height": 68
+            },
+            "children": [],
+            "text": "App · api · types · styles",
+            "transform": "none",
+            "element": {
+              "aid": "sh/43mdcfyd",
+              "id": "7",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.7",
+            "kind": "text",
+            "name": "Content-Placeholder-10-9",
+            "position": {
+              "left": 509.33,
+              "top": 457.33
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 196
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 68
+              }
+            },
+            "intrinsicSize": {
+              "width": 196,
+              "height": 68
+            },
+            "frame": {
+              "left": 509.33,
+              "top": 457.33,
+              "width": 196,
+              "height": 68
+            },
+            "snappedFrame": {
+              "left": 509.33,
+              "top": 457.33,
+              "width": 196,
+              "height": 68
+            },
+            "children": [],
+            "text": "프론트",
+            "transform": "none",
+            "element": {
+              "aid": "sh/j69crqho",
+              "id": "8",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.8",
+            "kind": "text",
+            "name": "Content-Placeholder-10-10",
+            "position": {
+              "left": 732,
+              "top": 562.67
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 506.67
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 68
+              }
+            },
+            "intrinsicSize": {
+              "width": 506.67,
+              "height": 68
+            },
+            "frame": {
+              "left": 732,
+              "top": 562.67,
+              "width": 506.67,
+              "height": 68
+            },
+            "snappedFrame": {
+              "left": 732,
+              "top": 562.67,
+              "width": 506.67,
+              "height": 68
+            },
+            "children": [],
+            "text": "MediaStudio · share",
+            "transform": "none",
+            "element": {
+              "aid": "sh/y50vyl03",
+              "id": "9",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.9",
+            "kind": "text",
+            "name": "Content-Placeholder-10-11",
+            "position": {
+              "left": 509.33,
+              "top": 562.67
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 196
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 68
+              }
+            },
+            "intrinsicSize": {
+              "width": 196,
+              "height": 68
+            },
+            "frame": {
+              "left": 509.33,
+              "top": 562.67,
+              "width": 196,
+              "height": 68
+            },
+            "snappedFrame": {
+              "left": 509.33,
+              "top": 562.67,
+              "width": 196,
+              "height": 68
+            },
+            "children": [],
+            "text": "미디어",
+            "transform": "none",
+            "element": {
+              "aid": "sh/k7a1wji5",
+              "id": "10",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.10",
+            "kind": "text",
+            "name": "Google-Shape-534-p58-12",
+            "position": {
+              "left": 41.33,
+              "top": 249.33
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 374.67
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 380
+              }
+            },
+            "intrinsicSize": {
+              "width": 374.67,
+              "height": 380
+            },
+            "frame": {
+              "left": 41.33,
+              "top": 249.33,
+              "width": 374.67,
+              "height": 380
+            },
+            "snappedFrame": {
+              "left": 41.33,
+              "top": 249.33,
+              "width": 374.67,
+              "height": 380
+            },
+            "children": [],
+            "text": "FastAPI 엔드포인트\nGET /api/health\nGET /api/catalog\nGET /api/places/search\nGET /api/places/reverse\nPOST /api/analyze\nPydantic이 좌표 범위, 장소 입력 방식, timezone 포함 출발 시각을 검증합니다.",
+            "transform": "none",
+            "element": {
+              "aid": "sh/l8ji5ojq",
+              "id": "11",
+              "kind": "shape"
+            }
+          }
+        ],
+        "padding": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "alignItems": "stretch",
+        "justifyItems": "stretch",
+        "contentFrame": {
+          "left": 0,
+          "top": 0,
+          "width": 1280,
+          "height": 720
+        },
+        "items": [
+          {
+            "path": "0.0",
+            "frame": {
+              "left": 1184.18,
+              "top": 659.24,
+              "width": 54.48,
+              "height": 25.33
+            }
+          },
+          {
+            "path": "0.1",
+            "frame": {
+              "left": 41.33,
+              "top": 36.12,
+              "width": 1197.33,
+              "height": 109.97
+            }
+          },
+          {
+            "path": "0.2",
+            "frame": {
+              "left": 732,
+              "top": 249.33,
+              "width": 506.67,
+              "height": 68
+            }
+          },
+          {
+            "path": "0.3",
+            "frame": {
+              "left": 509.33,
+              "top": 249.33,
+              "width": 196,
+              "height": 68
+            }
+          },
+          {
+            "path": "0.4",
+            "frame": {
+              "left": 732,
+              "top": 353.33,
+              "width": 506.67,
+              "height": 68
+            }
+          },
+          {
+            "path": "0.5",
+            "frame": {
+              "left": 509.33,
+              "top": 353.33,
+              "width": 196,
+              "height": 68
+            }
+          },
+          {
+            "path": "0.6",
+            "frame": {
+              "left": 732,
+              "top": 457.33,
+              "width": 506.67,
+              "height": 68
+            }
+          },
+          {
+            "path": "0.7",
+            "frame": {
+              "left": 509.33,
+              "top": 457.33,
+              "width": 196,
+              "height": 68
+            }
+          },
+          {
+            "path": "0.8",
+            "frame": {
+              "left": 732,
+              "top": 562.67,
+              "width": 506.67,
+              "height": 68
+            }
+          },
+          {
+            "path": "0.9",
+            "frame": {
+              "left": 509.33,
+              "top": 562.67,
+              "width": 196,
+              "height": 68
+            }
+          },
+          {
+            "path": "0.10",
+            "frame": {
+              "left": 41.33,
+              "top": 249.33,
+              "width": 374.67,
+              "height": 380
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

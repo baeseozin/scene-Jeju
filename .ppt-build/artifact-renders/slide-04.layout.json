@@ -1,0 +1,943 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/zm64lq",
+    "id": "zm64lq",
+    "slide": 4,
+    "layoutId": "4e44454e-c1f8-4ef5-8c7c-3bee6d5ef6dd",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "d351d3e4-ef0c-4c32-bf0f-005b5ed86b33",
+    "masterLayoutName": "Master",
+    "backgroundColor": "#FFFFFF",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "Apple SD Gothic Neo",
+      "Helvetica Neue"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "4e44454e-c1f8-4ef5-8c7c-3bee6d5ef6dd",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "d351d3e4-ef0c-4c32-bf0f-005b5ed86b33",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "d351d3e4-ef0c-4c32-bf0f-005b5ed86b33",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/258nm583",
+      "id": "1",
+      "name": "Google-Shape-532-p58-2",
+      "bbox": [
+        1184.18,
+        659.24,
+        54.48,
+        25.33
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.0"
+      },
+      "geometry": "rect",
+      "text": "4",
+      "textPreview": "4",
+      "resolvedFontSize": 13.33,
+      "resolvedTextStyle": {
+        "anchor": 3,
+        "fontSize": 13.33,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "right",
+        "verticalAlignment": "bottom",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "4"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "4",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "anchor": 3,
+            "fontSize": 13.33,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "right",
+            "verticalAlignment": "bottom",
+            "wrap": "square",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "4",
+              "fontSize": 14,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#4E5E59",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/psjmx07u",
+      "id": "2",
+      "name": "Google-Shape-533-p58-3",
+      "bbox": [
+        41.33,
+        36.12,
+        1197.33,
+        109.97
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1"
+      },
+      "geometry": "rect",
+      "text": "프론트는 입력과 편집, 백엔드는 데이터 결합과 판단을 맡는다",
+      "textPreview": "프론트는 입력과 편집, 백엔드는 데이터 결합과 판단을 맡는다",
+      "resolvedFontSize": 38.67,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 38.67,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "프론트는 입력과 편집, 백엔드는 데이터 결합과 판단을 맡는다"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "프론트는 입력과 편집, 백엔드는 데이터 결합과 판단을 맡는다",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "anchor": 1,
+            "fontSize": 38.67,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "verticalAlignment": "top",
+            "wrap": "square",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "프론트는 입력과 편집, 백엔드는 데이터 결합과 판단을 맡는다",
+              "fontSize": 39,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/4ra5ovq9",
+      "id": "3",
+      "name": "Google-Shape-534-p58-4",
+      "bbox": [
+        41.33,
+        353.33,
+        374.67,
+        276
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.2"
+      },
+      "geometry": "rect",
+      "text": "React · TypeScript\n모바일 입력 UI\n카카오 지도 선택\n시간대·점수 시각화\n브라우저 내 편집·저장",
+      "textPreview": "React · TypeScript | 모바일 입력 UI | 카카오 지도 선택 | 시간대·점수 시각화 | 브라우저 내 편집·저장",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 32,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 5,
+        "lines": [
+          {
+            "index": 1,
+            "text": "React · TypeScript"
+          },
+          {
+            "index": 2,
+            "text": "모바일 입력 UI"
+          },
+          {
+            "index": 3,
+            "text": "카카오 지도 선택"
+          },
+          {
+            "index": 4,
+            "text": "시간대·점수 시각화"
+          },
+          {
+            "index": 5,
+            "text": "브라우저 내 편집·저장"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "React · TypeScript",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 500,
+          "resolvedTextStyle": {
+            "anchor": 1,
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "verticalAlignment": "top",
+            "wrap": "square",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "React · TypeScript",
+              "fontSize": 23,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "모바일 입력 UI\n카카오 지도 선택\n시간대·점수 시각화\n브라우저 내 편집·저장",
+          "lineSpacingPercent": 116000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "anchor": 1,
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "verticalAlignment": "top",
+            "wrap": "square",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "모바일 입력 UI\n카카오 지도 선택\n시간대·점수 시각화\n브라우저 내 편집·저장",
+              "fontSize": 19,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#4E5E59"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/f2h4rqps",
+      "id": "4",
+      "name": "Content-Placeholder-1-5",
+      "bbox": [
+        864,
+        353.33,
+        374.67,
+        276
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.3"
+      },
+      "geometry": "rect",
+      "text": "외부 데이터\n카카오 장소 검색\n카카오 자동차 경로\n기상청 초단기·단기예보\n실패 시 fallback",
+      "textPreview": "외부 데이터 | 카카오 장소 검색 | 카카오 자동차 경로 | 기상청 초단기·단기예보 | 실패 시 fallback",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "fontSize": 32,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "shrinkText",
+        "autoFitScale": 1,
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 5,
+        "lines": [
+          {
+            "index": 1,
+            "text": "외부 데이터"
+          },
+          {
+            "index": 2,
+            "text": "카카오 장소 검색"
+          },
+          {
+            "index": 3,
+            "text": "카카오 자동차 경로"
+          },
+          {
+            "index": 4,
+            "text": "기상청 초단기·단기예보"
+          },
+          {
+            "index": 5,
+            "text": "실패 시 fallback"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "외부 데이터",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 500,
+          "resolvedTextStyle": {
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "외부 데이터",
+              "fontSize": 23,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "카카오 장소 검색\n카카오 자동차 경로\n기상청 초단기·단기예보\n실패 시 fallback",
+          "lineSpacingPercent": 116000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "카카오 장소 검색\n카카오 자동차 경로\n기상청 초단기·단기예보\n실패 시 fallback",
+              "fontSize": 19,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#4E5E59"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/u183il87",
+      "id": "5",
+      "name": "Content-Placeholder-2-6",
+      "bbox": [
+        452.67,
+        353.33,
+        374.67,
+        276
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.4"
+      },
+      "geometry": "rect",
+      "text": "FastAPI · Python\n요청 검증\n이동시간·예보 조회\npvlib 계산\n점수·가이드 생성",
+      "textPreview": "FastAPI · Python | 요청 검증 | 이동시간·예보 조회 | pvlib 계산 | 점수·가이드 생성",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "fontSize": 32,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "shrinkText",
+        "autoFitScale": 1,
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 5,
+        "lines": [
+          {
+            "index": 1,
+            "text": "FastAPI · Python"
+          },
+          {
+            "index": 2,
+            "text": "요청 검증"
+          },
+          {
+            "index": 3,
+            "text": "이동시간·예보 조회"
+          },
+          {
+            "index": 4,
+            "text": "pvlib 계산"
+          },
+          {
+            "index": 5,
+            "text": "점수·가이드 생성"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "FastAPI · Python",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 500,
+          "resolvedTextStyle": {
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "FastAPI · Python",
+              "fontSize": 23,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "요청 검증\n이동시간·예보 조회\npvlib 계산\n점수·가이드 생성",
+          "lineSpacingPercent": 116000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "요청 검증\n이동시간·예보 조회\npvlib 계산\n점수·가이드 생성",
+              "fontSize": 19,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#4E5E59"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/h4zmt07i",
+      "id": "6",
+      "name": "accent-line-4",
+      "bbox": [
+        0,
+        0,
+        1280,
+        7
+      ],
+      "geometry": "rect",
+      "fillColor": "#2D8C73",
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": [
+    {
+      "index": 1,
+      "frame": {
+        "left": 0,
+        "top": 0,
+        "width": 1280,
+        "height": 720
+      },
+      "baseUnit": 1,
+      "root": {
+        "path": "0",
+        "kind": "layers",
+        "name": "codex-grid-layout-library#slide-06",
+        "requestedSize": {
+          "width": {
+            "mode": "fill",
+            "value": 1
+          },
+          "height": {
+            "mode": "fill",
+            "value": 1
+          }
+        },
+        "intrinsicSize": {
+          "width": 1238.67,
+          "height": 684.57
+        },
+        "frame": {
+          "left": 0,
+          "top": 0,
+          "width": 1280,
+          "height": 720
+        },
+        "children": [
+          {
+            "path": "0.0",
+            "kind": "text",
+            "name": "Google-Shape-532-p58-2",
+            "position": {
+              "left": 1184.18,
+              "top": 659.24
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 54.48
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 25.33
+              }
+            },
+            "intrinsicSize": {
+              "width": 54.48,
+              "height": 25.33
+            },
+            "frame": {
+              "left": 1184.18,
+              "top": 659.24,
+              "width": 54.48,
+              "height": 25.33
+            },
+            "snappedFrame": {
+              "left": 1184.18,
+              "top": 659.24,
+              "width": 54.48,
+              "height": 25.33
+            },
+            "children": [],
+            "text": "4",
+            "transform": "none",
+            "element": {
+              "aid": "sh/258nm583",
+              "id": "1",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.1",
+            "kind": "text",
+            "name": "Google-Shape-533-p58-3",
+            "position": {
+              "left": 41.33,
+              "top": 36.12
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 1197.33
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 109.97
+              }
+            },
+            "intrinsicSize": {
+              "width": 1197.33,
+              "height": 109.97
+            },
+            "frame": {
+              "left": 41.33,
+              "top": 36.12,
+              "width": 1197.33,
+              "height": 109.97
+            },
+            "snappedFrame": {
+              "left": 41.33,
+              "top": 36.12,
+              "width": 1197.33,
+              "height": 109.97
+            },
+            "children": [],
+            "text": "프론트는 입력과 편집, 백엔드는 데이터 결합과 판단을 맡는다",
+            "transform": "none",
+            "element": {
+              "aid": "sh/psjmx07u",
+              "id": "2",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.2",
+            "kind": "text",
+            "name": "Google-Shape-534-p58-4",
+            "position": {
+              "left": 41.33,
+              "top": 353.33
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 374.67
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 276
+              }
+            },
+            "intrinsicSize": {
+              "width": 374.67,
+              "height": 276
+            },
+            "frame": {
+              "left": 41.33,
+              "top": 353.33,
+              "width": 374.67,
+              "height": 276
+            },
+            "snappedFrame": {
+              "left": 41.33,
+              "top": 353.33,
+              "width": 374.67,
+              "height": 276
+            },
+            "children": [],
+            "text": "React · TypeScript\n모바일 입력 UI\n카카오 지도 선택\n시간대·점수 시각화\n브라우저 내 편집·저장",
+            "transform": "none",
+            "element": {
+              "aid": "sh/4ra5ovq9",
+              "id": "3",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.3",
+            "kind": "text",
+            "name": "Content-Placeholder-1-5",
+            "position": {
+              "left": 864,
+              "top": 353.33
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 374.67
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 276
+              }
+            },
+            "intrinsicSize": {
+              "width": 374.67,
+              "height": 276
+            },
+            "frame": {
+              "left": 864,
+              "top": 353.33,
+              "width": 374.67,
+              "height": 276
+            },
+            "snappedFrame": {
+              "left": 864,
+              "top": 353.33,
+              "width": 374.67,
+              "height": 276
+            },
+            "children": [],
+            "text": "외부 데이터\n카카오 장소 검색\n카카오 자동차 경로\n기상청 초단기·단기예보\n실패 시 fallback",
+            "transform": "none",
+            "element": {
+              "aid": "sh/f2h4rqps",
+              "id": "4",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.4",
+            "kind": "text",
+            "name": "Content-Placeholder-2-6",
+            "position": {
+              "left": 452.67,
+              "top": 353.33
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 374.67
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 276
+              }
+            },
+            "intrinsicSize": {
+              "width": 374.67,
+              "height": 276
+            },
+            "frame": {
+              "left": 452.67,
+              "top": 353.33,
+              "width": 374.67,
+              "height": 276
+            },
+            "snappedFrame": {
+              "left": 452.67,
+              "top": 353.33,
+              "width": 374.67,
+              "height": 276
+            },
+            "children": [],
+            "text": "FastAPI · Python\n요청 검증\n이동시간·예보 조회\npvlib 계산\n점수·가이드 생성",
+            "transform": "none",
+            "element": {
+              "aid": "sh/u183il87",
+              "id": "5",
+              "kind": "shape"
+            }
+          }
+        ],
+        "padding": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "alignItems": "stretch",
+        "justifyItems": "stretch",
+        "contentFrame": {
+          "left": 0,
+          "top": 0,
+          "width": 1280,
+          "height": 720
+        },
+        "items": [
+          {
+            "path": "0.0",
+            "frame": {
+              "left": 1184.18,
+              "top": 659.24,
+              "width": 54.48,
+              "height": 25.33
+            }
+          },
+          {
+            "path": "0.1",
+            "frame": {
+              "left": 41.33,
+              "top": 36.12,
+              "width": 1197.33,
+              "height": 109.97
+            }
+          },
+          {
+            "path": "0.2",
+            "frame": {
+              "left": 41.33,
+              "top": 353.33,
+              "width": 374.67,
+              "height": 276
+            }
+          },
+          {
+            "path": "0.3",
+            "frame": {
+              "left": 864,
+              "top": 353.33,
+              "width": 374.67,
+              "height": 276
+            }
+          },
+          {
+            "path": "0.4",
+            "frame": {
+              "left": 452.67,
+              "top": 353.33,
+              "width": 374.67,
+              "height": 276
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

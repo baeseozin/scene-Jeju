@@ -1,0 +1,1660 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/2o70qw",
+    "id": "2o70qw",
+    "slide": 18,
+    "layoutId": "4e44454e-c1f8-4ef5-8c7c-3bee6d5ef6dd",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "d351d3e4-ef0c-4c32-bf0f-005b5ed86b33",
+    "masterLayoutName": "Master",
+    "backgroundColor": "#FFFFFF",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "Apple SD Gothic Neo",
+      "Helvetica Neue"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "4e44454e-c1f8-4ef5-8c7c-3bee6d5ef6dd",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "d351d3e4-ef0c-4c32-bf0f-005b5ed86b33",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "d351d3e4-ef0c-4c32-bf0f-005b5ed86b33",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/6dcfetcn",
+      "id": "1",
+      "name": "Google-Shape-532-p58-2",
+      "bbox": [
+        1184.18,
+        659.24,
+        54.48,
+        25.33
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.0"
+      },
+      "geometry": "rect",
+      "text": "18",
+      "textPreview": "18",
+      "resolvedFontSize": 13.33,
+      "resolvedTextStyle": {
+        "anchor": 3,
+        "fontSize": 13.33,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "right",
+        "verticalAlignment": "bottom",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "18"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "18",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "anchor": 3,
+            "fontSize": 13.33,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "right",
+            "verticalAlignment": "bottom",
+            "wrap": "square",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "18",
+              "fontSize": 14,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#4E5E59",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/tgnep8ve",
+      "id": "2",
+      "name": "Google-Shape-533-p58-3",
+      "bbox": [
+        41.33,
+        36.12,
+        1197.33,
+        109.97
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1"
+      },
+      "geometry": "rect",
+      "text": "모바일 UI는 입력·분석·재사용의 한 흐름으로 구성된다",
+      "textPreview": "모바일 UI는 입력·분석·재사용의 한 흐름으로 구성된다",
+      "resolvedFontSize": 38.67,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 38.67,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "모바일 UI는 입력·분석·재사용의 한 흐름으로 구성된다"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "모바일 UI는 입력·분석·재사용의 한 흐름으로 구성된다",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "anchor": 1,
+            "fontSize": 38.67,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "verticalAlignment": "top",
+            "wrap": "square",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "모바일 UI는 입력·분석·재사용의 한 흐름으로 구성된다",
+              "fontSize": 39,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/8fexg3ut",
+      "id": "3",
+      "name": "Content-Placeholder-10-4",
+      "bbox": [
+        732,
+        249.33,
+        506.67,
+        68
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.2"
+      },
+      "geometry": "rect",
+      "text": "장소·컨셉·출발·이동수단",
+      "textPreview": "장소·컨셉·출발·이동수단",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "fontSize": 32,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "shrinkText",
+        "autoFitScale": 1,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "장소·컨셉·출발·이동수단"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "장소·컨셉·출발·이동수단",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "장소·컨셉·출발·이동수단",
+              "fontSize": 18,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/vi5wridk",
+      "id": "4",
+      "name": "Content-Placeholder-10-5",
+      "bbox": [
+        509.33,
+        249.33,
+        196,
+        68
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.3"
+      },
+      "geometry": "rect",
+      "text": "입력",
+      "textPreview": "입력",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "fontSize": 32,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "shrinkText",
+        "autoFitScale": 1,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "입력"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "입력",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "입력",
+              "fontSize": 18,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#2D8C73",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/uhwfidcz",
+      "id": "5",
+      "name": "Content-Placeholder-10-6",
+      "bbox": [
+        732,
+        353.33,
+        506.67,
+        68
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.4"
+      },
+      "geometry": "rect",
+      "text": "13시간대·점수·이유·가이드",
+      "textPreview": "13시간대·점수·이유·가이드",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "fontSize": 32,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "shrinkText",
+        "autoFitScale": 1,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "13시간대·점수·이유·가이드"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "13시간대·점수·이유·가이드",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "13시간대·점수·이유·가이드",
+              "fontSize": 18,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/h4net8va",
+      "id": "6",
+      "name": "Content-Placeholder-10-7",
+      "bbox": [
+        509.33,
+        353.33,
+        196,
+        68
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.5"
+      },
+      "geometry": "rect",
+      "text": "결과",
+      "textPreview": "결과",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "fontSize": 32,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "shrinkText",
+        "autoFitScale": 1,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "결과"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "결과",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "결과",
+              "fontSize": 18,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#2D8C73",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/gjexk3up",
+      "id": "7",
+      "name": "Content-Placeholder-10-8",
+      "bbox": [
+        732,
+        457.33,
+        506.67,
+        68
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.6"
+      },
+      "geometry": "rect",
+      "text": "6개 컨셉별 배경·강조색",
+      "textPreview": "6개 컨셉별 배경·강조색",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "fontSize": 32,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "shrinkText",
+        "autoFitScale": 1,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "6개 컨셉별 배경·강조색"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "6개 컨셉별 배경·강조색",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "6개 컨셉별 배경·강조색",
+              "fontSize": 18,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/36pgvidg",
+      "id": "8",
+      "name": "Content-Placeholder-10-9",
+      "bbox": [
+        509.33,
+        457.33,
+        196,
+        68
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.7"
+      },
+      "geometry": "rect",
+      "text": "테마",
+      "textPreview": "테마",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "fontSize": 32,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "shrinkText",
+        "autoFitScale": 1,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "테마"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "테마",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "테마",
+              "fontSize": 18,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#2D8C73",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/i5gfmdcv",
+      "id": "9",
+      "name": "Content-Placeholder-10-10",
+      "bbox": [
+        732,
+        562.67,
+        506.67,
+        68
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.8"
+      },
+      "geometry": "rect",
+      "text": "localStorage 최대 10개·PNG 공유",
+      "textPreview": "localStorage 최대 10개·PNG 공유",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "fontSize": 32,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "shrinkText",
+        "autoFitScale": 1,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "localStorage 최대 10개·PNG 공유"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "localStorage 최대 10개·PNG 공유",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "localStorage 최대 10개·PNG 공유",
+              "fontSize": 18,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/czy1k76t",
+      "id": "10",
+      "name": "Content-Placeholder-10-11",
+      "bbox": [
+        509.33,
+        562.67,
+        196,
+        68
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.9"
+      },
+      "geometry": "rect",
+      "text": "재사용",
+      "textPreview": "재사용",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "fontSize": 32,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "shrinkText",
+        "autoFitScale": 1,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "재사용"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "재사용",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "재사용",
+              "fontSize": 18,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#2D8C73",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/d07idc7e",
+      "id": "11",
+      "name": "Google-Shape-534-p58-12",
+      "bbox": [
+        41.33,
+        249.33,
+        374.67,
+        380
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.10"
+      },
+      "geometry": "rect",
+      "text": "React 상태 흐름\n폼 상태 → analyze() → Analysis 응답 → 결과 섹션 렌더링\n분석 완료 후 결과 위치로 부드럽게 이동하고, 모든 컨셉 카드는 모바일에서 2열로 표시합니다.",
+      "textPreview": "React 상태 흐름 | 폼 상태 → analyze() → Analysis 응답 → 결과 섹션 렌더링 | 분석 완료 후 결과 위치로 부드럽게 이동하고, 모든 컨셉 카드는 모바일에서 2열로 표시합니다.",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 32,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 5,
+        "lines": [
+          {
+            "index": 1,
+            "text": "React 상태 흐름"
+          },
+          {
+            "index": 2,
+            "text": "폼 상태 → analyze() → Analysis 응답 → 결과"
+          },
+          {
+            "index": 3,
+            "text": "섹션 렌더링"
+          },
+          {
+            "index": 4,
+            "text": "분석 완료 후 결과 위치로 부드럽게 이동하고, 모든"
+          },
+          {
+            "index": 5,
+            "text": "컨셉 카드는 모바일에서 2열로 표시합니다."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "React 상태 흐름",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 550,
+          "resolvedTextStyle": {
+            "anchor": 1,
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "verticalAlignment": "top",
+            "wrap": "square",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "React 상태 흐름",
+              "fontSize": 24,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "폼 상태 → analyze() → Analysis 응답 → 결과 섹션 렌더링",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 700,
+          "resolvedTextStyle": {
+            "anchor": 1,
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "verticalAlignment": "top",
+            "wrap": "square",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "폼 상태 → analyze() → Analysis 응답 → 결과 섹션 렌더링",
+              "fontSize": 20,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#4E5E59"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 3,
+          "text": "분석 완료 후 결과 위치로 부드럽게 이동하고, 모든 컨셉 카드는 모바일에서 2열로 표시합니다.",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "anchor": 1,
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "verticalAlignment": "top",
+            "wrap": "square",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "분석 완료 후 결과 위치로 부드럽게 이동하고, 모든 컨셉 카드는 모바일에서 2열로 표시합니다.",
+              "fontSize": 19,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#4E5E59"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 12,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/qxgjixon",
+      "id": "12",
+      "name": "accent-line-18",
+      "bbox": [
+        0,
+        0,
+        1280,
+        7
+      ],
+      "geometry": "rect",
+      "fillColor": "#2D8C73",
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": [
+    {
+      "index": 1,
+      "frame": {
+        "left": 0,
+        "top": 0,
+        "width": 1280,
+        "height": 720
+      },
+      "baseUnit": 1,
+      "root": {
+        "path": "0",
+        "kind": "layers",
+        "name": "codex-grid-layout-library#slide-15",
+        "requestedSize": {
+          "width": {
+            "mode": "fill",
+            "value": 1
+          },
+          "height": {
+            "mode": "fill",
+            "value": 1
+          }
+        },
+        "intrinsicSize": {
+          "width": 1238.67,
+          "height": 684.57
+        },
+        "frame": {
+          "left": 0,
+          "top": 0,
+          "width": 1280,
+          "height": 720
+        },
+        "children": [
+          {
+            "path": "0.0",
+            "kind": "text",
+            "name": "Google-Shape-532-p58-2",
+            "position": {
+              "left": 1184.18,
+              "top": 659.24
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 54.48
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 25.33
+              }
+            },
+            "intrinsicSize": {
+              "width": 54.48,
+              "height": 25.33
+            },
+            "frame": {
+              "left": 1184.18,
+              "top": 659.24,
+              "width": 54.48,
+              "height": 25.33
+            },
+            "snappedFrame": {
+              "left": 1184.18,
+              "top": 659.24,
+              "width": 54.48,
+              "height": 25.33
+            },
+            "children": [],
+            "text": "18",
+            "transform": "none",
+            "element": {
+              "aid": "sh/6dcfetcn",
+              "id": "1",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.1",
+            "kind": "text",
+            "name": "Google-Shape-533-p58-3",
+            "position": {
+              "left": 41.33,
+              "top": 36.12
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 1197.33
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 109.97
+              }
+            },
+            "intrinsicSize": {
+              "width": 1197.33,
+              "height": 109.97
+            },
+            "frame": {
+              "left": 41.33,
+              "top": 36.12,
+              "width": 1197.33,
+              "height": 109.97
+            },
+            "snappedFrame": {
+              "left": 41.33,
+              "top": 36.12,
+              "width": 1197.33,
+              "height": 109.97
+            },
+            "children": [],
+            "text": "모바일 UI는 입력·분석·재사용의 한 흐름으로 구성된다",
+            "transform": "none",
+            "element": {
+              "aid": "sh/tgnep8ve",
+              "id": "2",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.2",
+            "kind": "text",
+            "name": "Content-Placeholder-10-4",
+            "position": {
+              "left": 732,
+              "top": 249.33
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 506.67
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 68
+              }
+            },
+            "intrinsicSize": {
+              "width": 506.67,
+              "height": 68
+            },
+            "frame": {
+              "left": 732,
+              "top": 249.33,
+              "width": 506.67,
+              "height": 68
+            },
+            "snappedFrame": {
+              "left": 732,
+              "top": 249.33,
+              "width": 506.67,
+              "height": 68
+            },
+            "children": [],
+            "text": "장소·컨셉·출발·이동수단",
+            "transform": "none",
+            "element": {
+              "aid": "sh/8fexg3ut",
+              "id": "3",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.3",
+            "kind": "text",
+            "name": "Content-Placeholder-10-5",
+            "position": {
+              "left": 509.33,
+              "top": 249.33
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 196
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 68
+              }
+            },
+            "intrinsicSize": {
+              "width": 196,
+              "height": 68
+            },
+            "frame": {
+              "left": 509.33,
+              "top": 249.33,
+              "width": 196,
+              "height": 68
+            },
+            "snappedFrame": {
+              "left": 509.33,
+              "top": 249.33,
+              "width": 196,
+              "height": 68
+            },
+            "children": [],
+            "text": "입력",
+            "transform": "none",
+            "element": {
+              "aid": "sh/vi5wridk",
+              "id": "4",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.4",
+            "kind": "text",
+            "name": "Content-Placeholder-10-6",
+            "position": {
+              "left": 732,
+              "top": 353.33
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 506.67
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 68
+              }
+            },
+            "intrinsicSize": {
+              "width": 506.67,
+              "height": 68
+            },
+            "frame": {
+              "left": 732,
+              "top": 353.33,
+              "width": 506.67,
+              "height": 68
+            },
+            "snappedFrame": {
+              "left": 732,
+              "top": 353.33,
+              "width": 506.67,
+              "height": 68
+            },
+            "children": [],
+            "text": "13시간대·점수·이유·가이드",
+            "transform": "none",
+            "element": {
+              "aid": "sh/uhwfidcz",
+              "id": "5",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.5",
+            "kind": "text",
+            "name": "Content-Placeholder-10-7",
+            "position": {
+              "left": 509.33,
+              "top": 353.33
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 196
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 68
+              }
+            },
+            "intrinsicSize": {
+              "width": 196,
+              "height": 68
+            },
+            "frame": {
+              "left": 509.33,
+              "top": 353.33,
+              "width": 196,
+              "height": 68
+            },
+            "snappedFrame": {
+              "left": 509.33,
+              "top": 353.33,
+              "width": 196,
+              "height": 68
+            },
+            "children": [],
+            "text": "결과",
+            "transform": "none",
+            "element": {
+              "aid": "sh/h4net8va",
+              "id": "6",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.6",
+            "kind": "text",
+            "name": "Content-Placeholder-10-8",
+            "position": {
+              "left": 732,
+              "top": 457.33
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 506.67
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 68
+              }
+            },
+            "intrinsicSize": {
+              "width": 506.67,
+              "height": 68
+            },
+            "frame": {
+              "left": 732,
+              "top": 457.33,
+              "width": 506.67,
+              "height": 68
+            },
+            "snappedFrame": {
+              "left": 732,
+              "top": 457.33,
+              "width": 506.67,
+              "height": 68
+            },
+            "children": [],
+            "text": "6개 컨셉별 배경·강조색",
+            "transform": "none",
+            "element": {
+              "aid": "sh/gjexk3up",
+              "id": "7",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.7",
+            "kind": "text",
+            "name": "Content-Placeholder-10-9",
+            "position": {
+              "left": 509.33,
+              "top": 457.33
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 196
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 68
+              }
+            },
+            "intrinsicSize": {
+              "width": 196,
+              "height": 68
+            },
+            "frame": {
+              "left": 509.33,
+              "top": 457.33,
+              "width": 196,
+              "height": 68
+            },
+            "snappedFrame": {
+              "left": 509.33,
+              "top": 457.33,
+              "width": 196,
+              "height": 68
+            },
+            "children": [],
+            "text": "테마",
+            "transform": "none",
+            "element": {
+              "aid": "sh/36pgvidg",
+              "id": "8",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.8",
+            "kind": "text",
+            "name": "Content-Placeholder-10-10",
+            "position": {
+              "left": 732,
+              "top": 562.67
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 506.67
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 68
+              }
+            },
+            "intrinsicSize": {
+              "width": 506.67,
+              "height": 68
+            },
+            "frame": {
+              "left": 732,
+              "top": 562.67,
+              "width": 506.67,
+              "height": 68
+            },
+            "snappedFrame": {
+              "left": 732,
+              "top": 562.67,
+              "width": 506.67,
+              "height": 68
+            },
+            "children": [],
+            "text": "localStorage 최대 10개·PNG 공유",
+            "transform": "none",
+            "element": {
+              "aid": "sh/i5gfmdcv",
+              "id": "9",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.9",
+            "kind": "text",
+            "name": "Content-Placeholder-10-11",
+            "position": {
+              "left": 509.33,
+              "top": 562.67
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 196
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 68
+              }
+            },
+            "intrinsicSize": {
+              "width": 196,
+              "height": 68
+            },
+            "frame": {
+              "left": 509.33,
+              "top": 562.67,
+              "width": 196,
+              "height": 68
+            },
+            "snappedFrame": {
+              "left": 509.33,
+              "top": 562.67,
+              "width": 196,
+              "height": 68
+            },
+            "children": [],
+            "text": "재사용",
+            "transform": "none",
+            "element": {
+              "aid": "sh/czy1k76t",
+              "id": "10",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.10",
+            "kind": "text",
+            "name": "Google-Shape-534-p58-12",
+            "position": {
+              "left": 41.33,
+              "top": 249.33
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 374.67
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 380
+              }
+            },
+            "intrinsicSize": {
+              "width": 374.67,
+              "height": 380
+            },
+            "frame": {
+              "left": 41.33,
+              "top": 249.33,
+              "width": 374.67,
+              "height": 380
+            },
+            "snappedFrame": {
+              "left": 41.33,
+              "top": 249.33,
+              "width": 374.67,
+              "height": 380
+            },
+            "children": [],
+            "text": "React 상태 흐름\n폼 상태 → analyze() → Analysis 응답 → 결과 섹션 렌더링\n분석 완료 후 결과 위치로 부드럽게 이동하고, 모든 컨셉 카드는 모바일에서 2열로 표시합니다.",
+            "transform": "none",
+            "element": {
+              "aid": "sh/d07idc7e",
+              "id": "11",
+              "kind": "shape"
+            }
+          }
+        ],
+        "padding": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "alignItems": "stretch",
+        "justifyItems": "stretch",
+        "contentFrame": {
+          "left": 0,
+          "top": 0,
+          "width": 1280,
+          "height": 720
+        },
+        "items": [
+          {
+            "path": "0.0",
+            "frame": {
+              "left": 1184.18,
+              "top": 659.24,
+              "width": 54.48,
+              "height": 25.33
+            }
+          },
+          {
+            "path": "0.1",
+            "frame": {
+              "left": 41.33,
+              "top": 36.12,
+              "width": 1197.33,
+              "height": 109.97
+            }
+          },
+          {
+            "path": "0.2",
+            "frame": {
+              "left": 732,
+              "top": 249.33,
+              "width": 506.67,
+              "height": 68
+            }
+          },
+          {
+            "path": "0.3",
+            "frame": {
+              "left": 509.33,
+              "top": 249.33,
+              "width": 196,
+              "height": 68
+            }
+          },
+          {
+            "path": "0.4",
+            "frame": {
+              "left": 732,
+              "top": 353.33,
+              "width": 506.67,
+              "height": 68
+            }
+          },
+          {
+            "path": "0.5",
+            "frame": {
+              "left": 509.33,
+              "top": 353.33,
+              "width": 196,
+              "height": 68
+            }
+          },
+          {
+            "path": "0.6",
+            "frame": {
+              "left": 732,
+              "top": 457.33,
+              "width": 506.67,
+              "height": 68
+            }
+          },
+          {
+            "path": "0.7",
+            "frame": {
+              "left": 509.33,
+              "top": 457.33,
+              "width": 196,
+              "height": 68
+            }
+          },
+          {
+            "path": "0.8",
+            "frame": {
+              "left": 732,
+              "top": 562.67,
+              "width": 506.67,
+              "height": 68
+            }
+          },
+          {
+            "path": "0.9",
+            "frame": {
+              "left": 509.33,
+              "top": 562.67,
+              "width": 196,
+              "height": 68
+            }
+          },
+          {
+            "path": "0.10",
+            "frame": {
+              "left": 41.33,
+              "top": 249.33,
+              "width": 374.67,
+              "height": 380
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

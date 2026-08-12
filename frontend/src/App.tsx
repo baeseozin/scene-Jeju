@@ -15,16 +15,37 @@ import type {
   TransportMode,
 } from "./types";
 
-const STATUS_META: Record<Status, { label: string; eyebrow: string; color: string }> = {
-  가능: { label: "이때 찍기 좋아요", eyebrow: "READY TO SHOOT", color: "#1f8f72" },
-  보통: { label: "이때는 조금 손봐야 해요", eyebrow: "ADJUST & SHOOT", color: "#d17b2c" },
-  비추천: { label: "오늘은 조건이 아쉬워요", eyebrow: "WAIT FOR IT", color: "#ce5b59" },
+const STATUS_META: Record<Status, { shortLabel: string; label: string; eyebrow: string; color: string }> = {
+  가능: { shortLabel: "좋음", label: "지금 찍기 좋아요", eyebrow: "좋음 · GREAT TO SHOOT", color: "#1f8f72" },
+  보통: { shortLabel: "괜찮음", label: "지금 찍어도 괜찮아요", eyebrow: "괜찮음 · GOOD TO GO", color: "#d17b2c" },
+  비추천: { shortLabel: "시간 조정 추천", label: "조금 기다리면 더 좋아요", eyebrow: "시간 조정 추천 · BETTER TIME AHEAD", color: "#ce5b59" },
 };
 
 const PLACE_SYMBOLS: Record<string, string> = { hyeopjae: "波", saryeoni: "森", dodu: "虹" };
-const CONCEPT_SYMBOLS: Record<string, string> = { refreshing: "01", film: "02", sunset: "03" };
+const CONCEPT_SYMBOLS: Record<string, string> = { refreshing: "01", natural: "02", sunset: "03", cozy: "04", film: "05", sparkling: "06" };
+const CONCEPT_ORDER = ["refreshing", "natural", "sunset", "cozy", "film", "sparkling"];
 const TRANSPORT_LABELS: Record<TransportMode, string> = { car: "자동차", transit: "대중교통", walk: "도보" };
 const HISTORY_KEY = "scene-jeju-analysis-history-v1";
+const RESULT_THEMES: Record<string, {
+  background: string;
+  accent: string;
+  glow: string;
+  muted: string;
+  start: string;
+  middle: string;
+  end: string;
+  card: string;
+  line: string;
+  editor: string;
+  orb: string;
+}> = {
+  refreshing: { background: "#e9f8ff", accent: "#187ca1", glow: "rgba(88,197,240,.34)", muted: "#4e6c76", start: "#f2fbff", middle: "#a9ddf2", end: "#e5f6ee", card: "rgba(255,255,255,.76)", line: "rgba(38,91,108,.16)", editor: "#123b48", orb: "rgba(255,255,255,.72)" },
+  natural: { background: "#eff5e9", accent: "#347653", glow: "rgba(142,190,122,.28)", muted: "#536a58", start: "#faf5d9", middle: "#bfd7ac", end: "#e8f1e4", card: "rgba(255,255,255,.74)", line: "rgba(54,101,68,.16)", editor: "#244434", orb: "rgba(255,245,188,.66)" },
+  sunset: { background: "#f9d5bd", accent: "#a44358", glow: "rgba(239,118,95,.34)", muted: "#6d5261", start: "#fff1c9", middle: "#f3aa82", end: "#d3b0d5", card: "rgba(255,249,244,.75)", line: "rgba(113,61,78,.16)", editor: "#4b2e46", orb: "rgba(255,224,143,.82)" },
+  cozy: { background: "#f7ecdc", accent: "#8a6740", glow: "rgba(225,184,134,.30)", muted: "#706253", start: "#fff9ea", middle: "#ead5b8", end: "#f4e7dc", card: "rgba(255,253,247,.78)", line: "rgba(116,88,53,.15)", editor: "#4a3d30", orb: "rgba(255,239,199,.78)" },
+  film: { background: "#e6ebf0", accent: "#53677f", glow: "rgba(119,135,157,.28)", muted: "#5f6977", start: "#f0f2f5", middle: "#b8c5d2", end: "#d9d5df", card: "rgba(249,250,252,.76)", line: "rgba(62,77,96,.16)", editor: "#303b49", orb: "rgba(228,235,243,.72)" },
+  sparkling: { background: "#e8fbf7", accent: "#167d71", glow: "rgba(78,210,186,.30)", muted: "#466d68", start: "#f3fffc", middle: "#9de5da", end: "#ddf8f5", card: "rgba(255,255,255,.76)", line: "rgba(31,105,94,.16)", editor: "#174842", orb: "rgba(255,255,255,.80)" },
+};
 
 function createSavedId(): string {
   if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
@@ -69,13 +90,41 @@ function kstLocalToIso(value: string): string {
   return `${value}:00+09:00`;
 }
 
-function getLightingRisk(solar: Analysis["solar"]): "낮음" | "보통" | "높음" {
-  return solar.lighting_risk ?? solar.reflection_risk ?? "낮음";
-}
-
 function getLightingIssue(solar: Analysis["solar"]): string {
   if (solar.lighting_issue) return solar.lighting_issue;
   return solar.reflection_risk && solar.reflection_risk !== "낮음" ? "수면 반사와 역광" : "빛 조건 안정";
+}
+
+function getRainLabel(amount: number): string {
+  if (amount <= 0) return "비 걱정 없어요";
+  if (amount < 1) return "약한 비가 와요";
+  return "비가 제법 와요";
+}
+
+function getWindLabel(speed: number): string {
+  if (speed < 2) return "거의 잔잔해요";
+  if (speed < 5) return "산들바람이 불어요";
+  if (speed < 8) return "바람이 조금 강해요";
+  return "바람이 매우 강해요";
+}
+
+function getLightLabel(solar: Analysis["solar"]): string {
+  if (solar.elevation < -6 || solar.ghi_wm2 < 25) return "자연광이 부족해요";
+  if (solar.ghi_wm2 >= 700) return "빛이 매우 강해요";
+  if (solar.ghi_wm2 >= 400) return "빛이 충분해요";
+  if (solar.ghi_wm2 >= 120) return "빛이 부드러워요";
+  return "빛이 약해요";
+}
+
+function getLightAdvice(solar: Analysis["solar"]): string {
+  const issue = getLightingIssue(solar);
+  if (issue === "수면 반사와 역광") return "물에 반사된 빛 때문에 얼굴이 어두워질 수 있어요";
+  if (issue === "나뭇잎 사이 얼룩 그림자") return "얼굴에 얼룩진 그림자가 생길 수 있어요";
+  if (issue === "유리·노면 반사" || issue === "유리·젖은 노면 반사") return "바닥이나 유리의 반사광을 조심하세요";
+  if (issue === "강한 직사광과 건물 그림자" || issue === "강한 직사광") return "얼굴 아래 그림자가 진해질 수 있어요";
+  if (issue === "창문 역광과 실내외 명암차") return "창문을 등지면 얼굴이 어두워질 수 있어요";
+  if (issue === "자연광 부족") return "휴대폰을 고정하면 흔들림을 줄일 수 있어요";
+  return "얼굴과 배경의 밝기가 안정적이에요";
 }
 
 function readHistory(): SavedAnalysis[] {
@@ -366,6 +415,24 @@ export default function App() {
   };
 
   const statusMeta = analysis ? STATUS_META[analysis.status] : null;
+  const selectedConceptAccent = catalog?.concepts.find((concept) => concept.id === selectedConcept)?.accent ?? "#62d1ab";
+  const resultTheme = analysis ? RESULT_THEMES[analysis.concept.id] ?? RESULT_THEMES.refreshing : RESULT_THEMES.refreshing;
+  const tourismTrend = analysis?.tourism_trend ?? {
+    available: false,
+    level: "자료 없음" as const,
+    label: "이전에 저장한 분석에는 방문 경향이 없어요",
+    matched_place_name: null,
+    arrivals: null,
+    rank: null,
+    ranked_places: 10,
+    reference_month: null,
+    source: "제주관광빅데이터플랫폼",
+    source_url: "https://data.ijto.or.kr/prog/dataPick/bigdata/sub02/view.do?regSn=48",
+    source_kind: "snapshot" as const,
+    is_realtime: false,
+    explanation: "다시 분석하면 최신 관광지 도착 경향을 함께 확인할 수 있어요.",
+    shooting_tip: "현장에 도착하면 방문객 흐름을 1분 정도 확인한 뒤 촬영하세요.",
+  };
   const sourceLabel = analysis
     ? analysis.data_source.startsWith("kma") ? "LIVE WEATHER" : "DEMO WEATHER"
     : catalog?.mode === "real" ? "LIVE WEATHER" : catalog?.mode === "auto" ? "AUTO WEATHER" : "DEMO WEATHER";
@@ -414,8 +481,8 @@ export default function App() {
           </div>
 
           <div className="selection-panel options-panel apple-scene">
-            <div className="field-header"><div><span className="field-number">B</span><h3>원하는 분위기</h3></div><span className="field-note">3 MOODS</span></div>
-            <div className="concept-grid">{catalog?.concepts.map((concept) => <button type="button" className={`concept-card ${selectedConcept === concept.id ? "selected" : ""}`} key={concept.id} onClick={() => setSelectedConcept(concept.id)} style={{ "--accent": concept.accent } as CSSProperties}><span>{CONCEPT_SYMBOLS[concept.id]}</span><strong>{concept.name}</strong><small>{concept.description}</small></button>)}</div>
+            <div className="field-header"><div><span className="field-number">B</span><h3>원하는 분위기</h3></div><span className="field-note">6 MOODS</span></div>
+            <div className="concept-grid">{catalog?.concepts.slice().sort((first, second) => CONCEPT_ORDER.indexOf(first.id) - CONCEPT_ORDER.indexOf(second.id)).map((concept) => <button type="button" className={`concept-card ${selectedConcept === concept.id ? "selected" : ""}`} key={concept.id} onClick={() => setSelectedConcept(concept.id)} style={{ "--accent": concept.accent } as CSSProperties}><span>{CONCEPT_SYMBOLS[concept.id]}</span><strong>{concept.name}</strong><small>{concept.description}</small></button>)}</div>
             <div className="sub-option-group">
               <span>무엇을 남길까요?</span>
               <div className="segmented-control"><button type="button" className={captureMode === "photo" ? "selected" : ""} onClick={() => setCaptureMode("photo")}>사진</button><button type="button" className={captureMode === "video" ? "selected" : ""} onClick={() => setCaptureMode("video")}>15초 영상</button></div>
@@ -445,11 +512,24 @@ export default function App() {
         </div>
 
         {error && <p className="error-message" role="alert">{error}</p>}
-        <button className="analyze-button apple-scene" type="button" onClick={runAnalysis} disabled={!catalog || loading}><span>{loading ? "시간대별 조건을 계산하는 중" : "촬영 타이밍 분석하기"}</span><b>{loading ? "···" : "→"}</b></button>
+        <button className="analyze-button apple-scene" style={{ "--analyze-accent": selectedConceptAccent } as CSSProperties} type="button" onClick={runAnalysis} disabled={!catalog || loading}><span><small>{loading ? "ANALYZING 13 TIME SLOTS" : "READY · WEATHER + LIGHT + ROUTE"}</small>{loading ? "시간대별 조건을 계산하는 중" : "이 조건으로 촬영 타이밍 분석하기"}</span><b>{loading ? "···" : "→"}</b></button>
       </section>
 
       {analysis && statusMeta && (
-        <section className="result-section" id="result">
+        <section className={`result-section concept-${analysis.concept.id}`} id="result" style={{
+          "--deep": resultTheme.background,
+          "--mint": resultTheme.accent,
+          "--result-accent": resultTheme.accent,
+          "--result-glow": resultTheme.glow,
+          "--result-muted": resultTheme.muted,
+          "--result-start": resultTheme.start,
+          "--result-middle": resultTheme.middle,
+          "--result-end": resultTheme.end,
+          "--result-card": resultTheme.card,
+          "--result-line": resultTheme.line,
+          "--result-editor": resultTheme.editor,
+          "--result-orb": resultTheme.orb,
+        } as CSSProperties}>
           <div className="section-heading light-heading apple-scene"><span>02</span><div><p>YOUR SHOOTING FORECAST</p><h2>추천 시각의 촬영 조건</h2></div></div>
           {analysis.warning && <div className="warning-banner">{analysis.warning}</div>}
           <div className="result-hero apple-scene">
@@ -467,15 +547,31 @@ export default function App() {
           </article>
 
           <div className="time-slot-grid apple-scene" aria-label="시간대별 촬영 적합도">
-            {analysis.time_slots.map((slot, index) => <article key={slot.time} className={slot.is_best ? "best" : ""}><span>{index === 0 ? "도착" : `도착 +${index}시간`}</span><strong>{formatTime(slot.time)}</strong><b style={{ color: STATUS_META[slot.status].color }}>{slot.score}점 · {slot.status}</b><small>{slot.weather.sky} · 바람 {slot.weather.wind_speed_mps}m/s{slot.is_best ? " · 추천" : ""}</small></article>)}
+            {analysis.time_slots.map((slot, index) => <article key={slot.time} className={slot.is_best ? "best" : ""}><span>{index === 0 ? "도착" : `도착 +${index}시간`}</span><strong>{formatTime(slot.time)}</strong><b style={{ color: STATUS_META[slot.status].color }}>{slot.score}점 · {STATUS_META[slot.status].shortLabel}</b><small>{slot.weather.sky} · {getWindLabel(slot.weather.wind_speed_mps)}{slot.is_best ? " · 추천" : ""}</small></article>)}
           </div>
 
           <div className="condition-grid apple-scene">
-            <article className="condition-card"><span className="condition-icon">☂</span><small>RAIN</small><strong>{analysis.weather.precipitation_mm}<em> mm</em></strong><p>{analysis.scores.rain >= 75 ? "강수 걱정이 적어요" : "비 대비가 필요해요"}</p></article>
-            <article className="condition-card"><span className="condition-icon">≋</span><small>WIND</small><strong>{analysis.weather.wind_speed_mps}<em> m/s</em></strong><p>{analysis.scores.wind >= 75 ? "움직임이 안정적이에요" : "흔들림에 주의하세요"}</p></article>
-            <article className="condition-card"><span className="condition-icon">◒</span><small>SKY</small><strong className="text-value">{analysis.weather.sky}</strong><p>{analysis.scores.sky >= 75 ? "분위기와 잘 맞아요" : "색감 보정이 필요해요"}</p></article>
-            <article className="condition-card"><span className="condition-icon">☼</span><small>EST. LIGHT BALANCE</small><strong>{analysis.solar.ghi_wm2}<em> W/m²</em></strong><p>빛 위험 {getLightingRisk(analysis.solar)} · {getLightingIssue(analysis.solar)}<br />고도 {analysis.solar.elevation}° · 방위각 {analysis.solar.azimuth}°</p></article>
+            <article className="condition-card"><span className="condition-icon">☂</span><small>비</small><strong className="text-value">{getRainLabel(analysis.weather.precipitation_mm)}</strong><p>{analysis.scores.rain >= 75 ? "렌즈를 닦을 필요가 거의 없어요" : "우산이나 처마가 필요해요"}</p></article>
+            <article className="condition-card"><span className="condition-icon">≋</span><small>바람</small><strong className="text-value">{getWindLabel(analysis.weather.wind_speed_mps)}</strong><p>{analysis.scores.wind >= 75 ? "인물과 화면이 안정적이에요" : "두 손으로 단단히 잡으세요"}</p></article>
+            <article className="condition-card"><span className="condition-icon">◒</span><small>하늘</small><strong className="text-value">{analysis.weather.sky}</strong><p>기상청 예보를 그대로 표시해요</p></article>
+            <article className="condition-card"><span className="condition-icon">☼</span><small>빛</small><strong className="text-value">{getLightLabel(analysis.solar)}</strong><p>{getLightAdvice(analysis.solar)}</p></article>
           </div>
+
+          <article className={`tourism-trend-panel trend-${tourismTrend.level.replace(/\s/g, "-")} apple-scene`}>
+            <div className="tourism-trend-badge"><span>JEJU TOURISM DATA</span><strong>{tourismTrend.level}</strong></div>
+            <div className="tourism-trend-copy">
+              <small>최근 방문 경향 기반 혼잡 가능성</small>
+              <h3>{tourismTrend.label}</h3>
+              <p>{tourismTrend.explanation}</p>
+              <b>{tourismTrend.shooting_tip}</b>
+            </div>
+            <div className="tourism-trend-meta">
+              {tourismTrend.available && <strong>{tourismTrend.arrivals?.toLocaleString()}<small>대 도착</small></strong>}
+              {tourismTrend.rank && <span>인기 장소 {tourismTrend.rank}/{tourismTrend.ranked_places}위</span>}
+              <a href={tourismTrend.source_url} target="_blank" rel="noreferrer">제주관광빅데이터플랫폼 ↗</a>
+              <small>실시간 혼잡도 아님 · {tourismTrend.source_kind === "live" ? "최신 공개 데이터" : "공식 데이터 저장본"}</small>
+            </div>
+          </article>
 
           <div className="detail-grid apple-scene">
             <article className="score-panel"><div className="panel-title"><span>CONDITION SCORE</span><small>추천 시각 기준</small></div><ScoreBar label="날씨" value={analysis.scores.weather} /><ScoreBar label="빛" value={analysis.scores.light} /><ScoreBar label="장소" value={analysis.scores.place} /></article>
@@ -495,7 +591,7 @@ export default function App() {
       {history.length > 0 && (
         <section className="history-section">
           <div className="section-heading apple-scene"><span>03</span><div><p>MY SCENES</p><h2>저장한 촬영 계획</h2></div></div>
-          <div className="history-list apple-scene">{history.map((item) => <article key={item.id}><button type="button" className="history-open" onClick={() => { setAnalysis(item.analysis); window.setTimeout(() => document.getElementById("result")?.scrollIntoView({ behavior: "smooth" }), 50); }}><small>{formatKoreanDate(item.savedAt)}</small><strong>{item.analysis.place.name}</strong><span>{item.analysis.concept.name} · {item.analysis.scores.total}점 · {item.analysis.status}</span></button><button type="button" className="history-delete" onClick={() => deleteSaved(item.id)} aria-label="저장 기록 삭제">×</button></article>)}</div>
+          <div className="history-list apple-scene">{history.map((item) => <article key={item.id}><button type="button" className="history-open" onClick={() => { setAnalysis(item.analysis); window.setTimeout(() => document.getElementById("result")?.scrollIntoView({ behavior: "smooth" }), 50); }}><small>{formatKoreanDate(item.savedAt)}</small><strong>{item.analysis.place.name}</strong><span>{item.analysis.concept.name} · {item.analysis.scores.total}점 · {STATUS_META[item.analysis.status]?.shortLabel ?? item.analysis.status}</span></button><button type="button" className="history-delete" onClick={() => deleteSaved(item.id)} aria-label="저장 기록 삭제">×</button></article>)}</div>
         </section>
       )}
 

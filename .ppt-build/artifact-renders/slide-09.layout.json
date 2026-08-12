@@ -1,0 +1,1722 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/r0fhkh",
+    "id": "r0fhkh",
+    "slide": 9,
+    "layoutId": "4e44454e-c1f8-4ef5-8c7c-3bee6d5ef6dd",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "d351d3e4-ef0c-4c32-bf0f-005b5ed86b33",
+    "masterLayoutName": "Master",
+    "backgroundColor": "#FFFFFF",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "Apple SD Gothic Neo",
+      "Helvetica Neue"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "4e44454e-c1f8-4ef5-8c7c-3bee6d5ef6dd",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "d351d3e4-ef0c-4c32-bf0f-005b5ed86b33",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "d351d3e4-ef0c-4c32-bf0f-005b5ed86b33",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/v2lw3it0",
+      "id": "1",
+      "name": "Google-Shape-532-p58-2",
+      "bbox": [
+        1184.18,
+        659.24,
+        54.48,
+        25.33
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.0"
+      },
+      "geometry": "rect",
+      "text": "9",
+      "textPreview": "9",
+      "resolvedFontSize": 13.33,
+      "resolvedTextStyle": {
+        "anchor": 3,
+        "fontSize": 13.33,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "right",
+        "verticalAlignment": "bottom",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "9"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "9",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "anchor": 3,
+            "fontSize": 13.33,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "right",
+            "verticalAlignment": "bottom",
+            "wrap": "square",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "9",
+              "fontSize": 14,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#4E5E59",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/w3udcnal",
+      "id": "2",
+      "name": "Google-Shape-533-p58-3",
+      "bbox": [
+        41.33,
+        36.12,
+        1197.33,
+        109.97
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1"
+      },
+      "geometry": "rect",
+      "text": "pvlib가 시간·좌표를 빛의 위치와 세기로 바꾼다",
+      "textPreview": "pvlib가 시간·좌표를 빛의 위치와 세기로 바꾼다",
+      "resolvedFontSize": 38.67,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 38.67,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "pvlib가 시간·좌표를 빛의 위치와 세기로 바꾼다"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "pvlib가 시간·좌표를 빛의 위치와 세기로 바꾼다",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "anchor": 1,
+            "fontSize": 38.67,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "verticalAlignment": "top",
+            "wrap": "square",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "pvlib가 시간·좌표를 빛의 위치와 세기로 바꾼다",
+              "fontSize": 39,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/xo3e5sb6",
+      "id": "3",
+      "name": "Google-Shape-534-p58-4",
+      "bbox": [
+        41.33,
+        180.83,
+        581.33,
+        90.83
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.2"
+      },
+      "geometry": "rect",
+      "text": "내부 계산 파이프라인",
+      "textPreview": "내부 계산 파이프라인",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 32,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "내부 계산 파이프라인"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "내부 계산 파이프라인",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "anchor": 1,
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "verticalAlignment": "top",
+            "wrap": "square",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "내부 계산 파이프라인",
+              "fontSize": 23,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ipcvedsr",
+      "id": "4",
+      "name": "Content-Placeholder-10-5",
+      "bbox": [
+        828,
+        313.94,
+        410.67,
+        57.61
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.3"
+      },
+      "geometry": "rect",
+      "text": "맑음 × 1.00",
+      "textPreview": "맑음 × 1.00",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "fontSize": 32,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "shrinkText",
+        "autoFitScale": 1,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "맑음 × 1.00"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "맑음 × 1.00",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "맑음 × 1.00",
+              "fontSize": 18,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/jq5w7itc",
+      "id": "5",
+      "name": "Google-Shape-340-p61-6",
+      "bbox": [
+        788.21,
+        316.55,
+        22.32,
+        22.31
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.4"
+      },
+      "geometry": "custom",
+      "fillColor": "#000000"
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/krexgnax",
+      "id": "6",
+      "name": "TextBox-11-7",
+      "bbox": [
+        41.33,
+        313.94,
+        581.33,
+        302.85
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.5"
+      },
+      "geometry": "rect",
+      "text": "get_solarposition(KST 시각, 위도, 경도)\n→ apparent_elevation, azimuth\nsimplified_solis(태양 높이)\n→ 맑은 하늘 기준 GHI·DNI·DHI",
+      "textPreview": "get_solarposition(KST 시각, 위도, 경도) | → apparent_elevation, azimuth | simplified_solis(태양 높이) | → 맑은 하늘 기준 GHI·DNI·DHI",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "wrap": "square",
+        "autoFit": "resizeShapeToFitText",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 4,
+        "lines": [
+          {
+            "index": 1,
+            "text": "get_solarposition(KST 시각, 위도, 경도)"
+          },
+          {
+            "index": 2,
+            "text": "→ apparent_elevation, azimuth"
+          },
+          {
+            "index": 3,
+            "text": "simplified_solis(태양 높이)"
+          },
+          {
+            "index": 4,
+            "text": "→ 맑은 하늘 기준 GHI·DNI·DHI"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "get_solarposition(KST 시각, 위도, 경도)\n→ apparent_elevation, azimuth",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 700,
+          "resolvedTextStyle": {
+            "fontSize": 24,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "wrap": "square",
+            "autoFit": "resizeShapeToFitText",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "get_solarposition(KST 시각, 위도, 경도)\n→ apparent_elevation, azimuth",
+              "fontSize": 20,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "simplified_solis(태양 높이)\n→ 맑은 하늘 기준 GHI·DNI·DHI",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 24,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "wrap": "square",
+            "autoFit": "resizeShapeToFitText",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "simplified_solis(태양 높이)\n→ 맑은 하늘 기준 GHI·DNI·DHI",
+              "fontSize": 20,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/5sne9sbi",
+      "id": "7",
+      "name": "Content-Placeholder-10-8",
+      "bbox": [
+        828,
+        377.94,
+        410.67,
+        57.61
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.6"
+      },
+      "geometry": "rect",
+      "text": "구름 많음: GHI × 0.65",
+      "textPreview": "구름 많음: GHI × 0.65",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "fontSize": 32,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "shrinkText",
+        "autoFitScale": 1,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "구름 많음: GHI × 0.65"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "구름 많음: GHI × 0.65",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "구름 많음: GHI × 0.65",
+              "fontSize": 18,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/6twfixsn",
+      "id": "8",
+      "name": "Google-Shape-340-p61-9",
+      "bbox": [
+        788.21,
+        380.55,
+        22.32,
+        22.31
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.7"
+      },
+      "geometry": "custom",
+      "fillColor": "#000000"
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ru5wb298",
+      "id": "9",
+      "name": "Content-Placeholder-10-10",
+      "bbox": [
+        828,
+        442.5,
+        410.67,
+        57.61
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.8"
+      },
+      "geometry": "rect",
+      "text": "구름 많음: DNI × 0.45",
+      "textPreview": "구름 많음: DNI × 0.45",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "fontSize": 32,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "shrinkText",
+        "autoFitScale": 1,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "구름 많음: DNI × 0.45"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "구름 많음: DNI × 0.45",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "구름 많음: DNI × 0.45",
+              "fontSize": 18,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ryx4fedc",
+      "id": "10",
+      "name": "Google-Shape-340-p61-11",
+      "bbox": [
+        788.21,
+        445.1,
+        22.32,
+        22.31
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.9"
+      },
+      "geometry": "custom",
+      "fillColor": "#000000"
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/qdo36tcr",
+      "id": "11",
+      "name": "Content-Placeholder-10-12",
+      "bbox": [
+        828,
+        506.49,
+        410.67,
+        57.61
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.10"
+      },
+      "geometry": "rect",
+      "text": "흐림: GHI × 0.28",
+      "textPreview": "흐림: GHI × 0.28",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "fontSize": 32,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "shrinkText",
+        "autoFitScale": 1,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "흐림: GHI × 0.28"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "흐림: GHI × 0.28",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "흐림: GHI × 0.28",
+              "fontSize": 18,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 12,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/d0fmhovi",
+      "id": "12",
+      "name": "Google-Shape-340-p61-13",
+      "bbox": [
+        788.21,
+        509.1,
+        22.32,
+        22.31
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.11"
+      },
+      "geometry": "custom",
+      "fillColor": "#000000"
+    },
+    {
+      "order": 13,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/sz6l8jux",
+      "id": "13",
+      "name": "Content-Placeholder-10-14",
+      "bbox": [
+        828,
+        571.83,
+        410.67,
+        57.61
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.12"
+      },
+      "geometry": "rect",
+      "text": "흐림: DNI × 0.08",
+      "textPreview": "흐림: DNI × 0.08",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "fontSize": 32,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "shrinkText",
+        "autoFitScale": 1,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "흐림: DNI × 0.08"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "흐림: DNI × 0.08",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "흐림: DNI × 0.08",
+              "fontSize": 18,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 14,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/3ax4bedg",
+      "id": "14",
+      "name": "Google-Shape-340-p61-15",
+      "bbox": [
+        788.21,
+        574.44,
+        22.32,
+        22.31
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.13"
+      },
+      "geometry": "custom",
+      "fillColor": "#000000"
+    },
+    {
+      "order": 15,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/i9o329wv",
+      "id": "15",
+      "name": "accent-line-9",
+      "bbox": [
+        0,
+        0,
+        1280,
+        7
+      ],
+      "geometry": "rect",
+      "fillColor": "#2D8C73",
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": [
+    {
+      "index": 1,
+      "frame": {
+        "left": 0,
+        "top": 0,
+        "width": 1280,
+        "height": 720
+      },
+      "baseUnit": 1,
+      "root": {
+        "path": "0",
+        "kind": "layers",
+        "name": "codex-grid-layout-library#slide-10",
+        "requestedSize": {
+          "width": {
+            "mode": "fill",
+            "value": 1
+          },
+          "height": {
+            "mode": "fill",
+            "value": 1
+          }
+        },
+        "intrinsicSize": {
+          "width": 1238.67,
+          "height": 684.57
+        },
+        "frame": {
+          "left": 0,
+          "top": 0,
+          "width": 1280,
+          "height": 720
+        },
+        "children": [
+          {
+            "path": "0.0",
+            "kind": "text",
+            "name": "Google-Shape-532-p58-2",
+            "position": {
+              "left": 1184.18,
+              "top": 659.24
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 54.48
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 25.33
+              }
+            },
+            "intrinsicSize": {
+              "width": 54.48,
+              "height": 25.33
+            },
+            "frame": {
+              "left": 1184.18,
+              "top": 659.24,
+              "width": 54.48,
+              "height": 25.33
+            },
+            "snappedFrame": {
+              "left": 1184.18,
+              "top": 659.24,
+              "width": 54.48,
+              "height": 25.33
+            },
+            "children": [],
+            "text": "9",
+            "transform": "none",
+            "element": {
+              "aid": "sh/v2lw3it0",
+              "id": "1",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.1",
+            "kind": "text",
+            "name": "Google-Shape-533-p58-3",
+            "position": {
+              "left": 41.33,
+              "top": 36.12
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 1197.33
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 109.97
+              }
+            },
+            "intrinsicSize": {
+              "width": 1197.33,
+              "height": 109.97
+            },
+            "frame": {
+              "left": 41.33,
+              "top": 36.12,
+              "width": 1197.33,
+              "height": 109.97
+            },
+            "snappedFrame": {
+              "left": 41.33,
+              "top": 36.12,
+              "width": 1197.33,
+              "height": 109.97
+            },
+            "children": [],
+            "text": "pvlib가 시간·좌표를 빛의 위치와 세기로 바꾼다",
+            "transform": "none",
+            "element": {
+              "aid": "sh/w3udcnal",
+              "id": "2",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.2",
+            "kind": "text",
+            "name": "Google-Shape-534-p58-4",
+            "position": {
+              "left": 41.33,
+              "top": 180.83
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 581.33
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 90.83
+              }
+            },
+            "intrinsicSize": {
+              "width": 581.33,
+              "height": 90.83
+            },
+            "frame": {
+              "left": 41.33,
+              "top": 180.83,
+              "width": 581.33,
+              "height": 90.83
+            },
+            "snappedFrame": {
+              "left": 41.33,
+              "top": 180.83,
+              "width": 581.33,
+              "height": 90.83
+            },
+            "children": [],
+            "text": "내부 계산 파이프라인",
+            "transform": "none",
+            "element": {
+              "aid": "sh/xo3e5sb6",
+              "id": "3",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.3",
+            "kind": "text",
+            "name": "Content-Placeholder-10-5",
+            "position": {
+              "left": 828,
+              "top": 313.94
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 410.67
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 57.61
+              }
+            },
+            "intrinsicSize": {
+              "width": 410.67,
+              "height": 57.61
+            },
+            "frame": {
+              "left": 828,
+              "top": 313.94,
+              "width": 410.67,
+              "height": 57.61
+            },
+            "snappedFrame": {
+              "left": 828,
+              "top": 313.94,
+              "width": 410.67,
+              "height": 57.61
+            },
+            "children": [],
+            "text": "맑음 × 1.00",
+            "transform": "none",
+            "element": {
+              "aid": "sh/ipcvedsr",
+              "id": "4",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.4",
+            "kind": "shape",
+            "name": "Google-Shape-340-p61-6",
+            "position": {
+              "left": 788.21,
+              "top": 316.55
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 22.32
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 22.31
+              }
+            },
+            "intrinsicSize": {
+              "width": 22.32,
+              "height": 22.31
+            },
+            "frame": {
+              "left": 788.21,
+              "top": 316.55,
+              "width": 22.32,
+              "height": 22.31
+            },
+            "snappedFrame": {
+              "left": 788.21,
+              "top": 316.55,
+              "width": 22.32,
+              "height": 22.31
+            },
+            "children": [],
+            "geometry": "custom",
+            "element": {
+              "aid": "sh/jq5w7itc",
+              "id": "5",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.5",
+            "kind": "text",
+            "name": "TextBox-11-7",
+            "position": {
+              "left": 41.33,
+              "top": 313.94
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 581.33
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 302.85
+              }
+            },
+            "intrinsicSize": {
+              "width": 581.33,
+              "height": 302.85
+            },
+            "frame": {
+              "left": 41.33,
+              "top": 313.94,
+              "width": 581.33,
+              "height": 302.85
+            },
+            "snappedFrame": {
+              "left": 41.33,
+              "top": 313.94,
+              "width": 581.33,
+              "height": 302.85
+            },
+            "children": [],
+            "text": "get_solarposition(KST 시각, 위도, 경도)\n→ apparent_elevation, azimuth\nsimplified_solis(태양 높이)\n→ 맑은 하늘 기준 GHI·DNI·DHI",
+            "transform": "none",
+            "element": {
+              "aid": "sh/krexgnax",
+              "id": "6",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.6",
+            "kind": "text",
+            "name": "Content-Placeholder-10-8",
+            "position": {
+              "left": 828,
+              "top": 377.94
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 410.67
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 57.61
+              }
+            },
+            "intrinsicSize": {
+              "width": 410.67,
+              "height": 57.61
+            },
+            "frame": {
+              "left": 828,
+              "top": 377.94,
+              "width": 410.67,
+              "height": 57.61
+            },
+            "snappedFrame": {
+              "left": 828,
+              "top": 377.94,
+              "width": 410.67,
+              "height": 57.61
+            },
+            "children": [],
+            "text": "구름 많음: GHI × 0.65",
+            "transform": "none",
+            "element": {
+              "aid": "sh/5sne9sbi",
+              "id": "7",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.7",
+            "kind": "shape",
+            "name": "Google-Shape-340-p61-9",
+            "position": {
+              "left": 788.21,
+              "top": 380.55
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 22.32
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 22.31
+              }
+            },
+            "intrinsicSize": {
+              "width": 22.32,
+              "height": 22.31
+            },
+            "frame": {
+              "left": 788.21,
+              "top": 380.55,
+              "width": 22.32,
+              "height": 22.31
+            },
+            "snappedFrame": {
+              "left": 788.21,
+              "top": 380.55,
+              "width": 22.32,
+              "height": 22.31
+            },
+            "children": [],
+            "geometry": "custom",
+            "element": {
+              "aid": "sh/6twfixsn",
+              "id": "8",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.8",
+            "kind": "text",
+            "name": "Content-Placeholder-10-10",
+            "position": {
+              "left": 828,
+              "top": 442.5
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 410.67
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 57.61
+              }
+            },
+            "intrinsicSize": {
+              "width": 410.67,
+              "height": 57.61
+            },
+            "frame": {
+              "left": 828,
+              "top": 442.5,
+              "width": 410.67,
+              "height": 57.61
+            },
+            "snappedFrame": {
+              "left": 828,
+              "top": 442.5,
+              "width": 410.67,
+              "height": 57.61
+            },
+            "children": [],
+            "text": "구름 많음: DNI × 0.45",
+            "transform": "none",
+            "element": {
+              "aid": "sh/ru5wb298",
+              "id": "9",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.9",
+            "kind": "shape",
+            "name": "Google-Shape-340-p61-11",
+            "position": {
+              "left": 788.21,
+              "top": 445.1
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 22.32
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 22.31
+              }
+            },
+            "intrinsicSize": {
+              "width": 22.32,
+              "height": 22.31
+            },
+            "frame": {
+              "left": 788.21,
+              "top": 445.1,
+              "width": 22.32,
+              "height": 22.31
+            },
+            "snappedFrame": {
+              "left": 788.21,
+              "top": 445.1,
+              "width": 22.32,
+              "height": 22.31
+            },
+            "children": [],
+            "geometry": "custom",
+            "element": {
+              "aid": "sh/ryx4fedc",
+              "id": "10",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.10",
+            "kind": "text",
+            "name": "Content-Placeholder-10-12",
+            "position": {
+              "left": 828,
+              "top": 506.49
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 410.67
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 57.61
+              }
+            },
+            "intrinsicSize": {
+              "width": 410.67,
+              "height": 57.61
+            },
+            "frame": {
+              "left": 828,
+              "top": 506.49,
+              "width": 410.67,
+              "height": 57.61
+            },
+            "snappedFrame": {
+              "left": 828,
+              "top": 506.49,
+              "width": 410.67,
+              "height": 57.61
+            },
+            "children": [],
+            "text": "흐림: GHI × 0.28",
+            "transform": "none",
+            "element": {
+              "aid": "sh/qdo36tcr",
+              "id": "11",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.11",
+            "kind": "shape",
+            "name": "Google-Shape-340-p61-13",
+            "position": {
+              "left": 788.21,
+              "top": 509.1
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 22.32
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 22.31
+              }
+            },
+            "intrinsicSize": {
+              "width": 22.32,
+              "height": 22.31
+            },
+            "frame": {
+              "left": 788.21,
+              "top": 509.1,
+              "width": 22.32,
+              "height": 22.31
+            },
+            "snappedFrame": {
+              "left": 788.21,
+              "top": 509.1,
+              "width": 22.32,
+              "height": 22.31
+            },
+            "children": [],
+            "geometry": "custom",
+            "element": {
+              "aid": "sh/d0fmhovi",
+              "id": "12",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.12",
+            "kind": "text",
+            "name": "Content-Placeholder-10-14",
+            "position": {
+              "left": 828,
+              "top": 571.83
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 410.67
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 57.61
+              }
+            },
+            "intrinsicSize": {
+              "width": 410.67,
+              "height": 57.61
+            },
+            "frame": {
+              "left": 828,
+              "top": 571.83,
+              "width": 410.67,
+              "height": 57.61
+            },
+            "snappedFrame": {
+              "left": 828,
+              "top": 571.83,
+              "width": 410.67,
+              "height": 57.61
+            },
+            "children": [],
+            "text": "흐림: DNI × 0.08",
+            "transform": "none",
+            "element": {
+              "aid": "sh/sz6l8jux",
+              "id": "13",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.13",
+            "kind": "shape",
+            "name": "Google-Shape-340-p61-15",
+            "position": {
+              "left": 788.21,
+              "top": 574.44
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 22.32
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 22.31
+              }
+            },
+            "intrinsicSize": {
+              "width": 22.32,
+              "height": 22.31
+            },
+            "frame": {
+              "left": 788.21,
+              "top": 574.44,
+              "width": 22.32,
+              "height": 22.31
+            },
+            "snappedFrame": {
+              "left": 788.21,
+              "top": 574.44,
+              "width": 22.32,
+              "height": 22.31
+            },
+            "children": [],
+            "geometry": "custom",
+            "element": {
+              "aid": "sh/3ax4bedg",
+              "id": "14",
+              "kind": "shape"
+            }
+          }
+        ],
+        "padding": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "alignItems": "stretch",
+        "justifyItems": "stretch",
+        "contentFrame": {
+          "left": 0,
+          "top": 0,
+          "width": 1280,
+          "height": 720
+        },
+        "items": [
+          {
+            "path": "0.0",
+            "frame": {
+              "left": 1184.18,
+              "top": 659.24,
+              "width": 54.48,
+              "height": 25.33
+            }
+          },
+          {
+            "path": "0.1",
+            "frame": {
+              "left": 41.33,
+              "top": 36.12,
+              "width": 1197.33,
+              "height": 109.97
+            }
+          },
+          {
+            "path": "0.2",
+            "frame": {
+              "left": 41.33,
+              "top": 180.83,
+              "width": 581.33,
+              "height": 90.83
+            }
+          },
+          {
+            "path": "0.3",
+            "frame": {
+              "left": 828,
+              "top": 313.94,
+              "width": 410.67,
+              "height": 57.61
+            }
+          },
+          {
+            "path": "0.4",
+            "frame": {
+              "left": 788.21,
+              "top": 316.55,
+              "width": 22.32,
+              "height": 22.31
+            }
+          },
+          {
+            "path": "0.5",
+            "frame": {
+              "left": 41.33,
+              "top": 313.94,
+              "width": 581.33,
+              "height": 302.85
+            }
+          },
+          {
+            "path": "0.6",
+            "frame": {
+              "left": 828,
+              "top": 377.94,
+              "width": 410.67,
+              "height": 57.61
+            }
+          },
+          {
+            "path": "0.7",
+            "frame": {
+              "left": 788.21,
+              "top": 380.55,
+              "width": 22.32,
+              "height": 22.31
+            }
+          },
+          {
+            "path": "0.8",
+            "frame": {
+              "left": 828,
+              "top": 442.5,
+              "width": 410.67,
+              "height": 57.61
+            }
+          },
+          {
+            "path": "0.9",
+            "frame": {
+              "left": 788.21,
+              "top": 445.1,
+              "width": 22.32,
+              "height": 22.31
+            }
+          },
+          {
+            "path": "0.10",
+            "frame": {
+              "left": 828,
+              "top": 506.49,
+              "width": 410.67,
+              "height": 57.61
+            }
+          },
+          {
+            "path": "0.11",
+            "frame": {
+              "left": 788.21,
+              "top": 509.1,
+              "width": 22.32,
+              "height": 22.31
+            }
+          },
+          {
+            "path": "0.12",
+            "frame": {
+              "left": 828,
+              "top": 571.83,
+              "width": 410.67,
+              "height": 57.61
+            }
+          },
+          {
+            "path": "0.13",
+            "frame": {
+              "left": 788.21,
+              "top": 574.44,
+              "width": 22.32,
+              "height": 22.31
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

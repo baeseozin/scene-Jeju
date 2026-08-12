@@ -6,6 +6,12 @@ const STATUS_COLOR = {
   비추천: "#ef8582",
 } as const;
 
+const STATUS_LABEL = {
+  가능: "좋음",
+  보통: "괜찮음",
+  비추천: "시간 조정 추천",
+} as const;
+
 function formatDate(value: string): string {
   return new Intl.DateTimeFormat("ko-KR", {
     timeZone: "Asia/Seoul",
@@ -92,7 +98,7 @@ export async function createAnalysisCard(analysis: Analysis): Promise<File> {
   roundedRect(context, 72, 360, 936, 304, 34);
   context.fillStyle = STATUS_COLOR[analysis.status];
   context.font = "700 37px sans-serif";
-  context.fillText(analysis.status, 120, 434);
+  context.fillText(STATUS_LABEL[analysis.status], 120, 434);
   context.fillStyle = "#ffffff";
   context.font = "700 154px sans-serif";
   context.fillText(String(analysis.scores.total), 112, 598);
@@ -106,11 +112,14 @@ export async function createAnalysisCard(analysis: Analysis): Promise<File> {
   context.font = "700 35px sans-serif";
   drawWrappedText(context, formatDate(analysis.best_time), 605, 510, 330, 47, 3);
 
+  const windLabel = analysis.weather.wind_speed_mps < 2 ? "거의 잔잔함" : analysis.weather.wind_speed_mps < 5 ? "산들바람" : analysis.weather.wind_speed_mps < 8 ? "조금 강함" : "매우 강함";
+  const rainLabel = analysis.weather.precipitation_mm <= 0 ? "비 걱정 없음" : analysis.weather.precipitation_mm < 1 ? "약한 비" : "비가 제법 옴";
+  const lightLabel = analysis.solar.elevation < -6 || analysis.solar.ghi_wm2 < 25 ? "자연광 부족" : analysis.solar.ghi_wm2 >= 700 ? "빛이 매우 강함" : analysis.solar.ghi_wm2 >= 400 ? "빛이 충분함" : analysis.solar.ghi_wm2 >= 120 ? "빛이 부드러움" : "빛이 약함";
   const cards = [
-    ["강수", `${analysis.weather.precipitation_mm} mm`],
-    ["바람", `${analysis.weather.wind_speed_mps} m/s`],
+    ["비", rainLabel],
+    ["바람", windLabel],
     ["하늘", analysis.weather.sky],
-    ["예상 일사량", `${analysis.solar.ghi_wm2} W/m² · 빛 위험 ${lightingRisk(analysis)}`],
+    ["빛", `${lightLabel} · 주의 ${lightingRisk(analysis)}`],
   ];
   cards.forEach(([label, value], index) => {
     const x = 72 + (index % 2) * 474;

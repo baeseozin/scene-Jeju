@@ -13,7 +13,9 @@ class Settings(BaseSettings):
     app_mode: Literal["mock", "auto", "real"] = "mock"
     kma_service_key: str = ""
     kakao_rest_api_key: str = ""
-    frontend_origin: str = "http://localhost:5173"
+    openai_api_key: str = ""
+    openai_pose_model: str = "gpt-5.6-luna"
+    frontend_origin: str = "http://localhost:5178"
 
     model_config = SettingsConfigDict(
         env_file=(ROOT_DIR / ".env", ROOT_DIR.parent / ".env"),
@@ -26,6 +28,10 @@ class Settings(BaseSettings):
         return self.app_mode == "real" or (
             self.app_mode == "auto" and bool(self.kma_service_key)
         )
+
+    @property
+    def use_openai_pose_recommendation(self) -> bool:
+        return bool(self.openai_api_key)
 
 
 @lru_cache

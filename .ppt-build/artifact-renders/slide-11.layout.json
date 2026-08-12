@@ -1,0 +1,1862 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/k66aau",
+    "id": "k66aau",
+    "slide": 11,
+    "layoutId": "4e44454e-c1f8-4ef5-8c7c-3bee6d5ef6dd",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "d351d3e4-ef0c-4c32-bf0f-005b5ed86b33",
+    "masterLayoutName": "Master",
+    "backgroundColor": "#FFFFFF",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "Apple SD Gothic Neo",
+      "Helvetica Neue"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "4e44454e-c1f8-4ef5-8c7c-3bee6d5ef6dd",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "d351d3e4-ef0c-4c32-bf0f-005b5ed86b33",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "d351d3e4-ef0c-4c32-bf0f-005b5ed86b33",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/sfqtgf6p",
+      "id": "1",
+      "name": "Slide-Number-Placeholder-3-2",
+      "bbox": [
+        1184.18,
+        659.24,
+        54.48,
+        25.33
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.0"
+      },
+      "geometry": "rect",
+      "text": "11",
+      "textPreview": "11",
+      "resolvedFontSize": 13.33,
+      "resolvedTextStyle": {
+        "anchor": 3,
+        "fontSize": 13.33,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "right",
+        "verticalAlignment": "bottom",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "11"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "11",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "anchor": 3,
+            "fontSize": 13.33,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "right",
+            "verticalAlignment": "bottom",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "11",
+              "fontSize": 14,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#4E5E59",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/rehsna54",
+      "id": "2",
+      "name": "Title-10-3",
+      "bbox": [
+        41.33,
+        36.12,
+        1197.33,
+        109.97
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1"
+      },
+      "geometry": "rect",
+      "text": "6개 컨셉은 서로 다른 날씨·빛·장소 범위를 가진다",
+      "textPreview": "6개 컨셉은 서로 다른 날씨·빛·장소 범위를 가진다",
+      "resolvedFontSize": 38.67,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 38.67,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "autoFit": "shrinkText",
+        "autoFitScale": 1,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "6개 컨셉은 서로 다른 날씨·빛·장소 범위를 가진다"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "6개 컨셉은 서로 다른 날씨·빛·장소 범위를 가진다",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "anchor": 1,
+            "fontSize": 38.67,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "verticalAlignment": "top",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "6개 컨셉은 서로 다른 날씨·빛·장소 범위를 가진다",
+              "fontSize": 39,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/qd8be5oj",
+      "id": "3",
+      "name": "Content-Placeholder-15-4",
+      "bbox": [
+        41.33,
+        436.86,
+        272.54,
+        148.62
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.2"
+      },
+      "geometry": "rect",
+      "text": "무드있는\n구름 많음/흐림\n낮은 빛\n숲·도심",
+      "textPreview": "무드있는 | 구름 많음/흐림 | 낮은 빛 | 숲·도심",
+      "resolvedFontSize": 21.33,
+      "resolvedTextStyle": {
+        "fontSize": 21.33,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 4,
+        "lines": [
+          {
+            "index": 1,
+            "text": "무드있는"
+          },
+          {
+            "index": 2,
+            "text": "구름 많음/흐림"
+          },
+          {
+            "index": 3,
+            "text": "낮은 빛"
+          },
+          {
+            "index": 4,
+            "text": "숲·도심"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "무드있는",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 500,
+          "resolvedTextStyle": {
+            "fontSize": 21.33,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "무드있는",
+              "fontSize": 23,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "구름 많음/흐림\n낮은 빛\n숲·도심",
+          "lineSpacingPercent": 116000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 21.33,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "구름 많음/흐림\n낮은 빛\n숲·도심",
+              "fontSize": 19,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#4E5E59"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/5czal0ny",
+      "id": "4",
+      "name": "Text-Placeholder-16-5",
+      "bbox": [
+        350.13,
+        436.86,
+        272.54,
+        148.62
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.3"
+      },
+      "geometry": "rect",
+      "text": "반짝이는\n맑음 · 강한 빛\n해변·도심\n반사광 관계",
+      "textPreview": "반짝이는 | 맑음 · 강한 빛 | 해변·도심 | 반사광 관계",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 4,
+        "lines": [
+          {
+            "index": 1,
+            "text": "반짝이는"
+          },
+          {
+            "index": 2,
+            "text": "맑음 · 강한 빛"
+          },
+          {
+            "index": 3,
+            "text": "해변·도심"
+          },
+          {
+            "index": 4,
+            "text": "반사광 관계"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "반짝이는",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 500,
+          "resolvedTextStyle": {
+            "fontSize": 24,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "반짝이는",
+              "fontSize": 23,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "맑음 · 강한 빛\n해변·도심\n반사광 관계",
+          "lineSpacingPercent": 116000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 24,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "맑음 · 강한 빛\n해변·도심\n반사광 관계",
+              "fontSize": 19,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#4E5E59"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/4b69cv6t",
+      "id": "5",
+      "name": "Content-Placeholder-17-6",
+      "bbox": [
+        657.68,
+        436.86,
+        272.54,
+        148.62
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.4"
+      },
+      "geometry": "rect",
+      "text": "공통 필드\n허용 비·바람\n선호 SKY\n빛 범위·방향 오프셋",
+      "textPreview": "공통 필드 | 허용 비·바람 | 선호 SKY | 빛 범위·방향 오프셋",
+      "resolvedFontSize": 21.33,
+      "resolvedTextStyle": {
+        "fontSize": 21.33,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 4,
+        "lines": [
+          {
+            "index": 1,
+            "text": "공통 필드"
+          },
+          {
+            "index": 2,
+            "text": "허용 비·바람"
+          },
+          {
+            "index": 3,
+            "text": "선호 SKY"
+          },
+          {
+            "index": 4,
+            "text": "빛 범위·방향 오프셋"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "공통 필드",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 500,
+          "resolvedTextStyle": {
+            "fontSize": 21.33,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "공통 필드",
+              "fontSize": 23,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "허용 비·바람\n선호 SKY\n빛 범위·방향 오프셋",
+          "lineSpacingPercent": 116000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 21.33,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "허용 비·바람\n선호 SKY\n빛 범위·방향 오프셋",
+              "fontSize": 19,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#4E5E59"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/3axsjq58",
+      "id": "6",
+      "name": "Text-Placeholder-18-7",
+      "bbox": [
+        966.48,
+        436.86,
+        272.54,
+        148.62
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.5"
+      },
+      "geometry": "rect",
+      "text": "화면 테마\n스카이·그린·코럴\n베이지·블루그레이·민트",
+      "textPreview": "화면 테마 | 스카이·그린·코럴 | 베이지·블루그레이·민트",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 3,
+        "lines": [
+          {
+            "index": 1,
+            "text": "화면 테마"
+          },
+          {
+            "index": 2,
+            "text": "스카이·그린·코럴"
+          },
+          {
+            "index": 3,
+            "text": "베이지·블루그레이·민트"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "화면 테마",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 500,
+          "resolvedTextStyle": {
+            "fontSize": 24,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "화면 테마",
+              "fontSize": 23,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "스카이·그린·코럴\n베이지·블루그레이·민트",
+          "lineSpacingPercent": 116000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 24,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "스카이·그린·코럴\n베이지·블루그레이·민트",
+              "fontSize": 19,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#4E5E59"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/i9oralon",
+      "id": "7",
+      "name": "Content-Placeholder-15-8",
+      "bbox": [
+        41.33,
+        231.82,
+        272.54,
+        148.62
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.6"
+      },
+      "geometry": "rect",
+      "text": "청량한\n맑음 · 강한 빛\n해변·도심\n순광 관계",
+      "textPreview": "청량한 | 맑음 · 강한 빛 | 해변·도심 | 순광 관계",
+      "resolvedFontSize": 21.33,
+      "resolvedTextStyle": {
+        "fontSize": 21.33,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 4,
+        "lines": [
+          {
+            "index": 1,
+            "text": "청량한"
+          },
+          {
+            "index": 2,
+            "text": "맑음 · 강한 빛"
+          },
+          {
+            "index": 3,
+            "text": "해변·도심"
+          },
+          {
+            "index": 4,
+            "text": "순광 관계"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "청량한",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 500,
+          "resolvedTextStyle": {
+            "fontSize": 21.33,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "청량한",
+              "fontSize": 23,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "맑음 · 강한 빛\n해변·도심\n순광 관계",
+          "lineSpacingPercent": 116000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 21.33,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "맑음 · 강한 빛\n해변·도심\n순광 관계",
+              "fontSize": 19,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#4E5E59"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/hofahgn2",
+      "id": "8",
+      "name": "Text-Placeholder-16-9",
+      "bbox": [
+        350.13,
+        231.82,
+        272.54,
+        148.62
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.7"
+      },
+      "geometry": "rect",
+      "text": "자연스러운\n맑음/구름 많음\n중간 빛\n부드러운 옆빛",
+      "textPreview": "자연스러운 | 맑음/구름 많음 | 중간 빛 | 부드러운 옆빛",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 4,
+        "lines": [
+          {
+            "index": 1,
+            "text": "자연스러운"
+          },
+          {
+            "index": 2,
+            "text": "맑음/구름 많음"
+          },
+          {
+            "index": 3,
+            "text": "중간 빛"
+          },
+          {
+            "index": 4,
+            "text": "부드러운 옆빛"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "자연스러운",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 500,
+          "resolvedTextStyle": {
+            "fontSize": 24,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "자연스러운",
+              "fontSize": 23,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "맑음/구름 많음\n중간 빛\n부드러운 옆빛",
+          "lineSpacingPercent": 116000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 24,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "맑음/구름 많음\n중간 빛\n부드러운 옆빛",
+              "fontSize": 19,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#4E5E59"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/gn698v6h",
+      "id": "9",
+      "name": "Content-Placeholder-17-10",
+      "bbox": [
+        657.68,
+        231.82,
+        272.54,
+        148.62
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.8"
+      },
+      "geometry": "rect",
+      "text": "노을 실루엣\n일몰 전후\n낮은 빛\n역광 관계",
+      "textPreview": "노을 실루엣 | 일몰 전후 | 낮은 빛 | 역광 관계",
+      "resolvedFontSize": 21.33,
+      "resolvedTextStyle": {
+        "fontSize": 21.33,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 4,
+        "lines": [
+          {
+            "index": 1,
+            "text": "노을 실루엣"
+          },
+          {
+            "index": 2,
+            "text": "일몰 전후"
+          },
+          {
+            "index": 3,
+            "text": "낮은 빛"
+          },
+          {
+            "index": 4,
+            "text": "역광 관계"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "노을 실루엣",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 500,
+          "resolvedTextStyle": {
+            "fontSize": 21.33,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "노을 실루엣",
+              "fontSize": 23,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "일몰 전후\n낮은 빛\n역광 관계",
+          "lineSpacingPercent": 116000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 21.33,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "일몰 전후\n낮은 빛\n역광 관계",
+              "fontSize": 19,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#4E5E59"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/m9gfa5cv",
+      "id": "10",
+      "name": "Text-Placeholder-18-11",
+      "bbox": [
+        966.48,
+        231.82,
+        272.54,
+        148.62
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.9"
+      },
+      "geometry": "rect",
+      "text": "포근한\n구름 많음/흐림\n확산광\n숲·도심·실내",
+      "textPreview": "포근한 | 구름 많음/흐림 | 확산광 | 숲·도심·실내",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 4,
+        "lines": [
+          {
+            "index": 1,
+            "text": "포근한"
+          },
+          {
+            "index": 2,
+            "text": "구름 많음/흐림"
+          },
+          {
+            "index": 3,
+            "text": "확산광"
+          },
+          {
+            "index": 4,
+            "text": "숲·도심·실내"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "포근한",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 500,
+          "resolvedTextStyle": {
+            "fontSize": 24,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "포근한",
+              "fontSize": 23,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "구름 많음/흐림\n확산광\n숲·도심·실내",
+          "lineSpacingPercent": 116000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 24,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "구름 많음/흐림\n확산광\n숲·도심·실내",
+              "fontSize": 19,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#4E5E59"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/nupwjat0",
+      "id": "11",
+      "name": "accent-line-11",
+      "bbox": [
+        0,
+        0,
+        1280,
+        7
+      ],
+      "geometry": "rect",
+      "fillColor": "#2D8C73",
+      "lineWidth": 0
+    },
+    {
+      "order": 12,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ovyxcfal",
+      "id": "12",
+      "bbox": [
+        41.33,
+        218,
+        104,
+        6
+      ],
+      "geometry": "rect",
+      "fillColor": "#62B9EF",
+      "lineWidth": 0
+    },
+    {
+      "order": 13,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/9w7el0b6",
+      "id": "13",
+      "bbox": [
+        350.13,
+        218,
+        104,
+        6
+      ],
+      "geometry": "rect",
+      "fillColor": "#79B88A",
+      "lineWidth": 0
+    },
+    {
+      "order": 14,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/e5wf6lcj",
+      "id": "14",
+      "bbox": [
+        657.68,
+        218,
+        104,
+        6
+      ],
+      "geometry": "rect",
+      "fillColor": "#EF765F",
+      "lineWidth": 0
+    },
+    {
+      "order": 15,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/z65wfqt4",
+      "id": "15",
+      "bbox": [
+        966.48,
+        218,
+        104,
+        6
+      ],
+      "geometry": "rect",
+      "fillColor": "#DFCFB4",
+      "lineWidth": 0
+    },
+    {
+      "order": 16,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/07ex8vup",
+      "id": "16",
+      "bbox": [
+        41.33,
+        423,
+        104,
+        6
+      ],
+      "geometry": "rect",
+      "fillColor": "#77879D",
+      "lineWidth": 0
+    },
+    {
+      "order": 17,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/18neh0ba",
+      "id": "17",
+      "bbox": [
+        350.13,
+        423,
+        104,
+        6
+      ],
+      "geometry": "rect",
+      "fillColor": "#70DEC7",
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": [
+    {
+      "index": 1,
+      "frame": {
+        "left": 0,
+        "top": 0,
+        "width": 1280,
+        "height": 720
+      },
+      "baseUnit": 1,
+      "root": {
+        "path": "0",
+        "kind": "layers",
+        "name": "codex-grid-layout-library#slide-16",
+        "requestedSize": {
+          "width": {
+            "mode": "fill",
+            "value": 1
+          },
+          "height": {
+            "mode": "fill",
+            "value": 1
+          }
+        },
+        "intrinsicSize": {
+          "width": 1239.02,
+          "height": 684.57
+        },
+        "frame": {
+          "left": 0,
+          "top": 0,
+          "width": 1280,
+          "height": 720
+        },
+        "children": [
+          {
+            "path": "0.0",
+            "kind": "text",
+            "name": "Slide-Number-Placeholder-3-2",
+            "position": {
+              "left": 1184.18,
+              "top": 659.24
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 54.48
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 25.33
+              }
+            },
+            "intrinsicSize": {
+              "width": 54.48,
+              "height": 25.33
+            },
+            "frame": {
+              "left": 1184.18,
+              "top": 659.24,
+              "width": 54.48,
+              "height": 25.33
+            },
+            "snappedFrame": {
+              "left": 1184.18,
+              "top": 659.24,
+              "width": 54.48,
+              "height": 25.33
+            },
+            "children": [],
+            "text": "11",
+            "transform": "none",
+            "element": {
+              "aid": "sh/sfqtgf6p",
+              "id": "1",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.1",
+            "kind": "text",
+            "name": "Title-10-3",
+            "position": {
+              "left": 41.33,
+              "top": 36.12
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 1197.33
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 109.97
+              }
+            },
+            "intrinsicSize": {
+              "width": 1197.33,
+              "height": 109.97
+            },
+            "frame": {
+              "left": 41.33,
+              "top": 36.12,
+              "width": 1197.33,
+              "height": 109.97
+            },
+            "snappedFrame": {
+              "left": 41.33,
+              "top": 36.12,
+              "width": 1197.33,
+              "height": 109.97
+            },
+            "children": [],
+            "text": "6개 컨셉은 서로 다른 날씨·빛·장소 범위를 가진다",
+            "transform": "none",
+            "element": {
+              "aid": "sh/rehsna54",
+              "id": "2",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.2",
+            "kind": "text",
+            "name": "Content-Placeholder-15-4",
+            "position": {
+              "left": 41.33,
+              "top": 436.86
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 272.54
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 148.62
+              }
+            },
+            "intrinsicSize": {
+              "width": 272.54,
+              "height": 148.62
+            },
+            "frame": {
+              "left": 41.33,
+              "top": 436.86,
+              "width": 272.54,
+              "height": 148.62
+            },
+            "snappedFrame": {
+              "left": 41.33,
+              "top": 436.86,
+              "width": 272.54,
+              "height": 148.62
+            },
+            "children": [],
+            "text": "무드있는\n구름 많음/흐림\n낮은 빛\n숲·도심",
+            "transform": "none",
+            "element": {
+              "aid": "sh/qd8be5oj",
+              "id": "3",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.3",
+            "kind": "text",
+            "name": "Text-Placeholder-16-5",
+            "position": {
+              "left": 350.13,
+              "top": 436.86
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 272.54
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 148.62
+              }
+            },
+            "intrinsicSize": {
+              "width": 272.54,
+              "height": 148.62
+            },
+            "frame": {
+              "left": 350.13,
+              "top": 436.86,
+              "width": 272.54,
+              "height": 148.62
+            },
+            "snappedFrame": {
+              "left": 350.13,
+              "top": 436.86,
+              "width": 272.54,
+              "height": 148.62
+            },
+            "children": [],
+            "text": "반짝이는\n맑음 · 강한 빛\n해변·도심\n반사광 관계",
+            "transform": "none",
+            "element": {
+              "aid": "sh/5czal0ny",
+              "id": "4",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.4",
+            "kind": "text",
+            "name": "Content-Placeholder-17-6",
+            "position": {
+              "left": 657.68,
+              "top": 436.86
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 272.54
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 148.62
+              }
+            },
+            "intrinsicSize": {
+              "width": 272.54,
+              "height": 148.62
+            },
+            "frame": {
+              "left": 657.68,
+              "top": 436.86,
+              "width": 272.54,
+              "height": 148.62
+            },
+            "snappedFrame": {
+              "left": 657.68,
+              "top": 436.86,
+              "width": 272.54,
+              "height": 148.62
+            },
+            "children": [],
+            "text": "공통 필드\n허용 비·바람\n선호 SKY\n빛 범위·방향 오프셋",
+            "transform": "none",
+            "element": {
+              "aid": "sh/4b69cv6t",
+              "id": "5",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.5",
+            "kind": "text",
+            "name": "Text-Placeholder-18-7",
+            "position": {
+              "left": 966.48,
+              "top": 436.86
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 272.54
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 148.62
+              }
+            },
+            "intrinsicSize": {
+              "width": 272.54,
+              "height": 148.62
+            },
+            "frame": {
+              "left": 966.48,
+              "top": 436.86,
+              "width": 272.54,
+              "height": 148.62
+            },
+            "snappedFrame": {
+              "left": 966.48,
+              "top": 436.86,
+              "width": 272.54,
+              "height": 148.62
+            },
+            "children": [],
+            "text": "화면 테마\n스카이·그린·코럴\n베이지·블루그레이·민트",
+            "transform": "none",
+            "element": {
+              "aid": "sh/3axsjq58",
+              "id": "6",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.6",
+            "kind": "text",
+            "name": "Content-Placeholder-15-8",
+            "position": {
+              "left": 41.33,
+              "top": 231.82
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 272.54
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 148.62
+              }
+            },
+            "intrinsicSize": {
+              "width": 272.54,
+              "height": 148.62
+            },
+            "frame": {
+              "left": 41.33,
+              "top": 231.82,
+              "width": 272.54,
+              "height": 148.62
+            },
+            "snappedFrame": {
+              "left": 41.33,
+              "top": 231.82,
+              "width": 272.54,
+              "height": 148.62
+            },
+            "children": [],
+            "text": "청량한\n맑음 · 강한 빛\n해변·도심\n순광 관계",
+            "transform": "none",
+            "element": {
+              "aid": "sh/i9oralon",
+              "id": "7",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.7",
+            "kind": "text",
+            "name": "Text-Placeholder-16-9",
+            "position": {
+              "left": 350.13,
+              "top": 231.82
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 272.54
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 148.62
+              }
+            },
+            "intrinsicSize": {
+              "width": 272.54,
+              "height": 148.62
+            },
+            "frame": {
+              "left": 350.13,
+              "top": 231.82,
+              "width": 272.54,
+              "height": 148.62
+            },
+            "snappedFrame": {
+              "left": 350.13,
+              "top": 231.82,
+              "width": 272.54,
+              "height": 148.62
+            },
+            "children": [],
+            "text": "자연스러운\n맑음/구름 많음\n중간 빛\n부드러운 옆빛",
+            "transform": "none",
+            "element": {
+              "aid": "sh/hofahgn2",
+              "id": "8",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.8",
+            "kind": "text",
+            "name": "Content-Placeholder-17-10",
+            "position": {
+              "left": 657.68,
+              "top": 231.82
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 272.54
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 148.62
+              }
+            },
+            "intrinsicSize": {
+              "width": 272.54,
+              "height": 148.62
+            },
+            "frame": {
+              "left": 657.68,
+              "top": 231.82,
+              "width": 272.54,
+              "height": 148.62
+            },
+            "snappedFrame": {
+              "left": 657.68,
+              "top": 231.82,
+              "width": 272.54,
+              "height": 148.62
+            },
+            "children": [],
+            "text": "노을 실루엣\n일몰 전후\n낮은 빛\n역광 관계",
+            "transform": "none",
+            "element": {
+              "aid": "sh/gn698v6h",
+              "id": "9",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.9",
+            "kind": "text",
+            "name": "Text-Placeholder-18-11",
+            "position": {
+              "left": 966.48,
+              "top": 231.82
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 272.54
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 148.62
+              }
+            },
+            "intrinsicSize": {
+              "width": 272.54,
+              "height": 148.62
+            },
+            "frame": {
+              "left": 966.48,
+              "top": 231.82,
+              "width": 272.54,
+              "height": 148.62
+            },
+            "snappedFrame": {
+              "left": 966.48,
+              "top": 231.82,
+              "width": 272.54,
+              "height": 148.62
+            },
+            "children": [],
+            "text": "포근한\n구름 많음/흐림\n확산광\n숲·도심·실내",
+            "transform": "none",
+            "element": {
+              "aid": "sh/m9gfa5cv",
+              "id": "10",
+              "kind": "shape"
+            }
+          }
+        ],
+        "padding": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "alignItems": "stretch",
+        "justifyItems": "stretch",
+        "contentFrame": {
+          "left": 0,
+          "top": 0,
+          "width": 1280,
+          "height": 720
+        },
+        "items": [
+          {
+            "path": "0.0",
+            "frame": {
+              "left": 1184.18,
+              "top": 659.24,
+              "width": 54.48,
+              "height": 25.33
+            }
+          },
+          {
+            "path": "0.1",
+            "frame": {
+              "left": 41.33,
+              "top": 36.12,
+              "width": 1197.33,
+              "height": 109.97
+            }
+          },
+          {
+            "path": "0.2",
+            "frame": {
+              "left": 41.33,
+              "top": 436.86,
+              "width": 272.54,
+              "height": 148.62
+            }
+          },
+          {
+            "path": "0.3",
+            "frame": {
+              "left": 350.13,
+              "top": 436.86,
+              "width": 272.54,
+              "height": 148.62
+            }
+          },
+          {
+            "path": "0.4",
+            "frame": {
+              "left": 657.68,
+              "top": 436.86,
+              "width": 272.54,
+              "height": 148.62
+            }
+          },
+          {
+            "path": "0.5",
+            "frame": {
+              "left": 966.48,
+              "top": 436.86,
+              "width": 272.54,
+              "height": 148.62
+            }
+          },
+          {
+            "path": "0.6",
+            "frame": {
+              "left": 41.33,
+              "top": 231.82,
+              "width": 272.54,
+              "height": 148.62
+            }
+          },
+          {
+            "path": "0.7",
+            "frame": {
+              "left": 350.13,
+              "top": 231.82,
+              "width": 272.54,
+              "height": 148.62
+            }
+          },
+          {
+            "path": "0.8",
+            "frame": {
+              "left": 657.68,
+              "top": 231.82,
+              "width": 272.54,
+              "height": 148.62
+            }
+          },
+          {
+            "path": "0.9",
+            "frame": {
+              "left": 966.48,
+              "top": 231.82,
+              "width": 272.54,
+              "height": 148.62
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

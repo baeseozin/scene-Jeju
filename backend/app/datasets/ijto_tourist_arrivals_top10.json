@@ -1,0 +1,20 @@
+{
+  "dataset_name": "제주 지역별 관광지 도착",
+  "reference_month": "202607",
+  "retrieved_at": "2026-08-12",
+  "source": "제주관광빅데이터플랫폼·티맵 내비게이션 O-D 데이터",
+  "source_url": "https://data.ijto.or.kr/prog/dataPick/bigdata/sub02/view.do?regSn=48",
+  "is_realtime": false,
+  "places": [
+    {"name": "제주국제공항", "arrivals": 41369, "rank": 1},
+    {"name": "서귀포매일올레시장", "arrivals": 14325, "rank": 2},
+    {"name": "동문재래시장", "arrivals": 12079, "rank": 3},
+    {"name": "함덕해수욕장", "arrivals": 11160, "rank": 4},
+    {"name": "협재해수욕장", "arrivals": 9792, "rank": 5},
+    {"name": "이호테우해변", "arrivals": 7575, "rank": 6},
+    {"name": "성산일출봉", "arrivals": 7337, "rank": 7},
+    {"name": "만장굴", "arrivals": 7298, "rank": 8},
+    {"name": "곽지해수욕장", "arrivals": 6575, "rank": 9},
+    {"name": "김녕해수욕장", "arrivals": 6233, "rank": 10}
+  ]
+}

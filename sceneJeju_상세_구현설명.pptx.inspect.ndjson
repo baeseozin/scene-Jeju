@@ -1,0 +1,320 @@
+{"kind":"deck","id":"pr/l56vxz","name":"Deck"}
+{"kind":"layout","layoutId":"d351d3e4-ef0c-4c32-bf0f-005b5ed86b33","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"4e44454e-c1f8-4ef5-8c7c-3bee6d5ef6dd","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/9pp47t","slide":1,"title":"도착할 때의 빛을","textShapes":3}
+{"kind":"textbox","id":"sh/sjm94r25","slide":1,"name":"Title-3-1","text":"도착할 때의 빛을\n촬영 결과로 바꾸는 방법","textPreview":"도착할 때의 빛을 | 촬영 결과로 바꾸는 방법","textChars":23,"textLines":2,"bbox":[41.33,182.55,992,261.57]}
+{"kind":"textbox","id":"sh/rid8vm1k","slide":1,"name":"Subtitle-4-2","text":"React + FastAPI 기반 제주 촬영 적합도 서비스\n현재 코드 기준 상세 구현 설명","textPreview":"React + FastAPI 기반 제주 촬영 적합도 서비스 | 현재 코드 기준 상세 구현 설명","textChars":50,"textLines":2,"bbox":[41.33,497.87,598.67,113.41]}
+{"kind":"textbox","id":"sh/6hkr21kz","slide":1,"name":"Subtitle-4-3","text":"MOOD MAKER · SCENE JEJU","textPreview":"MOOD MAKER · SCENE JEJU","textChars":23,"textLines":1,"bbox":[41.33,41.18,598.67,68.15]}
+{"kind":"shape","id":"sh/1ova1gj2","slide":1,"name":"accent-line-1","bbox":[0,0,1280,7]}
+{"kind":"notes","id":"nt/9pp47t","slide":1,"text":"이 자료는 서비스 소개보다 구현 원리를 설명하는 데 목적이 있습니다. 핵심 질문은 ‘사용자가 실제 장소에 도착할 때 어떤 빛과 날씨를 만나며, 그 조건을 어떻게 촬영 행동으로 바꾸는가’입니다.\n\n[Sources]\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/README.md\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/main.py\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/frontend/src/App.tsx"}
+{"kind":"slide","id":"sl/baaao9","slide":2,"title":"2","textShapes":9}
+{"kind":"textbox","id":"sh/7ihcrypo","slide":2,"name":"Google-Shape-532-p58-2","text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[1184.18,659.24,54.48,25.33]}
+{"kind":"textbox","id":"sh/8jatk369","slide":2,"name":"Google-Shape-533-p58-3","text":"현재 날씨가 아니라, 도착해서 찍을 순간을 판단한다","textPreview":"현재 날씨가 아니라, 도착해서 찍을 순간을 판단한다","textChars":28,"textLines":1,"bbox":[41.33,36.12,1197.33,109.97]}
+{"kind":"textbox","id":"sh/tkjut87u","slide":2,"name":"Google-Shape-534-p58-4","text":"기존 날씨 앱의 답","textPreview":"기존 날씨 앱의 답","textChars":10,"textLines":1,"bbox":[41.33,180.83,581.33,90.83]}
+{"kind":"textbox","id":"sh/yt8be9o7","slide":2,"name":"Content-Placeholder-10-5","text":"도착 시각 계산","textPreview":"도착 시각 계산","textChars":8,"textLines":1,"bbox":[828,313.94,410.67,57.61]}
+{"kind":"shape","id":"sh/juhcneps","slide":2,"name":"Google-Shape-340-p61-6","bbox":[788.21,316.55,22.32,22.31]}
+{"kind":"textbox","id":"sh/kvqtgj6d","slide":2,"name":"TextBox-11-7","text":"‘지금 맑다’는 정보만으로는 촬영 성공을 보장하지 못합니다.\n이동 중 날씨와 빛의 방향이 바뀌고, 같은 조건도 해변·숲·도심에서 결과가 달라집니다.","textPreview":"‘지금 맑다’는 정보만으로는 촬영 성공을 보장하지 못합니다. | 이동 중 날씨와 빛의 방향이 바뀌고, 같은 조건도 해변·숲·도심에서 결과가 달라집니다.","textChars":82,"textLines":2,"bbox":[41.33,313.94,581.33,302.85]}
+{"kind":"textbox","id":"sh/lgzupo7i","slide":2,"name":"Content-Placeholder-10-8","text":"장소별 빛 위험","textPreview":"장소별 빛 위험","textChars":8,"textLines":1,"bbox":[828,377.94,410.67,57.61]}
+{"kind":"shape","id":"sh/2psbqdob","slide":2,"name":"Google-Shape-340-p61-9","bbox":[788.21,380.55,22.32,22.31]}
+{"kind":"textbox","id":"sh/3q1czi5w","slide":2,"name":"Content-Placeholder-10-10","text":"컨셉별 허용 조건","textPreview":"컨셉별 허용 조건","textChars":9,"textLines":1,"bbox":[828,442.5,410.67,57.61]}
+{"kind":"shape","id":"sh/vql8ji5w","slide":2,"name":"Google-Shape-340-p61-11","bbox":[788.21,445.1,22.32,22.31]}
+{"kind":"textbox","id":"sh/upcradob","slide":2,"name":"Content-Placeholder-10-12","text":"촬영 행동 안내","textPreview":"촬영 행동 안내","textChars":8,"textLines":1,"bbox":[828,506.49,410.67,57.61]}
+{"kind":"shape","id":"sh/hc3qlsn2","slide":2,"name":"Google-Shape-340-p61-13","bbox":[788.21,509.1,22.32,22.31]}
+{"kind":"textbox","id":"sh/gbu9cn6h","slide":2,"name":"Content-Placeholder-10-14","text":"결과물 편집","textPreview":"결과물 편집","textChars":6,"textLines":1,"bbox":[828,571.83,410.67,57.61]}
+{"kind":"shape","id":"sh/3el8n258","slide":2,"name":"Google-Shape-340-p61-15","bbox":[788.21,574.44,22.32,22.31]}
+{"kind":"shape","id":"sh/idcrexon","slide":2,"name":"accent-line-2","bbox":[0,0,1280,7]}
+{"kind":"notes","id":"nt/baaao9","slide":2,"text":"문제 정의를 기능 목록으로 말하지 말고 의사결정 차이로 설명합니다. 서비스는 ‘갈까 말까’만 판단하지 않고, 언제 출발하고 어디에 서서 무엇을 조정해야 하는지까지 연결합니다.\n\n[Sources]\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/main.py\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/data.py\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/frontend/src/MediaStudio.tsx"}
+{"kind":"slide","id":"sl/5ccrwk","slide":3,"title":"3","textShapes":8}
+{"kind":"textbox","id":"sh/72xc7qp4","slide":3,"name":"Slide-Number-Placeholder-3-2","text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[1184.18,659.24,54.48,25.33]}
+{"kind":"textbox","id":"sh/836tgv6p","slide":3,"name":"Title-10-3","text":"한 번의 분석 요청이 세 층의 판단을 통과한다","textPreview":"한 번의 분석 요청이 세 층의 판단을 통과한다","textChars":25,"textLines":1,"bbox":[41.33,36.12,1197.33,109.97]}
+{"kind":"shape","id":"sh/94fu907a","slide":3,"name":"Google-Shape-2259-p159-4","bbox":[35.46,560.8,1285.61,0.03]}
+{"kind":"shape","id":"sh/u58vi5ov","slide":3,"name":"Google-Shape-2260-p159-5","bbox":[35.46,555.18,11.24,11.24]}
+{"kind":"shape","id":"sh/v6hcbapg","slide":3,"name":"Google-Shape-2261-p159-6","bbox":[446.38,555.18,11.24,11.24]}
+{"kind":"shape","id":"sh/wrqdkf61","slide":3,"name":"Google-Shape-2262-p159-7","bbox":[858.38,555.18,11.24,11.24]}
+{"kind":"shape","id":"sh/hszudk76","slide":3,"name":"Rounded-Rectangle-19-8","bbox":[41.33,147.17,374.67,380]}
+{"kind":"textbox","id":"sh/q94b618r","slide":3,"name":"Content-Placeholder-8-9","text":"① 여행 계획\n현재 위치·장소·출발 시각·이동수단·컨셉·사진/영상을 입력합니다.","textPreview":"① 여행 계획 | 현재 위치·장소·출발 시각·이동수단·컨셉·사진/영상을 입력합니다.","textChars":44,"textLines":2,"bbox":[73.85,189.69,309.64,269.48]}
+{"kind":"shape","id":"sh/badcz6pw","slide":3,"name":"Rounded-Rectangle-21-10","bbox":[452.33,147.17,374.67,380]}
+{"kind":"textbox","id":"sh/ni9cf2l0","slide":3,"name":"Content-Placeholder-8-11","text":"② 환경 분석\n도착 후 12시간까지 13개 시각을 만들고 날씨·태양·장소 위험을 계산합니다.","textPreview":"② 환경 분석 | 도착 후 12시간까지 13개 시각을 만들고 날씨·태양·장소 위험을 계산합니다.","textChars":51,"textLines":2,"bbox":[484.85,189.69,309.64,269.48]}
+{"kind":"shape","id":"sh/mh0vmx4f","slide":3,"name":"Rounded-Rectangle-23-12","bbox":[864.83,147.17,374.67,380]}
+{"kind":"textbox","id":"sh/9kruhc36","slide":3,"name":"Content-Placeholder-8-13","text":"③ 촬영 결과\n상태와 점수, 최적 시각, 쉬운 촬영 방향, 거리·노출 가이드를 반환합니다.","textPreview":"③ 촬영 결과 | 상태와 점수, 최적 시각, 쉬운 촬영 방향, 거리·노출 가이드를 반환합니다.","textChars":50,"textLines":2,"bbox":[897.35,189.69,309.64,269.48]}
+{"kind":"textbox","id":"sh/ojido7ml","slide":3,"name":"Text-Placeholder-16-14","text":"ANALYZE","textPreview":"ANALYZE","textChars":7,"textLines":1,"bbox":[446.38,588.18,272.54,41.15]}
+{"kind":"textbox","id":"sh/zepcbi54","slide":3,"name":"Text-Placeholder-16-15","text":"INPUT","textPreview":"INPUT","textChars":5,"textLines":1,"bbox":[41.04,588.18,272.54,41.15]}
+{"kind":"textbox","id":"sh/edgbix4j","slide":3,"name":"Text-Placeholder-16-16","text":"OUTPUT","textPreview":"OUTPUT","textChars":6,"textLines":1,"bbox":[863.56,588.18,272.54,41.15]}
+{"kind":"shape","id":"sh/1g7udsnu","slide":3,"name":"accent-line-3","bbox":[0,0,1280,7]}
+{"kind":"notes","id":"nt/5ccrwk","slide":3,"text":"FastAPI의 POST /api/analyze가 전체 흐름을 조정합니다. 시간대별 날씨와 태양 결과를 zip으로 묶어 평가하고, 선택된 best_index의 데이터만 최종 결과의 weather·solar·scores·guide에 사용합니다. 따라서 화면의 점수와 설명이 서로 다른 시간대를 가리키는 오류를 막았습니다.\n\n[Sources]\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/main.py:88\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/main.py:121\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/main.py:153"}
+{"kind":"slide","id":"sl/zm64lq","slide":4,"title":"4","textShapes":5}
+{"kind":"textbox","id":"sh/258nm583","slide":4,"name":"Google-Shape-532-p58-2","text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[1184.18,659.24,54.48,25.33]}
+{"kind":"textbox","id":"sh/psjmx07u","slide":4,"name":"Google-Shape-533-p58-3","text":"프론트는 입력과 편집, 백엔드는 데이터 결합과 판단을 맡는다","textPreview":"프론트는 입력과 편집, 백엔드는 데이터 결합과 판단을 맡는다","textChars":33,"textLines":1,"bbox":[41.33,36.12,1197.33,109.97]}
+{"kind":"textbox","id":"sh/4ra5ovq9","slide":4,"name":"Google-Shape-534-p58-4","text":"React · TypeScript\n모바일 입력 UI\n카카오 지도 선택\n시간대·점수 시각화\n브라우저 내 편집·저장","textPreview":"React · TypeScript | 모바일 입력 UI | 카카오 지도 선택 | 시간대·점수 시각화 | 브라우저 내 편집·저장","textChars":62,"textLines":5,"bbox":[41.33,353.33,374.67,276]}
+{"kind":"textbox","id":"sh/f2h4rqps","slide":4,"name":"Content-Placeholder-1-5","text":"외부 데이터\n카카오 장소 검색\n카카오 자동차 경로\n기상청 초단기·단기예보\n실패 시 fallback","textPreview":"외부 데이터 | 카카오 장소 검색 | 카카오 자동차 경로 | 기상청 초단기·단기예보 | 실패 시 fallback","textChars":54,"textLines":5,"bbox":[864,353.33,374.67,276]}
+{"kind":"textbox","id":"sh/u183il87","slide":4,"name":"Content-Placeholder-2-6","text":"FastAPI · Python\n요청 검증\n이동시간·예보 조회\npvlib 계산\n점수·가이드 생성","textPreview":"FastAPI · Python | 요청 검증 | 이동시간·예보 조회 | pvlib 계산 | 점수·가이드 생성","textChars":52,"textLines":5,"bbox":[452.67,353.33,374.67,276]}
+{"kind":"shape","id":"sh/h4zmt07i","slide":4,"name":"accent-line-4","bbox":[0,0,1280,7]}
+{"kind":"notes","id":"nt/zm64lq","slide":4,"text":"React는 사용자 경험과 로컬 미디어 처리를 담당하고 FastAPI는 외부 API 키를 안전하게 사용하며 계산을 수행합니다. 카카오 JavaScript 키는 지도 표시용, REST 키는 장소 검색과 자동차 경로용이라 역할이 다릅니다.\n\n[Sources]\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/frontend/src/App.tsx\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/frontend/src/api.ts\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/main.py\n- https://developers.kakao.com/docs/ko/local/dev-guide\n- https://developers.kakaomobility.com/affiliate-en/navi-api/directions.html"}
+{"kind":"slide","id":"sl/bp26tq","slide":5,"title":"5","textShapes":9}
+{"kind":"textbox","id":"sh/58bedg3a","slide":5,"name":"Google-Shape-532-p58-2","text":"5","textPreview":"5","textChars":1,"textLines":1,"bbox":[1184.18,659.24,54.48,25.33]}
+{"kind":"textbox","id":"sh/i5kf214z","slide":5,"name":"Google-Shape-533-p58-3","text":"장소명 하나를 좌표와 촬영 환경 유형으로 확장한다","textPreview":"장소명 하나를 좌표와 촬영 환경 유형으로 확장한다","textChars":27,"textLines":1,"bbox":[41.33,36.12,1197.33,109.97]}
+{"kind":"textbox","id":"sh/j6twb6lk","slide":5,"name":"Google-Shape-534-p58-4","text":"검색 → 검증 → 유형 추론","textPreview":"검색 → 검증 → 유형 추론","textChars":15,"textLines":1,"bbox":[41.33,180.83,581.33,90.83]}
+{"kind":"textbox","id":"sh/w32x0rmt","slide":5,"name":"Content-Placeholder-10-5","text":"키워드 검색","textPreview":"키워드 검색","textChars":6,"textLines":1,"bbox":[828,313.94,410.67,57.61]}
+{"kind":"shape","id":"sh/x4be9wne","slide":5,"name":"Google-Shape-340-p61-6","bbox":[788.21,316.55,22.32,22.31]}
+{"kind":"textbox","id":"sh/a10fyh4n","slide":5,"name":"TextBox-11-7","text":"입력어에 ‘제주’가 없으면 자동으로 붙이고, 정확도순 최대 10건을 요청한 뒤 제주 경계 안 결과만 최대 5건 사용합니다.\n이름·카테고리 키워드로 beach / forest / indoor / urban 중 하나를 추론하며 사용자가 수정할 수 있습니다.","textPreview":"입력어에 ‘제주’가 없으면 자동으로 붙이고, 정확도순 최대 10건을 요청한 뒤 제주 경계 안 결과만 최대 5건 사용합니다. | 이름·카테고리 키워드로 beach / forest / indoor / urban 중 하나를 추론하며 사용자가 수정할 수...","textChars":141,"textLines":2,"bbox":[41.33,313.94,581.33,302.85]}
+{"kind":"textbox","id":"sh/v2tw7m58","slide":5,"name":"Content-Placeholder-10-8","text":"좌표 선택","textPreview":"좌표 선택","textChars":5,"textLines":1,"bbox":[828,377.94,410.67,57.61]}
+{"kind":"shape","id":"sh/8fixwrmx","slide":5,"name":"Google-Shape-340-p61-9","bbox":[788.21,380.55,22.32,22.31]}
+{"kind":"textbox","id":"sh/9gre5wn2","slide":5,"name":"Content-Placeholder-10-10","text":"제주 범위 검증","textPreview":"제주 범위 검증","textChars":8,"textLines":1,"bbox":[828,442.5,410.67,57.61]}
+{"kind":"shape","id":"sh/547udc7e","slide":5,"name":"Google-Shape-340-p61-11","bbox":[788.21,445.1,22.32,22.31]}
+{"kind":"textbox","id":"sh/43yd4769","slide":5,"name":"Content-Placeholder-10-12","text":"장소 유형 추론","textPreview":"장소 유형 추론","textChars":8,"textLines":1,"bbox":[828,506.49,410.67,57.61]}
+{"kind":"shape","id":"sh/32pcb2po","slide":5,"name":"Google-Shape-340-p61-13","bbox":[788.21,509.1,22.32,22.31]}
+{"kind":"textbox","id":"sh/i1gv2x83","slide":5,"name":"Content-Placeholder-10-14","text":"수동 보정","textPreview":"수동 보정","textChars":5,"textLines":1,"bbox":[828,571.83,410.67,57.61]}
+{"kind":"shape","id":"sh/h07u9s7i","slide":5,"name":"Google-Shape-340-p61-15","bbox":[788.21,574.44,22.32,22.31]}
+{"kind":"shape","id":"sh/gzyd0nqx","slide":5,"name":"accent-line-5","bbox":[0,0,1280,7]}
+{"kind":"notes","id":"nt/bp26tq","slide":5,"text":"검색 API는 /api/places/search, 지도 역검색은 /api/places/reverse입니다. 역검색은 300m 안의 관광·문화·카페·숙박 카테고리를 병렬 조회하고 가장 가까운 장소를 선택하며, 없으면 주소를 사용합니다. 제주 유효 범위는 위도 33.05~33.65, 경도 125.95~127.05입니다.\n\n[Sources]\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/place_search.py:10\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/place_search.py:44\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/place_search.py:77\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/place_search.py:105\n- https://developers.kakao.com/docs/ko/local/dev-guide"}
+{"kind":"slide","id":"sl/7o4oz1","slide":6,"title":"6","textShapes":8}
+{"kind":"textbox","id":"sh/8fyx8rq9","slide":6,"name":"Slide-Number-Placeholder-3-2","text":"6","textPreview":"6","textChars":1,"textLines":1,"bbox":[1184.18,659.24,54.48,25.33]}
+{"kind":"textbox","id":"sh/7epwz69o","slide":6,"name":"Title-10-3","text":"출발 시각에 이동시간을 더해 분석 기준시각을 만든다","textPreview":"출발 시각에 이동시간을 더해 분석 기준시각을 만든다","textChars":28,"textLines":1,"bbox":[41.33,36.12,1197.33,109.97]}
+{"kind":"shape","id":"sh/mdgf618j","slide":6,"name":"Google-Shape-2259-p159-4","bbox":[35.46,354.2,1285.61,0.03]}
+{"kind":"shape","id":"sh/h4re5gr6","slide":6,"name":"Google-Shape-2260-p159-5","bbox":[35.46,348.58,11.24,11.24]}
+{"kind":"shape","id":"sh/w3ixcbql","slide":6,"name":"Google-Shape-2261-p159-6","bbox":[446.38,348.58,11.24,11.24]}
+{"kind":"shape","id":"sh/v29w3690","slide":6,"name":"Google-Shape-2262-p159-7","bbox":[858.38,348.58,11.24,11.24]}
+{"kind":"textbox","id":"sh/uhgfa18f","slide":6,"name":"Content-Placeholder-15-8","text":"자동차","textPreview":"자동차","textChars":3,"textLines":1,"bbox":[41.33,298.51,169.33,27.55]}
+{"kind":"textbox","id":"sh/58re9gr2","slide":6,"name":"Content-Placeholder-15-9","text":"대중교통","textPreview":"대중교통","textChars":4,"textLines":1,"bbox":[450.83,298.51,169.33,27.55]}
+{"kind":"textbox","id":"sh/47ixgvqh","slide":6,"name":"Content-Placeholder-15-10","text":"도보","textPreview":"도보","textChars":2,"textLines":1,"bbox":[863.33,298.51,169.33,27.55]}
+{"kind":"textbox","id":"sh/edgrixwz","slide":6,"name":"Text-Placeholder-16-11","text":"MVP 추정\n직선거리×1.28, 평균 27km/h에 정류장 이동·배차 대기 15분을 더합니다.","textPreview":"MVP 추정 | 직선거리×1.28, 평균 27km/h에 정류장 이동·배차 대기 15분을 더합니다.","textChars":52,"textLines":2,"bbox":[453.24,401.33,331.35,166.54]}
+{"kind":"textbox","id":"sh/fepsr2xk","slide":6,"name":"Text-Placeholder-16-12","text":"카카오 경로 우선\ndistance와 duration을 사용합니다. 실패하면 직선거리×1.23, 평균속도와 7분 여유를 적용합니다.","textPreview":"카카오 경로 우선 | distance와 duration을 사용합니다. 실패하면 직선거리×1.23, 평균속도와 7분 여유를 적용합니다.","textChars":72,"textLines":2,"bbox":[41.98,401.33,331.35,166.54]}
+{"kind":"textbox","id":"sh/gfy9k7e5","slide":6,"name":"Text-Placeholder-16-13","text":"MVP 추정\n직선거리×1.16을 4.5km/h로 이동한다고 계산합니다.","textPreview":"MVP 추정 | 직선거리×1.16을 4.5km/h로 이동한다고 계산합니다.","textChars":39,"textLines":2,"bbox":[858.57,401.33,331.35,166.54]}
+{"kind":"shape","id":"sh/1g7atcfa","slide":6,"name":"accent-line-6","bbox":[0,0,1280,7]}
+{"kind":"notes","id":"nt/7o4oz1","slide":6,"text":"공통 출발점은 Haversine 직선거리입니다. 자동차만 카카오 실제 경로를 우선 사용합니다. 대중교통과 도보는 현재 코드상 추정치이며 화면에서도 실제 경로와 예상값을 구분합니다. arrival_time = departure_time + travel_minutes가 이후 모든 날씨·빛 계산의 출발점입니다.\n\n[Sources]\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/travel.py:22\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/travel.py:46\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/travel.py:65\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/main.py:110\n- https://developers.kakaomobility.com/affiliate-en/navi-api/directions.html"}
+{"kind":"slide","id":"sl/70oqvv","slide":7,"title":"7","textShapes":5}
+{"kind":"textbox","id":"sh/zu5s7idw","slide":7,"name":"Google-Shape-532-p58-2","text":"7","textPreview":"7","textChars":1,"textLines":1,"bbox":[1184.18,659.24,54.48,25.33]}
+{"kind":"textbox","id":"sh/kve9gnuh","slide":7,"name":"Google-Shape-533-p58-3","text":"예보 범위에 따라 초단기와 단기 자료를 자동 선택한다","textPreview":"예보 범위에 따라 초단기와 단기 자료를 자동 선택한다","textChars":29,"textLines":1,"bbox":[41.33,36.12,1197.33,109.97]}
+{"kind":"textbox","id":"sh/lwna9sv2","slide":7,"name":"Google-Shape-534-p58-4","text":"① 좌표 → 격자\n촬영 장소 위·경도를 기상청 Lambert 격자 nx, ny로 변환합니다.","textPreview":"① 좌표 → 격자 | 촬영 장소 위·경도를 기상청 Lambert 격자 nx, ny로 변환합니다.","textChars":51,"textLines":2,"bbox":[41.33,353.33,374.67,276]}
+{"kind":"textbox","id":"sh/apcratcf","slide":7,"name":"Content-Placeholder-1-5","text":"③ 시각 매칭\n요청 시각보다 같거나 늦은 완전한 예보를 우선 선택하고 KST timezone을 유지합니다.","textPreview":"③ 시각 매칭 | 요청 시각보다 같거나 늦은 완전한 예보를 우선 선택하고 KST timezone을 유지합니다.","textChars":59,"textLines":2,"bbox":[864,353.33,374.67,276]}
+{"kind":"textbox","id":"sh/bql83yd0","slide":7,"name":"Content-Placeholder-2-6","text":"② 예보 조회\n가까운 시각은 초단기 RN1·WSD·SKY, 범위 밖은 단기 PCP·WSD·SKY를 사용합니다.","textPreview":"② 예보 조회 | 가까운 시각은 초단기 RN1·WSD·SKY, 범위 밖은 단기 PCP·WSD·SKY를 사용합니다.","textChars":61,"textLines":2,"bbox":[452.67,353.33,374.67,276]}
+{"kind":"shape","id":"sh/cru9c3u5","slide":7,"name":"accent-line-7","bbox":[0,0,1280,7]}
+{"kind":"notes","id":"nt/70oqvv","slide":7,"text":"초단기예보는 최신 발표 시각의 반영 지연을 고려해 매시 45분 이후에만 현재 시각 자료를 사용합니다. 단기예보는 02·05·08·11·14·17·20·23시 발표 중 API 반영 여유 15분을 뺀 최신 발표를 선택합니다. RN1은 1시간 강수, PCP는 단기 강수량, WSD는 바람, SKY는 하늘상태입니다.\n\n[Sources]\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/weather.py:17\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/weather.py:55\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/weather.py:67\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/weather.py:210\n- https://www.data.go.kr/data/15084084/openapi.do?recommendDataYn=Y"}
+{"kind":"slide","id":"sl/5idcwy","slide":8,"title":"8","textShapes":9}
+{"kind":"textbox","id":"sh/nu1c3a9w","slide":8,"name":"Google-Shape-532-p58-2","text":"8","textPreview":"8","textChars":1,"textLines":1,"bbox":[1184.18,659.24,54.48,25.33]}
+{"kind":"textbox","id":"sh/ovatwvah","slide":8,"name":"Google-Shape-533-p58-3","text":"구름 퍼센트를 만들지 않고 기상청 하늘상태를 그대로 쓴다","textPreview":"구름 퍼센트를 만들지 않고 기상청 하늘상태를 그대로 쓴다","textChars":31,"textLines":1,"bbox":[41.33,36.12,1197.33,109.97]}
+{"kind":"textbox","id":"sh/9gju50r2","slide":8,"name":"Google-Shape-534-p58-4","text":"SKY 코드의 실제 범위","textPreview":"SKY 코드의 실제 범위","textChars":13,"textLines":1,"bbox":[41.33,180.83,581.33,90.83]}
+{"kind":"textbox","id":"sh/ahsby5s7","slide":8,"name":"Content-Placeholder-10-5","text":"화면도 3단계","textPreview":"화면도 3단계","textChars":7,"textLines":1,"bbox":[828,313.94,410.67,57.61]}
+{"kind":"shape","id":"sh/bi1c7a9s","slide":8,"name":"Google-Shape-340-p61-6","bbox":[788.21,316.55,22.32,22.31]}
+{"kind":"textbox","id":"sh/wjat0fad","slide":8,"name":"TextBox-11-7","text":"1 → 맑음\n3 → 구름 많음\n4 → 흐림\n현재 단기예보에는 미래 구름량 0~100%가 없으므로 임의 퍼센트는 표시하지 않습니다.","textPreview":"1 → 맑음 | 3 → 구름 많음 | 4 → 흐림 | 현재 단기예보에는 미래 구름량 0~100%가 없으므로 임의 퍼센트는 표시하지 않습니다.","textChars":72,"textLines":4,"bbox":[41.33,313.94,581.33,302.85]}
+{"kind":"textbox","id":"sh/xkju9kry","slide":8,"name":"Content-Placeholder-10-8","text":"점수도 SKY 비교","textPreview":"점수도 SKY 비교","textChars":10,"textLines":1,"bbox":[828,377.94,410.67,57.61]}
+{"kind":"shape","id":"sh/qlobmls3","slide":8,"name":"Google-Shape-340-p61-9","bbox":[788.21,380.55,22.32,22.31]}
+{"kind":"textbox","id":"sh/rmxsvq9o","slide":8,"name":"Content-Placeholder-10-10","text":"설명은 쉬운 문장","textPreview":"설명은 쉬운 문장","textChars":9,"textLines":1,"bbox":[828,442.5,410.67,57.61]}
+{"kind":"shape","id":"sh/nml0jmh0","slide":8,"name":"Google-Shape-340-p61-11","bbox":[788.21,445.1,22.32,22.31]}
+{"kind":"textbox","id":"sh/mlcjqhgv","slide":8,"name":"Content-Placeholder-10-12","text":"가짜 정밀도 제거","textPreview":"가짜 정밀도 제거","textChars":9,"textLines":1,"bbox":[828,506.49,410.67,57.61]}
+{"kind":"shape","id":"sh/983ilcz6","slide":8,"name":"Google-Shape-340-p61-13","bbox":[788.21,509.1,22.32,22.31]}
+{"kind":"textbox","id":"sh/onu1sryl","slide":8,"name":"Content-Placeholder-10-14","text":"출처 명확화","textPreview":"출처 명확화","textChars":6,"textLines":1,"bbox":[828,571.83,410.67,57.61]}
+{"kind":"shape","id":"sh/zi10f2h4","slide":8,"name":"Google-Shape-340-p61-15","bbox":[788.21,574.44,22.32,22.31]}
+{"kind":"shape","id":"sh/ehsjmx0j","slide":8,"name":"accent-line-8","bbox":[0,0,1280,7]}
+{"kind":"notes","id":"nt/5idcwy","slide":8,"text":"이 슬라이드는 정확성 관련 예상 질문에 답하는 장입니다. 2019년 6월 이후 하늘상태는 맑음·구름많음·흐림 3단계입니다. 서비스 내부에서는 SKY 단계로 맑은 하늘 기준 빛을 감쇠하지만, 사용자 화면에는 공식 상태값만 표시합니다.\n\n[Sources]\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/weather.py:94\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/frontend/src/App.tsx:515\n- https://www.data.go.kr/dataset/15000099/openapi.do?mypageFlag=Y"}
+{"kind":"slide","id":"sl/r0fhkh","slide":9,"title":"9","textShapes":9}
+{"kind":"textbox","id":"sh/v2lw3it0","slide":9,"name":"Google-Shape-532-p58-2","text":"9","textPreview":"9","textChars":1,"textLines":1,"bbox":[1184.18,659.24,54.48,25.33]}
+{"kind":"textbox","id":"sh/w3udcnal","slide":9,"name":"Google-Shape-533-p58-3","text":"pvlib가 시간·좌표를 빛의 위치와 세기로 바꾼다","textPreview":"pvlib가 시간·좌표를 빛의 위치와 세기로 바꾼다","textChars":28,"textLines":1,"bbox":[41.33,36.12,1197.33,109.97]}
+{"kind":"textbox","id":"sh/xo3e5sb6","slide":9,"name":"Google-Shape-534-p58-4","text":"내부 계산 파이프라인","textPreview":"내부 계산 파이프라인","textChars":11,"textLines":1,"bbox":[41.33,180.83,581.33,90.83]}
+{"kind":"textbox","id":"sh/ipcvedsr","slide":9,"name":"Content-Placeholder-10-5","text":"맑음 × 1.00","textPreview":"맑음 × 1.00","textChars":9,"textLines":1,"bbox":[828,313.94,410.67,57.61]}
+{"kind":"shape","id":"sh/jq5w7itc","slide":9,"name":"Google-Shape-340-p61-6","bbox":[788.21,316.55,22.32,22.31]}
+{"kind":"textbox","id":"sh/krexgnax","slide":9,"name":"TextBox-11-7","text":"get_solarposition(KST 시각, 위도, 경도)\n→ apparent_elevation, azimuth\nsimplified_solis(태양 높이)\n→ 맑은 하늘 기준 GHI·DNI·DHI","textPreview":"get_solarposition(KST 시각, 위도, 경도) | → apparent_elevation, azimuth | simplified_solis(태양 높이) | → 맑은 하늘 기준 GHI·DNI·DHI","textChars":110,"textLines":4,"bbox":[41.33,313.94,581.33,302.85]}
+{"kind":"textbox","id":"sh/5sne9sbi","slide":9,"name":"Content-Placeholder-10-8","text":"구름 많음: GHI × 0.65","textPreview":"구름 많음: GHI × 0.65","textChars":17,"textLines":1,"bbox":[828,377.94,410.67,57.61]}
+{"kind":"shape","id":"sh/6twfixsn","slide":9,"name":"Google-Shape-340-p61-9","bbox":[788.21,380.55,22.32,22.31]}
+{"kind":"textbox","id":"sh/ru5wb298","slide":9,"name":"Content-Placeholder-10-10","text":"구름 많음: DNI × 0.45","textPreview":"구름 많음: DNI × 0.45","textChars":17,"textLines":1,"bbox":[828,442.5,410.67,57.61]}
+{"kind":"shape","id":"sh/ryx4fedc","slide":9,"name":"Google-Shape-340-p61-11","bbox":[788.21,445.1,22.32,22.31]}
+{"kind":"textbox","id":"sh/qdo36tcr","slide":9,"name":"Content-Placeholder-10-12","text":"흐림: GHI × 0.28","textPreview":"흐림: GHI × 0.28","textChars":14,"textLines":1,"bbox":[828,506.49,410.67,57.61]}
+{"kind":"shape","id":"sh/d0fmhovi","slide":9,"name":"Google-Shape-340-p61-13","bbox":[788.21,509.1,22.32,22.31]}
+{"kind":"textbox","id":"sh/sz6l8jux","slide":9,"name":"Content-Placeholder-10-14","text":"흐림: DNI × 0.08","textPreview":"흐림: DNI × 0.08","textChars":14,"textLines":1,"bbox":[828,571.83,410.67,57.61]}
+{"kind":"shape","id":"sh/3ax4bedg","slide":9,"name":"Google-Shape-340-p61-15","bbox":[788.21,574.44,22.32,22.31]}
+{"kind":"shape","id":"sh/i9o329wv","slide":9,"name":"accent-line-9","bbox":[0,0,1280,7]}
+{"kind":"notes","id":"nt/r0fhkh","slide":9,"text":"태양 위치는 pvlib 공식 함수로 계산합니다. 일사량은 센서 실측이 아니라 simplified_solis의 맑은 하늘 추정값을 SKY 단계별 계수로 감쇠한 값입니다. GHI는 수평면 총 일사, DNI는 태양 직달 성분, DHI는 확산 성분으로 장소별 명암 위험과 컨셉 적합도를 계산하는 내부 지표입니다.\n\n[Sources]\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/solar.py:12\n- https://pvlib-python.readthedocs.io/en/stable/reference/generated/pvlib.solarposition.get_solarposition.html\n- https://pvlib-python.readthedocs.io/en/stable/reference/generated/pvlib.clearsky.simplified_solis.html"}
+{"kind":"slide","id":"sl/sv6o6v","slide":10,"title":"10","textShapes":10}
+{"kind":"textbox","id":"sh/o7a1cb6d","slide":10,"name":"Slide-Number-Placeholder-3-2","text":"10","textPreview":"10","textChars":2,"textLines":1,"bbox":[1184.18,659.24,54.48,25.33]}
+{"kind":"textbox","id":"sh/n610j65s","slide":10,"name":"Title-10-3","text":"같은 햇빛도 장소 표면에 따라 실패 형태가 달라진다","textPreview":"같은 햇빛도 장소 표면에 따라 실패 형태가 달라진다","textChars":28,"textLines":1,"bbox":[41.33,36.12,1197.33,109.97]}
+{"kind":"textbox","id":"sh/25sja1o7","slide":10,"name":"Content-Placeholder-15-4","text":"낮음\n위험 점수 25 미만\n빛 조건 안정","textPreview":"낮음 | 위험 점수 25 미만 | 빛 조건 안정","textChars":22,"textLines":3,"bbox":[41.33,436.86,272.54,148.62]}
+{"kind":"textbox","id":"sh/xc32p0nu","slide":10,"name":"Text-Placeholder-16-5","text":"보통\n25 이상 60 미만\n현장 조정 필요","textPreview":"보통 | 25 이상 60 미만 | 현장 조정 필요","textChars":23,"textLines":3,"bbox":[350.13,436.86,272.54,148.62]}
+{"kind":"textbox","id":"sh/cbu1gv69","slide":10,"name":"Content-Placeholder-17-6","text":"높음\n60 이상\n일반 컨셉 최대 ‘보통’","textPreview":"높음 | 60 이상 | 일반 컨셉 최대 ‘보통’","textChars":22,"textLines":3,"bbox":[657.68,436.86,272.54,148.62]}
+{"kind":"textbox","id":"sh/bal0nq5o","slide":10,"name":"Text-Placeholder-18-7","text":"의도적 효과\n노을·반짝이는 컨셉은\n역광 감점을 예외 처리","textPreview":"의도적 효과 | 노을·반짝이는 컨셉은 | 역광 감점을 예외 처리","textChars":31,"textLines":3,"bbox":[966.48,436.86,272.54,148.62]}
+{"kind":"textbox","id":"sh/a9cjelo3","slide":10,"name":"Content-Placeholder-15-8","text":"해변\n수면 반사·역광\n잔물결과 빛 정렬을 함께 계산","textPreview":"해변 | 수면 반사·역광 | 잔물결과 빛 정렬을 함께 계산","textChars":28,"textLines":3,"bbox":[41.33,231.82,272.54,148.62]}
+{"kind":"textbox","id":"sh/l0n2t0nq","slide":10,"name":"Text-Placeholder-16-9","text":"숲\n나뭇잎 틈 직사광\n얼굴의 얼룩 그림자 위험","textPreview":"숲 | 나뭇잎 틈 직사광 | 얼굴의 얼룩 그림자 위험","textChars":25,"textLines":3,"bbox":[350.13,231.82,272.54,148.62]}
+{"kind":"textbox","id":"sh/kzu1kvm5","slide":10,"name":"Content-Placeholder-17-10","text":"도심\n유리·젖은 노면 반사\n건물 그늘의 밝기 차","textPreview":"도심 | 유리·젖은 노면 반사 | 건물 그늘의 밝기 차","textChars":26,"textLines":3,"bbox":[657.68,231.82,272.54,148.62]}
+{"kind":"textbox","id":"sh/qxgzapkn","slide":10,"name":"Text-Placeholder-18-11","text":"실내\n창문 역광\n실내외 밝기 차","textPreview":"실내 | 창문 역광 | 실내외 밝기 차","textChars":17,"textLines":3,"bbox":[966.48,231.82,272.54,148.62]}
+{"kind":"shape","id":"sh/ryp0jul8","slide":10,"name":"accent-line-10","bbox":[0,0,1280,7]}
+{"kind":"notes","id":"nt/sv6o6v","slide":10,"text":"빛 위험은 실제 카메라 노출계나 3D 현장 측정이 아니라 장소 유형에서 흔한 실패를 미리 경고하는 휴리스틱입니다. 해변은 태양-촬영방향 정렬, 낮은 태양, 직달광, 바람의 잔물결을 반영합니다. 숲은 직달광과 전체광, 바람의 잎 흔들림을 반영합니다. 도심은 반사와 그늘 위험 중 큰 값을 사용합니다.\n\n[Sources]\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/solar.py:48\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/solar.py:77\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/scoring.py:64"}
+{"kind":"slide","id":"sl/k66aau","slide":11,"title":"11","textShapes":10}
+{"kind":"textbox","id":"sh/sfqtgf6p","slide":11,"name":"Slide-Number-Placeholder-3-2","text":"11","textPreview":"11","textChars":2,"textLines":1,"bbox":[1184.18,659.24,54.48,25.33]}
+{"kind":"textbox","id":"sh/rehsna54","slide":11,"name":"Title-10-3","text":"6개 컨셉은 서로 다른 날씨·빛·장소 범위를 가진다","textPreview":"6개 컨셉은 서로 다른 날씨·빛·장소 범위를 가진다","textChars":28,"textLines":1,"bbox":[41.33,36.12,1197.33,109.97]}
+{"kind":"textbox","id":"sh/qd8be5oj","slide":11,"name":"Content-Placeholder-15-4","text":"무드있는\n구름 많음/흐림\n낮은 빛\n숲·도심","textPreview":"무드있는 | 구름 많음/흐림 | 낮은 빛 | 숲·도심","textChars":23,"textLines":4,"bbox":[41.33,436.86,272.54,148.62]}
+{"kind":"textbox","id":"sh/5czal0ny","slide":11,"name":"Text-Placeholder-16-5","text":"반짝이는\n맑음 · 강한 빛\n해변·도심\n반사광 관계","textPreview":"반짝이는 | 맑음 · 강한 빛 | 해변·도심 | 반사광 관계","textChars":27,"textLines":4,"bbox":[350.13,436.86,272.54,148.62]}
+{"kind":"textbox","id":"sh/4b69cv6t","slide":11,"name":"Content-Placeholder-17-6","text":"공통 필드\n허용 비·바람\n선호 SKY\n빛 범위·방향 오프셋","textPreview":"공통 필드 | 허용 비·바람 | 선호 SKY | 빛 범위·방향 오프셋","textChars":32,"textLines":4,"bbox":[657.68,436.86,272.54,148.62]}
+{"kind":"textbox","id":"sh/3axsjq58","slide":11,"name":"Text-Placeholder-18-7","text":"화면 테마\n스카이·그린·코럴\n베이지·블루그레이·민트","textPreview":"화면 테마 | 스카이·그린·코럴 | 베이지·블루그레이·민트","textChars":28,"textLines":3,"bbox":[966.48,436.86,272.54,148.62]}
+{"kind":"textbox","id":"sh/i9oralon","slide":11,"name":"Content-Placeholder-15-8","text":"청량한\n맑음 · 강한 빛\n해변·도심\n순광 관계","textPreview":"청량한 | 맑음 · 강한 빛 | 해변·도심 | 순광 관계","textChars":25,"textLines":4,"bbox":[41.33,231.82,272.54,148.62]}
+{"kind":"textbox","id":"sh/hofahgn2","slide":11,"name":"Text-Placeholder-16-9","text":"자연스러운\n맑음/구름 많음\n중간 빛\n부드러운 옆빛","textPreview":"자연스러운 | 맑음/구름 많음 | 중간 빛 | 부드러운 옆빛","textChars":27,"textLines":4,"bbox":[350.13,231.82,272.54,148.62]}
+{"kind":"textbox","id":"sh/gn698v6h","slide":11,"name":"Content-Placeholder-17-10","text":"노을 실루엣\n일몰 전후\n낮은 빛\n역광 관계","textPreview":"노을 실루엣 | 일몰 전후 | 낮은 빛 | 역광 관계","textChars":23,"textLines":4,"bbox":[657.68,231.82,272.54,148.62]}
+{"kind":"textbox","id":"sh/m9gfa5cv","slide":11,"name":"Text-Placeholder-18-11","text":"포근한\n구름 많음/흐림\n확산광\n숲·도심·실내","textPreview":"포근한 | 구름 많음/흐림 | 확산광 | 숲·도심·실내","textChars":24,"textLines":4,"bbox":[966.48,231.82,272.54,148.62]}
+{"kind":"shape","id":"sh/nupwjat0","slide":11,"name":"accent-line-11","bbox":[0,0,1280,7]}
+{"kind":"shape","id":"sh/ovyxcfal","slide":11,"bbox":[41.33,218,104,6]}
+{"kind":"shape","id":"sh/9w7el0b6","slide":11,"bbox":[350.13,218,104,6]}
+{"kind":"shape","id":"sh/e5wf6lcj","slide":11,"bbox":[657.68,218,104,6]}
+{"kind":"shape","id":"sh/z65wfqt4","slide":11,"bbox":[966.48,218,104,6]}
+{"kind":"shape","id":"sh/07ex8vup","slide":11,"bbox":[41.33,423,104,6]}
+{"kind":"shape","id":"sh/18neh0ba","slide":11,"bbox":[350.13,423,104,6]}
+{"kind":"notes","id":"nt/k66aau","slide":11,"text":"Concept 데이터 클래스에는 최대 강수, 최대 바람, 선호 SKY, 최소·최대 태양 높이, 최소·최대 GHI, 태양과 촬영 방향의 목표 차이, 적합 장소 유형이 저장됩니다. 이 값들은 단순 라벨이 아니라 실제 점수 계산에 들어갑니다.\n\n[Sources]\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/data.py:24\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/data.py:90"}
+{"kind":"slide","id":"sl/j17hrc","slide":12,"title":"12","textShapes":9}
+{"kind":"shape","id":"sh/dsrexg3m","slide":12,"name":"Rounded-Rectangle-5-1","bbox":[41.33,317.33,374.67,312]}
+{"kind":"shape","id":"sh/q50fml4b","slide":12,"name":"Rounded-Rectangle-6-2","bbox":[452.67,317.33,374.67,312]}
+{"kind":"shape","id":"sh/r69wvqlg","slide":12,"name":"Rounded-Rectangle-7-3","bbox":[864.28,317.33,374.67,312]}
+{"kind":"textbox","id":"sh/43ixkbm5","slide":12,"name":"Slide-Number-Placeholder-1-4","text":"12","textPreview":"12","textChars":2,"textLines":1,"bbox":[1184.18,659.24,54.48,25.33]}
+{"kind":"textbox","id":"sh/54retg3q","slide":12,"name":"Title-2-5","text":"날씨 점수는 비·바람·하늘의 가중합이다","textPreview":"날씨 점수는 비·바람·하늘의 가중합이다","textChars":21,"textLines":1,"bbox":[41.33,36.12,1197.33,109.97]}
+{"kind":"textbox","id":"sh/i1gfi14z","slide":12,"name":"Content-Placeholder-9-6","text":"비\n허용량 초과분 감점","textPreview":"비 | 허용량 초과분 감점","textChars":12,"textLines":2,"bbox":[73.74,514.5,309.67,86]}
+{"kind":"textbox","id":"sh/32pwr6lk","slide":12,"name":"Content-Placeholder-10-7","text":"하늘\n컨셉 선호 상태 비교","textPreview":"하늘 | 컨셉 선호 상태 비교","textChars":14,"textLines":2,"bbox":[896.78,514.5,309.67,86]}
+{"kind":"textbox","id":"sh/oz2xwfm9","slide":12,"name":"Content-Placeholder-11-8","text":"바람\n편안한 범위 이후 감점","textPreview":"바람 | 편안한 범위 이후 감점","textChars":15,"textLines":2,"bbox":[485.17,514.5,309.67,86]}
+{"kind":"textbox","id":"sh/p0by503u","slide":12,"name":"Content-Placeholder-9-9","text":"45%","textPreview":"45%","textChars":3,"textLines":1,"bbox":[73.74,360,308.67,142.71]}
+{"kind":"textbox","id":"sh/dwbm5ozi","slide":12,"name":"Content-Placeholder-9-10","text":"25%","textPreview":"25%","textChars":3,"textLines":1,"bbox":[484.3,360,308.67,142.71]}
+{"kind":"textbox","id":"sh/sv25cjix","slide":12,"name":"Content-Placeholder-9-11","text":"30%","textPreview":"30%","textChars":3,"textLines":1,"bbox":[898.94,360,308.67,142.71]}
+{"kind":"textbox","id":"sh/rut43ehc","slide":12,"name":"Content-Placeholder-15-12","text":"WEATHER SCORE\n허용 범위 안은 높은 점수, 초과량이 커질수록 연속적으로 감점합니다. 하늘은 선택 컨셉의 preferred_skies와 일치하면 100, 아니면 42입니다.","textPreview":"WEATHER SCORE | 허용 범위 안은 높은 점수, 초과량이 커질수록 연속적으로 감점합니다. 하늘은 선택 컨셉의 preferred_skies와 일치하면 100, 아니면 42입니다.","textChars":101,"textLines":2,"bbox":[41.33,119.51,1197.33,167.92]}
+{"kind":"shape","id":"sh/690na907","slide":12,"name":"accent-line-12","bbox":[0,0,1280,7]}
+{"kind":"notes","id":"nt/j17hrc","slide":12,"text":"rain_score는 허용치 이하면 100, 초과하면 75 - excess×55입니다. wind_score는 최대 허용 바람의 65%까지 100이며 이후 최대 허용치의 85%를 감점 구간으로 사용합니다. weather_score = rain×0.45 + wind×0.25 + sky×0.30입니다. 실내는 비·바람·하늘 점수에 각각 최소값을 둡니다.\n\n[Sources]\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/scoring.py:77\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/scoring.py:81\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/scoring.py:87\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/scoring.py:98"}
+{"kind":"slide","id":"sl/phdzvd","slide":13,"title":"13","textShapes":9}
+{"kind":"shape","id":"sh/alo321cb","slide":13,"name":"Rounded-Rectangle-5-1","bbox":[41.33,317.33,374.67,312]}
+{"kind":"shape","id":"sh/xofmxgb2","slide":13,"name":"Rounded-Rectangle-6-2","bbox":[452.67,317.33,374.67,312]}
+{"kind":"shape","id":"sh/wn654buh","slide":13,"name":"Rounded-Rectangle-7-3","bbox":[864.28,317.33,374.67,312]}
+{"kind":"textbox","id":"sh/jqh4zqts","slide":13,"name":"Slide-Number-Placeholder-1-4","text":"13","textPreview":"13","textChars":2,"textLines":1,"bbox":[1184.18,659.24,54.48,25.33]}
+{"kind":"textbox","id":"sh/yp8n6ls7","slide":13,"name":"Title-2-5","text":"빛 점수는 장소 정보의 신뢰도에 따라 계산식을 바꾼다","textPreview":"빛 점수는 장소 정보의 신뢰도에 따라 계산식을 바꾼다","textChars":29,"textLines":1,"bbox":[41.33,36.12,1197.33,109.97]}
+{"kind":"textbox","id":"sh/lszm1gby","slide":13,"name":"Content-Placeholder-9-6","text":"등록 장소\n높이·빛의 양·방향","textPreview":"등록 장소 | 높이·빛의 양·방향","textChars":16,"textLines":2,"bbox":[73.74,514.5,309.67,86]}
+{"kind":"textbox","id":"sh/krq58bad","slide":13,"name":"Content-Placeholder-10-7","text":"실내\n방향 대신 창가 가정","textPreview":"실내 | 방향 대신 창가 가정","textChars":14,"textLines":2,"bbox":[896.78,514.5,309.67,86]}
+{"kind":"textbox","id":"sh/7eh43qt4","slide":13,"name":"Content-Placeholder-11-8","text":"검색 장소\n방향은 중립값 75","textPreview":"검색 장소 | 방향은 중립값 75","textChars":16,"textLines":2,"bbox":[485.17,514.5,309.67,86]}
+{"kind":"textbox","id":"sh/6d8nalsj","slide":13,"name":"Content-Placeholder-9-9","text":"40·32·28","textPreview":"40·32·28","textChars":8,"textLines":1,"bbox":[73.74,360,308.67,142.71]}
+{"kind":"textbox","id":"sh/g7ydwb21","slide":13,"name":"Content-Placeholder-9-10","text":"45·40·15","textPreview":"45·40·15","textChars":8,"textLines":1,"bbox":[484.3,360,308.67,142.71]}
+{"kind":"textbox","id":"sh/187upw3m","slide":13,"name":"Content-Placeholder-9-11","text":"35·30·+35","textPreview":"35·30·+35","textChars":9,"textLines":1,"bbox":[898.94,360,308.67,142.71]}
+{"kind":"textbox","id":"sh/e5gvu1kb","slide":13,"name":"Content-Placeholder-15-12","text":"LIGHT SCORE\n태양 높이와 예상 빛의 양은 컨셉 권장 범위 안에서 100점입니다. 밖으로 벗어날수록 거리에 비례해 감점하고, 장소 유형별 빛 위험도 추가 반영합니다.","textPreview":"LIGHT SCORE | 태양 높이와 예상 빛의 양은 컨셉 권장 범위 안에서 100점입니다. 밖으로 벗어날수록 거리에 비례해 감점하고, 장소 유형별 빛 위험도 추가 반영합니다.","textChars":96,"textLines":2,"bbox":[41.33,119.51,1197.33,167.92]}
+{"kind":"shape","id":"sh/f6pc36lw","slide":13,"name":"accent-line-13","bbox":[0,0,1280,7]}
+{"kind":"notes","id":"nt/phdzvd","slide":13,"text":"등록 장소는 촬영 권장 방향을 알고 있어 방향 점수를 계산합니다. 사용자 검색 장소는 현장 구조를 모르므로 방향 만점을 주지 않고 75로 고정합니다. 실내는 태양 방향을 직접 평가하지 않고 창가 배치를 전제로 방향 100과 상수 35를 사용합니다. 장소 점수는 컨셉×장소 유형 행렬로 별도 계산합니다.\n\n[Sources]\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/scoring.py:35\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/scoring.py:46\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/scoring.py:108\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/scoring.py:124"}
+{"kind":"slide","id":"sl/dgqo49","slide":14,"title":"14","textShapes":8}
+{"kind":"textbox","id":"sh/4n6xgva1","slide":14,"name":"Slide-Number-Placeholder-3-2","text":"14","textPreview":"14","textChars":2,"textLines":1,"bbox":[1184.18,659.24,54.48,25.33]}
+{"kind":"textbox","id":"sh/32xgnq9g","slide":14,"name":"Title-10-3","text":"가중평균 뒤에 안전장치를 적용해 ‘좋은 평균’의 착시를 막는다","textPreview":"가중평균 뒤에 안전장치를 적용해 ‘좋은 평균’의 착시를 막는다","textChars":34,"textLines":1,"bbox":[41.33,36.12,1197.33,109.97]}
+{"kind":"shape","id":"sh/i1ofelsv","slide":14,"name":"Google-Shape-2259-p159-4","bbox":[35.46,560.8,1285.61,0.03]}
+{"kind":"shape","id":"sh/dszyt0ri","slide":14,"name":"Google-Shape-2260-p159-5","bbox":[35.46,555.18,11.24,11.24]}
+{"kind":"shape","id":"sh/srqxkvqx","slide":14,"name":"Google-Shape-2261-p159-6","bbox":[446.38,555.18,11.24,11.24]}
+{"kind":"shape","id":"sh/rqxgra9c","slide":14,"name":"Google-Shape-2262-p159-7","bbox":[858.38,555.18,11.24,11.24]}
+{"kind":"shape","id":"sh/qpofi58r","slide":14,"name":"Rounded-Rectangle-19-8","bbox":[41.33,147.17,374.67,380]}
+{"kind":"textbox","id":"sh/twvehgre","slide":14,"name":"Content-Placeholder-8-9","text":"총점\n날씨 40% + 빛 45% + 장소 15%\n0~100으로 반올림·제한","textPreview":"총점 | 날씨 40% + 빛 45% + 장소 15% | 0~100으로 반올림·제한","textChars":41,"textLines":3,"bbox":[73.85,189.69,309.64,269.48]}
+{"kind":"shape","id":"sh/8vmx8bat","slide":14,"name":"Rounded-Rectangle-21-10","bbox":[452.33,147.17,374.67,380]}
+{"kind":"textbox","id":"sh/upk7up8b","slide":14,"name":"Content-Placeholder-8-11","text":"상태\n75 이상 가능\n50~74 보통\n49 이하 비추천","textPreview":"상태 | 75 이상 가능 | 50~74 보통 | 49 이하 비추천","textChars":30,"textLines":4,"bbox":[484.85,189.69,309.64,269.48]}
+{"kind":"shape","id":"sh/vqtonupw","slide":14,"name":"Rounded-Rectangle-23-12","bbox":[864.83,147.17,374.67,380]}
+{"kind":"textbox","id":"sh/gr2pwzqh","slide":14,"name":"Content-Placeholder-8-13","text":"상한·강제 비추천\n해진 뒤, 심한 비·바람, 컨셉 핵심 시간에서 크게 벗어나면 총점 상한을 적용","textPreview":"상한·강제 비추천 | 해진 뒤, 심한 비·바람, 컨셉 핵심 시간에서 크게 벗어나면 총점 상한을 적용","textChars":53,"textLines":2,"bbox":[897.35,189.69,309.64,269.48]}
+{"kind":"textbox","id":"sh/hsb6p472","slide":14,"name":"Text-Placeholder-16-14","text":"STATUS","textPreview":"STATUS","textChars":6,"textLines":1,"bbox":[446.38,588.18,272.54,41.15]}
+{"kind":"textbox","id":"sh/2tk7yp87","slide":14,"name":"Text-Placeholder-16-15","text":"WEIGHT","textPreview":"WEIGHT","textChars":6,"textLines":1,"bbox":[41.04,588.18,272.54,41.15]}
+{"kind":"textbox","id":"sh/3ut8rups","slide":14,"name":"Text-Placeholder-16-16","text":"GUARDRAIL","textPreview":"GUARDRAIL","textChars":9,"textLines":1,"bbox":[863.56,588.18,272.54,41.15]}
+{"kind":"shape","id":"sh/4fmp0zqd","slide":14,"name":"accent-line-14","bbox":[0,0,1280,7]}
+{"kind":"notes","id":"nt/dgqo49","slide":14,"text":"이 부분이 ‘비추천이 모두 49점’ 문제를 고친 핵심입니다. 강제 비추천의 점수 상한은 밤의 깊이, 심한 비·바람 초과량, 컨셉 높이 범위 이탈량에 따라 10~49 사이에서 달라집니다. 약한 위반은 최대 보통으로 제한하고, 치명적 위반은 강제 비추천합니다. 실내에는 야외 강제 규칙을 적용하지 않습니다.\n\n[Sources]\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/scoring.py:151\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/scoring.py:154\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/scoring.py:166\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/scoring.py:210"}
+{"kind":"slide","id":"sl/xv82i6","slide":15,"title":"15","textShapes":8}
+{"kind":"textbox","id":"sh/f2hcva5s","slide":15,"name":"Slide-Number-Placeholder-3-2","text":"15","textPreview":"15","textChars":2,"textLines":1,"bbox":[1184.18,659.24,54.48,25.33]}
+{"kind":"textbox","id":"sh/g3qdovmd","slide":15,"name":"Title-10-3","text":"도착 직후부터 12시간 뒤까지 13개 후보를 같은 방식으로 평가한다","textPreview":"도착 직후부터 12시간 뒤까지 13개 후보를 같은 방식으로 평가한다","textChars":37,"textLines":1,"bbox":[41.33,36.12,1197.33,109.97]}
+{"kind":"shape","id":"sh/h4zux0ny","slide":15,"name":"Google-Shape-2259-p159-4","bbox":[35.46,354.2,1285.61,0.03]}
+{"kind":"shape","id":"sh/6xobil4b","slide":15,"name":"Google-Shape-2260-p159-5","bbox":[35.46,348.58,11.24,11.24]}
+{"kind":"shape","id":"sh/7yxcrq5w","slide":15,"name":"Google-Shape-2261-p159-6","bbox":[446.38,348.58,11.24,11.24]}
+{"kind":"shape","id":"sh/szqdkvmh","slide":15,"name":"Google-Shape-2262-p159-7","bbox":[858.38,348.58,11.24,11.24]}
+{"kind":"textbox","id":"sh/t0zut0nm","slide":15,"name":"Content-Placeholder-15-8","text":"13개 시각","textPreview":"13개 시각","textChars":6,"textLines":1,"bbox":[41.33,298.51,169.33,27.55]}
+{"kind":"textbox","id":"sh/qtsvup4f","slide":15,"name":"Content-Placeholder-15-9","text":"13개 평가","textPreview":"13개 평가","textChars":6,"textLines":1,"bbox":[450.83,298.51,169.33,27.55]}
+{"kind":"textbox","id":"sh/ru1c3u50","slide":15,"name":"Content-Placeholder-15-10","text":"1개 추천","textPreview":"1개 추천","textChars":5,"textLines":1,"bbox":[863.33,298.51,169.33,27.55]}
+{"kind":"textbox","id":"sh/3e90f6lw","slide":15,"name":"Text-Placeholder-16-11","text":"날씨·빛·점수\n각 시각마다 같은 파이프라인을 실행해 status와 total을 만듭니다.","textPreview":"날씨·빛·점수 | 각 시각마다 같은 파이프라인을 실행해 status와 total을 만듭니다.","textChars":49,"textLines":2,"bbox":[453.24,401.33,331.35,166.54]}
+{"kind":"textbox","id":"sh/2d0z614b","slide":15,"name":"Text-Placeholder-16-12","text":"도착 + 0~12시간\n1시간 간격 target_times를 생성해 모든 컨셉이 저녁까지 비교됩니다.","textPreview":"도착 + 0~12시간 | 1시간 간격 target_times를 생성해 모든 컨셉이 저녁까지 비교됩니다.","textChars":55,"textLines":2,"bbox":[41.98,401.33,331.35,166.54]}
+{"kind":"textbox","id":"sh/p0rihw32","slide":15,"name":"Text-Placeholder-16-13","text":"상태 > 점수 > 빠른 시각\n가능을 먼저, 같은 상태면 높은 점수, 동점이면 더 빠른 시각을 선택합니다.","textPreview":"상태 > 점수 > 빠른 시각 | 가능을 먼저, 같은 상태면 높은 점수, 동점이면 더 빠른 시각을 선택합니다.","textChars":58,"textLines":2,"bbox":[858.57,401.33,331.35,166.54]}
+{"kind":"shape","id":"sh/ofi18bmh","slide":15,"name":"accent-line-15","bbox":[0,0,1280,7]}
+{"kind":"notes","id":"nt/xv82i6","slide":15,"text":"select_best_index는 문자열 상태를 직접 비교하지 않고 가능=2, 보통=1, 비추천=0 우선순위를 둡니다. max의 key는 (상태 우선순위, 총점, -index)입니다. 따라서 74점 보통보다 75점 가능이 우선하고, 동일 조건이면 사용자를 오래 기다리게 하지 않습니다.\n\n[Sources]\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/main.py:121\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/scoring.py:16"}
+{"kind":"slide","id":"sl/e643ko","slide":16,"title":"16","textShapes":10}
+{"kind":"textbox","id":"sh/u90zup8v","slide":16,"name":"Slide-Number-Placeholder-3-2","text":"16","textPreview":"16","textChars":2,"textLines":1,"bbox":[1184.18,659.24,54.48,25.33]}
+{"kind":"textbox","id":"sh/hcbi547m","slide":16,"name":"Title-10-3","text":"분석값은 네 단계의 현장 행동으로 다시 조립된다","textPreview":"분석값은 네 단계의 현장 행동으로 다시 조립된다","textChars":26,"textLines":1,"bbox":[41.33,36.12,1197.33,109.97]}
+{"kind":"textbox","id":"sh/gb2hwzq1","slide":16,"name":"Content-Placeholder-15-4","text":"사진 모드\n전신·허리 위·배경 중심\n연속 촬영 선택","textPreview":"사진 모드 | 전신·허리 위·배경 중심 | 연속 촬영 선택","textChars":28,"textLines":3,"bbox":[41.33,436.86,272.54,148.62]}
+{"kind":"textbox","id":"sh/7m90zu9k","slide":16,"name":"Text-Placeholder-16-5","text":"영상 모드\n4개 짧은 장면\n시간·카메라 이동","textPreview":"영상 모드 | 4개 짧은 장면 | 시간·카메라 이동","textChars":24,"textLines":3,"bbox":[350.13,436.86,272.54,148.62]}
+{"kind":"textbox","id":"sh/6l0zqp8z","slide":16,"name":"Content-Placeholder-17-6","text":"예시 장소\n장소×컨셉 전용 템플릿\n없으면 유형 템플릿","textPreview":"예시 장소 | 장소×컨셉 전용 템플릿 | 없으면 유형 템플릿","textChars":29,"textLines":3,"bbox":[657.68,436.86,272.54,148.62]}
+{"kind":"textbox","id":"sh/t8ri14ra","slide":16,"name":"Text-Placeholder-18-7","text":"쉬운 언어\n‘전경’ 대신 앞/뒤\n각도 대신 몇 걸음","textPreview":"쉬운 언어 | ‘전경’ 대신 앞/뒤 | 각도 대신 몇 걸음","textChars":28,"textLines":3,"bbox":[966.48,436.86,272.54,148.62]}
+{"kind":"textbox","id":"sh/snihszqp","slide":16,"name":"Content-Placeholder-15-8","text":"1. 거리\n인물↔주요 배경\n촬영자↔인물\n스마트폰 1× 기준","textPreview":"1. 거리 | 인물↔주요 배경 | 촬영자↔인물 | 스마트폰 1× 기준","textChars":32,"textLines":4,"bbox":[41.33,231.82,272.54,148.62]}
+{"kind":"textbox","id":"sh/rit0bepo","slide":16,"name":"Text-Placeholder-16-9","text":"2. 위치\n장소를 뒤에 두는 법\n빛을 받는 방향\n현장 이동 문장","textPreview":"2. 위치 | 장소를 뒤에 두는 법 | 빛을 받는 방향 | 현장 이동 문장","textChars":35,"textLines":4,"bbox":[350.13,231.82,272.54,148.62]}
+{"kind":"textbox","id":"sh/qhkj2983","slide":16,"name":"Content-Placeholder-17-10","text":"3. 하늘·바람\n기상청 SKY 설명\n흔들림·머리카락\n컨셉 동작","textPreview":"3. 하늘·바람 | 기상청 SKY 설명 | 흔들림·머리카락 | 컨셉 동작","textChars":34,"textLines":4,"bbox":[657.68,231.82,272.54,148.62]}
+{"kind":"textbox","id":"sh/476hsby5","slide":16,"name":"Text-Placeholder-18-11","text":"4. 결과\n빛·비 설명\n마무리 동작\n예상 노출 실패","textPreview":"4. 결과 | 빛·비 설명 | 마무리 동작 | 예상 노출 실패","textChars":28,"textLines":4,"bbox":[966.48,231.82,272.54,148.62]}
+{"kind":"shape","id":"sh/58fi1gfq","slide":16,"name":"accent-line-16","bbox":[0,0,1280,7]}
+{"kind":"notes","id":"nt/e643ko","slide":16,"text":"guide_for는 사진이면 photo_guide, 영상이면 장소×컨셉 전용 GUIDES를 우선 사용하고 없으면 custom_place_guide로 대체합니다. 실제 날씨와 태양 결과가 있으면 distance_setup_guide, shooting_direction_guide, sky_and_wind_explanation, solar_height_explanation, rain_explanation, expected_result_guide를 네 문장에 합칩니다.\n\n[Sources]\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/data.py:259\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/data.py:283\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/data.py:306\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/data.py:340\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/data.py:384"}
+{"kind":"slide","id":"sl/41qgay","slide":17,"title":"17","textShapes":9}
+{"kind":"textbox","id":"sh/poz21wby","slide":17,"name":"Google-Shape-532-p58-2","text":"17","textPreview":"17","textChars":2,"textLines":1,"bbox":[1184.18,659.24,54.48,25.33]}
+{"kind":"textbox","id":"sh/218jq1cn","slide":17,"name":"Google-Shape-533-p58-3","text":"전문 수치는 계산에 남기고, 화면에는 촬영 행동만 보여준다","textPreview":"전문 수치는 계산에 남기고, 화면에는 촬영 행동만 보여준다","textChars":32,"textLines":1,"bbox":[41.33,36.12,1197.33,109.97]}
+{"kind":"textbox","id":"sh/32hkzmt8","slide":17,"name":"Google-Shape-534-p58-4","text":"내부 모델은 정밀하게","textPreview":"내부 모델은 정밀하게","textChars":11,"textLines":1,"bbox":[41.33,180.83,581.33,90.83]}
+{"kind":"textbox","id":"sh/gzq1oruh","slide":17,"name":"Content-Placeholder-10-5","text":"‘산들바람이 불어요’","textPreview":"‘산들바람이 불어요’","textChars":11,"textLines":1,"bbox":[828,313.94,410.67,57.61]}
+{"kind":"shape","id":"sh/h0z2xwb2","slide":17,"name":"Google-Shape-340-p61-6","bbox":[788.21,316.55,22.32,22.31]}
+{"kind":"textbox","id":"sh/uxojmhcb","slide":17,"name":"TextBox-11-7","text":"elevation · azimuth\nGHI · DNI · DHI\nwind_speed_mps\nlighting_risk_score\nAPI 응답과 점수 계산에는 유지하지만 일반 사용자 카드에는 직접 노출하지 않습니다.","textPreview":"elevation · azimuth | GHI · DNI · DHI | wind_speed_mps | lighting_risk_score | API 응답과 점수 계산에는 유지하지만 일반 사용자 카드에는 직접 노출하지 않습니다.","textChars":118,"textLines":5,"bbox":[41.33,313.94,581.33,302.85]}
+{"kind":"textbox","id":"sh/fyhkvmtw","slide":17,"name":"Content-Placeholder-10-8","text":"‘빛이 충분해요’","textPreview":"‘빛이 충분해요’","textChars":9,"textLines":1,"bbox":[828,377.94,410.67,57.61]}
+{"kind":"shape","id":"sh/sv61k7ul","slide":17,"name":"Google-Shape-340-p61-9","bbox":[788.21,380.55,22.32,22.31]}
+{"kind":"textbox","id":"sh/twf2tcvq","slide":17,"name":"Content-Placeholder-10-10","text":"‘두세 걸음 옆으로’","textPreview":"‘두세 걸음 옆으로’","textChars":11,"textLines":1,"bbox":[828,442.5,410.67,57.61]}
+{"kind":"shape","id":"sh/5cnm18ry","slide":17,"name":"Google-Shape-340-p61-11","bbox":[788.21,445.1,22.32,22.31]}
+{"kind":"textbox","id":"sh/kbels3qt","slide":17,"name":"Content-Placeholder-10-12","text":"‘얼굴이 어두워질 수 있어요’","textPreview":"‘얼굴이 어두워질 수 있어요’","textChars":16,"textLines":1,"bbox":[828,506.49,410.67,57.61]}
+{"kind":"shape","id":"sh/ja54zy98","slide":17,"name":"Google-Shape-340-p61-13","bbox":[788.21,509.1,22.32,22.31]}
+{"kind":"textbox","id":"sh/ipw3qt8n","slide":17,"name":"Content-Placeholder-10-14","text":"‘맑음 / 구름 많음 / 흐림’","textPreview":"‘맑음 / 구름 많음 / 흐림’","textChars":17,"textLines":1,"bbox":[828,571.83,410.67,57.61]}
+{"kind":"shape","id":"sh/xo3mx8r2","slide":17,"name":"Google-Shape-340-p61-15","bbox":[788.21,574.44,22.32,22.31]}
+{"kind":"shape","id":"sh/wnulo3qh","slide":17,"name":"accent-line-17","bbox":[0,0,1280,7]}
+{"kind":"notes","id":"nt/41qgay","slide":17,"text":"표현 계층을 분리했습니다. backend의 평가 모델은 수치를 유지하고, 가이드 함수와 frontend의 getWindLabel·getLightLabel·getLightAdvice가 행동 문장으로 바꿉니다. 하늘상태는 기상청 값을 그대로 사용하며 임의 구름 퍼센트는 만들지 않습니다.\n\n[Sources]\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/models.py:93\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/data.py:414\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/frontend/src/App.tsx:90\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/frontend/src/App.tsx:101"}
+{"kind":"slide","id":"sl/2o70qw","slide":18,"title":"18","textShapes":11}
+{"kind":"textbox","id":"sh/6dcfetcn","slide":18,"name":"Google-Shape-532-p58-2","text":"18","textPreview":"18","textChars":2,"textLines":1,"bbox":[1184.18,659.24,54.48,25.33]}
+{"kind":"textbox","id":"sh/tgnep8ve","slide":18,"name":"Google-Shape-533-p58-3","text":"모바일 UI는 입력·분석·재사용의 한 흐름으로 구성된다","textPreview":"모바일 UI는 입력·분석·재사용의 한 흐름으로 구성된다","textChars":30,"textLines":1,"bbox":[41.33,36.12,1197.33,109.97]}
+{"kind":"textbox","id":"sh/8fexg3ut","slide":18,"name":"Content-Placeholder-10-4","text":"장소·컨셉·출발·이동수단","textPreview":"장소·컨셉·출발·이동수단","textChars":13,"textLines":1,"bbox":[732,249.33,506.67,68]}
+{"kind":"textbox","id":"sh/vi5wridk","slide":18,"name":"Content-Placeholder-10-5","text":"입력","textPreview":"입력","textChars":2,"textLines":1,"bbox":[509.33,249.33,196,68]}
+{"kind":"textbox","id":"sh/uhwfidcz","slide":18,"name":"Content-Placeholder-10-6","text":"13시간대·점수·이유·가이드","textPreview":"13시간대·점수·이유·가이드","textChars":15,"textLines":1,"bbox":[732,353.33,506.67,68]}
+{"kind":"textbox","id":"sh/h4net8va","slide":18,"name":"Content-Placeholder-10-7","text":"결과","textPreview":"결과","textChars":2,"textLines":1,"bbox":[509.33,353.33,196,68]}
+{"kind":"textbox","id":"sh/gjexk3up","slide":18,"name":"Content-Placeholder-10-8","text":"6개 컨셉별 배경·강조색","textPreview":"6개 컨셉별 배경·강조색","textChars":13,"textLines":1,"bbox":[732,457.33,506.67,68]}
+{"kind":"textbox","id":"sh/36pgvidg","slide":18,"name":"Content-Placeholder-10-9","text":"테마","textPreview":"테마","textChars":2,"textLines":1,"bbox":[509.33,457.33,196,68]}
+{"kind":"textbox","id":"sh/i5gfmdcv","slide":18,"name":"Content-Placeholder-10-10","text":"localStorage 최대 10개·PNG 공유","textPreview":"localStorage 최대 10개·PNG 공유","textChars":26,"textLines":1,"bbox":[732,562.67,506.67,68]}
+{"kind":"textbox","id":"sh/czy1k76t","slide":18,"name":"Content-Placeholder-10-11","text":"재사용","textPreview":"재사용","textChars":3,"textLines":1,"bbox":[509.33,562.67,196,68]}
+{"kind":"textbox","id":"sh/d07idc7e","slide":18,"name":"Google-Shape-534-p58-12","text":"React 상태 흐름\n폼 상태 → analyze() → Analysis 응답 → 결과 섹션 렌더링\n분석 완료 후 결과 위치로 부드럽게 이동하고, 모든 컨셉 카드는 모바일에서 2열로 표시합니다.","textPreview":"React 상태 흐름 | 폼 상태 → analyze() → Analysis 응답 → 결과 섹션 렌더링 | 분석 완료 후 결과 위치로 부드럽게 이동하고, 모든 컨셉 카드는 모바일에서 2열로 표시합니다.","textChars":107,"textLines":3,"bbox":[41.33,249.33,374.67,380]}
+{"kind":"shape","id":"sh/qxgjixon","slide":18,"name":"accent-line-18","bbox":[0,0,1280,7]}
+{"kind":"notes","id":"nt/2o70qw","slide":18,"text":"Analysis 타입 하나가 결과 페이지의 단일 데이터 원천입니다. 선택된 컨셉의 accent는 분석 버튼과 결과 테마에 반영됩니다. 저장은 서버 DB가 아니라 localStorage이며, 공유는 Canvas로 결과 카드를 만든 뒤 Web Share API를 우선 사용하고 미지원 환경은 다운로드로 전환합니다.\n\n[Sources]\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/frontend/src/App.tsx\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/frontend/src/types.ts\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/frontend/src/share.ts\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/frontend/src/styles.css"}
+{"kind":"slide","id":"sl/5jj0kt","slide":19,"title":"19","textShapes":8}
+{"kind":"textbox","id":"sh/s36147u9","slide":19,"name":"Slide-Number-Placeholder-3-2","text":"19","textPreview":"19","textChars":2,"textLines":1,"bbox":[1184.18,659.24,54.48,25.33]}
+{"kind":"textbox","id":"sh/r2x0b2do","slide":19,"name":"Title-10-3","text":"영상 편집은 서버 업로드 없이 브라우저 안에서 직접 렌더링한다","textPreview":"영상 편집은 서버 업로드 없이 브라우저 안에서 직접 렌더링한다","textChars":34,"textLines":1,"bbox":[41.33,36.12,1197.33,109.97]}
+{"kind":"shape","id":"sh/61oj2xc3","slide":19,"name":"Google-Shape-2259-p159-4","bbox":[35.46,560.8,1285.61,0.03]}
+{"kind":"shape","id":"sh/50fi9svi","slide":19,"name":"Google-Shape-2260-p159-5","bbox":[35.46,555.18,11.24,11.24]}
+{"kind":"shape","id":"sh/4zm10nux","slide":19,"name":"Google-Shape-2261-p159-6","bbox":[446.38,555.18,11.24,11.24]}
+{"kind":"shape","id":"sh/jed072ds","slide":19,"name":"Google-Shape-2262-p159-7","bbox":[858.38,555.18,11.24,11.24]}
+{"kind":"shape","id":"sh/id4zyxc7","slide":19,"name":"Rounded-Rectangle-19-8","bbox":[41.33,147.17,374.67,380]}
+{"kind":"textbox","id":"sh/hcvi5svm","slide":19,"name":"Content-Placeholder-8-9","text":"편집 모델\n최대 4개 클립\n구간·순서·속도·음소거\n필터·밝기·확대·위치","textPreview":"편집 모델 | 최대 4개 클립 | 구간·순서·속도·음소거 | 필터·밝기·확대·위치","textChars":39,"textLines":4,"bbox":[73.85,189.69,309.64,269.48]}
+{"kind":"shape","id":"sh/wbmhwnu1","slide":19,"name":"Rounded-Rectangle-21-10","bbox":[452.33,147.17,374.67,380]}
+{"kind":"textbox","id":"sh/udwfepgv","slide":19,"name":"Content-Placeholder-8-11","text":"프레임 렌더\n360×640 Canvas\n30fps captureStream\n자막·컷/페이드 적용","textPreview":"프레임 렌더 | 360×640 Canvas | 30fps captureStream | 자막·컷/페이드 적용","textChars":53,"textLines":4,"bbox":[484.85,189.69,309.64,269.48]}
+{"kind":"shape","id":"sh/fe5g7uxg","slide":19,"name":"Rounded-Rectangle-23-12","bbox":[864.83,147.17,374.67,380]}
+{"kind":"textbox","id":"sh/gfexgfy1","slide":19,"name":"Content-Placeholder-8-13","text":"인코딩·저장\nMediaRecorder\n지원 시 MP4, 그 외 WebM\n편집 길이 최대 15초","textPreview":"인코딩·저장 | MediaRecorder | 지원 시 MP4, 그 외 WebM | 편집 길이 최대 15초","textChars":52,"textLines":4,"bbox":[897.35,189.69,309.64,269.48]}
+{"kind":"textbox","id":"sh/hgny9kfm","slide":19,"name":"Text-Placeholder-16-14","text":"RENDER","textPreview":"RENDER","textChars":6,"textLines":1,"bbox":[446.38,588.18,272.54,41.15]}
+{"kind":"textbox","id":"sh/69cfa5gj","slide":19,"name":"Text-Placeholder-16-15","text":"EDIT","textPreview":"EDIT","textChars":4,"textLines":1,"bbox":[41.04,588.18,272.54,41.15]}
+{"kind":"textbox","id":"sh/7alw3ax4","slide":19,"name":"Text-Placeholder-16-16","text":"EXPORT","textPreview":"EXPORT","textChars":6,"textLines":1,"bbox":[863.56,588.18,272.54,41.15]}
+{"kind":"shape","id":"sh/sbuxcfyp","slide":19,"name":"accent-line-19","bbox":[0,0,1280,7]}
+{"kind":"notes","id":"nt/5jj0kt","slide":19,"text":"renderMontage는 각 클립의 trimEnd-trimStart를 speed로 나눈 편집 길이를 합치고 15초에서 자릅니다. requestAnimationFrame마다 crop·zoom·position·CSS Canvas filter·fade·caption을 적용합니다. Canvas 스트림과 AudioContext 목적지 스트림을 합쳐 MediaRecorder로 기록합니다. 사진은 별도 1080×1920 Canvas 콜라주로 저장합니다.\n\n[Sources]\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/frontend/src/MediaStudio.tsx:44\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/frontend/src/MediaStudio.tsx:169\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/frontend/src/MediaStudio.tsx:306\n- https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/captureStream\n- https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder"}
+{"kind":"slide","id":"sl/00ds7f","slide":20,"title":"20","textShapes":11}
+{"kind":"textbox","id":"sh/uxkv65gb","slide":20,"name":"Google-Shape-532-p58-2","text":"20","textPreview":"20","textChars":2,"textLines":1,"bbox":[1184.18,659.24,54.48,25.33]}
+{"kind":"textbox","id":"sh/h0be1kzm","slide":20,"name":"Google-Shape-533-p58-3","text":"API 네 개와 역할별 파일 분리로 MVP를 추적 가능하게 만들었다","textPreview":"API 네 개와 역할별 파일 분리로 MVP를 추적 가능하게 만들었다","textChars":37,"textLines":1,"bbox":[41.33,36.12,1197.33,109.97]}
+{"kind":"textbox","id":"sh/gz2d8fy1","slide":20,"name":"Content-Placeholder-10-4","text":"data.py · models.py","textPreview":"data.py · models.py","textChars":19,"textLines":1,"bbox":[732,249.33,506.67,68]}
+{"kind":"textbox","id":"sh/32tw3uhs","slide":20,"name":"Content-Placeholder-10-5","text":"데이터","textPreview":"데이터","textChars":3,"textLines":1,"bbox":[509.33,249.33,196,68]}
+{"kind":"textbox","id":"sh/21kvapg7","slide":20,"name":"Content-Placeholder-10-6","text":"weather · solar · travel · scoring","textPreview":"weather · solar · travel · scoring","textChars":34,"textLines":1,"bbox":[732,353.33,506.67,68]}
+{"kind":"textbox","id":"sh/pove5kzy","slide":20,"name":"Content-Placeholder-10-7","text":"서비스","textPreview":"서비스","textChars":3,"textLines":1,"bbox":[509.33,353.33,196,68]}
+{"kind":"textbox","id":"sh/43mdcfyd","slide":20,"name":"Content-Placeholder-10-8","text":"App · api · types · styles","textPreview":"App · api · types · styles","textChars":26,"textLines":1,"bbox":[732,457.33,506.67,68]}
+{"kind":"textbox","id":"sh/j69crqho","slide":20,"name":"Content-Placeholder-10-9","text":"프론트","textPreview":"프론트","textChars":3,"textLines":1,"bbox":[509.33,457.33,196,68]}
+{"kind":"textbox","id":"sh/y50vyl03","slide":20,"name":"Content-Placeholder-10-10","text":"MediaStudio · share","textPreview":"MediaStudio · share","textChars":19,"textLines":1,"bbox":[732,562.67,506.67,68]}
+{"kind":"textbox","id":"sh/k7a1wji5","slide":20,"name":"Content-Placeholder-10-11","text":"미디어","textPreview":"미디어","textChars":3,"textLines":1,"bbox":[509.33,562.67,196,68]}
+{"kind":"textbox","id":"sh/l8ji5ojq","slide":20,"name":"Google-Shape-534-p58-12","text":"FastAPI 엔드포인트\nGET /api/health\nGET /api/catalog\nGET /api/places/search\nGET /api/places/reverse\nPOST /api/analyze\nPydantic이 좌표 범위, 장소 입력 방식, timezone 포함 출발 시각을 검증합니다.","textPreview":"FastAPI 엔드포인트 | GET /api/health | GET /api/catalog | GET /api/places/search | GET /api/places/reverse | POST /api/analyze | Pydantic이 좌표 ...","textChars":164,"textLines":7,"bbox":[41.33,249.33,374.67,380]}
+{"kind":"shape","id":"sh/yl8ju90z","slide":20,"name":"accent-line-20","bbox":[0,0,1280,7]}
+{"kind":"notes","id":"nt/00ds7f","slide":20,"text":"AnalyzeRequest는 place_id 또는 place 중 정확히 하나를 요구합니다. 사용자 입력 장소는 제주 범위로 제한됩니다. departure_time에는 UTC offset이 필수이며 서버에서는 Asia/Seoul로 변환합니다. API와 계산 서비스가 분리되어 있어 mock·real 교체와 단위 테스트가 쉽습니다.\n\n[Sources]\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/models.py\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/main.py\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/frontend/src/api.ts"}
+{"kind":"slide","id":"sl/4wgw7y","slide":21,"title":"21","textShapes":9}
+{"kind":"textbox","id":"sh/fulov6ls","slide":21,"name":"Google-Shape-532-p58-2","text":"21","textPreview":"21","textChars":2,"textLines":1,"bbox":[1184.18,659.24,54.48,25.33]}
+{"kind":"textbox","id":"sh/gvu5obmx","slide":21,"name":"Google-Shape-533-p58-3","text":"데모는 끊기지 않게, 결과 해석은 과장하지 않게 설계했다","textPreview":"데모는 끊기지 않게, 결과 해석은 과장하지 않게 설계했다","textChars":31,"textLines":1,"bbox":[41.33,36.12,1197.33,109.97]}
+{"kind":"textbox","id":"sh/1w36xg3i","slide":21,"name":"Google-Shape-534-p58-4","text":"신뢰성과 검증","textPreview":"신뢰성과 검증","textChars":7,"textLines":1,"bbox":[41.33,180.83,581.33,90.83]}
+{"kind":"textbox","id":"sh/6psni14v","slide":21,"name":"Content-Placeholder-10-5","text":"빛의 양은 추정값","textPreview":"빛의 양은 추정값","textChars":9,"textLines":1,"bbox":[828,313.94,410.67,57.61]}
+{"kind":"shape","id":"sh/rql4r6lg","slide":21,"name":"Google-Shape-340-p61-6","bbox":[788.21,316.55,22.32,22.31]}
+{"kind":"textbox","id":"sh/sru5krm1","slide":21,"name":"TextBox-11-7","text":"mock: 외부 키 없이 결정론적 데모\nauto: 실제 데이터 우선, 실패 시 fallback\nreal: 실제 예보 실패를 오류로 반환\n백엔드 자동 테스트 26개와 프론트 TypeScript/Vite 빌드로 핵심 흐름을 확인합니다.","textPreview":"mock: 외부 키 없이 결정론적 데모 | auto: 실제 데이터 우선, 실패 시 fallback | real: 실제 예보 실패를 오류로 반환 | 백엔드 자동 테스트 26개와 프론트 TypeScript/Vite 빌드로 핵심 흐름을 확인합니다.","textChars":129,"textLines":4,"bbox":[41.33,313.94,581.33,302.85]}
+{"kind":"textbox","id":"sh/ts36tw3m","slide":21,"name":"Content-Placeholder-10-8","text":"현장 구조는 3D 측정 아님","textPreview":"현장 구조는 3D 측정 아님","textChars":15,"textLines":1,"bbox":[828,377.94,410.67,57.61]}
+{"kind":"shape","id":"sh/qlwnul4f","slide":21,"name":"Google-Shape-340-p61-9","bbox":[788.21,380.55,22.32,22.31]}
+{"kind":"textbox","id":"sh/bm5o3qlk","slide":21,"name":"Content-Placeholder-10-10","text":"거리값은 촬영 시작 기준","textPreview":"거리값은 촬영 시작 기준","textChars":13,"textLines":1,"bbox":[828,442.5,410.67,57.61]}
+{"kind":"shape","id":"sh/jylgf2p0","slide":21,"name":"Google-Shape-340-p61-11","bbox":[788.21,445.1,22.32,22.31]}
+{"kind":"textbox","id":"sh/yxcfmx8f","slide":21,"name":"Content-Placeholder-10-12","text":"버스·도보는 현재 추정","textPreview":"버스·도보는 현재 추정","textChars":12,"textLines":1,"bbox":[828,506.49,410.67,57.61]}
+{"kind":"shape","id":"sh/l03yhs76","slide":21,"name":"Google-Shape-340-p61-13","bbox":[788.21,509.1,22.32,22.31]}
+{"kind":"textbox","id":"sh/kzuho7ql","slide":21,"name":"Content-Placeholder-10-14","text":"구름은 공식 3단계만","textPreview":"구름은 공식 3단계만","textChars":11,"textLines":1,"bbox":[828,571.83,410.67,57.61]}
+{"kind":"shape","id":"sh/725gj2pc","slide":21,"name":"Google-Shape-340-p61-15","bbox":[788.21,574.44,22.32,22.31]}
+{"kind":"shape","id":"sh/61wzqx8r","slide":21,"name":"accent-line-21","bbox":[0,0,1280,7]}
+{"kind":"notes","id":"nt/4wgw7y","slide":21,"text":"auto 모드는 해커톤 시연 안정성을 위한 선택입니다. 실제 날씨와 자동차 경로가 실패하면 경고와 함께 fallback 출처를 화면에 남깁니다. 한계는 발표에서 먼저 밝히는 편이 좋습니다. 특히 빛 위험은 장소 유형 휴리스틱, 촬영 거리는 스마트폰 1× 기준 시작점, 대중교통·도보는 추정입니다.\n\n[Sources]\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/config.py\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/weather.py:296\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/travel.py:93\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/tests/test_api.py\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/tests/test_core.py\n- https://www.data.go.kr/data/15084084/openapi.do?recommendDataYn=Y"}
+{"kind":"slide","id":"sl/4gujbr","slide":22,"title":"데이터가 타이밍을 준비하고,","textShapes":3}
+{"kind":"textbox","id":"sh/gru1sb6t","slide":22,"name":"Title-3-1","text":"데이터가 타이밍을 준비하고,\n사용자가 장면을 완성한다","textPreview":"데이터가 타이밍을 준비하고, | 사용자가 장면을 완성한다","textChars":29,"textLines":2,"bbox":[41.33,182.55,992,261.57]}
+{"kind":"textbox","id":"sh/fqlkj658","slide":22,"name":"Subtitle-4-2","text":"도착 시각 기반\n설명 가능한 점수\n행동으로 이어지는 가이드","textPreview":"도착 시각 기반 | 설명 가능한 점수 | 행동으로 이어지는 가이드","textChars":32,"textLines":3,"bbox":[41.33,522.13,374.67,113.41]}
+{"kind":"textbox","id":"sh/upsjq1o3","slide":22,"name":"Subtitle-4-3","text":"TAKEAWAY","textPreview":"TAKEAWAY","textChars":8,"textLines":1,"bbox":[41.33,41.18,169.33,68.15]}
+{"kind":"shape","id":"sh/pw32pgnq","slide":22,"name":"accent-line-22","bbox":[0,0,1280,7]}
+{"kind":"notes","id":"nt/4gujbr","slide":22,"text":"마지막에는 기술 스택보다 서비스의 연결 구조를 다시 강조합니다. sceneJeju의 차별점은 예보 자체가 아니라, 이동시간을 포함한 미래 조건을 설명 가능한 점수로 비교하고 현장에서 실행할 촬영 행동과 결과물 편집까지 연결한 데 있습니다.\n\n[Sources]\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/main.py\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/services/scoring.py\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/backend/app/data.py\n- /Users/baeseojin/Desktop/JBNU/scene-Jeju/frontend/src/MediaStudio.tsx"}

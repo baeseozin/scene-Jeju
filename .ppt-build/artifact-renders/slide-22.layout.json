@@ -1,0 +1,602 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/4gujbr",
+    "id": "4gujbr",
+    "slide": 22,
+    "layoutId": "4e44454e-c1f8-4ef5-8c7c-3bee6d5ef6dd",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "d351d3e4-ef0c-4c32-bf0f-005b5ed86b33",
+    "masterLayoutName": "Master",
+    "backgroundColor": "#FFFFFF",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "Apple SD Gothic Neo",
+      "Helvetica Neue"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "4e44454e-c1f8-4ef5-8c7c-3bee6d5ef6dd",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "d351d3e4-ef0c-4c32-bf0f-005b5ed86b33",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "d351d3e4-ef0c-4c32-bf0f-005b5ed86b33",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/gru1sb6t",
+      "id": "1",
+      "name": "Title-3-1",
+      "bbox": [
+        41.33,
+        182.55,
+        992,
+        261.57
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.0"
+      },
+      "geometry": "rect",
+      "text": "데이터가 타이밍을 준비하고,\n사용자가 장면을 완성한다",
+      "textPreview": "데이터가 타이밍을 준비하고, | 사용자가 장면을 완성한다",
+      "resolvedFontSize": 80,
+      "resolvedTextStyle": {
+        "anchor": 3,
+        "fontSize": 80,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "verticalAlignment": "bottom",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "데이터가 타이밍을 준비하고,"
+          },
+          {
+            "index": 2,
+            "text": "사용자가 장면을 완성한다"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "데이터가 타이밍을 준비하고,\n사용자가 장면을 완성한다",
+          "lineSpacingPercent": 94000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "anchor": 3,
+            "fontSize": 80,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "verticalAlignment": "bottom",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "데이터가 타이밍을 준비하고,\n사용자가 장면을 완성한다",
+              "fontSize": 76,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#111716",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/fqlkj658",
+      "id": "2",
+      "name": "Subtitle-4-2",
+      "bbox": [
+        41.33,
+        522.13,
+        374.67,
+        113.41
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1"
+      },
+      "geometry": "rect",
+      "text": "도착 시각 기반\n설명 가능한 점수\n행동으로 이어지는 가이드",
+      "textPreview": "도착 시각 기반 | 설명 가능한 점수 | 행동으로 이어지는 가이드",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "fontSize": 32,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 3,
+        "lines": [
+          {
+            "index": 1,
+            "text": "도착 시각 기반"
+          },
+          {
+            "index": 2,
+            "text": "설명 가능한 점수"
+          },
+          {
+            "index": 3,
+            "text": "행동으로 이어지는 가이드"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "도착 시각 기반",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 500,
+          "resolvedTextStyle": {
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "도착 시각 기반",
+              "fontSize": 22,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#2D8C73",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "설명 가능한 점수",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 500,
+          "resolvedTextStyle": {
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "설명 가능한 점수",
+              "fontSize": 22,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#2D8C73",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 3,
+          "text": "행동으로 이어지는 가이드",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "행동으로 이어지는 가이드",
+              "fontSize": 22,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#2D8C73",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/upsjq1o3",
+      "id": "3",
+      "name": "Subtitle-4-3",
+      "bbox": [
+        41.33,
+        41.18,
+        169.33,
+        68.15
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.2"
+      },
+      "geometry": "rect",
+      "text": "TAKEAWAY",
+      "textPreview": "TAKEAWAY",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "fontSize": 32,
+        "typeface": "Helvetica Neue",
+        "color": "#000000",
+        "alignment": "left",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "TAKEAWAY"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "TAKEAWAY",
+          "lineSpacingPercent": 108000,
+          "spaceBefore": 0,
+          "spaceAfter": 0,
+          "resolvedTextStyle": {
+            "fontSize": 32,
+            "typeface": "Helvetica Neue",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "none",
+            "insets": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "TAKEAWAY",
+              "fontSize": 22,
+              "typeface": "Apple SD Gothic Neo",
+              "color": "#2D8C73",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/pw32pgnq",
+      "id": "4",
+      "name": "accent-line-22",
+      "bbox": [
+        0,
+        0,
+        1280,
+        7
+      ],
+      "geometry": "rect",
+      "fillColor": "#2D8C73",
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": [
+    {
+      "index": 1,
+      "frame": {
+        "left": 0,
+        "top": 0,
+        "width": 1280,
+        "height": 720
+      },
+      "baseUnit": 1,
+      "root": {
+        "path": "0",
+        "kind": "layers",
+        "name": "codex-grid-layout-library#slide-26",
+        "requestedSize": {
+          "width": {
+            "mode": "fill",
+            "value": 1
+          },
+          "height": {
+            "mode": "fill",
+            "value": 1
+          }
+        },
+        "intrinsicSize": {
+          "width": 1033.33,
+          "height": 635.54
+        },
+        "frame": {
+          "left": 0,
+          "top": 0,
+          "width": 1280,
+          "height": 720
+        },
+        "children": [
+          {
+            "path": "0.0",
+            "kind": "text",
+            "name": "Title-3-1",
+            "position": {
+              "left": 41.33,
+              "top": 182.55
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 992
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 261.57
+              }
+            },
+            "intrinsicSize": {
+              "width": 992,
+              "height": 261.57
+            },
+            "frame": {
+              "left": 41.33,
+              "top": 182.55,
+              "width": 992,
+              "height": 261.57
+            },
+            "snappedFrame": {
+              "left": 41.33,
+              "top": 182.55,
+              "width": 992,
+              "height": 261.57
+            },
+            "children": [],
+            "text": "데이터가 타이밍을 준비하고,\n사용자가 장면을 완성한다",
+            "transform": "none",
+            "element": {
+              "aid": "sh/gru1sb6t",
+              "id": "1",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.1",
+            "kind": "text",
+            "name": "Subtitle-4-2",
+            "position": {
+              "left": 41.33,
+              "top": 522.13
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 374.67
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 113.41
+              }
+            },
+            "intrinsicSize": {
+              "width": 374.67,
+              "height": 113.41
+            },
+            "frame": {
+              "left": 41.33,
+              "top": 522.13,
+              "width": 374.67,
+              "height": 113.41
+            },
+            "snappedFrame": {
+              "left": 41.33,
+              "top": 522.13,
+              "width": 374.67,
+              "height": 113.41
+            },
+            "children": [],
+            "text": "도착 시각 기반\n설명 가능한 점수\n행동으로 이어지는 가이드",
+            "transform": "none",
+            "element": {
+              "aid": "sh/fqlkj658",
+              "id": "2",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.2",
+            "kind": "text",
+            "name": "Subtitle-4-3",
+            "position": {
+              "left": 41.33,
+              "top": 41.18
+            },
+            "requestedSize": {
+              "width": {
+                "mode": "fixed",
+                "value": 169.33
+              },
+              "height": {
+                "mode": "fixed",
+                "value": 68.15
+              }
+            },
+            "intrinsicSize": {
+              "width": 169.33,
+              "height": 68.15
+            },
+            "frame": {
+              "left": 41.33,
+              "top": 41.18,
+              "width": 169.33,
+              "height": 68.15
+            },
+            "snappedFrame": {
+              "left": 41.33,
+              "top": 41.18,
+              "width": 169.33,
+              "height": 68.15
+            },
+            "children": [],
+            "text": "TAKEAWAY",
+            "transform": "none",
+            "element": {
+              "aid": "sh/upsjq1o3",
+              "id": "3",
+              "kind": "shape"
+            }
+          }
+        ],
+        "padding": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "alignItems": "stretch",
+        "justifyItems": "stretch",
+        "contentFrame": {
+          "left": 0,
+          "top": 0,
+          "width": 1280,
+          "height": 720
+        },
+        "items": [
+          {
+            "path": "0.0",
+            "frame": {
+              "left": 41.33,
+              "top": 182.55,
+              "width": 992,
+              "height": 261.57
+            }
+          },
+          {
+            "path": "0.1",
+            "frame": {
+              "left": 41.33,
+              "top": 522.13,
+              "width": 374.67,
+              "height": 113.41
+            }
+          },
+          {
+            "path": "0.2",
+            "frame": {
+              "left": 41.33,
+              "top": 41.18,
+              "width": 169.33,
+              "height": 68.15
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
