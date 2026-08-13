@@ -196,7 +196,7 @@ class PoseRecommendationItem(BaseModel):
 
 
 class PoseRecommendationResponse(BaseModel):
-    source: Literal["openai", "fallback"]
+    source: Literal["gemini", "fallback"]
     model: str | None = None
     framing: FramingMode
     basis: str

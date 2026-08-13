@@ -8,10 +8,10 @@ export default defineConfig(({ mode }) => ({
       host: "0.0.0.0",
       allowedHosts: [".trycloudflare.com"],
       hmr: mode === "stable" ? false : undefined,
-      port: 5178,
+      port: 5173,
       strictPort: true,
       proxy: {
-        "/api": "http://localhost:8008",
+        "/api": "http://localhost:8000",
       },
     },
   }));

@@ -13,9 +13,9 @@ class Settings(BaseSettings):
     app_mode: Literal["mock", "auto", "real"] = "mock"
     kma_service_key: str = ""
     kakao_rest_api_key: str = ""
-    openai_api_key: str = ""
-    openai_pose_model: str = "gpt-5.6-luna"
-    frontend_origin: str = "http://localhost:5178"
+    gemini_api_key: str = ""
+    gemini_pose_model: str = "gemini-2.5-flash-lite"
+    frontend_origin: str = "http://localhost:5173"
 
     model_config = SettingsConfigDict(
         env_file=(ROOT_DIR / ".env", ROOT_DIR.parent / ".env"),
@@ -30,8 +30,8 @@ class Settings(BaseSettings):
         )
 
     @property
-    def use_openai_pose_recommendation(self) -> bool:
-        return bool(self.openai_api_key)
+    def use_gemini_pose_recommendation(self) -> bool:
+        return bool(self.gemini_api_key)
 
 
 @lru_cache

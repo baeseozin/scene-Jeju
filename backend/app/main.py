@@ -190,9 +190,11 @@ async def analyze(payload: AnalyzeRequest) -> AnalyzeResponse:
             zip(target_times, evaluations, forecasts, solar_results, strict=True)
         )
     ]
-    weather, data_source = forecasts[best_index]
-    solar = solar_results[best_index]
-    evaluation = evaluations[best_index]
+    # 메인 결과는 사용자가 실제 현장에 도착하는 시각(index 0)을 기준으로 고정합니다.
+    # best_index는 더 좋은 시간이 있는지 보여주는 별도 추천 카드에만 사용합니다.
+    weather, data_source = forecasts[0]
+    solar = solar_results[0]
+    evaluation = evaluations[0]
     if place.id == "custom":
         recommended_azimuth = recommend_shooting_azimuth(concept, solar)
         place = replace(
@@ -205,7 +207,7 @@ async def analyze(payload: AnalyzeRequest) -> AnalyzeResponse:
     summary = evaluation.summary
     if best_index > 0:
         summary = (
-            f"도착 후 {best_index}시간 뒤에 선택한 분위기가 가장 잘 살아나요."
+            f"{summary} 도착 후 {best_index}시간 뒤에는 선택한 분위기가 더 잘 살아나요."
         )
 
     guide = guide_for(place, concept, payload.capture_mode, weather, solar)

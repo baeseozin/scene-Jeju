@@ -66,9 +66,8 @@ def _place_type_score(place_type: str, concept_id: str) -> int:
     scores = {
         "refreshing": {"beach": 100, "forest": 90, "urban": 95, "indoor": 75},
         "natural": {"beach": 95, "forest": 100, "urban": 90, "indoor": 78},
-        "film": {"beach": 85, "forest": 100, "urban": 95, "indoor": 90},
+        "film": {"beach": 95, "forest": 92, "urban": 100, "indoor": 88},
         "sunset": {"beach": 100, "forest": 75, "urban": 95, "indoor": 55},
-        "cozy": {"beach": 82, "forest": 95, "urban": 88, "indoor": 100},
         "sparkling": {"beach": 100, "forest": 65, "urban": 90, "indoor": 55},
     }
     return scores.get(concept_id, {}).get(place_type, 70)
@@ -163,7 +162,7 @@ def evaluate(
         )
 
     if is_mood_night:
-        # 무드있는 컨셉은 푸른 저녁과 어두운 수평선 자체가 결과물의 일부입니다.
+        # 짙은 컨셉은 푸른 밤과 어두운 수평선 자체가 결과물의 일부입니다.
         # 얼굴을 밝게 담는 일반 자연광 기준 대신 실루엣·야간 모드 촬영 가능성을 평가합니다.
         if solar.elevation >= -12:
             elevation_score = irradiance_score = 94
@@ -335,7 +334,7 @@ def evaluate(
 
     summary = {
         "가능": "도착 예상 시각에 선택한 분위기를 담기 좋은 조건입니다.",
-        "보통": "지금 촬영해도 괜찮아요. 안내된 팁을 따르면 분위기가 더 잘 살아납니다.",
+        "보통": "도착 예상 시각에도 촬영할 수 있어요. 안내된 팁을 따르면 분위기가 더 잘 살아납니다.",
         "비추천": "추천 시간대를 확인하면 원하는 분위기를 더 편하게 담을 수 있어요.",
     }[status]
 

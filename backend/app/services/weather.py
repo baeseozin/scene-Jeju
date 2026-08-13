@@ -124,10 +124,12 @@ def _select_forecast(
         )
 
     arrival = arrival_time.astimezone(KST)
-    future = [entry for entry in complete if entry[0] >= arrival]
     target_time, values = min(
-        future or complete,
-        key=lambda entry: abs((entry[0] - arrival).total_seconds()),
+        complete,
+        key=lambda entry: (
+            abs((entry[0] - arrival).total_seconds()),
+            entry[0] > arrival,
+        ),
     )
     return WeatherResult(
         precipitation_mm=round(

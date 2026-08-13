@@ -120,8 +120,8 @@ CONCEPTS: dict[str, Concept] = {
     ),
     "sunset": Concept(
         id="sunset",
-        name="노을 실루엣",
-        description="낮은 태양을 배경으로 인물의 윤곽을 강조",
+        name="해질녘",
+        description="붉게 물드는 하늘과 낮은 빛을 함께 담는 장면",
         accent="#ef765f",
         max_precipitation_mm=0.1,
         max_wind_mps=7.0,
@@ -133,35 +133,20 @@ CONCEPTS: dict[str, Concept] = {
         target_sun_offset=0.0,
         suitable_place_types=("beach", "urban"),
     ),
-    "cozy": Concept(
-        id="cozy",
-        name="포근한",
-        description="부드럽고 따뜻한 사진",
-        accent="#dfcfb4",
-        max_precipitation_mm=0.6,
-        max_wind_mps=6.0,
-        preferred_skies=("구름 많음", "흐림"),
-        min_solar_elevation=5.0,
-        max_solar_elevation=48.0,
-        min_ghi_wm2=100.0,
-        max_ghi_wm2=520.0,
-        target_sun_offset=135.0,
-        suitable_place_types=("forest", "urban", "indoor"),
-    ),
     "film": Concept(
         id="film",
-        name="무드있는",
-        description="흐린 제주, 차분하고 영화 같은 느낌",
-        accent="#77879d",
+        name="짙은",
+        description="푸른 밤과 따뜻한 불빛 속 인물 윤곽을 담는 영화 장면",
+        accent="#d6a267",
         max_precipitation_mm=0.8,
         max_wind_mps=8.0,
-        preferred_skies=("구름 많음", "흐림"),
+        preferred_skies=("맑음", "구름 많음", "흐림"),
         min_solar_elevation=0.0,
         max_solar_elevation=35.0,
         min_ghi_wm2=40.0,
         max_ghi_wm2=320.0,
         target_sun_offset=90.0,
-        suitable_place_types=("forest", "urban"),
+        suitable_place_types=("beach", "forest", "urban", "indoor"),
     ),
     "sparkling": Concept(
         id="sparkling",
@@ -267,9 +252,8 @@ def custom_place_guide(place: Place, concept: Concept) -> list[str]:
     concept_action = {
         "refreshing": "인물이 카메라 쪽으로 자연스럽게 두 걸음 움직이는 장면을 3초간 촬영합니다.",
         "natural": "인물이 편하게 걷다가 카메라 옆을 바라보는 순간을 3초간 촬영합니다.",
-        "film": "가까운 사물에서 인물로 초점을 천천히 옮기며 3초간 촬영합니다.",
+        "film": "인물이 화면 한쪽을 천천히 지나가면 촬영자가 반 박자 늦게 따라가며 3초간 촬영합니다.",
         "sunset": "노출을 조금 낮추고 인물의 옆모습 윤곽이 드러나는 장면을 3초간 촬영합니다.",
-        "cozy": "인물이 두 손을 모으거나 옷깃을 잡는 편안한 동작을 3초간 촬영합니다.",
         "sparkling": "인물이 반짝이는 물이나 빛을 바라보다 천천히 돌아보는 장면을 3초간 촬영합니다.",
     }[concept.id]
     return [
@@ -290,9 +274,8 @@ def photo_guide(place: Place, concept: Concept) -> list[str]:
     pose = {
         "refreshing": "인물이 카메라를 보지 않고 걷다가 뒤돌아보는 순간을 연속 촬영합니다.",
         "natural": "인물이 어깨에 힘을 빼고 걷다가 자연스럽게 웃는 순간을 연속 촬영합니다.",
-        "film": "손이나 가까운 소품을 카메라 바로 앞에 두고 인물의 시선이 화면 밖을 향하게 촬영합니다.",
+        "film": "가방끈이나 소품을 가볍게 잡고 화면 밖을 바라보게 한 뒤, 인물을 한쪽에 두고 빈 배경을 넓게 촬영합니다.",
         "sunset": "화면 밝기를 낮춘 뒤 옆모습과 하늘의 색이 함께 살아나는 노출로 촬영합니다.",
-        "cozy": "인물이 손을 모으거나 머리카락을 정리하는 편안한 순간을 허리 위 구도로 촬영합니다.",
         "sparkling": "반짝이는 빛이 인물의 어깨 옆에 오게 하고 웃거나 뒤돌아보는 순간을 연속 촬영합니다.",
     }[concept.id]
     return [
@@ -316,9 +299,8 @@ def distance_setup_guide(
     base_distance = {
         "refreshing": 3.0,
         "natural": 2.8,
-        "film": 2.2,
+        "film": 2.8,
         "sunset": 3.5,
-        "cozy": 2.2,
         "sparkling": 3.2,
     }[concept.id]
     if capture_mode == "video":
@@ -326,9 +308,8 @@ def distance_setup_guide(
     framing = {
         "refreshing": "머리부터 발끝과 주변 풍경이 함께 들어오는 거리예요",
         "natural": "인물의 편안한 동작과 주변 자연을 함께 담기 좋은 거리예요",
-        "film": "허리 위 인물과 주변 분위기를 함께 담기 좋은 거리예요",
+        "film": "인물과 빈 공간, 주변 불빛을 한 장면처럼 함께 담기 좋은 거리예요",
         "sunset": "인물 윤곽과 넓은 하늘을 함께 담기 좋은 거리예요",
-        "cozy": "허리 위 표정과 부드러운 배경을 함께 담기 좋은 거리예요",
         "sparkling": "인물과 뒤쪽의 반짝이는 빛을 함께 담기 좋은 거리예요",
     }[concept.id]
     return (
@@ -348,17 +329,16 @@ def expected_result_guide(
     concept_result = {
         "refreshing": f"{media_name}에서 인물은 밝고 배경색은 선명하게 보이는 결과를 목표로 해요.",
         "natural": f"{media_name}에서 피부색은 자연스럽고 주변 초록과 하늘은 부드럽게 보이는 결과를 목표로 해요.",
-        "film": f"{media_name}에서 얼굴 한쪽은 밝고 반대쪽은 부드럽게 어두운 결과를 목표로 해요.",
+        "film": f"{media_name}에서 푸른 그림자와 따뜻한 빛, 넓은 빈 공간이 일본 감성 영화의 한 장면처럼 보이는 결과를 목표로 해요.",
         "sunset": f"{media_name}에서 얼굴의 세부 묘사보다 인물 윤곽과 하늘색이 살아나는 결과를 목표로 해요.",
-        "cozy": f"{media_name}에서 얼굴 그림자는 연하고 전체 색은 크림빛으로 따뜻하게 보이는 결과를 목표로 해요.",
         "sparkling": f"{media_name}에서 인물 뒤의 물결이나 빛망울이 반짝이고 윤곽이 또렷한 결과를 목표로 해요.",
     }[concept.id]
 
     if concept.id == "film" and solar.elevation < 0:
         concept_result = (
-            f"{media_name}에서 어두운 바다색과 수평선, 인물 윤곽이 차분한 영화 장면처럼 보이는 결과를 목표로 해요."
+            f"{media_name}에서 푸른 밤색과 따뜻한 주변 불빛, 인물의 작은 윤곽이 일본 감성 영화의 한 장면처럼 보이는 결과를 목표로 해요."
         )
-        risk = "야간 모드를 켜고 휴대폰을 고정하면 노이즈와 흔들림을 줄이면서 어두운 분위기를 살릴 수 있어요."
+        risk = "가로등이나 상점 불빛이 인물의 옆면에 닿는 자리를 찾고, 야간 모드를 켠 뒤 휴대폰을 고정하면 어두운 분위기를 살릴 수 있어요."
     elif solar.elevation < -6 or solar.lighting_issue == "자연광 부족":
         risk = "야간 모드와 고정 지지대를 이용하면 얼굴의 노이즈와 손떨림을 줄일 수 있어요."
     elif solar.lighting_issue == "수면 반사와 역광":
@@ -492,9 +472,8 @@ def shooting_direction_guide(
     light_action = {
         "refreshing": "촬영자는 태양을 등진 채 인물을 바라보세요.",
         "natural": "햇빛이 인물의 앞쪽 옆면에 부드럽게 닿도록 촬영자가 반걸음 옆으로 이동하세요.",
-        "film": "햇빛이 인물의 옆얼굴을 스치도록 촬영자가 옆으로 이동하세요.",
+        "film": "인물은 그늘 쪽에 두고 창문이나 주변 불빛이 얼굴 한쪽만 스치게 촬영자가 옆으로 이동하세요.",
         "sunset": "인물을 노을 앞에 세워 윤곽이 보이게 찍으세요.",
-        "cozy": "구름이나 그늘로 부드러워진 빛이 얼굴 앞쪽 옆면에 닿게 찍으세요.",
         "sparkling": "반짝이는 물결이나 빛이 인물의 어깨 옆에 오도록 태양에서 약간 옆으로 이동하세요.",
     }[concept.id]
     if solar is None:
@@ -519,6 +498,12 @@ def shooting_direction_guide(
                 "삼각대에 고정하세요."
             )
         return f"{direction_guide} 지금은 창가와 실내의 밝기 차가 크지 않은 편이에요."
+    if concept.id == "film" and solar.elevation < 0:
+        return (
+            f"{background}. 인물 뒤쪽 2~3m에 가로등이나 상점 불빛이 보이게 자리를 옮기고, "
+            "얼굴은 불빛을 정면으로 보지 말고 옆으로 살짝 받게 하세요. 주변 조명이 없다면 "
+            "인물은 윤곽 위주로 담고 휴대폰을 단단히 고정하세요."
+        )
     if solar.elevation < -6:
         return (
             f"{background}. 해가 진 뒤이니 야간 모드를 켜고 휴대폰을 "

@@ -13,7 +13,11 @@ from app.services.solar import add_lighting_risk, calculate_solar_position
 from app.services.place_search import infer_place_type
 from app.services.travel import estimate_travel, estimate_travel_by_mode
 from app.services.tourism import normalize_place_name, tourism_trend_from_dataset
-from app.services.weather import latitude_longitude_to_grid, latest_short_base
+from app.services.weather import (
+    _select_forecast,
+    latitude_longitude_to_grid,
+    latest_short_base,
+)
 
 
 KST = ZoneInfo("Asia/Seoul")
@@ -21,6 +25,28 @@ KST = ZoneInfo("Asia/Seoul")
 
 def test_kma_grid_conversion_matches_seoul_reference() -> None:
     assert latitude_longitude_to_grid(37.5665, 126.9780) == (60, 127)
+
+
+def test_weather_uses_nearest_hour_instead_of_always_rounding_up() -> None:
+    items = []
+    for forecast_time, rain in (("0500", "강수없음"), ("0600", "1.0mm")):
+        for category, value in (("RN1", rain), ("WSD", "2.0"), ("SKY", "4")):
+            items.append(
+                {
+                    "fcstDate": "20260813",
+                    "fcstTime": forecast_time,
+                    "category": category,
+                    "fcstValue": value,
+                }
+            )
+
+    result = _select_forecast(
+        items,
+        datetime(2026, 8, 13, 5, 23, tzinfo=KST),
+    )
+
+    assert result.forecast_time == datetime(2026, 8, 13, 5, 0, tzinfo=KST)
+    assert result.precipitation_mm == 0.0
 
 
 def test_travel_estimate_is_positive_and_repeatable() -> None:
@@ -129,7 +155,7 @@ def test_custom_place_does_not_receive_perfect_direction_score() -> None:
     assert result.scores.light_direction == 75
 
 
-def test_all_six_concepts_have_complete_guides() -> None:
+def test_all_five_concepts_have_complete_guides() -> None:
     weather = WeatherResult(
         precipitation_mm=0.0,
         wind_speed_mps=2.0,
@@ -138,7 +164,7 @@ def test_all_six_concepts_have_complete_guides() -> None:
     )
     solar = SolarResult(elevation=28.0, azimuth=240.0, ghi_wm2=420, dni_wm2=250)
     assert set(CONCEPTS) == {
-        "refreshing", "natural", "sunset", "cozy", "film", "sparkling"
+        "refreshing", "natural", "sunset", "film", "sparkling"
     }
     for concept in CONCEPTS.values():
         guide = guide_for(PLACES["hyeopjae"], concept, "photo", weather, solar)

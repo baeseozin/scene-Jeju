@@ -26,7 +26,7 @@
 | 장소·경로 | Kakao Local·Maps·Mobility | 장소명→좌표, 지도 선택, 자동차 경로를 제주 서비스에서 한 흐름으로 연결하기 위해 사용 |
 | 기상 | 기상청 초단기예보·단기예보 | 국내 공공 예보의 강수량·바람·하늘상태를 도착 예상 시각에 맞춰 사용하기 위해 선택 |
 | 관광 데이터 | 제주 관광 빅데이터 플랫폼 | 월별 인기 관광지 방문 경향을 촬영 시 군중 회피 가이드에 활용하기 위해 사용 |
-| 포즈 추천 | OpenAI Responses API | 컨셉·장소 유형·사진/영상·전신/상반신 조건을 구체적인 몸·손·시선·촬영 거리 문장으로 변환하기 위해 사용 |
+| 포즈 추천 | Gemini Generate Content API | 컨셉·장소 유형·사진/영상·전신/상반신 조건을 구체적인 몸·손·시선·촬영 거리 문장으로 변환하기 위해 사용 |
 | 촬영·편집 | Browser Media APIs | 사진·영상 원본을 서버에 업로드하지 않고 기기 안에서 촬영·편집·저장하기 위해 사용 |
 
 ### 왜 Streamlit이 아니라 React와 FastAPI인가?
@@ -46,7 +46,7 @@ sequenceDiagram
     participant W as 기상청 API
     participant P as pvlib
     participant J as 제주 관광 빅데이터
-    participant O as OpenAI API
+    participant G as Gemini API
 
     U->>F: 장소명·컨셉·이동수단·출발 시각 입력
     F->>B: 장소 검색 요청
@@ -61,8 +61,8 @@ sequenceDiagram
     B->>J: 월별 관광지 도착 TOP 10 조회
     B-->>F: 최적 시각·점수·촬영 가이드
     F->>B: POST /api/pose-recommendations
-    B->>O: 컨셉·장소 유형·사진/영상·촬영 범위만 전송
-    O-->>B: 구조화된 포즈 3개
+    B->>G: 컨셉·장소 유형·사진/영상·촬영 범위만 전송
+    G-->>B: 구조화된 포즈 3개
     B-->>F: 포즈·설명·출처
     U->>F: 포즈 선택 후 기기에서 촬영·편집
 ```
@@ -201,6 +201,8 @@ else:
 
 따라서 사용자가 지정한 출발 시각을 존중하면서도, 그때 촬영하기 어렵다면 실제로 체감할 만큼 나아지는 가장 빠른 시각을 제안합니다. 모든 13개 점수는 시간대 카드에 그대로 남겨 비교할 수 있습니다.
 
+API 응답의 최상위 `status`, `scores`, `weather`, `solar`, `reasons`, `guide`는 모두 `target_time[0]`, 즉 예상 도착 시각의 값입니다. `best_time`과 `is_best`는 이후 12시간의 점수와 기다리는 시간을 함께 고려한 보조 추천값이며, 화면에서는 오해를 피하기 위해 `베스트 슈팅 타임`이 아니라 `추천 촬영 시간`으로 표시합니다. 따라서 화면의 큰 점수가 현재 시각이나 미래 최고점으로 바뀌지 않습니다.
+
 ### 왜 12시간인가?
 
 노을뿐 아니라 모든 컨셉에서 오전 출발 후 저녁까지 조건을 비교하기 위한 MVP 범위입니다. 하루 전체 또는 여러 날짜를 탐색하면 API 호출량과 화면 복잡도가 커지므로 현재는 도착 후 12시간으로 제한했습니다.
@@ -236,7 +238,7 @@ else:
 
 ### 8.4 30분 단위 예측 여부
 
-하지 않습니다. API의 예보 날짜·시각을 묶고 `강수 + 바람 + 하늘`이 모두 있는 시간대만 사용합니다. 목표 시각 이후의 첫 예보를 선택하고, 이후 자료가 없으면 가장 가까운 예보를 사용합니다.
+하지 않습니다. API의 예보 날짜·시각을 묶고 `강수 + 바람 + 하늘`이 모두 있는 시간대만 사용합니다. 목표 시각과 가장 가까운 정시 예보를 선택하며 거리가 같으면 앞 시각을 사용합니다. 화면에는 적용된 기상청 예보 시각을 함께 표시합니다.
 
 화면에서 출발 시각을 5분 단위로 고를 수 있어도 날씨 원자료를 5분 또는 30분 단위로 보간했다는 뜻은 아닙니다.
 
@@ -329,9 +331,8 @@ glint = 100 × sun_alignment × height_factor × direct_factor × wave_spread
 | --- | ---: | ---: | --- | ---: | ---: | --- |
 | 청량한 | 0.2mm | 6.0m/s | 맑음 | 25~75° | 500~1100W/m² | 촬영자 뒤쪽에서 오는 빛 |
 | 자연스러운 | 0.4mm | 6.5m/s | 맑음·구름 많음 | 12~58° | 220~720W/m² | 얼굴 앞쪽 옆빛 |
-| 노을 실루엣 | 0.1mm | 7.0m/s | 맑음·구름 많음 | -3~15° | 20~420W/m² | 인물 뒤에서 오는 빛 |
-| 포근한 | 0.6mm | 6.0m/s | 구름 많음·흐림 | 5~48° | 100~520W/m² | 부드러운 앞쪽 옆빛 |
-| 무드있는 | 0.8mm | 8.0m/s | 구름 많음·흐림 | 0~35° | 40~320W/m² | 옆얼굴을 스치는 빛 |
+| 해질녘 | 0.1mm | 7.0m/s | 맑음·구름 많음 | -3~15° | 20~420W/m² | 인물 뒤에서 오는 낮은 빛 |
+| 짙은 | 0.8mm | 8.0m/s | 맑음·구름 많음·흐림 | 0~35° | 40~320W/m² | 푸른 그림자와 얼굴 한쪽의 따뜻한 빛 |
 | 반짝이는 | 0.1mm | 6.5m/s | 맑음 | 8~55° | 450~1100W/m² | 카메라 앞쪽의 반사광 |
 
 이 기준은 학습 데이터로 최적화한 회귀계수나 공식 기상 촬영 표준이 아닙니다. 각 컨셉의 시각적 목표를 수치 규칙으로 바꾼 해커톤용 휴리스틱입니다. 장점은 이유와 계산식을 설명할 수 있고 값을 쉽게 조정할 수 있다는 점이며, 한계는 사용자 평가나 전문가 라벨로 아직 검증하지 않았다는 점입니다.
@@ -384,7 +385,7 @@ irradiance_score = range_score(GHI, min_GHI, max_GHI, 0.16)
 
 빛 위험이 보통이면 빛 점수에 `0.94`, 높음이면 야외 `0.82`, 실내 `0.90`을 곱합니다. 다만 노을의 역광과 반짝이는 컨셉의 반사광은 의도된 효과이므로 감점하지 않고 얼굴 노출 경고만 표시합니다.
 
-`무드있는` 야외 촬영은 일몰 후의 어두운 바다·수평선·인물 윤곽을 의도된 표현으로 취급합니다. 일반 야간 강제 제한과 `자연광 부족` 감점을 생략하고, 태양이 수평선 아래 `0~-12° / -12~-24° / -24° 미만`인 구간에 따라 빛 점수를 단계화합니다. 이 예외는 야간 모드와 휴대폰 고정 안내를 반드시 동반합니다. 가로등 위치·조도 데이터는 사용하지 않으므로 얼굴이 밝게 찍힌다는 보장은 하지 않습니다.
+`짙은`은 일몰 후의 어두운 바다·수평선·인물 윤곽을 의도된 표현으로 취급합니다. 일반 야간 강제 제한과 `자연광 부족` 감점을 생략하고, 태양이 수평선 아래 `0~-12° / -12~-24° / -24° 미만`인 구간에 따라 빛 점수를 단계화합니다. 이 예외는 야간 모드와 휴대폰 고정 안내를 반드시 동반합니다. 가로등 위치·조도 데이터는 사용하지 않으므로 얼굴이 밝게 찍힌다는 보장은 하지 않습니다.
 
 ### 12.4 장소 점수
 
@@ -392,9 +393,8 @@ irradiance_score = range_score(GHI, min_GHI, max_GHI, 0.16)
 | --- | ---: | ---: | ---: | ---: |
 | 청량한 | 100 | 90 | 95 | 75 |
 | 자연스러운 | 95 | 100 | 90 | 78 |
-| 노을 실루엣 | 100 | 75 | 95 | 55 |
-| 포근한 | 82 | 95 | 88 | 100 |
-| 무드있는 | 85 | 100 | 95 | 90 |
+| 해질녘 | 100 | 75 | 95 | 55 |
+| 짙은 | 95 | 92 | 100 | 88 |
 | 반짝이는 | 100 | 65 | 90 | 55 |
 
 ### 12.5 최종 점수와 상태
@@ -415,7 +415,7 @@ API 내부 상태 코드는 기존 저장 기록과의 호환성을 위해 `가�
 
 평균만 사용하면 폭우가 와도 장소 점수와 빛 점수 때문에 결과가 높게 나올 수 있습니다. 이를 막기 위해 야외에는 강제 상한을 적용합니다.
 
-- 태양 높이 `< -6°` → 비추천, 밤이 깊을수록 47점 아래로 추가 감소. 단, 밤을 표현에 이용하는 `무드있는` 야외 촬영은 예외
+- 태양 높이 `< -6°` → 비추천, 밤이 깊을수록 47점 아래로 추가 감소. 단, 밤을 표현에 이용하는 `짙은` 야외 촬영은 예외
 - 강수량 `≥ max(2.0mm, 컨셉 허용량 + 1.5mm)` → 비추천
 - 바람 `≥ 컨셉 최대값 + 3m/s` → 비추천
 - 햇빛 높이가 권장 범위에서 `20° 초과` 이탈 → 비추천
@@ -483,20 +483,18 @@ TOP 10에서 장소명이 검색되지 않았다고 한산하다고 판정하지
 
 `framing=full_body`는 머리부터 발끝, `framing=upper_body`는 머리부터 허리 구도입니다. 구도를 바꾸면 해당 범위에 맞는 포즈와 촬영 거리를 새로 추천합니다.
 
-### 15.2 OpenAI 요청
+### 15.2 Gemini 요청
 
-백엔드에서만 `POST https://api.openai.com/v1/responses`를 호출합니다. API 키는 브라우저로 보내지 않습니다.
+백엔드에서만 `POST https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent`를 호출합니다. `GEMINI_API_KEY`는 `x-goog-api-key` 헤더에 넣으며 브라우저로 보내지 않습니다.
 
 ```text
-model: OPENAI_POSE_MODEL, 기본 gpt-5.6-luna
-reasoning.effort: none
-text.verbosity: low
-max_output_tokens: 1200
-store: false
-output format: strict JSON Schema
+model: GEMINI_POSE_MODEL, 기본 gemini-2.5-flash-lite
+generationConfig.responseMimeType: application/json
+generationConfig.responseSchema: 포즈 출력 JSON Schema
+generationConfig.maxOutputTokens: 1200
 ```
 
-간단한 포즈 추천과 구조화 출력이 목적이므로 긴 추론보다 응답 지연과 비용을 우선한 기본 모델을 사용합니다. 모델명은 환경변수로 교체할 수 있습니다.
+`gemini-2.5-flash-lite`는 구조화 출력을 지원하는 안정 버전이며 무료 등급에서 입력·출력 토큰을 사용할 수 있습니다. 해커톤 시연의 짧은 구조화 추천에 충분하고 지연시간이 짧아 기본값으로 선택했습니다. 무료 등급에는 호출량 제한이 있으며 입력 데이터가 Google 제품 개선에 사용될 수 있으므로, 카메라 영상·얼굴·정확한 위치 좌표는 모델에 보내지 않습니다. 모델명은 환경변수로 교체할 수 있습니다.
 
 ### 15.3 출력 계약
 
@@ -513,7 +511,7 @@ output format: strict JSON Schema
 | `camera` | 촬영자 거리와 구도 |
 | `why` | 해당 컨셉과 어울리는 이유 |
 
-OpenAI의 JSON Schema와 백엔드 Pydantic 모델을 연속으로 사용해 필드 누락, 포즈 개수 오류, 허용하지 않은 `guide_type`을 막습니다.
+Gemini의 `responseSchema`와 백엔드 Pydantic 모델을 연속으로 사용해 필드 누락, 포즈 개수 오류, 문자열 길이 초과, 허용하지 않은 `guide_type`을 막습니다.
 
 ### 15.4 프롬프트 안전 기준
 
@@ -527,23 +525,23 @@ OpenAI의 JSON Schema와 백엔드 Pydantic 모델을 연속으로 사용해 필
 
 다음 상황에서는 컨셉별 기본 포즈 라이브러리로 전환합니다.
 
-- `OPENAI_API_KEY` 없음
+- `GEMINI_API_KEY` 없음
 - 네트워크 또는 timeout
 - 인증·요금·모델 권한 오류
 - JSON 해석 실패
 - 필수 필드 또는 포즈 개수 오류
 
-응답의 `source`는 실제 AI일 때 `openai`, 기본 추천일 때 `fallback`입니다. 화면도 각각 `AI POSE DIRECTOR`, `POSE GUIDE`로 구분합니다. fallback을 생성형 AI라고 표현하지 않습니다.
+응답의 `source`는 실제 AI일 때 `gemini`, 기본 추천일 때 `fallback`입니다. 화면도 각각 `AI POSE DIRECTOR`, `POSE GUIDE`로 구분합니다. fallback을 생성형 AI라고 표현하지 않습니다.
 
 ### 15.6 세션 캐시
 
-같은 탭에서 다음 조합이 같으면 `sessionStorage` 결과를 재사용합니다.
+같은 탭에서 다음 조합이 같고 `source=gemini`이면 `sessionStorage` 결과를 재사용합니다.
 
 ```text
-scene-jeju-pose-v2:{concept}:{place_type}:{capture_mode}:{framing}
+scene-jeju-pose-v3:{concept}:{place_type}:{capture_mode}:{framing}
 ```
 
-목적은 같은 조건의 반복 호출로 인한 비용과 대기시간을 줄이는 것입니다. 탭을 닫으면 사라지고 서버 DB에는 저장하지 않습니다.
+목적은 같은 조건의 반복 호출로 인한 요청 횟수와 대기시간을 줄이는 것입니다. fallback 응답은 저장하지 않으므로 키 설정이나 일시적인 네트워크 문제가 해결되면 다음 진입에서 AI를 다시 호출합니다. 탭을 닫으면 Gemini 응답 캐시도 사라지고 서버 DB에는 저장하지 않습니다.
 
 ### 15.7 포즈 오버레이
 
@@ -553,7 +551,7 @@ scene-jeju-pose-v2:{concept}:{place_type}:{capture_mode}:{framing}
 - 포즈 일치율을 계산하지 않습니다.
 - 자동 촬영하지 않습니다.
 - 실루엣은 미리보기에만 있고 결과 파일에는 합성하지 않습니다.
-- 카메라 영상은 서버 또는 OpenAI에 전송하지 않습니다.
+- 카메라 영상은 서버 또는 Gemini에 전송하지 않습니다.
 
 ## 16. 사진·영상 촬영과 편집
 
@@ -564,6 +562,8 @@ scene-jeju-pose-v2:{concept}:{place_type}:{capture_mode}:{framing}
 - 웹 카메라 또는 파일 선택
 - 최대 4장
 - Canvas로 1080×1920 세로 JPG 콜라주 생성
+- 제주 일러스트·돌담 들판·검정·흰색 프레임 중 하나를 선택해 Canvas 배경과 사진을 합성
+- 사진 1~2장은 한 열, 3~4장은 두 열로 배치해 세로 사진의 과도한 좌우 잘림을 줄임
 - 반투명 포즈 가이드는 결과물에 포함하지 않음
 
 ### 영상
@@ -583,10 +583,10 @@ scene-jeju-pose-v2:{concept}:{place_type}:{capture_mode}:{framing}
 | 데이터 | 저장 위치 | 서버 전송 여부 |
 | --- | --- | --- |
 | 분석 기록 최대 10개 | 브라우저 `localStorage` | 전송하지 않음 |
-| 같은 조건의 포즈 추천 | 브라우저 탭 `sessionStorage` | 추천 요청만 전송 |
+| 같은 조건의 Gemini 포즈 추천 | 브라우저 탭 `sessionStorage` | 추천 요청만 전송 |
 | 촬영 사진·영상 | 메모리와 사용자 다운로드 파일 | 전송하지 않음 |
 | 공유 카드 | 브라우저 Canvas로 생성 | 사용자가 공유 메뉴를 선택할 때만 OS로 전달 |
-| OpenAI 입력 | 컨셉·장소 유형·사진/영상·전신/상반신 | 카메라·얼굴·위치 좌표는 전송하지 않음 |
+| Gemini 입력 | 컨셉·장소 유형·사진/영상·전신/상반신 | 카메라·얼굴·위치 좌표는 전송하지 않음 |
 
 브라우저 저장을 사용하므로 다른 기기와 동기화되지 않고 Safari 비공개 모드나 저장공간 정책에 따라 저장이 실패할 수 있습니다.
 
@@ -594,10 +594,10 @@ scene-jeju-pose-v2:{concept}:{place_type}:{capture_mode}:{framing}
 
 - 기본 `npm run dev`는 `stable` 모드로 Vite HMR을 끕니다.
 - 코드 자동 반영이 필요할 때만 `npm run dev:hot`을 사용합니다.
-- 카메라는 1080×1920 대신 720×1280을 우선 요청합니다.
+- 카메라는 9:16을 강제하지 않고 기기가 제공하는 넓은 화각의 스트림을 요청하며, 지원 기기에서는 최소 줌 값을 적용합니다.
 - 프레임마다 관절을 추론하던 모델과 React 상태 갱신을 제거했습니다.
 - 위치·카메라는 브라우저 보안상 HTTPS 또는 `localhost`에서만 정상 권한을 요청할 수 있습니다.
-- 9:16 화면을 채우기 위해 `object-fit: cover`를 사용하므로 4:3 카메라 스트림은 좌우가 잘려 확대처럼 보일 수 있습니다.
+- 미리보기는 `object-fit: contain`을 사용해 4:3 카메라 스트림도 좌우를 자르지 않습니다. 사진 저장 캔버스 역시 원본 스트림 비율을 유지합니다.
 
 ## 19. API 응답에서 데이터 출처 확인하기
 
@@ -609,13 +609,13 @@ scene-jeju-pose-v2:{concept}:{place_type}:{capture_mode}:{framing}
 | `travel_source` | `kakao-mobility` | `estimated`, `estimated-fallback`, `transit-estimated`, `walk-estimated` |
 | `tourism_trend.source_kind` | `live` | `snapshot` |
 | `tourism_trend.is_realtime` | 현재 항상 `false` | 현재 항상 `false` |
-| 포즈 `source` | `openai` | `fallback` |
+| 포즈 `source` | `gemini` | `fallback` |
 
 ## 20. 테스트 범위
 
-백엔드 자동 테스트 35개가 다음을 확인합니다.
+백엔드 자동 테스트 37개가 다음을 확인합니다.
 
-- 장소 3개와 컨셉 6개 카탈로그
+- 장소 3개와 컨셉 5개 카탈로그
 - 포즈 fallback 3개와 필수 필드
 - 상반신 선택 시 거리·상체·손 가이드 전환
 - 70점 경계와 74점 `좋음` 판정
@@ -626,10 +626,11 @@ scene-jeju-pose-v2:{concept}:{place_type}:{capture_mode}:{framing}
 - 사진·영상, 자동차·대중교통·도보 옵션
 - 카카오 장소 검색·지도 역검색 응답
 - 기상청 격자 변환과 단기예보 발표 시각
-- 좋은 촬영 조건·일반 야간 제한·무드있는 야간 해변 허용·정오 노을·폭우·강한 빛 위험 판정
+- 목표 시각과 가장 가까운 기상청 정시 예보 선택
+- 좋은 촬영 조건·일반 야간 제한·`짙은`의 야간 해변 허용·정오 해질녘·폭우·강한 빛 위험 판정
 - 비추천 점수의 차등 상한
 - 사용자 장소의 방향 중립점수
-- 여섯 컨셉의 거리·예상 결과 가이드
+- 다섯 컨셉의 거리·예상 결과 가이드
 - 장소 유형별 빛 위험
 - 관광지 별칭 매칭과 실시간 혼잡 오해 방지
 - 사용자 화면 문장에서 불필요한 고도·방위각·풍속 전문용어 제거
@@ -646,7 +647,7 @@ cd ../frontend
 npm run build
 ```
 
-현재 검증 결과는 백엔드 `32 passed`, 프론트 프로덕션 빌드 성공입니다.
+현재 검증 결과는 백엔드 `37 passed`, 프론트 프로덕션 빌드 성공입니다.
 
 ## 21. 심사위원 예상 질문과 권장 답변
 
@@ -656,15 +657,15 @@ npm run build
 
 ### Q2. 사용자의 현재 자세를 AI가 분석합니까?
 
-**답변:** 아닙니다. 현재 자세 분석이나 일치율 계산은 요구사항과 달라 제거했습니다. 사용자가 컨셉에 맞는 포즈 자체를 추천받고 하나를 선택하는 방식입니다. 카메라 영상이나 얼굴도 OpenAI에 전송하지 않습니다.
+**답변:** 아닙니다. 현재 자세 분석이나 일치율 계산은 요구사항과 달라 제거했습니다. 사용자가 컨셉에 맞는 포즈 자체를 추천받고 하나를 선택하는 방식입니다. 카메라 영상이나 얼굴도 Gemini에 전송하지 않습니다.
 
-### Q3. OpenAI가 실패하면 서비스가 멈춥니까?
+### Q3. Gemini가 실패하면 서비스가 멈춥니까?
 
-**답변:** 멈추지 않습니다. 키 없음, timeout, 인증·요금 오류, 응답 형식 오류가 발생하면 컨셉별 기본 포즈 3개로 전환합니다. API와 화면에서 `openai`와 `fallback`을 구분해 기본 추천을 AI라고 표시하지 않습니다.
+**답변:** 멈추지 않습니다. 키 없음, timeout, 인증·할당량·모델 권한 오류, 응답 형식 오류가 발생하면 컨셉별 기본 포즈 3개로 전환합니다. API와 화면에서 `gemini`와 `fallback`을 구분해 기본 추천을 AI라고 표시하지 않습니다.
 
 ### Q4. AI 응답 형식이 매번 달라지면 UI가 깨지지 않습니까?
 
-**답변:** 자유 텍스트가 아니라 strict JSON Schema로 정확히 3개와 필수 필드를 요구하고, 받은 뒤 Pydantic으로 다시 검증합니다. 형식이 맞지 않으면 fallback으로 전환합니다.
+**답변:** 자유 텍스트가 아니라 Gemini `responseSchema`로 정확히 3개와 필수 필드를 요구하고, 받은 뒤 Pydantic으로 다시 검증합니다. 형식이 맞지 않으면 fallback으로 전환합니다.
 
 ### Q5. 왜 이 점수 가중치가 40·45·15입니까?
 
@@ -672,7 +673,7 @@ npm run build
 
 ### Q6. 평균 점수가 높으면 폭우에도 가능이 나올 수 있지 않습니까?
 
-**답변:** 그래서 가중평균 뒤에 치명 조건 상한을 별도로 적용합니다. 심한 비, 강풍, 컨셉 시간대에서 크게 벗어난 빛은 내부적으로 가장 낮은 단계로 제한하고 화면에는 `시간 조정 추천`으로 안내합니다. 일반 콘셉트의 깊은 야간도 제한하지만, 밤 자체가 표현 의도인 `무드있는`은 야간 모드 안내와 함께 별도 평가합니다. 약한 초과는 최대 `괜찮음`으로 제한합니다.
+**답변:** 그래서 가중평균 뒤에 치명 조건 상한을 별도로 적용합니다. 심한 비, 강풍, 컨셉 시간대에서 크게 벗어난 빛은 내부적으로 가장 낮은 단계로 제한하고 화면에는 `시간 조정 추천`으로 안내합니다. 일반 콘셉트의 깊은 야간도 제한하지만, 밤 자체가 표현 의도인 `짙은`은 야간 모드 안내와 함께 별도 평가합니다. 약한 초과는 최대 `괜찮음`으로 제한합니다.
 
 ### Q7. 왜 예전에는 비추천이 모두 49점처럼 보였습니까?
 
@@ -680,7 +681,7 @@ npm run build
 
 ### Q8. 30분 단위 날씨를 예측합니까?
 
-**답변:** 하지 않습니다. 출발 시각은 5분 단위로 받을 수 있지만 기상청 원자료는 제공된 예보 시각 단위로 사용합니다. 목표 시각 이후 첫 완전한 예보를 고르며 30분 보간이나 자체 예측이라고 주장하지 않습니다.
+**답변:** 하지 않습니다. 출발 시각은 5분 단위로 받을 수 있지만 기상청 원자료는 제공된 예보 시각 단위로 사용합니다. 목표 시각과 가장 가까운 정시 예보를 고르고 실제 적용 시각을 화면에 표시하며, 30분 보간이나 자체 예측이라고 주장하지 않습니다.
 
 ### Q9. 구름량 30%, 50%는 어디서 나옵니까?
 
@@ -712,7 +713,7 @@ npm run build
 
 ### Q16. 왜 모든 컨셉을 12시간 뒤까지 봅니까?
 
-**답변:** 자연스러운·포근한 같은 컨셉도 도착 직후보다 흐린 저녁이나 낮은 빛이 더 적합할 수 있습니다. 노을만 예외로 처리하지 않고 모든 컨셉에 같은 탐색 규칙을 적용했습니다.
+**답변:** 자연스러운·짙은 같은 컨셉도 도착 직후보다 흐린 저녁이나 낮은 빛이 더 적합할 수 있습니다. 해질녘만 예외로 처리하지 않고 모든 컨셉에 같은 탐색 규칙을 적용했습니다.
 
 ### Q17. 영상 자동 편집도 AI입니까?
 
@@ -757,7 +758,7 @@ npm run build
 | 태양·일사량·장소별 빛 위험 | `backend/app/services/solar.py` |
 | 점수·강제 판정·최적 시각 | `backend/app/services/scoring.py` |
 | 제주 관광 빅데이터 | `backend/app/services/tourism.py` |
-| OpenAI 포즈와 fallback | `backend/app/services/pose_recommendation.py` |
+| Gemini 포즈와 fallback | `backend/app/services/pose_recommendation.py` |
 | 전체 입력·결과 UI | `frontend/src/App.tsx` |
 | 포즈 카메라·사진·영상 편집 | `frontend/src/MediaStudio.tsx` |
 | API 호출 | `frontend/src/api.ts` |
@@ -773,18 +774,20 @@ npm run build
 - [`pvlib.solarposition.get_solarposition`](https://pvlib-python.readthedocs.io/en/stable/reference/generated/pvlib.solarposition.get_solarposition.html)
 - [`pvlib.clearsky.simplified_solis`](https://pvlib-python.readthedocs.io/en/stable/reference/generated/pvlib.clearsky.simplified_solis.html)
 - [제주 관광 빅데이터 플랫폼 — 제주 지역별 관광지 도착](https://data.ijto.or.kr/prog/dataPick/bigdata/sub02/view.do?regSn=48)
-- [OpenAI Responses API](https://platform.openai.com/docs/api-reference/responses/create)
-- [OpenAI 모델 선택 가이드](https://developers.openai.com/api/docs/models)
+- [Gemini API 키 사용 가이드](https://ai.google.dev/gemini-api/docs/api-key)
+- [Gemini 구조화 출력](https://ai.google.dev/gemini-api/docs/generate-content/structured-output)
+- [Gemini API 가격과 무료 등급](https://ai.google.dev/gemini-api/docs/pricing)
+- [Gemini 2.5 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-lite)
 
 ## 25. 발표 직전 시연 체크리스트
 
 1. `.env`에서 `APP_MODE=auto` 또는 `real`인지 확인합니다.
-2. `KMA_SERVICE_KEY`, `KAKAO_REST_API_KEY`, `OPENAI_API_KEY`가 실제로 입력되어 있는지 확인합니다. 키 값 자체는 화면이나 저장소에 공개하지 않습니다.
+2. `KMA_SERVICE_KEY`, `KAKAO_REST_API_KEY`, `GEMINI_API_KEY`가 실제로 입력되어 있는지 확인합니다. 키 값 자체는 화면이나 저장소에 공개하지 않습니다.
 3. 환경변수를 바꿨다면 백엔드와 프론트 서버를 모두 다시 시작합니다.
 4. `GET /api/health`의 `mode`를 확인합니다.
 5. 분석 응답의 `data_source`가 `kma-ultra-short` 또는 `kma-short`인지 확인합니다.
 6. 자동차 시연이라면 `travel_source=kakao-mobility`인지 확인합니다. 아니면 예상 경로라고 설명합니다.
-7. 포즈 응답의 `source=openai`인지 확인합니다. `fallback`이면 기본 추천이라고 설명합니다.
+7. 포즈 응답의 `source=gemini`인지 확인합니다. `fallback`이면 기본 추천이라고 설명합니다.
 8. 관광 데이터의 `source_kind`가 `live`인지 `snapshot`인지 확인하고, 둘 다 실시간 혼잡도는 아니라고 설명합니다.
 9. 휴대폰 카메라·위치를 보여줄 예정이면 HTTPS 주소와 Safari 권한을 미리 확인합니다.
 10. 네트워크 실패에 대비해 mock·경로 추정·포즈 fallback이 어떻게 표시되는지 팀원이 모두 알고 있어야 합니다.

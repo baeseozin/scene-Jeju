@@ -1,8 +1,10 @@
+import httpx
 import pytest
 from fastapi.testclient import TestClient
 
 from app.main import app, settings
 from app.models import PlaceSearchResult
+from app.services import pose_recommendation
 
 
 client = TestClient(app)
@@ -12,22 +14,21 @@ client = TestClient(app)
 def disable_external_route_calls(monkeypatch) -> None:
     """자동 테스트가 로컬 .env 값에 따라 외부 API를 호출하지 않게 합니다."""
     monkeypatch.setattr(settings, "kakao_rest_api_key", "")
-    monkeypatch.setattr(settings, "openai_api_key", "")
+    monkeypatch.setattr(settings, "gemini_api_key", "")
     monkeypatch.setattr(settings, "app_mode", "mock")
 
 
-def test_catalog_has_three_places_and_six_concepts() -> None:
+def test_catalog_has_three_places_and_five_concepts() -> None:
     response = client.get("/api/catalog")
     assert response.status_code == 200
     body = response.json()
     assert len(body["places"]) == 3
-    assert len(body["concepts"]) == 6
+    assert len(body["concepts"]) == 5
     assert [concept["name"] for concept in body["concepts"]] == [
         "청량한",
         "자연스러운",
-        "노을 실루엣",
-        "포근한",
-        "무드있는",
+        "해질녘",
+        "짙은",
         "반짝이는",
     ]
 
@@ -71,6 +72,74 @@ def test_upper_body_pose_recommendation_changes_distance_and_actions() -> None:
     assert all("화면 밖으로 잘리지" in pose["camera"] for pose in body["poses"])
 
 
+def test_pose_recommendation_uses_gemini_structured_output(monkeypatch) -> None:
+    captured: dict[str, object] = {}
+    generated = {
+        "basis": "해질녘 해변과 상반신 사진에 맞춘 포즈",
+        "poses": [
+            {
+                "guide_type": guide_type,
+                "name": f"추천 포즈 {index}",
+                "one_line": "몸을 편하게 돌려주세요.",
+                "body": "상체를 비스듬히 세우고 어깨 힘을 빼주세요.",
+                "hands": "두 손은 허리 가까이에 자연스럽게 둬요.",
+                "gaze": "카메라 옆의 먼 곳을 바라봐요.",
+                "camera": "촬영자는 1.5m 떨어져 머리부터 허리까지 담아요.",
+                "why": "해질녘의 부드러운 분위기와 잘 어울려요.",
+            }
+            for index, guide_type in enumerate(["side", "soft", "open"], start=1)
+        ],
+    }
+
+    class FakeAsyncClient:
+        def __init__(self, timeout: float) -> None:
+            captured["timeout"] = timeout
+
+        async def __aenter__(self):
+            return self
+
+        async def __aexit__(self, exc_type, exc, traceback) -> None:
+            return None
+
+        async def post(self, url: str, headers: dict, json: dict) -> httpx.Response:
+            captured.update(url=url, headers=headers, body=json)
+            return httpx.Response(
+                200,
+                request=httpx.Request("POST", url),
+                json={
+                    "candidates": [
+                        {"content": {"parts": [{"text": __import__("json").dumps(generated)}]}}
+                    ]
+                },
+            )
+
+    monkeypatch.setattr(settings, "gemini_api_key", "test-gemini-key")
+    monkeypatch.setattr(settings, "gemini_pose_model", "gemini-2.5-flash-lite")
+    monkeypatch.setattr(pose_recommendation.httpx, "AsyncClient", FakeAsyncClient)
+
+    response = client.post(
+        "/api/pose-recommendations",
+        json={
+            "concept_id": "sunset",
+            "place_type": "beach",
+            "capture_mode": "photo",
+            "framing": "upper_body",
+        },
+    )
+
+    assert response.status_code == 200
+    assert response.json()["source"] == "gemini"
+    assert response.json()["model"] == "gemini-2.5-flash-lite"
+    assert len(response.json()["poses"]) == 3
+    assert captured["url"] == (
+        "https://generativelanguage.googleapis.com/v1beta/models/"
+        "gemini-2.5-flash-lite:generateContent"
+    )
+    assert captured["headers"]["x-goog-api-key"] == "test-gemini-key"
+    assert captured["body"]["generationConfig"]["responseMimeType"] == "application/json"
+    assert captured["body"]["generationConfig"]["responseSchema"]["properties"]["poses"]["minItems"] == 3
+
+
 def test_pose_recommendation_rejects_unknown_concept() -> None:
     response = client.post(
         "/api/pose-recommendations",
@@ -108,11 +177,12 @@ def test_mock_analysis_returns_complete_result() -> None:
     assert len(body["time_slots"]) == 13
     assert sum(slot["is_best"] for slot in body["time_slots"]) == 1
     assert body["best_time"] in {slot["time"] for slot in body["time_slots"]}
-    best_slot = next(slot for slot in body["time_slots"] if slot["is_best"])
-    assert body["scores"]["total"] == best_slot["score"]
-    assert body["status"] == best_slot["status"]
-    assert body["weather"] == best_slot["weather"]
-    assert body["solar"] == best_slot["solar"]
+    arrival_slot = body["time_slots"][0]
+    assert body["scores"]["total"] == arrival_slot["score"]
+    assert body["status"] == arrival_slot["status"]
+    assert body["weather"] == arrival_slot["weather"]
+    assert body["solar"] == arrival_slot["solar"]
+    assert body["arrival_time"] == arrival_slot["time"]
     assert body["travel_source"] == "estimated"
     assert body["capture_mode"] == "video"
     assert any("비양도" in step for step in body["guide"])
@@ -284,4 +354,8 @@ def test_sunset_searches_twelve_hours_after_arrival() -> None:
         },
     )
     assert response.status_code == 200
-    assert len(response.json()["time_slots"]) == 13
+    body = response.json()
+    assert len(body["time_slots"]) == 13
+    assert body["scores"]["total"] == body["time_slots"][0]["score"]
+    assert body["weather"] == body["time_slots"][0]["weather"]
+    assert body["solar"] == body["time_slots"][0]["solar"]

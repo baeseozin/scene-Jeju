@@ -99,6 +99,9 @@ export async function createAnalysisCard(analysis: Analysis): Promise<File> {
   context.fillStyle = STATUS_COLOR[analysis.status];
   context.font = "700 37px sans-serif";
   context.fillText(STATUS_LABEL[analysis.status], 120, 434);
+  context.fillStyle = "#b9e6d5";
+  context.font = "600 22px sans-serif";
+  context.fillText("도착 예상 시각 점수", 120, 474);
   context.fillStyle = "#ffffff";
   context.font = "700 154px sans-serif";
   context.fillText(String(analysis.scores.total), 112, 598);
