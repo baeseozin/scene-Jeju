@@ -39,6 +39,7 @@ type FilterPreset = "none" | "warm" | "cool" | "film" | "mono";
 type TransitionPreset = "cut" | "fade";
 type CaptionPosition = "top" | "center" | "bottom";
 type CameraFacing = "environment" | "user";
+type CollageFrame = "jeju" | "stone" | "black" | "white";
 interface PoseGuide {
   id: PoseGuideType;
   label: string;
@@ -401,41 +402,86 @@ async function renderMontage(
   }
 }
 
-async function renderPhotoCollage(files: File[], title: string): Promise<RenderedMedia> {
+async function renderPhotoCollage(
+  files: File[],
+  title: string,
+  frame: CollageFrame,
+): Promise<RenderedMedia> {
   const canvas = document.createElement("canvas");
   canvas.width = 1080;
   canvas.height = 1920;
   const context = canvas.getContext("2d");
   if (!context) throw new Error("사진 결과 화면을 만들지 못했습니다.");
-  context.fillStyle = "#172c27";
+
+  const theme = {
+    jeju: { background: "#72a9dd", title: "#173f58", accent: "#ffffff", photoBorder: "#ffffff" },
+    stone: { background: "#dff3ff", title: "#23485c", accent: "#356c61", photoBorder: "#ffffff" },
+    black: { background: "#050505", title: "#ffffff", accent: "#b9e6d5", photoBorder: "#ffffff" },
+    white: { background: "#ffffff", title: "#151b19", accent: "#5f6965", photoBorder: "#151b19" },
+  }[frame];
+  context.fillStyle = theme.background;
   context.fillRect(0, 0, canvas.width, canvas.height);
-  context.fillStyle = "#ffffff";
+  if (frame === "jeju" || frame === "stone") {
+    const background = new Image();
+    background.src = frame === "jeju"
+      ? "/collage-frame-jeju.png"
+      : "/collage-frame-stone-field.png";
+    await waitForEvent(background, "load");
+    drawCover(
+      context,
+      background,
+      background.naturalWidth,
+      background.naturalHeight,
+      0,
+      0,
+      canvas.width,
+      canvas.height,
+    );
+  }
+
+  context.fillStyle = theme.title;
   context.font = "700 46px sans-serif";
   context.fillText(title.slice(0, 24), 60, 86);
-  context.fillStyle = "#b9e6d5";
+  context.fillStyle = theme.accent;
   context.font = "500 22px sans-serif";
   context.fillText("SCENE JEJU · MOOD MAKER", 60, 126);
 
-  const gap = 18;
-  const margin = 54;
-  const top = 168;
-  const columns = files.length === 1 ? 1 : 2;
+  const isIllustratedFrame = frame === "jeju" || frame === "stone";
+  const gap = isIllustratedFrame ? 26 : 18;
+  const margin = isIllustratedFrame ? 82 : 54;
+  const top = isIllustratedFrame ? 270 : 168;
+  const bottom = frame === "stone" ? 520 : frame === "jeju" ? 380 : 90;
+  const borderWidth = isIllustratedFrame ? 11 : 4;
+  const columns = files.length <= 2 ? 1 : 2;
   const rows = Math.ceil(files.length / columns);
   const cellWidth = (canvas.width - margin * 2 - gap * (columns - 1)) / columns;
-  const cellHeight = (canvas.height - top - 90 - gap * (rows - 1)) / rows;
+  const cellHeight = (canvas.height - top - bottom - gap * (rows - 1)) / rows;
   for (const [index, file] of files.entries()) {
     const image = new Image();
     image.src = URL.createObjectURL(file);
     await waitForEvent(image, "load");
     const column = index % columns;
     const row = Math.floor(index / columns);
+    const x = margin + column * (cellWidth + gap);
+    const y = top + row * (cellHeight + gap);
+    context.save();
+    context.shadowColor = frame === "white" ? "rgba(0,0,0,.16)" : "rgba(0,0,0,.28)";
+    context.shadowBlur = isIllustratedFrame ? 18 : 9;
+    context.fillStyle = theme.photoBorder;
+    context.fillRect(
+      x - borderWidth,
+      y - borderWidth,
+      cellWidth + borderWidth * 2,
+      cellHeight + borderWidth * 2,
+    );
+    context.restore();
     drawCover(
       context,
       image,
       image.naturalWidth,
       image.naturalHeight,
-      margin + column * (cellWidth + gap),
-      top + row * (cellHeight + gap),
+      x,
+      y,
       cellWidth,
       cellHeight,
     );
@@ -458,6 +504,7 @@ export default function MediaStudio({ analysis, captureMode }: MediaStudioProps)
   const [caption, setCaption] = useState(`${analysis.place.name} · ${analysis.concept.name}`);
   const [captionPosition, setCaptionPosition] = useState<CaptionPosition>("top");
   const [transition, setTransition] = useState<TransitionPreset>("cut");
+  const [collageFrame, setCollageFrame] = useState<CollageFrame>("jeju");
   const [cameraOpen, setCameraOpen] = useState(false);
   const [cameraFacing, setCameraFacing] = useState<CameraFacing>("environment");
   const [poseRecommendations, setPoseRecommendations] = useState<PoseRecommendationResponse | null>(null);
@@ -522,7 +569,7 @@ export default function MediaStudio({ analysis, captureMode }: MediaStudioProps)
     setPoseRecommendationMessage("컨셉에 맞는 포즈를 고르는 중이에요.");
     const placeType = (["beach", "forest", "urban", "indoor"] as const)
       .find((value) => value === analysis.place.place_type) ?? "urban";
-    const cacheKey = `scene-jeju-pose-v2:${analysis.concept.id}:${placeType}:${captureMode}:${framing}`;
+    const cacheKey = `scene-jeju-pose-v3:${analysis.concept.id}:${placeType}:${captureMode}:${framing}`;
     try {
       const cached = sessionStorage.getItem(cacheKey);
       if (cached) {
@@ -530,9 +577,9 @@ export default function MediaStudio({ analysis, captureMode }: MediaStudioProps)
         setPoseRecommendations(recommendations);
         setSelectedPoseId(recommendations.poses[0].id);
         setPoseRecommendationMessage(
-          recommendations.source === "openai"
+          recommendations.source === "gemini"
             ? "이 세션에서 같은 조건으로 받은 AI 추천을 다시 사용했어요."
-            : "AI 키가 없어 컨셉별 기본 추천을 보여드려요.",
+            : "AI 추천을 불러오지 못해 컨셉별 기본 추천을 보여드려요.",
         );
         return () => { cancelled = true; };
       }
@@ -548,11 +595,17 @@ export default function MediaStudio({ analysis, captureMode }: MediaStudioProps)
       if (cancelled) return;
       setPoseRecommendations(recommendations);
       setSelectedPoseId(recommendations.poses[0].id);
-      try { sessionStorage.setItem(cacheKey, JSON.stringify(recommendations)); } catch { /* private mode */ }
+      try {
+        if (recommendations.source === "gemini") {
+          sessionStorage.setItem(cacheKey, JSON.stringify(recommendations));
+        } else {
+          sessionStorage.removeItem(cacheKey);
+        }
+      } catch { /* private mode */ }
       setPoseRecommendationMessage(
-        recommendations.source === "openai"
+        recommendations.source === "gemini"
           ? "AI가 컨셉을 중심으로 장소와 촬영 방식까지 함께 보고 추천했어요."
-          : "AI 키가 없어 컨셉별 기본 추천을 보여드려요.",
+          : "AI 추천을 불러오지 못해 컨셉별 기본 추천을 보여드려요.",
       );
     }).catch((reason: unknown) => {
       if (cancelled) return;
@@ -594,9 +647,8 @@ export default function MediaStudio({ analysis, captureMode }: MediaStudioProps)
         const stream = await navigator.mediaDevices.getUserMedia({
           video: {
             facingMode: { ideal: cameraFacing },
-            width: { ideal: 720, max: 1280 },
-            height: { ideal: 1280, max: 1920 },
-            aspectRatio: { ideal: 9 / 16 },
+            width: { ideal: 1920, max: 1920 },
+            height: { ideal: 1080, max: 1920 },
           },
           audio: captureMode === "video",
         });
@@ -604,12 +656,21 @@ export default function MediaStudio({ analysis, captureMode }: MediaStudioProps)
           stream.getTracks().forEach((track) => track.stop());
           return;
         }
+        const videoTrack = stream.getVideoTracks()[0];
+        const capabilities = videoTrack?.getCapabilities?.() as (MediaTrackCapabilities & {
+          zoom?: { min: number; max: number; step?: number };
+        }) | undefined;
+        if (videoTrack && capabilities?.zoom) {
+          await videoTrack.applyConstraints({
+            advanced: [{ zoom: capabilities.zoom.min } as MediaTrackConstraintSet & { zoom: number }],
+          }).catch(() => undefined);
+        }
         cameraStreamRef.current = stream;
         if (cameraVideoRef.current) {
           cameraVideoRef.current.srcObject = stream;
           await cameraVideoRef.current.play();
         }
-        setMessage("선택한 추천 포즈를 반투명 가이드에 맞춰 촬영해 주세요. 가이드선은 결과물에 저장되지 않아요.");
+        setMessage("카메라의 전체 화각을 보여드려요. 선택한 추천 포즈를 반투명 가이드에 맞춰 촬영해 주세요. 가이드선은 결과물에 저장되지 않아요.");
       } catch (reason) {
         if (cancelled) return;
         const denied = reason instanceof DOMException && (reason.name === "NotAllowedError" || reason.name === "SecurityError");
@@ -690,8 +751,9 @@ export default function MediaStudio({ analysis, captureMode }: MediaStudioProps)
       return;
     }
     const canvas = document.createElement("canvas");
-    canvas.width = 1080;
-    canvas.height = 1920;
+    const scale = Math.min(1, 1920 / Math.max(video.videoWidth, video.videoHeight));
+    canvas.width = Math.max(1, Math.round(video.videoWidth * scale));
+    canvas.height = Math.max(1, Math.round(video.videoHeight * scale));
     const context = canvas.getContext("2d");
     if (!context) {
       setMessage("사진 촬영 화면을 만들지 못했습니다.");
@@ -702,16 +764,7 @@ export default function MediaStudio({ analysis, captureMode }: MediaStudioProps)
       context.translate(canvas.width, 0);
       context.scale(-1, 1);
     }
-    drawCover(
-      context,
-      video,
-      video.videoWidth,
-      video.videoHeight,
-      0,
-      0,
-      canvas.width,
-      canvas.height,
-    );
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
     context.restore();
     const blob = await new Promise<Blob>((resolve, reject) => {
       canvas.toBlob(
@@ -923,7 +976,11 @@ export default function MediaStudio({ analysis, captureMode }: MediaStudioProps)
     try {
       const rendered = captureMode === "video"
         ? await renderMontage(media, caption, transition, captionPosition, setProgress)
-        : await renderPhotoCollage(media.map((item) => item.file), `${analysis.place.name} · ${analysis.concept.name}`);
+        : await renderPhotoCollage(
+            media.map((item) => item.file),
+            `${analysis.place.name} · ${analysis.concept.name}`,
+            collageFrame,
+          );
       if (exportUrl) URL.revokeObjectURL(exportUrl);
       setExportUrl(URL.createObjectURL(rendered.blob));
       setExportBlob(rendered.blob);
@@ -967,10 +1024,42 @@ export default function MediaStudio({ analysis, captureMode }: MediaStudioProps)
       <div className="panel-title"><span>{captureMode === "video" ? "REELS EDITOR" : "PHOTO COLLAGE"}</span><small>기기 안에서만 처리</small></div>
       <h3>{captureMode === "video" ? "서비스 안에서 직접 릴스 편집하기" : "촬영한 사진을 한 장으로 만들기"}</h3>
       <p>{captureMode === "video" ? "최대 4개 클립을 나누고 순서를 바꾼 뒤, 배속·색감·밝기·화면 위치·문구·전환 효과를 직접 편집해 최대 15초로 저장할 수 있어요." : "가이드 순서대로 찍은 사진을 최대 4개 골라 주세요. 순서를 바꾸거나 빼고 결과물을 저장할 수 있어요."}</p>
+      {captureMode === "photo" && (
+        <section className="collage-frame-picker" aria-label="사진 콜라주 프레임 선택">
+          <div>
+            <small>COLLAGE FRAME</small>
+            <strong>사진을 담을 프레임을 골라 주세요</strong>
+          </div>
+          <div className="collage-frame-options" role="group" aria-label="콜라주 프레임">
+            {([
+              { id: "jeju", label: "제주 일러스트" },
+              { id: "stone", label: "돌담 들판" },
+              { id: "black", label: "검정" },
+              { id: "white", label: "흰색" },
+            ] as Array<{ id: CollageFrame; label: string }>).map((option) => (
+              <button
+                type="button"
+                key={option.id}
+                className={collageFrame === option.id ? "selected" : ""}
+                aria-pressed={collageFrame === option.id}
+                onClick={() => {
+                  if (collageFrame === option.id) return;
+                  setCollageFrame(option.id);
+                  clearRenderedResult(`${option.label} 프레임을 선택했습니다. 콜라주를 다시 만들어 주세요.`);
+                }}
+              >
+                <span className={`collage-frame-swatch ${option.id}`} />
+                <strong>{option.label}</strong>
+                <small>{option.id === "jeju" ? "제주 바다와 돌하르방" : option.id === "stone" ? "현무암 돌담과 초록 들판" : `${option.label} 기본 프레임`}</small>
+              </button>
+            ))}
+          </div>
+        </section>
+      )}
       <section className="concept-pose-recommendations" aria-label="컨셉 맞춤 포즈 추천">
         <div className="concept-pose-heading">
           <div>
-            <span>{poseRecommendations?.source === "openai" ? "AI POSE DIRECTOR" : "POSE GUIDE"}</span>
+            <span>{poseRecommendations?.source === "gemini" ? "AI POSE DIRECTOR" : "POSE GUIDE"}</span>
             <h4>{analysis.concept.name} 컨셉에 어울리는 포즈</h4>
           </div>
           <p>{poseRecommendationMessage}</p>
@@ -1041,7 +1130,7 @@ export default function MediaStudio({ analysis, captureMode }: MediaStudioProps)
             <p>{selectedPose?.why}</p>
           </div>
           <div className="pose-camera-stage">
-            <video ref={cameraVideoRef} className={cameraFacing === "user" ? "mirrored" : ""} autoPlay muted playsInline />
+            <video ref={cameraVideoRef} className={`wide-preview ${cameraFacing === "user" ? "mirrored" : ""}`} autoPlay muted playsInline />
             <PoseOverlay pose={poseId} opacity={overlayOpacity} framing={framing} />
             <span className="ai-pose-score">{framing === "upper_body" ? "상반신" : "전신"} 포즈 가이드</span>
             <span className="pose-safe-line">{selectedPose?.camera}</span>
@@ -1055,7 +1144,7 @@ export default function MediaStudio({ analysis, captureMode }: MediaStudioProps)
               : <button type="button" className={`camera-shutter ${recording ? "recording" : ""}`} onClick={() => recording ? stopCameraRecording(true) : startCameraRecording()}>{recording ? "■ 촬영 끝내기" : "● 영상 촬영"}</button>}
             <button type="button" disabled={recording} onClick={() => setCameraOpen(false)}>닫기</button>
           </div>
-          <p className="pose-camera-note">AI 추천에는 컨셉·장소 유형·사진/영상·전신/상반신 정보만 사용합니다. 카메라 영상은 서버나 AI로 전송되지 않고, 반투명 가이드도 촬영 파일에 합성되지 않아요.</p>
+          <p className="pose-camera-note">화면을 억지로 확대하지 않고 카메라 전체 화각을 표시합니다. AI 추천에는 컨셉·장소 유형·사진/영상·전신/상반신 정보만 사용합니다. 카메라 영상은 서버나 AI로 전송되지 않고, 반투명 가이드도 촬영 파일에 합성되지 않아요.</p>
         </section>
       )}
       <label className="media-upload"><input type="file" accept={accept} multiple onChange={(event) => { void chooseFiles(event.target.files); event.currentTarget.value = ""; }} /><span>＋ {captureMode === "video" ? "편집할 영상 선택" : "사진 선택"}</span></label>

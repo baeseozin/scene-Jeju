@@ -16,14 +16,15 @@ import type {
 } from "./types";
 
 const STATUS_META: Record<Status, { shortLabel: string; label: string; eyebrow: string; color: string }> = {
-  가능: { shortLabel: "좋음", label: "지금 찍기 좋아요", eyebrow: "좋음 · GREAT TO SHOOT", color: "#1f8f72" },
-  보통: { shortLabel: "괜찮음", label: "지금 찍어도 괜찮아요", eyebrow: "괜찮음 · GOOD TO GO", color: "#d17b2c" },
-  비추천: { shortLabel: "시간 조정 추천", label: "조금 기다리면 더 좋아요", eyebrow: "시간 조정 추천 · BETTER TIME AHEAD", color: "#ce5b59" },
+  가능: { shortLabel: "좋음", label: "도착할 때 찍기 좋아요", eyebrow: "도착 시 좋음 · GREAT ON ARRIVAL", color: "#1f8f72" },
+  보통: { shortLabel: "괜찮음", label: "도착할 때도 찍기 괜찮아요", eyebrow: "도착 시 괜찮음 · OKAY ON ARRIVAL", color: "#d17b2c" },
+  비추천: { shortLabel: "시간 조정 추천", label: "추천 시간대가 더 좋아요", eyebrow: "시간 조정 추천 · BETTER TIME AHEAD", color: "#ce5b59" },
 };
 
 const PLACE_SYMBOLS: Record<string, string> = { hyeopjae: "波", saryeoni: "森", dodu: "虹" };
-const CONCEPT_SYMBOLS: Record<string, string> = { refreshing: "01", natural: "02", sunset: "03", cozy: "04", film: "05", sparkling: "06" };
-const CONCEPT_ORDER = ["refreshing", "natural", "sunset", "cozy", "film", "sparkling"];
+const CONCEPT_SYMBOLS: Record<string, string> = { refreshing: "01", natural: "02", sunset: "03", film: "04", sparkling: "05" };
+const CONCEPT_ORDER = ["refreshing", "natural", "sunset", "film", "sparkling"];
+const CONCEPT_CARD_ACCENTS: Record<string, string> = { film: "#243a5a" };
 const TRANSPORT_LABELS: Record<TransportMode, string> = { car: "자동차", transit: "대중교통", walk: "도보" };
 const HISTORY_KEY = "scene-jeju-analysis-history-v1";
 const RESULT_THEMES: Record<string, {
@@ -41,9 +42,8 @@ const RESULT_THEMES: Record<string, {
 }> = {
   refreshing: { background: "#e9f8ff", accent: "#187ca1", glow: "rgba(88,197,240,.34)", muted: "#4e6c76", start: "#f2fbff", middle: "#a9ddf2", end: "#e5f6ee", card: "rgba(255,255,255,.76)", line: "rgba(38,91,108,.16)", editor: "#123b48", orb: "rgba(255,255,255,.72)" },
   natural: { background: "#eff5e9", accent: "#347653", glow: "rgba(142,190,122,.28)", muted: "#536a58", start: "#faf5d9", middle: "#bfd7ac", end: "#e8f1e4", card: "rgba(255,255,255,.74)", line: "rgba(54,101,68,.16)", editor: "#244434", orb: "rgba(255,245,188,.66)" },
-  sunset: { background: "#f9d5bd", accent: "#a44358", glow: "rgba(239,118,95,.34)", muted: "#6d5261", start: "#fff1c9", middle: "#f3aa82", end: "#d3b0d5", card: "rgba(255,249,244,.75)", line: "rgba(113,61,78,.16)", editor: "#4b2e46", orb: "rgba(255,224,143,.82)" },
-  cozy: { background: "#f7ecdc", accent: "#8a6740", glow: "rgba(225,184,134,.30)", muted: "#706253", start: "#fff9ea", middle: "#ead5b8", end: "#f4e7dc", card: "rgba(255,253,247,.78)", line: "rgba(116,88,53,.15)", editor: "#4a3d30", orb: "rgba(255,239,199,.78)" },
-  film: { background: "#e6ebf0", accent: "#53677f", glow: "rgba(119,135,157,.28)", muted: "#5f6977", start: "#f0f2f5", middle: "#b8c5d2", end: "#d9d5df", card: "rgba(249,250,252,.76)", line: "rgba(62,77,96,.16)", editor: "#303b49", orb: "rgba(228,235,243,.72)" },
+  sunset: { background: "#f39a82", accent: "#a1253f", glow: "rgba(224,57,52,.42)", muted: "#70404b", start: "#ffd19f", middle: "#ef6658", end: "#9e3f60", card: "rgba(255,247,241,.82)", line: "rgba(123,38,57,.20)", editor: "#4b172b", orb: "rgba(255,192,91,.88)" },
+  film: { background: "#090e18", accent: "#e2ab68", glow: "rgba(77,103,151,.34)", muted: "#aeb9ca", start: "#07101e", middle: "#16253d", end: "#080b14", card: "rgba(12,21,37,.82)", line: "rgba(193,210,235,.18)", editor: "#060b13", orb: "rgba(239,177,91,.18)" },
   sparkling: { background: "#e8fbf7", accent: "#167d71", glow: "rgba(78,210,186,.30)", muted: "#466d68", start: "#f3fffc", middle: "#9de5da", end: "#ddf8f5", card: "rgba(255,255,255,.76)", line: "rgba(31,105,94,.16)", editor: "#174842", orb: "rgba(255,255,255,.80)" },
 };
 
@@ -130,7 +130,11 @@ function getLightAdvice(solar: Analysis["solar"]): string {
 function readHistory(): SavedAnalysis[] {
   try {
     const raw = localStorage.getItem(HISTORY_KEY);
-    return raw ? (JSON.parse(raw) as SavedAnalysis[]) : [];
+    if (!raw) return [];
+    const saved = JSON.parse(raw) as SavedAnalysis[];
+    return Array.isArray(saved)
+      ? saved.filter((item) => CONCEPT_ORDER.includes(item.analysis?.concept?.id))
+      : [];
   } catch {
     return [];
   }
@@ -382,7 +386,7 @@ export default function App() {
 
   const shareAnalysis = async () => {
     if (!analysis) return;
-    const text = `${analysis.place.name} ${analysis.concept.name} 촬영 적합도 ${analysis.scores.total}점. 추천 시각은 ${formatKoreanDate(analysis.best_time)}입니다.`;
+    const text = `${analysis.place.name} ${analysis.concept.name} 도착 예상 시각 촬영 적합도 ${analysis.scores.total}점. 추천 시각은 ${formatKoreanDate(analysis.best_time)}입니다.`;
     try {
       setActionMessage("분석 결과 이미지를 만드는 중이에요.");
       const card = await createAnalysisCard(analysis);
@@ -416,6 +420,7 @@ export default function App() {
 
   const statusMeta = analysis ? STATUS_META[analysis.status] : null;
   const selectedConceptAccent = catalog?.concepts.find((concept) => concept.id === selectedConcept)?.accent ?? "#62d1ab";
+  const selectedConceptBorderAccent = CONCEPT_CARD_ACCENTS[selectedConcept] ?? selectedConceptAccent;
   const resultTheme = analysis ? RESULT_THEMES[analysis.concept.id] ?? RESULT_THEMES.refreshing : RESULT_THEMES.refreshing;
   const tourismTrend = analysis?.tourism_trend ?? {
     available: false,
@@ -450,6 +455,11 @@ export default function App() {
           <h1>분위기는 감으로,<br /><em>타이밍은 데이터로.</em></h1>
           <p className="hero-description">도착할 때의 날씨와 태양 위치를 미리 계산해<br className="desktop-only" /> 제주에서 원하는 장면을 놓치지 않게 도와드려요.</p>
         </div>
+        <figure className="hero-video" aria-hidden="true">
+          <video autoPlay loop muted playsInline preload="auto" poster="/dolharubang-sun-shadow-v4-poster.png" disablePictureInPicture>
+            <source src="/dolharubang-sun-shadow-v4.mp4" type="video/mp4" />
+          </video>
+        </figure>
       </section>
 
       <section className="planner-section">
@@ -482,7 +492,7 @@ export default function App() {
 
           <div className="selection-panel options-panel apple-scene">
             <div className="field-header"><div><span className="field-number">B</span><h3>원하는 분위기</h3></div><span className="field-note">6 MOODS</span></div>
-            <div className="concept-grid">{catalog?.concepts.slice().sort((first, second) => CONCEPT_ORDER.indexOf(first.id) - CONCEPT_ORDER.indexOf(second.id)).map((concept) => <button type="button" className={`concept-card ${selectedConcept === concept.id ? "selected" : ""}`} key={concept.id} onClick={() => setSelectedConcept(concept.id)} style={{ "--accent": concept.accent } as CSSProperties}><span>{CONCEPT_SYMBOLS[concept.id]}</span><strong>{concept.name}</strong><small>{concept.description}</small></button>)}</div>
+            <div className="concept-grid">{catalog?.concepts.slice().sort((first, second) => CONCEPT_ORDER.indexOf(first.id) - CONCEPT_ORDER.indexOf(second.id)).map((concept) => <button type="button" className={`concept-card ${selectedConcept === concept.id ? "selected" : ""}`} key={concept.id} onClick={() => setSelectedConcept(concept.id)} style={{ "--accent": CONCEPT_CARD_ACCENTS[concept.id] ?? concept.accent } as CSSProperties}><span>{CONCEPT_SYMBOLS[concept.id]}</span><strong>{concept.name}</strong><small>{concept.description}</small></button>)}</div>
             <div className="sub-option-group">
               <span>무엇을 남길까요?</span>
               <div className="segmented-control"><button type="button" className={captureMode === "photo" ? "selected" : ""} onClick={() => setCaptureMode("photo")}>사진</button><button type="button" className={captureMode === "video" ? "selected" : ""} onClick={() => setCaptureMode("video")}>15초 영상</button></div>
@@ -512,7 +522,7 @@ export default function App() {
         </div>
 
         {error && <p className="error-message" role="alert">{error}</p>}
-        <button className="analyze-button apple-scene" style={{ "--analyze-accent": selectedConceptAccent } as CSSProperties} type="button" onClick={runAnalysis} disabled={!catalog || loading}><span><small>{loading ? "ANALYZING 13 TIME SLOTS" : "READY · WEATHER + LIGHT + ROUTE"}</small>{loading ? "시간대별 조건을 계산하는 중" : "이 조건으로 촬영 타이밍 분석하기"}</span><b>{loading ? "···" : "→"}</b></button>
+        <button className="analyze-button apple-scene" style={{ "--analyze-accent": selectedConceptAccent, "--analyze-border": selectedConceptBorderAccent } as CSSProperties} type="button" onClick={runAnalysis} disabled={!catalog || loading}><span><small>{loading ? "ANALYZING 13 TIME SLOTS" : "READY · WEATHER + LIGHT + ROUTE"}</small>{loading ? "시간대별 조건을 계산하는 중" : "이 조건으로 촬영 타이밍 분석하기"}</span><b>{loading ? "···" : "→"}</b></button>
       </section>
 
       {analysis && statusMeta && (
@@ -530,24 +540,25 @@ export default function App() {
           "--result-editor": resultTheme.editor,
           "--result-orb": resultTheme.orb,
         } as CSSProperties}>
-          <div className="section-heading light-heading apple-scene"><span>02</span><div><p>YOUR SHOOTING FORECAST</p><h2>추천 시각의 촬영 조건</h2></div></div>
+          {analysis.concept.id === "film" && <div className="film-stars" aria-hidden="true">{Array.from({ length: 18 }, (_, index) => <i key={index} />)}</div>}
+          <div className="section-heading light-heading apple-scene"><span>02</span><div><p>YOUR ARRIVAL FORECAST</p><h2>도착 예상 시각의 촬영 조건</h2></div></div>
           {analysis.warning && <div className="warning-banner">{analysis.warning}</div>}
           <div className="result-hero apple-scene">
-            <div className="score-ring" style={{ "--score": analysis.scores.total, "--status": statusMeta.color } as CSSProperties}><div><span>TOTAL</span><strong>{analysis.scores.total}</strong><small>/ 100</small></div></div>
+            <div className="score-ring" style={{ "--score": analysis.scores.total, "--status": statusMeta.color } as CSSProperties}><div><span>도착 시각</span><strong>{analysis.scores.total}</strong><small>/ 100</small></div></div>
             <div className="result-copy">
               <p style={{ color: statusMeta.color }}>{statusMeta.eyebrow}</p><h2>{statusMeta.label}</h2><strong>{analysis.place.name} · {analysis.concept.name}</strong><p>{analysis.summary}</p>
               <div className="arrival-strip"><span><small>출발</small>{formatKoreanDate(analysis.departure_time)}</span><i>→</i><span><small>예상 도착</small>{formatKoreanDate(analysis.arrival_time)}</span><i>→</i><span><small>추천 촬영</small>{formatKoreanDate(analysis.best_time)}</span><b>{TRANSPORT_LABELS[analysis.transport_mode]} {analysis.travel_minutes}분 · {analysis.distance_km}km</b></div>
-              <p className="source-note">{analysis.travel_source === "kakao-mobility" ? "카카오 실제 자동차 경로" : "거리와 평균 속도를 이용한 예상 이동시간"}</p>
+              <p className="source-note">{analysis.travel_source === "kakao-mobility" ? "카카오 실제 자동차 경로" : "거리와 평균 속도를 이용한 예상 이동시간"} · 날씨는 기상청 {formatTime(analysis.weather.forecast_time)} 예보</p>
             </div>
           </div>
 
           <article className="best-time-panel apple-scene">
-            <div><small>BEST SHOOTING TIME</small><strong>{formatKoreanDate(analysis.best_time)}</strong><p>{analysis.best_offset_minutes === 0 ? "도착 직후가 가장 좋아요." : `도착 후 ${analysis.best_offset_minutes / 60}시간 기다리면 조건이 더 좋아져요.`}</p></div>
+            <div><small>추천 촬영 시간</small><strong>{formatKoreanDate(analysis.best_time)}</strong><p>{analysis.best_offset_minutes === 0 ? "도착 직후 바로 촬영해도 좋아요." : `도착 후 ${analysis.best_offset_minutes / 60}시간 뒤가 기다림과 촬영 조건을 함께 고려한 추천 시간이에요.`}</p></div>
             <span>{analysis.time_slots.find((slot) => slot.is_best)?.score ?? analysis.scores.total}<small>점</small></span>
           </article>
 
           <div className="time-slot-grid apple-scene" aria-label="시간대별 촬영 적합도">
-            {analysis.time_slots.map((slot, index) => <article key={slot.time} className={slot.is_best ? "best" : ""}><span>{index === 0 ? "도착" : `도착 +${index}시간`}</span><strong>{formatTime(slot.time)}</strong><b style={{ color: STATUS_META[slot.status].color }}>{slot.score}점 · {STATUS_META[slot.status].shortLabel}</b><small>{slot.weather.sky} · {getWindLabel(slot.weather.wind_speed_mps)}{slot.is_best ? " · 추천" : ""}</small></article>)}
+            {analysis.time_slots.map((slot, index) => <article key={slot.time} className={slot.is_best ? "best" : ""}><span>{index === 0 ? "도착" : `도착 +${index}시간`}</span><strong>{formatTime(slot.time)}</strong><b style={{ color: STATUS_META[slot.status].color }}>{slot.score}점 · {STATUS_META[slot.status].shortLabel}</b><small>{slot.weather.sky} · {getWindLabel(slot.weather.wind_speed_mps)} · 기상청 {formatTime(slot.weather.forecast_time)} 예보{slot.is_best ? " · 추천" : ""}</small></article>)}
           </div>
 
           <div className="condition-grid apple-scene">
@@ -574,7 +585,7 @@ export default function App() {
           </article>
 
           <div className="detail-grid apple-scene">
-            <article className="score-panel"><div className="panel-title"><span>CONDITION SCORE</span><small>추천 시각 기준</small></div><ScoreBar label="날씨" value={analysis.scores.weather} /><ScoreBar label="빛" value={analysis.scores.light} /><ScoreBar label="장소" value={analysis.scores.place} /></article>
+            <article className="score-panel"><div className="panel-title"><span>CONDITION SCORE</span><small>도착 예상 시각 기준</small></div><ScoreBar label="날씨" value={analysis.scores.weather} /><ScoreBar label="빛" value={analysis.scores.light} /><ScoreBar label="장소" value={analysis.scores.place} /></article>
             <article className="reason-panel"><div className="panel-title"><span>WHY THIS SCORE?</span><small>{analysis.data_source}</small></div><ul>{analysis.reasons.map((reason) => <li key={reason}>{reason}</li>)}</ul></article>
           </div>
 

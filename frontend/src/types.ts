@@ -134,7 +134,7 @@ export interface PoseRecommendationItem {
 }
 
 export interface PoseRecommendationResponse {
-  source: "openai" | "fallback";
+  source: "gemini" | "fallback";
   model: string | null;
   framing: FramingMode;
   basis: string;
